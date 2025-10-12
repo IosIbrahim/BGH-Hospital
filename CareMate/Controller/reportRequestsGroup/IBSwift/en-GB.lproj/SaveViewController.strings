@@ -1,0 +1,36 @@
+
+/* Class = "UITextField"; placeholder = "Write Person Name"; ObjectID = "2NP-hL-usz"; */
+"2NP-hL-usz.placeholder" = "Write Person Name";
+
+/* Class = "UILabel"; text = "Need Support"; ObjectID = "9Wv-k8-7fB"; */
+"9Wv-k8-7fB.text" = "Need Support";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "BBT-xx-hje"; */
+"BBT-xx-hje.text" = "Next";
+
+/* Class = "UILabel"; text = "Report"; ObjectID = "Bb2-ms-JKI"; */
+"Bb2-ms-JKI.text" = "Report";
+
+/* Class = "UILabel"; text = "Person Authorized to receive"; ObjectID = "Hnt-lg-VBi"; */
+"Hnt-lg-VBi.text" = "Person Authorized to receive";
+
+/* Class = "UILabel"; text = "Chosse Visit"; ObjectID = "bH4-cg-hwu"; */
+"bH4-cg-hwu.text" = "Choose Visit";
+
+/* Class = "UILabel"; text = "Yes"; ObjectID = "fRt-Be-Nzb"; */
+"fRt-Be-Nzb.text" = "Yes";
+
+/* Class = "UILabel"; text = "The visit to which the report is required"; ObjectID = "qaS-5l-HFc"; */
+"qaS-5l-HFc.text" = "The visit to which the report is required";
+
+/* Class = "UITextField"; placeholder = "Write Your Notes"; ObjectID = "uJy-y3-Ec6"; */
+"uJy-y3-Ec6.placeholder" = "Write Your Notes";
+
+/* Class = "UILabel"; text = "NO"; ObjectID = "vY7-Ev-8J5"; */
+"vY7-Ev-8J5.text" = "NO";
+
+/* Class = "UILabel"; text = "Notes"; ObjectID = "wI6-Je-90s"; */
+"wI6-Je-90s.text" = "Notes";
+
+/* Class = "UILabel"; text = "Chosse report"; ObjectID = "wkj-b2-0ZE"; */
+"wkj-b2-0ZE.text" = "Choose report";

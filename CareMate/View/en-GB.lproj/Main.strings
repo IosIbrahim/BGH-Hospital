@@ -1,0 +1,654 @@
+
+/* Class = "UILabel"; text = "2019/08/24 15:11"; ObjectID = "0A4-zo-8mc"; */
+"0A4-zo-8mc.text" = "2019/08/24 15:11";
+
+/* Class = "UILabel"; text = "Our mission"; ObjectID = "0Kb-ks-Wtp"; */
+"0Kb-ks-Wtp.text" = "Our mission";
+
+/* Class = "UIButton"; normalTitle = "cs@sidra.gospital"; ObjectID = "0LM-Zu-tRI"; */
+"0LM-Zu-tRI.normalTitle" = "App_support@alsalamhosp.com";
+
+/* Class = "UILabel"; text = "Reference Data"; ObjectID = "0ho-1v-WQN"; */
+"0ho-1v-WQN.text" = "Reference Data";
+
+/* Class = "UIButton"; normalTitle = "Book Now"; ObjectID = "0kY-vd-FtH"; */
+"0kY-vd-FtH.normalTitle" = "Book Now";
+
+/* Class = "UILabel"; text = "To provide safe practice environment for our patients and staff.\n"; ObjectID = "0vK-tB-kQ4"; */
+"0vK-tB-kQ4.text" = "To provide safe practice environment for our patients and staff.\n";
+
+/* Class = "UILabel"; text = "[Doctor Name]"; ObjectID = "0vK-uY-KmI"; */
+"0vK-uY-KmI.text" = "[Doctor Name]";
+
+/* Class = "UILabel"; text = "Reschedule"; ObjectID = "125-1f-y9H"; */
+"125-1f-y9H.text" = "Reschedule";
+
+/* Class = "UILabel"; text = "Phone Number:"; ObjectID = "1xK-ek-3gJ"; */
+"1xK-ek-3gJ.text" = "Phone Number:";
+
+/* Class = "UIButton"; normalTitle = "Change Password"; ObjectID = "2jY-sm-FAx"; */
+"2jY-sm-FAx.normalTitle" = "Change Password";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "2tL-Mb-5Do"; */
+"2tL-Mb-5Do.text" = "Label";
+
+/* Class = "UILabel"; text = "Filter"; ObjectID = "3fD-yy-Wci"; */
+"3fD-yy-Wci.text" = "Filter";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "3kh-tH-bHZ"; */
+"3kh-tH-bHZ.text" = "Label";
+
+/* Class = "UILabel"; text = "Dokkii street , Giza"; ObjectID = "3oG-yL-73m"; */
+"3oG-yL-73m.text" = "Dokkii street , Giza";
+
+/* Class = "UIButton"; normalTitle = "Patient Diagnosis"; ObjectID = "4QG-mp-BUn"; */
+"4QG-mp-BUn.normalTitle" = "Patient Diagnosis";
+
+/* Class = "UILabel"; text = "[Country]"; ObjectID = "4mQ-WX-IUi"; */
+"4mQ-WX-IUi.text" = "[Country]";
+
+/* Class = "UILabel"; text = "Email:"; ObjectID = "5T4-lc-TTH"; */
+"5T4-lc-TTH.text" = "Email:";
+
+/* Class = "UILabel"; text = "Waiting time"; ObjectID = "5nJ-n2-jNN"; */
+"5nJ-n2-jNN.text" = "Waiting time";
+
+/* Class = "UILabel"; text = "Reservation no. : "; ObjectID = "5oE-Ju-jdq"; */
+"5oE-Ju-jdq.text" = "Reservation no. : ";
+
+/* Class = "UILabel"; text = "Reports Request"; ObjectID = "5sO-nd-0vn"; */
+"5sO-nd-0vn.text" = "Reports Request";
+
+/* Class = "UILabel"; text = "Our mission"; ObjectID = "6a1-kY-fdK"; */
+"6a1-kY-fdK.text" = "Our mission";
+
+/* Class = "UILabel"; text = "Thanks"; ObjectID = "6dz-S8-3QF"; */
+"6dz-S8-3QF.text" = "Thanks";
+
+/* Class = "UIButton"; normalTitle = "Resend Code"; ObjectID = "7G1-FL-p2Q"; */
+"7G1-FL-p2Q.normalTitle" = "Resend Code";
+
+/* Class = "UILabel"; text = "[Doctor Category]"; ObjectID = "7Uq-4H-VOd"; */
+"7Uq-4H-VOd.text" = "[Doctor Category]";
+
+/* Class = "UILabel"; text = "no:"; ObjectID = "7dv-bm-gB4"; */
+"7dv-bm-gB4.text" = "no:";
+
+/* Class = "UILabel"; text = "Time:"; ObjectID = "8Vv-e9-eGb"; */
+"8Vv-e9-eGb.text" = "Time:";
+
+/* Class = "UILabel"; text = "Dr Ahmed "; ObjectID = "8W8-FG-wWv"; */
+"8W8-FG-wWv.text" = "Dr Ahmed ";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "91A-WU-Ebb"; */
+"91A-WU-Ebb.text" = "Label";
+
+/* Class = "UILabel"; text = "Request date :"; ObjectID = "98y-xA-mrn"; */
+"98y-xA-mrn.text" = "Request date :";
+
+/* Class = "UILabel"; text = "[Country]"; ObjectID = "9Fm-sT-AeH"; */
+"9Fm-sT-AeH.text" = "[Country]";
+
+/* Class = "UILabel"; text = "[Doctor Name]"; ObjectID = "9Re-T9-y4y"; */
+"9Re-T9-y4y.text" = "[Doctor Name]";
+
+/* Class = "UILabel"; text = "Red Rice"; ObjectID = "9S9-MW-f1z"; */
+"9S9-MW-f1z.text" = "Red Rice";
+
+/* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "9m1-Gg-JsW"; */
+"9m1-Gg-JsW.placeholder" = "Confirm New Password";
+
+/* Class = "UILabel"; text = "Our mission"; ObjectID = "9pV-yb-t2G"; */
+"9pV-yb-t2G.text" = "Our mission";
+
+/* Class = "UILabel"; text = "Red Rice"; ObjectID = "AEF-hu-MjG"; */
+"AEF-hu-MjG.text" = "Red Rice";
+
+/* Class = "UILabel"; text = "Result :"; ObjectID = "AV0-KJ-zTN"; */
+"AV0-KJ-zTN.text" = "Result :";
+
+/* Class = "UIViewController"; title = "Branches"; ObjectID = "Akk-jW-cOH"; */
+"Akk-jW-cOH.title" = "Branches";
+
+/* Class = "UILabel"; text = "Patient History"; ObjectID = "AlG-DS-jsi"; */
+"AlG-DS-jsi.text" = "Patient History";
+
+/* Class = "UILabel"; text = "Status :"; ObjectID = "Ald-gd-xYq"; */
+"Ald-gd-xYq.text" = "Status :";
+
+/* Class = "UILabel"; text = "Dokkii street , Giza"; ObjectID = "BFz-d9-As3"; */
+"BFz-d9-As3.text" = "Dokkii street , Giza";
+
+/* Class = "UILabel"; text = "Status :"; ObjectID = "BV2-Fd-1lJ"; */
+"BV2-Fd-1lJ.text" = "Status :";
+
+/* Class = "UILabel"; text = "[Clinic Name]"; ObjectID = "CRW-Hr-vvD"; */
+"CRW-Hr-vvD.text" = "[Clinic Name]";
+
+/* Class = "UILabel"; text = "3 vit TAB B/20"; ObjectID = "ChE-1a-bzs"; */
+"ChE-1a-bzs.text" = "3 vit TAB B/20";
+
+/* Class = "UILabel"; text = "Open Sick leave"; ObjectID = "CnH-yU-7ZK"; */
+"CnH-yU-7ZK.text" = "Open Sick leave";
+
+/* Class = "UILabel"; text = "Request Emergeny"; ObjectID = "D8g-5A-rLB"; */
+"D8g-5A-rLB.text" = "Request Emergeny";
+
+/* Class = "UILabel"; text = "Enter verification code"; ObjectID = "DP4-tc-Yb6"; */
+"DP4-tc-Yb6.text" = "Enter verification code";
+
+/* Class = "UIButton"; normalTitle = "SignUp"; ObjectID = "DQ9-AM-hzu"; */
+"DQ9-AM-hzu.normalTitle" = "SignUp";
+
+/* Class = "UILabel"; text = "Our mission"; ObjectID = "DxT-Rv-uHx"; */
+"DxT-Rv-uHx.text" = "Our mission";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "E4Y-KK-hHC"; */
+"E4Y-KK-hHC.text" = "Label";
+
+/* Class = "UILabel"; text = "Member Login With:"; ObjectID = "EHB-pP-NZn"; */
+"EHB-pP-NZn.text" = "Member Login With:";
+
+/* Class = "UIButton"; normalTitle = "Open Endoscopes"; ObjectID = "ENX-9O-hgc"; */
+"ENX-9O-hgc.normalTitle" = "Open Endoscopes";
+
+/* Class = "UILabel"; text = "Filter"; ObjectID = "EW2-oV-Uug"; */
+"EW2-oV-Uug.text" = "Filter";
+
+/* Class = "UILabel"; text = "New"; ObjectID = "EX4-C0-pPY"; */
+"EX4-C0-pPY.text" = "New";
+
+/* Class = "UILabel"; text = "Qualification"; ObjectID = "Eay-tx-9FJ"; */
+"Eay-tx-9FJ.text" = "Qualification";
+
+/* Class = "UITextField"; placeholder = "Civil ID"; ObjectID = "Eod-vw-tTi"; */
+"Eod-vw-tTi.placeholder" = "Civil ID";
+
+/* Class = "UILabel"; text = "Spoken Language:"; ObjectID = "Ere-Ft-1Uf"; */
+"Ere-Ft-1Uf.text" = "Spoken Language:";
+
+/* Class = "UILabel"; text = "Time:"; ObjectID = "EyP-Qf-YSV"; */
+"EyP-Qf-YSV.text" = "Time:";
+
+/* Class = "UILabel"; text = "SSN"; ObjectID = "Fis-9P-I2e"; */
+"Fis-9P-I2e.text" = "SSN";
+
+/* Class = "UILabel"; text = "the terms and Conditions"; ObjectID = "G2N-j4-NjQ"; */
+"G2N-j4-NjQ.text" = "the terms and Conditions";
+
+/* Class = "UILabel"; text = "Dr Ahmed "; ObjectID = "G4V-zZ-iFC"; */
+"G4V-zZ-iFC.text" = "Dr Ahmed ";
+
+/* Class = "UILabel"; text = "Developed by Khabeer Software Industries"; ObjectID = "GNC-mn-cty"; */
+"GNC-mn-cty.text" = "Developed by Khabeer Software Industries";
+
+/* Class = "UILabel"; text = "Questionare"; ObjectID = "GXe-nG-Zr9"; */
+"GXe-nG-Zr9.text" = "Questionare";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "GnK-aQ-ZNB"; */
+"GnK-aQ-ZNB.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Enter Civil ID Or Mobile Or Email"; ObjectID = "HQ7-gd-K6k"; */
+"HQ7-gd-K6k.placeholder" = "Enter Mobile Number ";
+
+/* Class = "UILabel"; text = "Skip"; ObjectID = "Hjx-Ml-qPx"; */
+"Hjx-Ml-qPx.text" = "Skip";
+
+/* Class = "UILabel"; text = "Open Profile"; ObjectID = "HxT-Rd-dAN"; */
+"HxT-Rd-dAN.text" = "Open Profile";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "I9K-M0-5UI"; */
+"I9K-M0-5UI.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "03:30"; ObjectID = "Ip3-es-ADp"; */
+"Ip3-es-ADp.text" = "03:30";
+
+/* Class = "UILabel"; text = "Clinic:"; ObjectID = "Iw0-ve-p2z"; */
+"Iw0-ve-p2z.text" = "Clinic:";
+
+/* Class = "UINavigationItem"; title = "Login"; ObjectID = "JC7-48-EGu"; */
+"JC7-48-EGu.title" = "Login";
+
+/* Class = "UILabel"; text = "Your Booking is Successful"; ObjectID = "JYO-rj-E45"; */
+"JYO-rj-E45.text" = "Your Booking is Successful";
+
+/* Class = "UILabel"; text = "Open Operation"; ObjectID = "Jff-SU-5Ja"; */
+"Jff-SU-5Ja.text" = "Open Operation";
+
+/* Class = "UIViewController"; title = "Login"; ObjectID = "Jqz-CC-5cx"; */
+"Jqz-CC-5cx.title" = "Login";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Jt3-ow-kwh"; */
+"Jt3-ow-kwh.text" = "Label";
+
+/* Class = "UILabel"; text = "Our location"; ObjectID = "K4S-et-7ng"; */
+"K4S-et-7ng.text" = "Our location";
+
+/* Class = "UILabel"; text = "Open Invocies"; ObjectID = "KfO-zA-ELe"; */
+"KfO-zA-ELe.text" = "Open Invocies";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "Kj0-XT-3zT"; */
+"Kj0-XT-3zT.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "١ قرص لمده ٣ ساعات لمده يوم واحد"; ObjectID = "LAU-7D-ZAf"; */
+"LAU-7D-ZAf.text" = "١ قرص لمده ٣ ساعات لمده يوم واحد";
+
+/* Class = "UILabel"; text = "09:00 - 09:30"; ObjectID = "LRP-0H-8aB"; */
+"LRP-0H-8aB.text" = "09:00 - 09:30";
+
+/* Class = "UILabel"; text = "Result :"; ObjectID = "LcL-8l-7Gv"; */
+"LcL-8l-7Gv.text" = "Result :";
+
+/* Class = "UIButton"; normalTitle = "+96524997000"; ObjectID = "LsB-11-8B8"; */
+"LsB-11-8B8.normalTitle" = "+965-1830003";
+
+/* Class = "UIButton"; normalTitle = "Open Endoscopes"; ObjectID = "MDm-Bn-xg8"; */
+"MDm-Bn-xg8.normalTitle" = "Open Endoscopes";
+
+/* Class = "UILabel"; text = "Welcome to Sidra Hospital, the secondary care multi-specialty hospital providing quality medical services in a friendly family atmosphere.\nEasily accessible from the fourth and the fifth ring roads, we offer our guests the best care through our integrated continuum of clinical care. We have recently expanded our scope of services to meet the healthcare needs of all family members. Our highly qualified staff are committed to provide our guests with the best medical care in line with approved international standards. We treat you as family. And with a smile and a personal touch."; ObjectID = "MuV-4J-1xY"; */
+"MuV-4J-1xY.text" = "Welcome to Sidra Hospital, the secondary care multi-specialty hospital providing quality medical services in a friendly family atmosphere.\nEasily accessible from the fourth and the fifth ring roads, we offer our guests the best care through our integrated continuum of clinical care. We have recently expanded our scope of services to meet the healthcare needs of all family members. Our highly qualified staff are committed to provide our guests with the best medical care in line with approved international standards. We treat you as family. And with a smile and a personal touch.";
+
+/* Class = "UILabel"; text = "Time:"; ObjectID = "MwM-G8-4rI"; */
+"MwM-G8-4rI.text" = "Time:";
+
+/* Class = "UILabel"; text = "Dokkii street , Giza"; ObjectID = "NLh-fM-sre"; */
+"NLh-fM-sre.text" = "Dokkii street , Giza";
+
+/* Class = "UILabel"; text = "Reschedule For"; ObjectID = "Nn2-68-6bW"; */
+"Nn2-68-6bW.text" = "Reschedule For";
+
+/* Class = "UILabel"; text = "Questionare"; ObjectID = "O3d-RS-xzv"; */
+"O3d-RS-xzv.text" = "Questionare";
+
+/* Class = "UILabel"; text = "Dokkii street , Giza"; ObjectID = "O4H-p9-VCB"; */
+"O4H-p9-VCB.text" = "Dokkii street , Giza";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "OLO-vq-RMl"; */
+"OLO-vq-RMl.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "[Country]"; ObjectID = "OXY-pf-DVC"; */
+"OXY-pf-DVC.text" = "[Country]";
+
+/* Class = "UIButton"; normalTitle = "Submit Code"; ObjectID = "OcV-dX-8V8"; */
+"OcV-dX-8V8.normalTitle" = "Submit Code";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PDa-5O-9la"; */
+"PDa-5O-9la.text" = "Label";
+
+/* Class = "UILabel"; text = "[Doctor Category]"; ObjectID = "PFD-dl-cMZ"; */
+"PFD-dl-cMZ.text" = "[Doctor Category]";
+
+/* Class = "UILabel"; text = "Doctor :"; ObjectID = "Pq2-Jb-die"; */
+"Pq2-Jb-die.text" = "Doctor :";
+
+/* Class = "UILabel"; text = "I accept"; ObjectID = "Pwx-6e-vNF"; */
+"Pwx-6e-vNF.text" = "I accept";
+
+/* Class = "UILabel"; text = "First Available"; ObjectID = "Q9e-B1-MlS"; */
+"Q9e-B1-MlS.text" = "First Available";
+
+/* Class = "UILabel"; text = "Time:"; ObjectID = "QBS-8y-up4"; */
+"QBS-8y-up4.text" = "Time:";
+
+/* Class = "UILabel"; text = "Our vision"; ObjectID = "QWz-du-ZAh"; */
+"QWz-du-ZAh.text" = "Our vision";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "QbX-va-iZj"; */
+"QbX-va-iZj.text" = "Label";
+
+/* Class = "UILabel"; text = "To provide safe practice environment for our patients and staff.\n"; ObjectID = "QqT-Kb-PSl"; */
+"QqT-Kb-PSl.text" = "To provide safe practice environment for our patients and staff.\n";
+
+/* Class = "UILabel"; text = "[Country]"; ObjectID = "RN2-tI-TuI"; */
+"RN2-tI-TuI.text" = "[Country]";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "RYQ-57-mth"; */
+"RYQ-57-mth.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Open Operation"; ObjectID = "Red-sN-773"; */
+"Red-sN-773.normalTitle" = "Open Operation";
+
+/* Class = "UILabel"; text = "Dose Reminder"; ObjectID = "RwZ-ZA-wwx"; */
+"RwZ-ZA-wwx.text" = "Dose Reminder";
+
+/* Class = "UIButton"; normalTitle = "       Medical Report"; ObjectID = "SkI-uA-XlT"; */
+"SkI-uA-XlT.normalTitle" = "       Medical Report";
+
+/* Class = "UILabel"; text = "Hospital:"; ObjectID = "Syn-lb-Pw9"; */
+"Syn-lb-Pw9.text" = "Hospital:";
+
+/* Class = "UILabel"; text = "Our vision"; ObjectID = "TEg-jF-A7R"; */
+"TEg-jF-A7R.text" = "Our vision";
+
+/* Class = "UILabel"; text = "[Doctor Category]"; ObjectID = "Teq-Cy-0M1"; */
+"Teq-Cy-0M1.text" = "[Doctor Category]";
+
+/* Class = "UILabel"; text = "Filter"; ObjectID = "TlM-BD-qoO"; */
+"TlM-BD-qoO.text" = "Filter";
+
+/* Class = "UITextField"; placeholder = "mobile Number"; ObjectID = "UUB-ue-7s5"; */
+"UUB-ue-7s5.placeholder" = "mobile Number";
+
+/* Class = "UILabel"; text = "My Appointments"; ObjectID = "UXK-1f-wtK"; */
+"UXK-1f-wtK.text" = "My Appointments";
+
+/* Class = "UILabel"; text = "09:00 - 09:30"; ObjectID = "Uud-IW-0qT"; */
+"Uud-IW-0qT.text" = "09:00 - 09:30";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "VFK-oi-BYZ"; */
+"VFK-oi-BYZ.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "[Clinic Name]"; ObjectID = "VJv-C1-HJA"; */
+"VJv-C1-HJA.text" = "[Clinic Name]";
+
+/* Class = "UITextField"; placeholder = "Civil ID"; ObjectID = "Vmh-xv-2CG"; */
+"Vmh-xv-2CG.placeholder" = "Civil ID";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "WDO-Jb-HCc"; */
+"WDO-Jb-HCc.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "XF3-wV-7N9"; */
+"XF3-wV-7N9.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "XQi-jC-T3Q"; */
+"XQi-jC-T3Q.text" = "Label";
+
+/* Class = "UILabel"; text = "[Doctor Name]"; ObjectID = "Xew-hG-3pG"; */
+"Xew-hG-3pG.text" = "[Doctor Name]";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Xgp-Cg-yco"; */
+"Xgp-Cg-yco.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "Y1K-Tt-KhQ"; */
+"Y1K-Tt-KhQ.normalTitle" = "Sign Up";
+
+/* Class = "UILabel"; text = "Reschedule For"; ObjectID = "YAH-HB-U3K"; */
+"YAH-HB-U3K.text" = "Reschedule For";
+
+/* Class = "UIButton"; normalTitle = "Lab"; ObjectID = "YIV-DP-eZN"; */
+"YIV-DP-eZN.normalTitle" = "Lab";
+
+/* Class = "UILabel"; text = "[Clinic Name]"; ObjectID = "YUk-rv-3J5"; */
+"YUk-rv-3J5.text" = "[Clinic Name]";
+
+/* Class = "UILabel"; text = "حالا لمده ٢ يوم بالفم"; ObjectID = "ZAZ-EE-y4C"; */
+"ZAZ-EE-y4C.text" = "حالا لمده ٢ يوم بالفم";
+
+/* Class = "UILabel"; text = "Time:"; ObjectID = "ZL4-Fi-1Y5"; */
+"ZL4-Fi-1Y5.text" = "Time:";
+
+/* Class = "UILabel"; text = "Passport"; ObjectID = "Ztw-Rf-HCF"; */
+"Ztw-Rf-HCF.text" = "Passport";
+
+/* Class = "UILabel"; text = "About app"; ObjectID = "aNu-pf-k08"; */
+"aNu-pf-k08.text" = "About app";
+
+/* Class = "UILabel"; text = "Open Hospital View"; ObjectID = "aOf-TB-rT4"; */
+"aOf-TB-rT4.text" = "Open Hospital View";
+
+/* Class = "UILabel"; text = "Open Complains"; ObjectID = "ahX-ah-4be"; */
+"ahX-ah-4be.text" = "Open Complains";
+
+/* Class = "UILabel"; text = "Clinic:"; ObjectID = "auz-KY-vMK"; */
+"auz-KY-vMK.text" = "Clinic:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "axx-RU-CvY"; */
+"axx-RU-CvY.text" = "Label";
+
+/* Class = "UILabel"; text = "[Doctor Name]"; ObjectID = "bSe-UA-UDx"; */
+"bSe-UA-UDx.text" = "[Doctor Name]";
+
+/* Class = "UILabel"; text = "test@test.com"; ObjectID = "c7B-jD-1W0"; */
+"c7B-jD-1W0.text" = "test@test.com";
+
+/* Class = "UILabel"; text = "Dr Ahmed "; ObjectID = "cIy-bw-PYj"; */
+"cIy-bw-PYj.text" = "Dr Ahmed ";
+
+/* Class = "UITextField"; placeholder = "Enter Medical Code"; ObjectID = "cOK-D4-pUi"; */
+"cOK-D4-pUi.placeholder" = "Enter Medical Code";
+
+/* Class = "UILabel"; text = "30"; ObjectID = "d9l-jz-Ybq"; */
+"d9l-jz-Ybq.text" = "30";
+
+/* Class = "UILabel"; text = "Red Rice"; ObjectID = "dfa-Md-dOL"; */
+"dfa-Md-dOL.text" = "Red Rice";
+
+/* Class = "UILabel"; text = "Time:"; ObjectID = "din-zJ-rdr"; */
+"din-zJ-rdr.text" = "Time:";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "dlY-Ye-DTt"; */
+"dlY-Ye-DTt.normalTitle" = "OK";
+
+/* Class = "UILabel"; text = "Time:"; ObjectID = "dzT-HG-O0O"; */
+"dzT-HG-O0O.text" = "Time:";
+
+/* Class = "UILabel"; text = "A-ZINC JUNIOR"; ObjectID = "e5T-A4-RaF"; */
+"e5T-A4-RaF.text" = "A-ZINC JUNIOR";
+
+/* Class = "UILabel"; text = "last taken at 11:36"; ObjectID = "e5W-4i-emb"; */
+"e5W-4i-emb.text" = "last taken at 11:36";
+
+/* Class = "UIButton"; normalTitle = "Rad"; ObjectID = "e8l-lp-hRw"; */
+"e8l-lp-hRw.normalTitle" = "Rad";
+
+/* Class = "UILabel"; text = "Report"; ObjectID = "esT-R7-iBZ"; */
+"esT-R7-iBZ.text" = "Report";
+
+/* Class = "UILabel"; text = "[Country]"; ObjectID = "ewh-N8-pWm"; */
+"ewh-N8-pWm.text" = "[Country]";
+
+/* Class = "UIButton"; normalTitle = "Rad"; ObjectID = "f9u-VR-YB9"; */
+"f9u-VR-YB9.normalTitle" = "Rad";
+
+/* Class = "UILabel"; text = "To provide safe practice environment for our patients and staff.\n"; ObjectID = "fOW-ap-R1z"; */
+"fOW-ap-R1z.text" = "To provide safe practice environment for our patients and staff.\n";
+
+/* Class = "UILabel"; text = "Take"; ObjectID = "fb7-w0-QrP"; */
+"fb7-w0-QrP.text" = "Take";
+
+/* Class = "UILabel"; text = "Medical OverView"; ObjectID = "fjc-IP-25m"; */
+"fjc-IP-25m.text" = "Medical OverView";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "fye-z9-RF4"; */
+"fye-z9-RF4.text" = "Label";
+
+/* Class = "UILabel"; text = "To provide safe practice environment for our patients and staff.\n"; ObjectID = "gZs-yW-RwN"; */
+"gZs-yW-RwN.text" = "To provide safe practice environment for our patients and staff.\n";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gp2-sl-JQw"; */
+"gp2-sl-JQw.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gtO-kL-mtm"; */
+"gtO-kL-mtm.text" = "Label";
+
+/* Class = "UILabel"; text = "Medical ID"; ObjectID = "gwV-jc-KC6"; */
+"gwV-jc-KC6.text" = "Medical ID";
+
+/* Class = "UIButton"; normalTitle = "My Appointment"; ObjectID = "h4e-7T-1vI"; */
+"h4e-7T-1vI.normalTitle" = "My Appointment";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hCv-cI-SRZ"; */
+"hCv-cI-SRZ.text" = "Label";
+
+/* Class = "UILabel"; text = "Message from the CEO"; ObjectID = "hK1-81-zge"; */
+"hK1-81-zge.text" = "Message from the CEO";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "htB-9E-ELZ"; */
+"htB-9E-ELZ.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "30"; ObjectID = "i9V-AX-PAf"; */
+"i9V-AX-PAf.text" = "30";
+
+/* Class = "UILabel"; text = "EGP"; ObjectID = "iC8-Tb-P12"; */
+"iC8-Tb-P12.text" = "EGP";
+
+/* Class = "UILabel"; text = "New"; ObjectID = "iHG-mg-UGT"; */
+"iHG-mg-UGT.text" = "New";
+
+/* Class = "UIButton"; normalTitle = "Medication"; ObjectID = "iKk-lD-7lH"; */
+"iKk-lD-7lH.normalTitle" = "Medication";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ir9-dZ-wVl"; */
+"ir9-dZ-wVl.text" = "Label";
+
+/* Class = "UILabel"; text = "[Doctor Name]"; ObjectID = "jsY-Ue-5A8"; */
+"jsY-Ue-5A8.text" = "[Doctor Name]";
+
+/* Class = "UILabel"; text = "Filter"; ObjectID = "jx5-pe-QE2"; */
+"jx5-pe-QE2.text" = "Filter";
+
+/* Class = "UILabel"; text = "Book Now"; ObjectID = "kNN-3O-xHf"; */
+"kNN-3O-xHf.text" = "Book Now";
+
+/* Class = "UIButton"; normalTitle = "Patient Allergies"; ObjectID = "knL-o3-UDt"; */
+"knL-o3-UDt.normalTitle" = "Patient Allergies";
+
+/* Class = "UIButton"; normalTitle = "       Medical Report"; ObjectID = "liX-I6-cad"; */
+"liX-I6-cad.normalTitle" = "       Medical Report";
+
+/* Class = "UILabel"; text = "[Country]"; ObjectID = "mTw-sN-qkb"; */
+"mTw-sN-qkb.text" = "[Country]";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "may-dm-9lc"; */
+"may-dm-9lc.text" = "Login";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "mbP-JD-h6g"; */
+"mbP-JD-h6g.normalTitle" = "OK";
+
+/* Class = "UILabel"; text = "Doctor :"; ObjectID = "muN-ms-Prp"; */
+"muN-ms-Prp.text" = "Doctor :";
+
+/* Class = "UILabel"; text = "Time:"; ObjectID = "muu-Cq-AC2"; */
+"muu-Cq-AC2.text" = "Time:";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "mvw-pp-JEZ"; */
+"mvw-pp-JEZ.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "mzn-tg-F0W"; */
+"mzn-tg-F0W.text" = "Label";
+
+/* Class = "UILabel"; text = "[Country]"; ObjectID = "nr8-kD-THE"; */
+"nr8-kD-THE.text" = "[Country]";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "o59-kg-UDA"; */
+"o59-kg-UDA.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Reservations"; ObjectID = "oQe-7x-dpD"; */
+"oQe-7x-dpD.text" = "Reservations";
+
+/* Class = "UILabel"; text = "Wheat Food"; ObjectID = "oaq-wO-xLk"; */
+"oaq-wO-xLk.text" = "Wheat Food";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "p2x-Yw-fZb"; */
+"p2x-Yw-fZb.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "pCa-vJ-FI7"; */
+"pCa-vJ-FI7.normalTitle" = "Submit";
+
+/* Class = "UIButton"; normalTitle = "Forget Medical Code"; ObjectID = "pCx-Oe-ar2"; */
+"pCx-Oe-ar2.normalTitle" = "Forget Medical Code";
+
+/* Class = "UILabel"; text = "Language"; ObjectID = "pDp-L6-xvu"; */
+"pDp-L6-xvu.text" = "Language";
+
+/* Class = "UILabel"; text = "24997000"; ObjectID = "pEc-rY-pGs"; */
+"pEc-rY-pGs.text" = "24997000";
+
+/* Class = "UITextField"; placeholder = "Mobile Number"; ObjectID = "paN-Fs-48v"; */
+"paN-Fs-48v.placeholder" = "Mobile Number";
+
+/* Class = "UITextField"; placeholder = "New Password"; ObjectID = "pjN-Nh-sSb"; */
+"pjN-Nh-sSb.placeholder" = "New Password";
+
+/* Class = "UILabel"; text = "[Country]"; ObjectID = "pq2-sA-27T"; */
+"pq2-sA-27T.text" = "[Country]";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "pva-4l-OrD"; */
+"pva-4l-OrD.text" = "Label";
+
+/* Class = "UILabel"; text = "With Dr/ Nader Fathy"; ObjectID = "q1B-38-LnS"; */
+"q1B-38-LnS.text" = "With Dr/ Nader Fathy";
+
+/* Class = "UIButton"; normalTitle = "Patient History"; ObjectID = "qJC-oc-Jxc"; */
+"qJC-oc-Jxc.normalTitle" = "Patient History";
+
+/* Class = "UILabel"; text = "Diet"; ObjectID = "rEX-0Z-u5P"; */
+"rEX-0Z-u5P.text" = "Diet";
+
+/* Class = "UILabel"; text = "[Country]"; ObjectID = "rFt-P8-pjv"; */
+"rFt-P8-pjv.text" = "[Country]";
+
+/* Class = "UILabel"; text = "Our mission"; ObjectID = "rXm-0X-fol"; */
+"rXm-0X-fol.text" = "Our mission";
+
+/* Class = "UIButton"; normalTitle = "Confirmation"; ObjectID = "sUq-kQ-izg"; */
+"sUq-kQ-izg.normalTitle" = "Confirmation";
+
+/* Class = "UIButton"; normalTitle = "Forget Password"; ObjectID = "scb-u4-T6Q"; */
+"scb-u4-T6Q.normalTitle" = "Forgot Password";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "sgS-U7-zi3"; */
+"sgS-U7-zi3.text" = "Label";
+
+/* Class = "UILabel"; text = "Contine As Guest"; ObjectID = "srD-9S-g4w"; */
+"srD-9S-g4w.text" = "Contine As Guest";
+
+/* Class = "UILabel"; text = "Book Now"; ObjectID = "t4V-P5-OWZ"; */
+"t4V-P5-OWZ.text" = "Book Now";
+
+/* Class = "UILabel"; text = "Wheat Food"; ObjectID = "tdd-X1-O3W"; */
+"tdd-X1-O3W.text" = "Wheat Food";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "tmy-Wv-Ca4"; */
+"tmy-Wv-Ca4.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "If  you already have a file in Sidra Hospital register here"; ObjectID = "tzq-5x-Hhs"; */
+"tzq-5x-Hhs.text" = "If  you already have a file in Sidra Hospital register here";
+
+/* Class = "UILabel"; text = "0102001028"; ObjectID = "uDW-XC-LcT"; */
+"uDW-XC-LcT.text" = "0102001028";
+
+/* Class = "UILabel"; text = "Dr Ahmed "; ObjectID = "udJ-dg-vKa"; */
+"udJ-dg-vKa.text" = "Dr Ahmed ";
+
+/* Class = "UILabel"; text = "Request date :"; ObjectID = "ujM-y6-Uaw"; */
+"ujM-y6-Uaw.text" = "Request date :";
+
+/* Class = "UILabel"; text = "Min"; ObjectID = "v2h-v9-rWk"; */
+"v2h-v9-rWk.text" = "Min";
+
+/* Class = "UILabel"; text = "Dokkii street , Giza"; ObjectID = "w1i-18-D2c"; */
+"w1i-18-D2c.text" = "Dokkii street , Giza";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "wk1-8h-KL3"; */
+"wk1-8h-KL3.text" = "Label";
+
+/* Class = "UILabel"; text = "[Country]"; ObjectID = "wsv-xp-Y1X"; */
+"wsv-xp-Y1X.text" = "[Country]";
+
+/* Class = "UILabel"; text = "مستشفى الخبير الدولي "; ObjectID = "xLJ-Y7-GfP"; */
+"xLJ-Y7-GfP.text" = "مستشفى الخبير الدولي ";
+
+/* Class = "UILabel"; text = "Hospital:"; ObjectID = "xh1-KV-iks"; */
+"xh1-KV-iks.text" = "Hospital:";
+
+/* Class = "UILabel"; text = "Food Categ"; ObjectID = "y4j-RB-nJf"; */
+"y4j-RB-nJf.text" = "Food Categ";
+
+/* Class = "UILabel"; text = "Result"; ObjectID = "yYS-43-7U3"; */
+"yYS-43-7U3.text" = "Result";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ynE-gH-H6k"; */
+"ynE-gH-H6k.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Item Name"; ObjectID = "ypQ-No-ADw"; */
+"ypQ-No-ADw.text" = "Item Name";
+
+/* Class = "UILabel"; text = "To provide safe practice environment for our patients and staff.\n"; ObjectID = "zVo-ba-0cK"; */
+"zVo-ba-0cK.text" = "To provide safe practice environment for our patients and staff.\n";
+
+/* Class = "UILabel"; text = "[Country]"; ObjectID = "zZw-P6-it3"; */
+"zZw-P6-it3.text" = "[Country]";
+
+/* Class = "UILabel"; text = "دبلومة ف الاسنان (٢٠٠٤-٢٠١٠)"; ObjectID = "zdx-P9-56a"; */
+"zdx-P9-56a.text" = "دبلومة ف الاسنان (٢٠٠٤-٢٠١٠)";

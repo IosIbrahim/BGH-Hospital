@@ -1,0 +1,45 @@
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "2gY-9q-Fgs"; */
+"2gY-9q-Fgs.text" = "السعر";
+
+/* Class = "UILabel"; text = "Patient Info"; ObjectID = "3t2-A6-xT6"; */
+"3t2-A6-xT6.text" = "بيانات المريض";
+
+/* Class = "UILabel"; text = "Send Nurse"; ObjectID = "55r-js-8uP"; */
+"55r-js-8uP.text" = "ارسل للممرضه";
+
+/* Class = "UILabel"; text = "Amluance Type"; ObjectID = "5a8-8s-uRZ"; */
+"5a8-8s-uRZ.text" = "نوع الاسعاف";
+
+/* Class = "UILabel"; text = "Notes"; ObjectID = "7Kr-Va-8iT"; */
+"7Kr-Va-8iT.text" = "ملاحظات";
+
+/* Class = "UILabel"; text = "Total"; ObjectID = "ANc-XZ-3un"; */
+"ANc-XZ-3un.text" = "الاجمالي";
+
+/* Class = "UILabel"; text = "Patient Address"; ObjectID = "RcR-Fn-1FG"; */
+"RcR-Fn-1FG.text" = "عنوان المريض";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "RoZ-No-vc6"; */
+"RoZ-No-vc6.text" = "السعر";
+
+/* Class = "UILabel"; text = "Other Info"; ObjectID = "X2B-pr-KQi"; */
+"X2B-pr-KQi.text" = "بيانات اخري";
+
+/* Class = "UILabel"; text = "Caller Info"; ObjectID = "XbL-zA-tbX"; */
+"XbL-zA-tbX.text" = "بيانات المتصل";
+
+/* Class = "UILabel"; text = "Send Doctor"; ObjectID = "ZSs-2Q-720"; */
+"ZSs-2Q-720.text" = "ارسال دكتور";
+
+/* Class = "UILabel"; text = "  5"; ObjectID = "dAh-EJ-Ow2"; */
+"dAh-EJ-Ow2.text" = "  5";
+
+/* Class = "UILabel"; text = "  5"; ObjectID = "fSH-uh-aBh"; */
+"fSH-uh-aBh.text" = "  5";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "yoJ-OT-Ede"; */
+"yoJ-OT-Ede.text" = "التالي";
+
+/* Class = "UILabel"; text = "  5"; ObjectID = "zMU-RW-oUA"; */
+"zMU-RW-oUA.text" = "  5";

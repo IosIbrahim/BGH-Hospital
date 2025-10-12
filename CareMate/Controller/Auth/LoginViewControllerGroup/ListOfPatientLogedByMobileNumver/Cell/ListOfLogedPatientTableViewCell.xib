@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Bahij_TheSansArabic-SemiLight.ttf">
+            <string>BahijTheSansArabic-SemiLight</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="92" id="KGk-i7-Jjw" customClass="ListOfLogedPatientTableViewCell" customModule="CareMate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="92"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="92"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ldX-Cg-zSD" customClass="RoundUIView" customModule="CareMate" customModuleProvider="target">
+                        <rect key="frame" x="20" y="20" width="280" height="52"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 2634" translatesAutoresizingMaskIntoConstraints="NO" id="VPh-W4-Ms4">
+                                <rect key="frame" x="10" y="6" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="AKd-dK-8a9"/>
+                                    <constraint firstAttribute="height" constant="40" id="Uod-3T-yDM"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUz-JG-C5w">
+                                <rect key="frame" x="60" y="5" width="165" height="20"/>
+                                <fontDescription key="fontDescription" name="BahijTheSansArabic-SemiLight" family="Bahij TheSansArabic" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2q1-vC-4a9" customClass="RoundUIView" customModule="CareMate" customModuleProvider="target">
+                                <rect key="frame" x="235" y="6" width="25" height="25"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXn-Hx-JhQ" customClass="RoundUIView" customModule="CareMate" customModuleProvider="target">
+                                        <rect key="frame" x="7" y="7" width="11" height="11"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="11" id="QDW-rR-ZbU"/>
+                                            <constraint firstAttribute="height" constant="11" id="e8e-cO-bVF"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="cXn-Hx-JhQ" firstAttribute="centerY" secondItem="2q1-vC-4a9" secondAttribute="centerY" id="73S-mt-fLm"/>
+                                    <constraint firstItem="cXn-Hx-JhQ" firstAttribute="centerX" secondItem="2q1-vC-4a9" secondAttribute="centerX" id="AUt-6Q-fLB"/>
+                                    <constraint firstAttribute="height" constant="25" id="BMc-Hg-dj7"/>
+                                    <constraint firstAttribute="width" constant="25" id="n19-be-w9u"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemGray2Color"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ecQ-vm-92T">
+                                <rect key="frame" x="20" y="17.5" width="20" height="17.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="Rh0-jc-R0k"/>
+                                    <constraint firstAttribute="height" constant="20" id="lji-Qs-gzi"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuR-tg-kly">
+                                <rect key="frame" x="60" y="29" width="165" height="19"/>
+                                <fontDescription key="fontDescription" name="BahijTheSansArabic-SemiLight" family="Bahij TheSansArabic" pointSize="15"/>
+                                <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2q1-vC-4a9" firstAttribute="top" secondItem="VPh-W4-Ms4" secondAttribute="top" id="1YX-oD-ze1"/>
+                            <constraint firstItem="VPh-W4-Ms4" firstAttribute="centerY" secondItem="ldX-Cg-zSD" secondAttribute="centerY" id="1i5-vT-Mt8"/>
+                            <constraint firstAttribute="trailing" secondItem="2q1-vC-4a9" secondAttribute="trailing" constant="20" id="BQm-q0-cJI"/>
+                            <constraint firstAttribute="bottom" secondItem="MuR-tg-kly" secondAttribute="bottom" constant="4" id="FZj-ac-uH1"/>
+                            <constraint firstItem="VPh-W4-Ms4" firstAttribute="leading" secondItem="ldX-Cg-zSD" secondAttribute="leading" constant="10" id="Het-mq-Tiv"/>
+                            <constraint firstItem="MuR-tg-kly" firstAttribute="top" secondItem="lUz-JG-C5w" secondAttribute="bottom" constant="4" id="OAx-Z9-61f"/>
+                            <constraint firstItem="ecQ-vm-92T" firstAttribute="centerY" secondItem="VPh-W4-Ms4" secondAttribute="centerY" id="PyQ-hs-1L9"/>
+                            <constraint firstItem="lUz-JG-C5w" firstAttribute="leading" secondItem="VPh-W4-Ms4" secondAttribute="trailing" constant="10" id="VDj-EO-yKL"/>
+                            <constraint firstItem="2q1-vC-4a9" firstAttribute="leading" secondItem="lUz-JG-C5w" secondAttribute="trailing" constant="10" id="ddK-KM-znf"/>
+                            <constraint firstItem="MuR-tg-kly" firstAttribute="leading" secondItem="lUz-JG-C5w" secondAttribute="leading" id="dif-dY-tZW"/>
+                            <constraint firstItem="MuR-tg-kly" firstAttribute="trailing" secondItem="lUz-JG-C5w" secondAttribute="trailing" id="eXJ-ns-xBd"/>
+                            <constraint firstItem="lUz-JG-C5w" firstAttribute="top" secondItem="ldX-Cg-zSD" secondAttribute="top" constant="5" id="m9g-MP-0B6"/>
+                            <constraint firstItem="ecQ-vm-92T" firstAttribute="centerX" secondItem="VPh-W4-Ms4" secondAttribute="centerX" id="sby-eZ-NTd"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ldX-Cg-zSD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="2Em-h6-0Hw"/>
+                    <constraint firstAttribute="trailing" secondItem="ldX-Cg-zSD" secondAttribute="trailing" constant="20" id="LLk-3P-XW3"/>
+                    <constraint firstItem="ldX-Cg-zSD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="SOj-gj-dbQ"/>
+                    <constraint firstAttribute="bottom" secondItem="ldX-Cg-zSD" secondAttribute="bottom" constant="20" id="lB5-F2-ucQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="OuterView" destination="2q1-vC-4a9" id="b2w-be-gpa"/>
+                <outlet property="avterPerson" destination="VPh-W4-Ms4" id="XpN-PK-O35"/>
+                <outlet property="innerView" destination="cXn-Hx-JhQ" id="XBr-lp-Nc5"/>
+                <outlet property="labelPhone" destination="MuR-tg-kly" id="AeU-E7-MDv"/>
+                <outlet property="mainView" destination="ldX-Cg-zSD" id="PLd-i1-lUg"/>
+                <outlet property="personName" destination="lUz-JG-C5w" id="aRE-JT-vAp"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="65.625"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Rectangle 2634" width="45" height="46"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

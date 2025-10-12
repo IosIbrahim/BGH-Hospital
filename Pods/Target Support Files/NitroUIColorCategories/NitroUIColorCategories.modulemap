@@ -1,0 +1,6 @@
+framework module NitroUIColorCategories {
+  umbrella header "NitroUIColorCategories-umbrella.h"
+
+  export *
+  module * { export * }
+}

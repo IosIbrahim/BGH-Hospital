@@ -1,0 +1,51 @@
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "2gY-9q-Fgs"; */
+"2gY-9q-Fgs.text" = "Price";
+
+/* Class = "UILabel"; text = "Patient Info"; ObjectID = "3t2-A6-xT6"; */
+"3t2-A6-xT6.text" = "Patient Info";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "4OB-W9-s2C"; */
+"4OB-W9-s2C.text" = "Price";
+
+/* Class = "UILabel"; text = "Send Nurse"; ObjectID = "55r-js-8uP"; */
+"55r-js-8uP.text" = "Send Nurse";
+
+/* Class = "UILabel"; text = "Total"; ObjectID = "ANc-XZ-3un"; */
+"ANc-XZ-3un.text" = "Total";
+
+/* Class = "UILabel"; text = "  5"; ObjectID = "B28-2U-RO9"; */
+"B28-2U-RO9.text" = "  5";
+
+/* Class = "UILabel"; text = "Send Hospital Car"; ObjectID = "LLb-0C-Eyb"; */
+"LLb-0C-Eyb.text" = "Send Hospital Car";
+
+/* Class = "UILabel"; text = "Use Personal Car"; ObjectID = "NX9-SB-OfA"; */
+"NX9-SB-OfA.text" = "Use Personal Car";
+
+/* Class = "UILabel"; text = "Patient Address"; ObjectID = "RcR-Fn-1FG"; */
+"RcR-Fn-1FG.text" = "Patient Address";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "RoZ-No-vc6"; */
+"RoZ-No-vc6.text" = "Price";
+
+/* Class = "UILabel"; text = "Other Info"; ObjectID = "X2B-pr-KQi"; */
+"X2B-pr-KQi.text" = "Other Info";
+
+/* Class = "UILabel"; text = "Caller Info"; ObjectID = "XbL-zA-tbX"; */
+"XbL-zA-tbX.text" = "Caller Info";
+
+/* Class = "UILabel"; text = "Send Doctor"; ObjectID = "ZSs-2Q-720"; */
+"ZSs-2Q-720.text" = "Send Doctor";
+
+/* Class = "UILabel"; text = "  5"; ObjectID = "dAh-EJ-Ow2"; */
+"dAh-EJ-Ow2.text" = "  5";
+
+/* Class = "UILabel"; text = "  5"; ObjectID = "fSH-uh-aBh"; */
+"fSH-uh-aBh.text" = "  5";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "yoJ-OT-Ede"; */
+"yoJ-OT-Ede.text" = "Next";
+
+/* Class = "UILabel"; text = "  5"; ObjectID = "zMU-RW-oUA"; */
+"zMU-RW-oUA.text" = "  5";

@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "Other Info"; ObjectID = "5bL-mO-KeI"; */
+"5bL-mO-KeI.text" = "بيانات اخري";
+
+/* Class = "UILabel"; text = "Patient Type"; ObjectID = "5vF-Ae-qMo"; */
+"5vF-Ae-qMo.text" = "نوع المريض";
+
+/* Class = "UILabel"; text = "Chosse Patient Type"; ObjectID = "6oG-b5-gbT"; */
+"6oG-b5-gbT.text" = "اختار نوع المريض";
+
+/* Class = "UILabel"; text = "Patient Info"; ObjectID = "JhT-YC-32w"; */
+"JhT-YC-32w.text" = "بيانات المريض";
+
+/* Class = "UILabel"; text = "Caller Info"; ObjectID = "L1R-9d-NRd"; */
+"L1R-9d-NRd.text" = "بيانات المتصل";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "QYs-9t-qjG"; */
+"QYs-9t-qjG.text" = "التالي";
+
+/* Class = "UILabel"; text = "Patient Address"; ObjectID = "SqU-ca-aRj"; */
+"SqU-ca-aRj.text" = "عنوان المريض";

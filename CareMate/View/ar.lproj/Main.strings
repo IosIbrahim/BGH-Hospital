@@ -1,0 +1,37 @@
+
+/* Class = "UILabel"; text = "Member Login"; ObjectID = "0Jx-BR-hhB"; */
+"0Jx-BR-hhB.text" = "Member Login";
+
+/* Class = "UILabel"; text = "Remember Me"; ObjectID = "3Wz-cY-t2j"; */
+"3Wz-cY-t2j.text" = "Remember Me";
+
+/* Class = "UILabel"; text = "Welcom to you in CareMate"; ObjectID = "CFz-BA-FJP"; */
+"CFz-BA-FJP.text" = "Welcom to you in CareMate";
+
+"tzq-5x-Hhs.text" = "إذا كان لديك بالفعل ملف في مستشفى السدرة ، فقم بالتسجيل هنا" ;
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "I9K-M0-5UI"; */
+"I9K-M0-5UI.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "you Can Creat Your Account Now"; ObjectID = "U0Q-PP-5KZ"; */
+"U0Q-PP-5KZ.text" = "you Can Creat Your Account Now";
+
+/* Class = "UITextField"; placeholder = "      User Name "; ObjectID = "UUB-ue-7s5"; */
+"UUB-ue-7s5.placeholder" = "      User Name ";
+
+/* Class = "UITextField"; placeholder = "       PassWord"; ObjectID = "WDO-Jb-HCc"; */
+"WDO-Jb-HCc.placeholder" = "       PassWord";
+
+/* Class = "UILabel"; text = "FREE  Sign Up"; ObjectID = "ehC-4o-SqA"; */
+"ehC-4o-SqA.text" = "FREE  Sign Up";
+
+/* Class = "UILabel"; text = "Branches"; ObjectID = "htk-df-Cvf"; */
+"htk-df-Cvf.text" = "الفروع";
+
+/* Class = "UIButton"; normalTitle = "Forgot your Password?"; ObjectID = "scb-u4-T6Q"; */
+"scb-u4-T6Q.normalTitle" = "Forgot your Password?";
+
+/* Class = "UILabel"; text = "Care Mate"; ObjectID = "vMw-bN-oYk"; */
+"vMw-bN-oYk.text" = "Care Mate";
+"Q9e-B1-MlS.text" = "اول موعد متاح"; 
+"fjc-IP-25m.text" = "الملخص الطبى" ;
+"srD-9S-g4w.text" = "الاسنمرار كزائز"

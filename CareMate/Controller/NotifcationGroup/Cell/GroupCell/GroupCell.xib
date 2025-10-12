@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="108" id="KGk-i7-Jjw" customClass="GroupCell" customModule="CareMate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="356" height="108"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="356" height="108"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dga-Sd-DAE">
+                        <rect key="frame" x="10" y="25" width="286" height="58"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rf-yS-Ggw" customClass="RoundUIView" customModule="CareMate" customModuleProvider="target">
+                        <rect key="frame" x="306" y="36.666666666666664" width="35" height="34.999999999999993"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JrN-K2-wy1">
+                                <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.6705882353" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="JrN-K2-wy1" secondAttribute="bottom" id="Drg-zG-KQJ"/>
+                            <constraint firstAttribute="width" constant="35" id="QID-h1-zsx"/>
+                            <constraint firstItem="JrN-K2-wy1" firstAttribute="leading" secondItem="8rf-yS-Ggw" secondAttribute="leading" id="RUW-ht-ocp"/>
+                            <constraint firstAttribute="width" secondItem="8rf-yS-Ggw" secondAttribute="height" multiplier="1:1" id="cbZ-Kf-rzG"/>
+                            <constraint firstItem="JrN-K2-wy1" firstAttribute="top" secondItem="8rf-yS-Ggw" secondAttribute="top" id="fvQ-GM-5Mt"/>
+                            <constraint firstAttribute="trailing" secondItem="JrN-K2-wy1" secondAttribute="trailing" id="ucF-k7-1gb"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="17"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="8rf-yS-Ggw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="J3l-zE-AH7"/>
+                    <constraint firstItem="dga-Sd-DAE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Yzh-la-lgt"/>
+                    <constraint firstAttribute="trailing" secondItem="8rf-yS-Ggw" secondAttribute="trailing" constant="15" id="d28-xq-FiO"/>
+                    <constraint firstItem="8rf-yS-Ggw" firstAttribute="leading" secondItem="dga-Sd-DAE" secondAttribute="trailing" constant="10" id="dSj-pX-V7z"/>
+                    <constraint firstItem="dga-Sd-DAE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="oC5-Y4-zI7"/>
+                    <constraint firstAttribute="bottom" secondItem="dga-Sd-DAE" secondAttribute="bottom" constant="25" id="y5H-gK-sme"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblCount" destination="JrN-K2-wy1" id="8td-Fn-Riv"/>
+                <outlet property="lblGroup" destination="dga-Sd-DAE" id="Dqg-aH-Dsx"/>
+                <outlet property="pickerCount" destination="8rf-yS-Ggw" id="gHt-tB-gxM"/>
+            </connections>
+            <point key="canvasLocation" x="6.1068702290076331" y="9.8591549295774659"/>
+        </tableViewCell>
+    </objects>
+</document>

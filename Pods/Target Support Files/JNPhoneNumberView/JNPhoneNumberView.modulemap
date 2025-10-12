@@ -1,0 +1,6 @@
+framework module JNPhoneNumberView {
+  umbrella header "JNPhoneNumberView-umbrella.h"
+
+  export *
+  module * { export * }
+}

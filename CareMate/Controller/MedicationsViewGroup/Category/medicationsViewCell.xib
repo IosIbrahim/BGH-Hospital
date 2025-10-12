@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Tajawal-Regular.ttf">
+            <string>Tajawal-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" userLabel="medicationsViewCell" customClass="medicationsViewCell" customModule="CareMate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="363" height="238"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="363" height="238"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIU-Ye-Qvf" customClass="RoundUIView" customModule="CareMate" customModuleProvider="target">
+                        <rect key="frame" x="5" y="0.0" width="353" height="199"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yb-5o-1GX" customClass="uilabelCenter" customModule="CareMate" customModuleProvider="target">
+                                <rect key="frame" x="5" y="90" width="343" height="14"/>
+                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="14"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0i-M4-Fxt" customClass="RoundUIView" customModule="CareMate" customModuleProvider="target">
+                                <rect key="frame" x="146.5" y="20" width="60" height="60"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Utk-jD-3QN">
+                                        <rect key="frame" x="10" y="10" width="40" height="40"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Utk-jD-3QN" secondAttribute="bottom" constant="10" id="3n3-0S-yje"/>
+                                    <constraint firstItem="Utk-jD-3QN" firstAttribute="leading" secondItem="h0i-M4-Fxt" secondAttribute="leading" constant="10" id="D4j-Tj-RPF"/>
+                                    <constraint firstItem="Utk-jD-3QN" firstAttribute="top" secondItem="h0i-M4-Fxt" secondAttribute="top" constant="10" id="GcU-hk-vFH"/>
+                                    <constraint firstAttribute="width" constant="60" id="LwV-Vr-YBz"/>
+                                    <constraint firstAttribute="height" constant="60" id="MzY-n0-JV4"/>
+                                    <constraint firstAttribute="trailing" secondItem="Utk-jD-3QN" secondAttribute="trailing" constant="10" id="rAy-pj-nff"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="h0i-M4-Fxt" firstAttribute="top" secondItem="yIU-Ye-Qvf" secondAttribute="top" constant="20" id="2ob-Nv-i14"/>
+                            <constraint firstItem="h0i-M4-Fxt" firstAttribute="centerX" secondItem="yIU-Ye-Qvf" secondAttribute="centerX" id="AB4-BT-Wcs"/>
+                            <constraint firstItem="5Yb-5o-1GX" firstAttribute="top" secondItem="h0i-M4-Fxt" secondAttribute="bottom" constant="10" id="Gn5-P9-vrO"/>
+                            <constraint firstAttribute="trailing" secondItem="5Yb-5o-1GX" secondAttribute="trailing" constant="5" id="U6y-Hy-yY3"/>
+                            <constraint firstItem="5Yb-5o-1GX" firstAttribute="centerX" secondItem="yIU-Ye-Qvf" secondAttribute="centerX" id="aWD-ji-G6p"/>
+                            <constraint firstItem="5Yb-5o-1GX" firstAttribute="leading" secondItem="yIU-Ye-Qvf" secondAttribute="leading" constant="5" id="cOY-Qd-H8G"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="addShadow" value="YES"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" systemColor="systemGray4Color"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="yIU-Ye-Qvf" secondAttribute="bottom" constant="5" id="KaJ-is-Azj"/>
+                <constraint firstItem="yIU-Ye-Qvf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="O9K-gT-cC7"/>
+                <constraint firstItem="yIU-Ye-Qvf" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="5" id="ZX8-HC-7fN"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="yIU-Ye-Qvf" secondAttribute="trailing" constant="5" id="ahF-GP-rJp"/>
+            </constraints>
+            <size key="customSize" width="363" height="238"/>
+            <connections>
+                <outlet property="LabName" destination="5Yb-5o-1GX" id="rJS-8C-jUI"/>
+                <outlet property="LabelTop" destination="2ob-Nv-i14" id="1eb-Qu-l5O"/>
+                <outlet property="cymain" destination="h0i-M4-Fxt" id="Skq-Fg-gVp"/>
+                <outlet property="image123" destination="Utk-jD-3QN" id="fMK-Ck-5fJ"/>
+                <outlet property="imageHeight" destination="MzY-n0-JV4" id="1O6-Sx-76G"/>
+                <outlet property="imageViewBottom" destination="Gn5-P9-vrO" id="nih-Bf-VY0"/>
+                <outlet property="imageViewTri" destination="U6y-Hy-yY3" id="Sjj-m4-EOZ"/>
+                <outlet property="imageViewleading" destination="cOY-Qd-H8G" id="4Rr-TP-lRJ"/>
+                <outlet property="imageWidth" destination="LwV-Vr-YBz" id="uMb-hL-UA7"/>
+                <outlet property="main" destination="yIU-Ye-Qvf" id="b38-bv-Dpb"/>
+                <outlet property="mainViewBottom" destination="3n3-0S-yje" id="i63-hR-fQt"/>
+                <outlet property="mainViewTop" destination="GcU-hk-vFH" id="R37-gf-0o0"/>
+                <outlet property="mainViewTri" destination="rAy-pj-nff" id="gNN-ZI-RAz"/>
+                <outlet property="mainViewleading" destination="D4j-Tj-RPF" id="HFo-VR-BUv"/>
+            </connections>
+            <point key="canvasLocation" x="216.66666666666669" y="179.46428571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

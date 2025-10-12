@@ -1,0 +1,12 @@
+{
+  "data" : [
+    {
+      "filename" : "ic_doze_reminder.xml",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

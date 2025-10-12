@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Tajawal-Bold.ttf">
+            <string>Tajawal-Bold</string>
+        </array>
+        <array key="Tajawal-Regular.ttf">
+            <string>Tajawal-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="182" id="KGk-i7-Jjw" customClass="CurrentMedicationsTableViewCell" customModule="CareMate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="369" height="182"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="369" height="182"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hsS-fp-QCN">
+                        <rect key="frame" x="10" y="10" width="349" height="162"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugS-JM-5jC">
+                                <rect key="frame" x="80" y="63.5" width="261" height="15"/>
+                                <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9S-Oz-abb">
+                                <rect key="frame" x="80" y="88.5" width="261" height="12"/>
+                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BHG-medicineBottel" translatesAutoresizingMaskIntoConstraints="NO" id="zfR-rh-7c4">
+                                <rect key="frame" x="20" y="53.5" width="55" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="HI7-Pf-teV"/>
+                                    <constraint firstAttribute="width" constant="55" id="X8h-Av-QeK"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zfR-rh-7c4" firstAttribute="leading" secondItem="hsS-fp-QCN" secondAttribute="leading" constant="20" id="1Ub-52-hez"/>
+                            <constraint firstItem="ugS-JM-5jC" firstAttribute="leading" secondItem="zfR-rh-7c4" secondAttribute="trailing" constant="5" id="Zb7-vs-y5h"/>
+                            <constraint firstItem="ugS-JM-5jC" firstAttribute="trailing" secondItem="T9S-Oz-abb" secondAttribute="trailing" id="g3t-at-ldL"/>
+                            <constraint firstAttribute="trailing" secondItem="T9S-Oz-abb" secondAttribute="trailing" constant="8" id="lpj-Sm-bZd"/>
+                            <constraint firstItem="T9S-Oz-abb" firstAttribute="top" secondItem="ugS-JM-5jC" secondAttribute="bottom" constant="10" id="nFJ-AH-Spk"/>
+                            <constraint firstItem="T9S-Oz-abb" firstAttribute="leading" secondItem="ugS-JM-5jC" secondAttribute="leading" id="nyH-hF-f2W"/>
+                            <constraint firstItem="ugS-JM-5jC" firstAttribute="top" secondItem="zfR-rh-7c4" secondAttribute="top" constant="10" id="rxW-hE-zlY"/>
+                            <constraint firstItem="zfR-rh-7c4" firstAttribute="centerY" secondItem="hsS-fp-QCN" secondAttribute="centerY" id="zWb-DU-nNc"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="hsS-fp-QCN" secondAttribute="bottom" constant="10" id="6zK-qi-Sql"/>
+                    <constraint firstAttribute="trailing" secondItem="hsS-fp-QCN" secondAttribute="trailing" constant="10" id="KPy-Mi-hjR"/>
+                    <constraint firstItem="hsS-fp-QCN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="SIC-nr-EM3"/>
+                    <constraint firstItem="hsS-fp-QCN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="crF-n5-PVZ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="drugDose" destination="T9S-Oz-abb" id="OEO-4Y-sef"/>
+                <outlet property="drugName" destination="ugS-JM-5jC" id="0AN-02-pSJ"/>
+                <outlet property="imageViewMed" destination="zfR-rh-7c4" id="yox-cs-exO"/>
+            </connections>
+            <point key="canvasLocation" x="173.18840579710147" y="117.85714285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="BHG-medicineBottel" width="52" height="52"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,0 +1,51 @@
+
+/* Class = "UILabel"; text = "Choose Street"; ObjectID = "1Au-9x-10I"; */
+"1Au-9x-10I.text" = "اختار الشارع";
+
+/* Class = "UILabel"; text = "Chosse Gov"; ObjectID = "5uW-vT-IMi"; */
+"5uW-vT-IMi.text" = "اختار المحافظه";
+
+/* Class = "UILabel"; text = "Caller Info"; ObjectID = "AE6-Lm-ZhG"; */
+"AE6-Lm-ZhG.text" = "بيانات المتصل";
+
+/* Class = "UILabel"; text = "coupon"; ObjectID = "HGB-WY-ev7"; */
+"HGB-WY-ev7.text" = "قسيمه";
+
+/* Class = "UILabel"; text = "Area"; ObjectID = "KLP-3f-dff"; */
+"KLP-3f-dff.text" = "منطقه";
+
+/* Class = "UILabel"; text = "District"; ObjectID = "M0Y-p4-BEU"; */
+"M0Y-p4-BEU.text" = "حي";
+
+/* Class = "UILabel"; text = "Chosse City"; ObjectID = "R4x-l9-wZ9"; */
+"R4x-l9-wZ9.text" = "اختار المدينه";
+
+/* Class = "UILabel"; text = "Group"; ObjectID = "RGK-DL-wHF"; */
+"RGK-DL-wHF.text" = "مجموعه";
+
+/* Class = "UILabel"; text = "Patient Address"; ObjectID = "UwR-cW-Sj4"; */
+"UwR-cW-Sj4.text" = "عنوان المربض";
+
+/* Class = "UILabel"; text = "Adrress"; ObjectID = "g6b-Ex-EmI"; */
+"g6b-Ex-EmI.text" = "عنوان";
+
+/* Class = "UILabel"; text = "Patient Info"; ObjectID = "k0B-WE-kbm"; */
+"k0B-WE-kbm.text" =  "بيانات المتصل";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "k6B-TA-6dg"; */
+"k6B-TA-6dg.text" = "التالي";
+
+/* Class = "UILabel"; text = "Buliding Number"; ObjectID = "l6V-2J-mLp"; */
+"l6V-2J-mLp.text" = "منزل / مبني / طابق / شقة";
+
+/* Class = "UILabel"; text = "Automated figure"; ObjectID = "mvz-C0-kO6"; */
+"mvz-C0-kO6.text" = "الرقم الالي";
+
+/* Class = "UILabel"; text = "Other Info"; ObjectID = "tAg-Zk-EUf"; */
+"tAg-Zk-EUf.text" = "بيانات اخري";
+
+/* Class = "UILabel"; text = "First Name"; ObjectID = "wzS-0F-eOL"; */
+"wzS-0F-eOL.text" = "الاسم الاول";
+
+/* Class = "UILabel"; text = "Street"; ObjectID = "zqg-d3-NRE"; */
+"zqg-d3-NRE.text" = "شارع";

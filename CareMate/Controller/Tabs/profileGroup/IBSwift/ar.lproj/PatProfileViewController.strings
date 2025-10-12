@@ -1,0 +1,35 @@
+
+/* Class = "UITextField"; placeholder = "   Enter Enter Your Way"; ObjectID = "3q0-9V-wEa"; */
+"3q0-9V-wEa.placeholder" = "   ";
+
+/* Class = "UILabel"; text = "Save Changes"; ObjectID = "CsK-NU-i4Z"; */
+"CsK-NU-i4Z.text" = "احفط التغيرات";
+
+/* Class = "UILabel"; text = "Phone Number"; ObjectID = "DhW-HF-fcn"; */
+"DhW-HF-fcn.text" = "رقم الهاتف";
+
+/* Class = "UILabel"; text = "Way To Connect"; ObjectID = "K2M-Sm-ssQ"; */
+"K2M-Sm-ssQ.text" = "Way To Connect";
+
+/* Class = "UITextField"; placeholder = "Please Enter Adress"; ObjectID = "MlM-T7-5wk"; */
+"MlM-T7-5wk.placeholder" = "من فضلك ادخل العنوان";
+
+/* Class = "UILabel"; text = "E-Mail"; ObjectID = "Wmm-p9-uZn"; */
+"Wmm-p9-uZn.text" = "البريد الالكتروني";
+
+/* Class = "UITextField"; placeholder = "   Enter E-mail"; ObjectID = "dlw-aZ-7VI"; */
+"dlw-aZ-7VI.placeholder" = "   ادخل البريد الالكتروني";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "hjd-CU-imd"; */
+"hjd-CU-imd.text" = "الاسم";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "iFZ-Vy-sLo"; */
+"iFZ-Vy-sLo.text" = "العنوان";
+
+"xoB-3U-MuN.text" = "تغيير الحساب";
+
+/* Class = "UITextField"; placeholder = "   Enter Phone Number"; ObjectID = "mUG-xa-PNU"; */
+"mUG-xa-PNU.placeholder" = "   ادخل رقم الهاتف";
+
+/* Class = "UITextField"; placeholder = "   Enter Name"; ObjectID = "xeH-bY-Wa8"; */
+"xeH-bY-Wa8.placeholder" = "   ادخل الاسم";

@@ -1,0 +1,12 @@
+
+/* Class = "UITextView"; text = "Believing in the privacy of the health information of all our patient and visitors, we are committed to protect and maintain such information. \n\nAt Al-Salam International Hospital, we open a medical file for each patient, and all information related to healthcare and services that the patient receives in hospital facilities are placed in this file. \n\nThe medical file is used as a record of your health, so that healthcare is provided to you on its basis, and this file is one of the international requirements and standards applicable in the hospitals on the basis of which the quality of health care services is evaluated.\n\nThe medical information about you and your health is very private, so all individuals who view this information by virtue of their work are committed to maintaining its confidentiality, and no individual from Al Salam International Hospital will provide any information about your health condition without your prior written consent."; ObjectID = "Hzv-Hd-le3"; */
+"Hzv-Hd-le3.text" = "إيمانًا منا بخصوصية المعلومات الصحية لجميع مراجعينا مرضى وزوار، فإننا ملتزمون بحماية هذه المعلومات والحفاظ عليها.
+
+نقوم في مستشفى السلام الدولي بفتح ملف طبي لكل مريض ويسجل فيه كافة المعلومات المتعلقة بالرعاية الصحية والخدمات التي يتلقاها المريض في مرافق المستشفى.
+
+يستخدم الملف الطبي كسجل لحالتك المرضية ويتم تقديم الرعاية الصحية لكم بناء على المعلومات الواردة فيه. كما أن هذا الملف يعد أحد المتطلبات والمعايير العالمية الواجب تطبيقها في المستشفيات والتي يتم على أساسها تقييم جودة خدمات الرعاية الصحية.
+
+تعتبر المعلومات الطبية الخاصة بك وبصحتك شديدة الخصوصية لذا فإن جميع الأفراد الذين يطّلعون على هذه المعلومات بحكم عملهم ملتزمون بالحفاظ على سريتها، ولن يقوم أي فرد من مستشفى السلام الدولي بالإدلاء بأية معلومات حول حالتك الصحية دون موافقتك الكتابية المسبقة على ذلك.";
+
+/* Class = "UILabel"; text = "Privacy Policy"; ObjectID = "ul6-QY-HzG"; */
+"ul6-QY-HzG.text" = "سياسة الخصوصية";

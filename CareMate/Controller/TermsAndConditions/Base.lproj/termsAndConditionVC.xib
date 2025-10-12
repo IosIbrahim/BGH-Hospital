@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="termsAndConditionVC" customModule="CareMate" customModuleProvider="target">
+            <connections>
+                <outlet property="labelPrivacy" destination="ul6-QY-HzG" id="82C-uK-B1h"/>
+                <outlet property="textViewPrivacy" destination="Hzv-Hd-le3" id="ZIi-vd-H5M"/>
+                <outlet property="textViewPrivacyArabic" destination="DP3-Py-cYv" id="8Y6-Xg-ZdM"/>
+                <outlet property="textViewTermsAR" destination="RXZ-6j-HFL" id="6OL-XS-vvU"/>
+                <outlet property="textViewTermsAr2" destination="MCn-lo-UzB" id="mhT-7A-5bD"/>
+                <outlet property="textViewTermsEN" destination="zpy-Mt-GIJ" id="vrQ-j2-AMI"/>
+                <outlet property="textViewTermsEn2" destination="NBt-EZ-8bi" id="O8F-Cp-zFg"/>
+                <outlet property="view" destination="ze1-xN-Gyv" id="n8y-CE-WwS"/>
+                <outlet property="viewBackground" destination="f1f-C0-6nX" id="pgO-BQ-MZt"/>
+                <outlet property="webView" destination="hKe-Ih-b1y" id="UKp-6i-4RK"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ze1-xN-Gyv">
+            <rect key="frame" x="0.0" y="0.0" width="369" height="735"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1f-C0-6nX">
+                    <rect key="frame" x="20" y="108" width="329" height="573"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 7996" translatesAutoresizingMaskIntoConstraints="NO" id="zLZ-TU-fn6">
+                            <rect key="frame" x="128.5" y="20" width="72" height="76"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ul6-QY-HzG">
+                            <rect key="frame" x="101.5" y="116" width="126.5" height="23"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                            <color key="textColor" red="0.10196078431372549" green="0.60392156862745094" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzv-Hd-le3">
+                            <rect key="frame" x="20" y="159" width="289" height="394"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <string key="text">Al Salam Hospital operates the Patient Mobile Application. This application informs you of our policies regarding the collection, use and disclosure of Personal Information we receive from users of the main Hospital Information System (HIS).
+We use your Personal Information only for providing and improving the application. By using the application, you agree to the collection and use of information in accordance with this policy.
+Information Collection and Use:
+While using our Patient Mobile Application, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include but not limited to your name ("Personal Information").
+Log Data:
+Like many application operators, we collect information that your browser sends whenever you use our application ("Log Data").
+This Log Data may include information such as your mobile’s Internet Protocol, address, browser type, browser version, the pages or services of our application that you access, the time and date of your access and other statistics. In addition, we may use third party services such as Google and Maps that collect, monitor and analyze these information.
+Communications:
+We may use your Personal Information to contact you with newsletters, marketing or promotional materials and other information that we deem important.
+Cookies:
+Cookies are files with small amount of data, which may include an anonymous unique identifier. Cookies are sent to your application and stored on your mobile. Like many applications, we use "cookies" to collect information. You can instruct your application to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions or services of our application.
+Security:
+The security of your Personal Information is important to us but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially acceptable means to protect your Personal Information, we cannot guarantee its absolute security.
+Changes To This Privacy Policy:
+This Privacy policy is effective as of (05th of September 2023) and will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this application. We reserve the right to update or change our Privacy Policy at any time and you should check it periodically. Your continued use of the Service after we post any modifications to the Privacy Statement on this application will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy. If we make any material changes to this Privacy Policy, we will notify you either through the email address or mobile you have provided us, or by placing a prominent notice on our application.
+Contact Us: If you have any questions about this Privacy Statement, please contact us.
+Al Salam Hospital Company
+https://alsalamhosp.com
+</string>
+                            <color key="textColor" red="0.062745098039215685" green="0.062745098039215685" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DP3-Py-cYv">
+                            <rect key="frame" x="20" y="159" width="289" height="394"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <string key="text">مستشفى السلام يدير تطبيق المريض الجوال. يُعلمك هذا التطبيق بسياساتنا بشأن جمع، استخدام، والكشف عن المعلومات الشخصية التي نتلقاها من مستخدمي نظام معلومات المستشفى الرئيسي (HIS). 
+نستخدم معلوماتك الشخصية فقط لتوفير وتحسين التطبيق. من خلال استخدام التطبيق، توافق على جمع واستخدام المعلومات وفقًا لهذه السياسة.
+جمع المعلومات واستخدامها:
+أثناء استخدامك لتطبيق المريض الجوال الخاص بنا، قد نطلب منك توفير بعض المعلومات التي يمكن التعرف عليك بها شخصيًا والتي يمكن استخدامها للتواصل معك أو تحديد هويتك. قد تشمل المعلومات التي يمكن التعرف عليها شخصيًا لكن لا تقتصر على اسمك ("المعلومات الشخصية").
+بيانات السجل:
+مثل العديد من مُشغلي التطبيقات، نجمع المعلومات التي يرسلها متصفحك عندما تستخدم تطبيقنا ("بيانات السجل"). قد تشمل هذه البيانات معلومات مثل بروتوكول الإنترنت لجهازك المحمول، عنوان الـ IP، نوع المتصفح، نسخة المتصفح، الصفحات أو الخدمات في تطبيقنا التي تدخل عليها، توقيت وتاريخ الوصول، وإحصائيات أخرى. بالإضافة إلى ذلك، قد نستخدم خدمات طرف ثالث مثل جوجل والخرائط التي تجمع، وتراقب، وتحلل هذه المعلومات.
+التواصل:
+قد نستخدم معلوماتك الشخصية للتواصل معك من خلال نشرات إخبارية، أو مواد تسويقية أو ترويجية، ومعلومات أخرى نعتبرها مهمة.
+ملفات تعريف الارتباط (كوكيز):
+ملفات تعريف الارتباط هي ملفات تحتوي على كمية صغيرة من البيانات، وقد تشمل مُعرفًا فريدًا مجهول. يتم إرسال ملفات تعريف الارتباط إلى تطبيقك وتخزينها على جهازك المحمول.
+مثل العديد من التطبيقات، نستخدم "ملفات تعريف الارتباط" لجمع المعلومات. يمكنك تعليم التطبيق الخاص بك لرفض جميع ملفات تعريف الارتباط أو للإشارة عندما يتم إرسال ملف تعريف ارتباط. ومع ذلك، إذا لم تقبل ملفات تعريف الارتباط، قد لا تتمكن من استخدام بعض الأجزاء أو الخدمات من تطبيقنا.
+الأمان:
+أمان معلوماتك الشخصية مهم بالنسبة لنا، لكن تذكر أنه لا يوجد طريقة للنقل عبر الإنترنت، أو طريقة للتخزين الإلكتروني، تكون 100% آمنة. بينما نسعى لاستخدام وسائل مقبولة تجارياً لحماية معلوماتك الشخصية، لا يمكننا ضمان أمانها بشكل مطلق.
+تغييرات في سياسة الخصوصية:
+تكون سياسة الخصوصية هذه نافذة اعتبارًا من (الخامس من سبتمبر 2023) وستظل نافذة ما عدا بالنسبة لأي تغييرات في بنودها في المستقبل، التي ستصبح نافذة فورًا بعد نشرها على هذا التطبيق.
+نحتفظ بالحق في تحديث أو تغيير سياسة الخصوصية في أي وقت، ويجب عليك التحقق منها بشكل دوري. استخدامك المستمر للخدمة بعد نشر أي تعديلات على بيان الخصوصية على هذا التطبيق سيعتبر إقرارًا منك بالتعديلات وموافقتك على الالتزام بسياسة الخصوصية المعدلة.
+إذا قمنا بإجراء أي تغييرات جوهرية على سياسة الخصوصية هذه، سنقوم بإبلاغك إما من خلال البريد الإلكتروني أو الجوال الذي قدمته لنا، أو من خلال وضع إشعار بارز على التطبيق الخاص بنا.
+
+تواصل معنا: إذا كان لديك أي أسئلة حول هذا البيان، يرجى التواصل معنا.
+شركة مستشفى السلام
+https://alsalamhosp.com
+
+</string>
+                            <color key="textColor" systemColor="labelColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpy-Mt-GIJ">
+                            <rect key="frame" x="20" y="159" width="289" height="394"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <string key="text">Welcome to Al Salam Hospital Company!
+
+These terms and conditions outline the rules and regulations for the use of Al Salam Hospital Company's Patient Mobile App and Website, with URL https://alsalamhosp.com.
+By accessing this website and Mobile App, we assume you accept these terms and conditions. Do not continue to use Al Salam Hospital Company platform if you do not agree to take all of the terms and conditions stated on this here on.
+
+The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and Patient mobile app and compliant to the Company’s terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and Us. All terms refer to the offer, acceptance, and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Kuwait. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.
+
+Ownership of the Digital Services
+All pages, features and content within Patient Mobile App Digital Services and any material made available for download are the property of Al Salam Hospital Company. The contents of the Digital Services, including without limitation all data, files, documents, text, photographs, images, audio, and video, and any materials accessed through or made available for use or download through these Digital Services (“Content”) may not be copied, distributed, modified, reproduced, published or used, in whole or in part, except for purposes authorized by these Terms of Use or otherwise approved in writing by Al Salam Hospital Company. You may not frame or utilize framing techniques to enclose, or deep link to, any name, trademarks, service marks, logo, Content, or other proprietary information (including images, text, page layout, or form) of Al Salam Hospital Company without our express written consent.
+
+Cookies
+We employ the use of cookies. By accessing Al Salam Hospital Company, you agreed to use cookies in agreement with the Al Salam Hospital Company's Privacy Policy.
+Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.
+
+License
+Unless otherwise stated, Al Salam Hospital Company and/or its licensors own the intellectual property rights for all material on Al Salam Hospital Company. All intellectual property rights are reserved. You may access this from Al Salam Hospital Company for your own personal use subjected to restrictions set in these terms and conditions.
+You must not:
+	•	Republish material from Al Salam Hospital Company
+	•	Sell, rent or sub-license material from Al Salam Hospital Company
+	•	Reproduce, duplicate or copy material from Al Salam Hospital Company
+	•	Redistribute content from Al Salam Hospital Company
+
+This Agreement shall begin on the date hereof.
+Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. Al Salam Hospital Company does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of Al Salam Hospital Company, its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, Al Salam Hospital Company shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.
+Al Salam Hospital Company reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes breach of these Terms and Conditions.
+You warrant and represent that:
+	•	You are entitled to post the Comments on our website and have all necessary licenses and consents to do so
+	•	The Comments do not invade any intellectual property right, including without limitation copyright, patent or trademark of any third party
+	•	The Comments do not contain any defamatory, libellous, offensive, indecent or otherwise unlawful material which is an invasion of privacy
+	•	The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity
+You hereby grant Al Salam Hospital Company a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.
+
+Hyperlinking to our Content
+The following organizations may link to our Website without prior written approval:
+	•	Government/Private agencies
+	•	Search engines
+	•	News organizations
+	•	Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses and
+	•	System wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site
+These organizations may link to our home page, to publications or to other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party’s site.
+We may consider and approve other link requests from the following types of organizations:
+	•	commonly-known consumer and/or business information sources
+	•	dot.com community sites
+	•	associations or other groups representing charities
+	•	online directory distributors
+	•	internet portals
+	•	accounting, law and consulting firms and
+	•	educational institutions and trade associations
+
+We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavourably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of Al Salam Hospital Company; and (d) the link is in the context of general resource information.
+These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party’s site.
+If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to Al Salam Hospital Company. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response.
+Approved organizations may hyperlink to our Website as follows:
+	•	By use of our corporate name; or
+	•	By use of the uniform resource locator being linked to; or
+	•	By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party’s site.
+No use of Al Salam Hospital Company's logo or other artwork will be allowed for linking absent a trademark license agreement.
+
+Content Liability
+We shall not be held responsible for any content that appears on your Website. You agree to protect and defend us against all claims that are rising on your Website. No link(s) should appear on any Website that may be interpreted as libellous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third-party rights.
+
+Your Privacy
+Al Salam Hospital Company, (“Al Salam Hospital Company,” or “we,” “our,” or “us”) respects your privacy, and we are committed to protecting it through our compliance with this policy. This Privacy Policy (our “Privacy Policy”) describes the types of information we may collect from you or that you may provide when you visit or use our website located https://alsalamhosp.com (our “Website”) or our Al Salam Hospital Company mobile application (our “App”) and our practices for collecting, using, maintaining, protecting, and disclosing that information. For purposes of this Privacy Policy, our Website, App and all related services and functionality that we provide through them are referred to as our “Digital Services”.
+This policy applies to information we collect:
+	•	on our Digital Services.
+	•	in email, text, and other electronic messages between you and our Digital Services.
+	•	when you interact with our advertising and applications on third party websites and services, if those applications or advertising include links to this policy.
+It does not apply to information collected by:
+	•	us offline or through any other means, including on any other website operated by Al Salam Hospital Company or any third party.
+	•	any third party, including through any application or content (including advertising) that may link to or be accessible from or on the Digital Services.
+Please read this policy carefully to understand our policies and practices regarding your information and how we will treat it. If you do not agree with our policies and practices, your choice is not to use our Digital Services. By accessing or using our Digital Services, you agree to this Privacy Policy.
+
+Reservation of Rights
+We reserve the right to request that you remove all links or any particular link to our website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amend these terms and conditions and it’s linking policy at any time. By continuously linking to our website, you agree to be bound to and follow these linking terms and conditions.
+
+Removal of links from our website
+If you find any link on our Website that is offensive for any reason, you are free to contact and inform us any moment. We will consider requests to remove links, but we are not obligated to or so or to respond to you directly.
+We do not ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we promise to ensure that the website remains available or that the material on the website is kept up to date.
+
+Disclaimer
+To the maximum extent permitted by applicable law, we exclude all representations, warranties and conditions relating to our website and the use of this website. Nothing in this disclaimer will:
+	•	limit or exclude our or your liability for death or personal injury
+	•	limit or exclude our or your liability for fraud or fraudulent misrepresentation
+	•	limit any of our or your liabilities in any way that is not permitted under applicable law; or
+	•	exclude any of our or your liabilities that may not be excluded under applicable law
+The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort and for breach of statutory duty.
+As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.
+
+License to use our App
+Al Salam Hospital Company grants to you a nontransferable license to use the App on devices that you own or control. Al Salam Hospital Company reserves all rights in and to the App not expressly granted to you under this Agreement. The terms of this Agreement will govern any content, materials, or services accessible from or purchased within the App as well as upgrades provided by Al Salam Hospital Company. Without our prior written permission, you may not distribute or make the App available over a network where it could be used by multiple devices at the same time. You may not transfer, redistribute or sublicense the App and, if you sell your device to a third party, you must remove the App from the device before doing so. You may not copy (except as permitted by this license), reverse-engineer, disassemble, attempt to derive the source code of, modify, or create derivative works of the App, any updates, or any part thereof (except as and only to the extent that any foregoing restriction is prohibited by applicable law or to the extent as may be permitted by the licensing terms governing use of any open-sourced components included with the App).
+
+How We Use Your Information
+We use your Personal Data for various purposes described below, including to:
+	•	provide our Digital Services to you.
+	•	provide products and services to you.
+	•	provide you with the information you request from us.
+	•	enforce our rights arising from contracts.
+	•	notify you about changes; and
+	•	provide you with notices about your account.
+We use information that we collect about you or that you provide to us, including any Personal Data:
+	•	to provide our website and its functionality, contents and services to;
+	•	to provide our App and its functionality, contents, and services.
+	•	to provide our products and services to you.
+	•	to provide you with information, products, or services that you request from us or that may be of interest to you.
+	•	to process, fulfill, support, and administer transactions and orders for products and services ordered by you.
+	•	to provide you with notices about your Al Salam Hospital Company account.
+	•	to contact you in response to a request.
+	•	to fulfill any other purpose for which you provide it.
+	•	to carry out our obligations and enforce our rights arising from any contracts entered between you and us, including for billing and collection.
+	•	to notify you about changes to our Digital Services or any products or services we offer or provide though them.
+	•	in any other way we may describe when you provide the information; and
+	•	for any other purpose with your consent.
+We may also use your information to contact you about goods and services that may be of interest to you, including through newsletters. If you wish to opt-out of receiving such communications, you may do so at any time by clicking unsubscribe at the bottom of these communications or by visiting your Account Preferences page.
+
+Disclosure of Your Information
+We do not share, sell, or otherwise disclose your Personal Data for purposes other than those outlined in this Privacy Policy.
+We disclose your Personal Data to a few third parties, including:
+	•	our affiliates and third-party service providers that we use to support our business.
+	•	to an Al Salam Hospital Company we merge, acquire, or that buys us, or in the event of change in structure of our Al Salam Hospital Company of any form.
+	•	to comply with our legal obligations.
+	•	to affiliates and third parties for their own commercial purposes.
+	•	to enforce our rights; and
+	•	With your consent.
+We do not share, sell, or otherwise disclose your Personal Data for purposes other than those outlined in this Privacy Policy. However, we may disclose aggregated information about our users, and information that does not identify any individual, without restriction.
+We may disclose Personal Data that we collect, or you provide as described in this privacy policy:
+	•	to affiliates, contractors, service providers, and other third parties we use to support our business. The services provided by these organizations include providing IT and infrastructure support services, and ordering, marketing, and payment processing services.
+	•	to a buyer or other successor in the event of a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding, in which Personal Data held by Al Salam Hospital Company about our Digital Services users are among the assets transferred.
+	•	to fulfill the purpose for which you provide it.
+	•	for any other purpose disclosed by us when you provide the information.
+	•	With your consent.
+
+Appointment Booking in Al Salam Hospital
+	•	Booking fees paid for Al Salam Hospital Company are considered a part of consultation price.
+	•	In case the booking is cancelled or rescheduled by the Customer the booking fees are not refundable.
+	•	In the event the hospital reschedules cancelled and postponed bookings, Customer will be offered a refund.
+	•	I acknowledge the acceptance of the work of electronic signature and the validity of the provisions of the law of electronic transactions and the executive regulations issued by the decision of the Council of Ministers on electronic signatures.
+	•	By paying I agree to the terms and conditions stated above for the requested service.
+
+
+How to Contact Us
+Al Salam Hospital Company
+https://alsalamhosp.com
+</string>
+                            <color key="textColor" systemColor="labelColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXZ-6j-HFL">
+                            <rect key="frame" x="20" y="159" width="289" height="394"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <string key="text">مرحبًا بكم في شركة مستشفى السلام
+تحدد هذه الشروط والأحكام القواعد واللوائح المتعلقة باستخدام تطبيق موبايل المرضى والموقع الإلكتروني لشركة مستشفى السلام، بالعنوان التالي https://alsalamhosp.com.
+عند الوصول إلى هذا الموقع والتطبيق، نفترض أنك قد وافقت على هذه الشروط والأحكام. لا تستمر في استخدام منصة شركة مستشفى السلام إذا لم توافق على قبول جميع الشروط والأحكام المذكورة هنا.
+تنطبق المصطلحات التالية على هذه الشروط والأحكام، وبيان الخصوصية، وإشعار اخلاء المسؤوليه، وجميع الاتفاقات: "العميل"، "أنت"، و "لك" تشير إلى الشخص الذي يتصفح هذا الموقع والتطبيق ويوافق على شروط الشركة وأحكامها. "الشركة"، "نحن"، "لدينا"، و"لنا"، تشير إلى شركتنا. "الطرف"، "الأطراف"، أو "لنا"، تشير إلى كل من العميل ونحن. تشير جميع المصطلحات إلى العرض، والقبول، والاعتبار المالي اللازم لإتمام عملية مساعدتنا للعميل بالطريقة الأكثر ملاءمة لتحقيق احتياجات العميل بموجب خدمات الشركة المحددة، وفقاً للقانون السائد في الكويت. يتم اعتبار أي استخدام للمصطلحات المذكورة أو كلمات أخرى في صيغة المفرد، والجمع، والكتابة بالأحرف الكبيرة و/أو هو/هي أو هم، كمتبادلة وبالتالي كما لو كانت تشير إلى نفس الشيء.
+ملكية الخدمات الرقمية
+جميع الصفحات والميزات والمحتوى داخل خدمات التطبيق المحمول للمرضى التابعة لشركة مستشفى السلام، وأي مادة متاحة للتنزيل، هي ملكية لشركة مستشفى السلام. لا يمكن نسخ، توزيع، تعديل، استنساخ، نشر أو استخدام محتويات الخدمات الرقمية، بما في ذلك دون قيود كل البيانات، الملفات، الوثائق، النصوص، الصور الفوتوغرافية، الصور، الصوت، والفيديو، وأي مواد يتم الوصول إليها من خلال أو تصبح متاحة للاستخدام أو التنزيل من خلال هذه الخدمات الرقمية ("المحتوى")، إلا للأغراض المصرح بها بموجب هذه شروط الاستخدام أو موافقة أخرى مكتوبة من شركة مستشفى السلام. لا يجوز لك استخدام تقنيات الإطارات لإحاطة أو الربط العميق لأي اسم، علامات تجارية، علامات الخدمة، شعار، محتوى، أو معلومات مملوكة أخرى (بما في ذلك الصور، النص، تخطيط الصفحة، أو النموذج) لشركة مستشفى السلام دون موافقتنا المكتوبة صراحةً.
+ملفات تعريف الارتباط
+نستخدم ملفات تعريف الارتباط في عملنا. للوصول إلى شركة مستشفى السلام، أنت توافق على استخدام ملفات تعريف الارتباط بموجب سياسة الخصوصية الخاصة بشركة مستشفى السلام.
+معظم المواقع الإلكترونية التفاعلية تستخدم ملفات تعريف الارتباط لكي تتمكن من استرداد تفاصيل المستخدم في كل زيارة. يتم استخدام ملفات تعريف الارتباط من قبل موقعنا الإلكتروني لتمكين وظائف معينة من الموقع وجعل الزيارة أسهل للأشخاص الذين يزورون موقعنا الإلكتروني. قد يستخدم بعض شركاؤنا التابعين/الإعلانيين ملفات تعريف الارتباط أيضاً.
+الترخيص
+ما لم يُنص على خلاف ذلك، تمتلك شركة مستشفى السلام و/أو مرخصوها حقوق الملكية الفكرية لجميع المواد على شركة مستشفى السلام. جميع حقوق الملكية الفكرية محفوظة. يمكنك الوصول إلى هذا من شركة مستشفى السلام للاستخدام الشخصي الخاص بك مع تقييدات محددة في هذه الشروط والأحكام.
+يجب ألا:
+• تنشر المواد من شركة مستشفى السلام
+• بيع أو تأجير أو منح ترخيص للمواد من شركة مستشفى السلام
+• استنساخ أو نسخ أو تكرار المواد من شركة مستشفى السلام
+• إعادة توزيع المحتوى من شركة مستشفى السلام
+يبدأ هذا الاتفاق من تاريخه.
+تقدم أجزاء من هذا الموقع فرصة للمستخدمين لنشر وتبادل الآراء والمعلومات في بعض مناطق الموقع. شركة مستشفى السلام لا تقوم بفلترة، أو تحرير، أو نشر، أو مراجعة التعليقات قبل ظهورها على الموقع. التعليقات لا تعكس آراء وتصورات شركة مستشفى السلام، أو وكلائها و/أو الشركات التابعة لها. التعليقات تعكس آراء وتصورات الشخص الذي ينشرها. بقدر ما تسمح القوانين المعمول بها، شركة مستشفى السلام لن تكون مسؤولة عن التعليقات أو عن أية مسؤولية، أو أضرار أو نفقات تسببت و/أو تكبدت نتيجة لأي استخدام و/أو نشر و/أو ظهور التعليقات على هذا الموقع.
+تحتفظ شركة مستشفى السلام بالحق في مراقبة جميع التعليقات وإزالة أي تعليق يمكن اعتباره غير مناسب، أو مسيء، أو يسبب انتهاكا لهذه الشروط والأحكام.
+تضمن وتمثل أن:
+•	أنت مؤهل لنشر التعليقات على موقعنا ولديك جميع التراخيص والموافقات اللازمة للقيام بذلك
+•	التعليقات لا تنتهك أي حق ملكية فكرية، بما في ذلك دون تحديد حقوق الطبع والنشر، أو البراءات، أو العلامات التجارية لأي طرف ثالث
+•	التعليقات لا تحتوي على أي مادة تشهيرية، أو مسيئة، أو غير لائقة، أو غير قانونية والتي تعد انتهاكا للخصوصية
+•	لن يتم استخدام التعليقات للترويج أو دعم الأعمال التجارية، أو تقديم الأنشطة التجارية أو النشاط غير القانوني
+بموجب هذا، تمنح شركة مستشفى السلام ترخيصا غير حصري لاستخدام، ونسخ، وتحرير، وتفويض الآخرين لاستخدام، ونسخ، وتحرير أي من تعليقاتك بأي شكل من الأشكال، أو التنسيقات، أو وسائط.
+الربط بمحتوانا
+قد تقوم المنظمات التالية بالربط بموقعنا الإلكتروني دون الحاجة للموافقة المسبقة كتابياً:
+• الوكالات الحكومية / الخاصة
+• محركات البحث
+• منظمات الأخبار
+• قد يربط موزعو الدلائل الإلكترونية بموقعنا الإلكتروني بالطريقة نفسها التي يربطون بها بمواقع الأعمال الأخرى المدرجة
+• المنظمات المعترف بها على نطاق واسع باستثناء المنظمات غير الربحية التي تطلب التبرعات، ومراكز التسوق الخيرية، ومجموعات جمع التبرعات الخيرية التي لا يمكنها الربط بموقعنا الإلكتروني
+يمكن لهذه المنظمات الربط بالصفحة الرئيسية لدينا، أو بالمنشورات أو بمعلومات الموقع الأخرى طالما أن الرابط: (أ) ليس مضللاً بأي شكل من الأشكال؛ (ب) لا يعطي انطباعاً كاذباً بالرعاية أو التأييد أو الموافقة على الجهة الرابطة ومنتجاتها و/أو خدماتها؛ و(ج) يناسب في سياق موقع الجهة الرابطة.
+قد ننظر في ونوافق على طلبات الربط الأخرى من الأنواع التالية من المنظمات:
+• مصادر معلومات المستهلك و/أو الأعمال المعروفة
+• مواقع مجتمع dot.com
+• الجمعيات أو المجموعات الأخرى التي تمثل الجمعيات الخيرية
+• موزعو الدلائل الإلكترونية
+• المدخلات الإلكترونية
+• مكاتب المحاسبة، والقانون، والاستشارات
+• المؤسسات التعليمية وجمعيات التجارة
+سنوافق على طلبات الربط من هذه المنظمات إذا قررنا أن: (أ) الرابط لن يجعلنا نظر إلى أنفسنا بطريقة غير مواتية أو للشركات التي نعترف بها؛ (ب) المنظمة ليست لديها أي سجلات سلبية معنا؛ (ج) الفائدة لنا من وضوح الرابط تعوض عن غياب شركة مستشفى السلام؛ و(د) يكون الرابط في سياق المعلومات المصدر العام.
+يمكن لهذه المنظمات الربط بالصفحة الرئيسية لدينا طالما أن الرابط: (أ) ليس مضللاً بأي شكل من الأشكال؛ (ب) لا يعطي انطباعاً كاذباً بالرعاية أو التأييد أو الموافقة على الجهة الرابطة ومنتجاتها و/أو خدماتها؛ و(ج) يناسب في سياق موقع الجهة الرابطة.
+قد تربط المنظمات المعترف بها بموقعنا الإلكتروني على النحو التالي:
+• باستخدام اسم الشركة لدينا؛ أو
+• باستخدام عنوان المصدر الموحد المرتبط به؛ أو
+• باستخدام أي وصف آخر لموقعنا الإلكتروني يتم الربط به والذي يكون منطقياً ضمن السياق والتنسيق للمحتوى على موقع الجهة الرابطة.
+لا يُسمح باستخدام شعار شركة مستشفى السلام أو أي أعمال فنية أخرى للربط ما لم يكن هناك اتفاق ترخيص للعلامة التجارية.
+مسؤولية المحتوى
+لن نكون مسؤولين عن أي محتوى يظهر على موقعك الإلكتروني. توافق على حمايتنا والدفاع عنا ضد جميع المطالبات التي تنشأ على موقعك الإلكتروني. لا ينبغي أن يظهر أي رابط (روابط) على أي موقع إلكتروني قد يتم تفسيره على أنه مسيء، أو فاحش، أو إجرامي، أو الذي ينتهك، أو ينتهك بطريقة أخرى، أو يشجع على انتهاك أو انتهاك آخر لحقوق الطرف الثالث.
+الخصوصية الخاصة بك
+شركة مستشفى السلام ("شركة مستشفى السلام"، أو "نحن"، "لنا"، "لدينا") تحترم خصوصيتك، ونحن ملتزمون بحمايتها من خلال الامتثال لهذه السياسة. توصف سياسة الخصوصية هذه ("سياسة الخصوصية لدينا") أنواع المعلومات التي قد نجمعها منك أو التي قد تقدمها عند زيارتك أو استخدام موقعنا الإلكتروني الموجود على https://alsalamhosp.com ("موقعنا الإلكتروني") أو تطبيق موبايل شركة مستشفى السلام ("تطبيقنا") وممارساتنا في جمع واستخدام وصيانة وحماية والكشف عن تلك المعلومات. لأغراض سياسة الخصوصية هذه، يتم الإشارة إلى موقعنا الإلكتروني، والتطبيق وجميع الخدمات والوظائف ذات الصلة التي نقدمها من خلالها باسم "الخدمات الرقمية لدينا".
+تنطبق هذه السياسة على المعلومات التي نجمعها:
+• على الخدمات الرقمية لدينا.
+• في البريد الإلكتروني، والنص، والرسائل الإلكترونية الأخرى بينك وبين الخدمات الرقمية لدينا.
+• عندما تتفاعل مع إعلاناتنا وتطبيقاتنا على مواقع وخدمات الأطراف الثالثة، إذا كانت تلك التطبيقات أو الإعلانات تتضمن روابط لهذه السياسة.
+لا تنطبق على المعلومات التي يتم جمعها من قبل:
+• نحن خارج الإنترنت أو من خلال أي وسيلة أخرى، بما في ذلك على أي موقع إلكتروني آخر يديره شركة مستشفى السلام أو أي طرف ثالث.
+• أي طرف ثالث، بما في ذلك من خلال أي تطبيق أو محتوى (بما في ذلك الإعلان) قد يكون له رابط إلى أو يمكن الوصول إليه من أو على الخدمات الرقمية.
+يرجى قراءة هذه السياسة بعناية لفهم سياساتنا وممارساتنا بشأن معلوماتك وكيف سنتعامل معها. إذا كنت لا توافق على سياساتنا وممارساتنا، فإن خيارك هو عدم استخدام الخدمات الرقمية لدينا. من خلال الوصول إلى الخدمات الرقمية لدينا أو استخدامها، فإنك توافق على سياسة الخصوصية هذه.
+حجز الحقوق
+نحتفظ بالحق في طلب إزالة جميع الروابط أو أي رابط معين لموقعنا الإلكتروني. توافق على إزالة جميع الروابط لموقعنا فوراً عند الطلب. كما نحتفظ بالحق في تعديل هذه الشروط والأحكام وسياسة الربط في أي وقت. بالربط المستمر بموقعنا، فإنك توافق على الالتزام بهذه الشروط والأحكام للربط.
+إزالة الروابط من موقعنا
+إذا وجدت أي رابط على موقعنا يعتبر مسيئًا لأي سبب، أنت حر في الاتصال بنا وإبلاغنا في أي وقت. سننظر في طلبات إزالة الروابط، لكننا لسنا ملزمين بذلك أو بالرد عليك مباشرة. لا نضمن صحة المعلومات على هذا الموقع، ولا نضمن اكتمالها أو دقتها؛ ولا نعد بأن يظل الموقع متاحًا أو أن المحتوى على الموقع سيظل محدثًا.
+إخلاء المسؤولية
+إلى أقصى حد يسمح به القانون، نستبعد جميع التمثيلات والضمانات والشروط المتعلقة بموقعنا واستخدام هذا الموقع. لا شيء في هذا الإخلاء سيقوم بـ:
+•	تحديد أو استبعاد مسؤوليتنا أو مسؤوليتك عن الوفاة أو الإصابة الشخصية
+•	تحديد أو استبعاد مسؤوليتنا أو مسؤوليتك عن الغش أو التمثيل الخاطئ
+•	تحديد أي من مسؤولياتنا أو مسؤولياتك بطريقة لا تُسمح بها وفقًا للقانون المعمول به؛ أو
+•	استبعاد أي من مسؤولياتنا أو مسؤولياتك التي لا يمكن استبعادها وفقًا للقانون المعمول به
+القيود والحظر على المسؤولية المنصوص عليها في هذا القسم وفي أماكن أخرى في هذا الإخلاء: (أ) خاضعة للفقرة السابقة؛ و (ب) تنظم جميع المسؤوليات التي تنشأ تحت هذا الإخلاء، بما في ذلك المسؤوليات التي تنشأ في العقد، في الاعتداء ولانتهاك الواجب القانوني.
+ما دام الموقع والمعلومات والخدمات على الموقع مقدمة مجانًا، لن نكون مسؤولين عن أي خسارة أو ضرر من أي نوع.
+رخصة استخدام التطبيق الخاص بنا
+تمنح شركة مستشفى السلام لك رخصة غير قابلة للنقل لاستخدام التطبيق على الأجهزة التي تملكها أو تتحكم فيها. تحتفظ شركة مستشفى السلام بجميع الحقوق في التطبيق وإليه التي لم يتم منحها صراحة لك بموجب هذه الاتفاقية. ستحكم شروط هذه الاتفاقية أي محتوى، أو مواد، أو خدمات يمكن الوصول إليها من التطبيق أو شرائها داخله بالإضافة إلى الترقيات التي تقدمها شركة مستشفى السلام. بدون إذن مسبق كتابي منا، لا يمكنك توزيع التطبيق أو جعله متاحًا عبر شبكة يمكن من خلالها استخدامه على عدة أجهزة في نفس الوقت. لا يمكنك نقل أو إعادة توزيع التطبيق أو منح تراخيص فرعية له وإذا قمت ببيع جهازك لطرف ثالث، يجب عليك إزالة التطبيق من الجهاز قبل القيام بذلك. لا يمكنك نسخ (إلا كما يُسمح بموجب هذه الرخصة)، أو عكس هندسة، أو تفكيك، أو محاولة استخدام الشيفرة المصدرية للتطبيق، أو تعديله، أو إنشاء أعمال مشتقة من التطبيق، أو أي تحديثات، أو أي جزء منه (إلا إذا كان أي قيد سابق محظورًا بموجب القانون المعمول به أو إلى الحد الذي قد يُسمح به بموجب شروط الترخيص التي تحكم استخدام أي مكونات مفتوحة المصدر مُدرجة مع التطبيق).
+كيف نستخدم معلوماتك
+نستخدم بياناتك الشخصية لأغراض متعددة كما هو موضح أدناه، بما في ذلك:
+• تقديم خدماتنا الرقمية لك.
+• تقديم المنتجات والخدمات لك.
+• تزويدك بالمعلومات التي تطلبها منا.
+• فرض حقوقنا الناشئة من العقود.
+• إعلامك بالتغييرات؛ و
+• تزويدك بإشعارات حول حسابك.
+نستخدم المعلومات التي نجمعها عنك أو التي تقدمها لنا، بما في ذلك أي بيانات شخصية:
+• لتقديم موقعنا الإلكتروني ووظائفه ومحتوياته وخدماته لـ:
+• لتقديم التطبيق ووظائفه ومحتوياته وخدماته.
+• لتقديم منتجاتنا وخدماتنا لك.
+• لتزويدك بالمعلومات، المنتجات، أو الخدمات التي تطلبها منا أو التي قد تكون مثيرة لاهتمامك.
+• لمعالجة وإتمام ودعم وإدارة المعاملات والطلبات للمنتجات والخدمات التي تم طلبها من قبلك.
+• لتزويدك بإشعارات حول حساب شركة مستشفى السلام الخاص بك.
+• للاتصال بك ردًا على طلب.
+• لتحقيق أي غرض آخر تقدمه.
+• لتنفيذ التزاماتنا وفرض حقوقنا الناشئة من أي عقود تم إبرامها بينك وبيننا، بما في ذلك للفوترة والتحصيل.
+• لإعلامك بالتغييرات على خدماتنا الرقمية أو أي منتجات أو خدمات نقدمها أو نقدمها من خلالها.
+• بأي طريقة أخرى قد نصفها عندما تقدم المعلومات؛ و
+• لأي غرض آخر بموافقتك.
+قد نستخدم معلوماتك أيضًا للاتصال بك بشأن البضائع والخدمات التي قد تكون مثيرة لاهتمامك، بما في ذلك من خلال النشرات الإخبارية. إذا كنت ترغب في الانسحاب من استقبال هذه الاتصالات، يمكنك القيام بذلك في أي وقت عن طريق النقر على إلغاء الاشتراك في أسفل هذه الاتصالات أو بزيارة صفحة تفضيلات الحساب الخاصة بك.
+إفصاح عن معلوماتك
+نحن لا نشارك أو نبيع أو نكشف عن بياناتك الشخصية لأغراض أخرى غير تلك التي تم تحديدها في هذه السياسة الخصوصية.
+نكشف عن بياناتك الشخصية لعدد قليل من الأطراف الثالثة، بما في ذلك:
+• شركاتنا التابعة ومقدمي الخدمة من الأطراف الثالثة الذين نستخدمهم لدعم عملنا.
+• لشركة مستشفى السلام التي ندمجها أو نقتنيها، أو التي تشترينا، أو في حالة حدوث تغيير في هيكل شركة مستشفى السلام بأي شكل.
+• للامتثال لالتزاماتنا القانونية.
+• للشركات التابعة والأطراف الثالثة لأغراضهم التجارية الخاصة.
+• لفرض حقوقنا؛ وبموافقتك.
+
+شروط و أحكام حجز الموعد – مستشفى السلام                                                                      
+	•	رسوم الحجز المدفوعة لشركة مستشفى السلام جزءاً من سعر الاستشارة                                            
+	•	في حالة إلغاء أو إعادة جدولة الحجز بواسطة العميل فإن رسوم الحجز غير قابلة للاسترداد                                     
+	•	في حالة إعادة جدولة الحجز أو إلغائه أو تأجيله بواسطة المستشفى ، فسيتم استرداد رسوم الحجز المدفوع مسبقاً                           
+	•	أقر بعلمي و قبولي العمل بالتوقيع الإلكتروني وسريان أحكام القانون و المعاملات الإلكترونية و اللائحة التنفيذية الصادرة بقرار مجلس الوزراء بشأن التوقيعات الإلكترونية
+	•	في حال الضغط علي الدفع فهذا إقرار بالموافقة علي الشروط و الأحكام المنصوص عليها للخدمة المطلوبة أعلاه 
+
+كيفية الاتصال بنا
+شركة مستشفى السلام
+https://alsalamhosp.com
+
+</string>
+                            <color key="textColor" systemColor="labelColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBt-EZ-8bi">
+                            <rect key="frame" x="20" y="159" width="289" height="394"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <string key="text">•	The report will be ready after 15 days of request attested online by MOH.
+•	Processing of the medical report will commence only upon receipt of payment.
+•	Report fees are non-refundable if cancellation is requested more than 24 hours after submission.
+•	The patient is the only authorized person to receive the report requested by himself as an official and present his official Identification, or the authorized person.
+•	Minors under 18 years old are not authorized to receive medical reports, through parents or legal guardian.
+•	I consent to receive a copy of the medical reports via email upon request, and I acknowledge and assume all risks associated with email or electronic communication. Al Salam Hospital management bears no responsibility for any liabilities arising from such communication methods.
+•	Medical report office working hours. 
+Saturday to Thursday from 7:00AM to 11:00PM
+Friday is a day off.
+</string>
+                            <color key="textColor" systemColor="labelColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCn-lo-UzB">
+                            <rect key="frame" x="20" y="159" width="289" height="394"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <string key="text">•	إستلام التقرير الطبي بعد 15 يوم  عمل من تاريخ تقديم الطلب مصدقا إلكترونيا ( MOH Online ) .
+•	 التقرير الطبي لا يتم العمل عليه الا بعد دفع الرسوم القررة لكل نوع تقرير. 
+•	لا يسمح بإسترداد قيمة التقرير بعد مرور 24 ساعة من طلبه.
+•	حضور المريض شخصيا لإستلام التقرير بموجب إثبات شخصي.
+•	للإستلام من ينوب عن المريض بموجب توكيل رسمي بإستلام التقريرالطبي او حضور صاحب التقرير شخصيا لمكتب التقارير  الطبية بأوقت العمل الرسمية للتوقيع على النموذج  الخاص  بطريقة الإستلام.
+•	الابناء تحت سن 18سنة  يكون الإستلام بواسطة الوالدين او من يمثلهم قانونيا.
+•	أوافق على  إرسال التقرير عن طريق  البريد الالكتروني في حاله طلب ذلك واتعهد بأن أتحمل كامل الأخطار التي قد تنتج عن إتباع وسيلة التراسل على عنوان البريد الإلكتروني ولا يحق لي الرجوع قانونيا على إدارة المستشفى بهذا الصدد.  
+•	اوقات عمل مكتب التقرير 
+من السبت للخميس من الساعة 7 صباحا حتى 11 مساء.
+الجمعة عطلة رسمية       
+</string>
+                            <color key="textColor" systemColor="labelColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="MCn-lo-UzB" firstAttribute="top" secondItem="RXZ-6j-HFL" secondAttribute="top" id="0Zg-Fz-bYQ"/>
+                        <constraint firstItem="Hzv-Hd-le3" firstAttribute="top" secondItem="ul6-QY-HzG" secondAttribute="bottom" constant="20" id="62F-Ah-hS4"/>
+                        <constraint firstAttribute="bottom" secondItem="Hzv-Hd-le3" secondAttribute="bottom" constant="20" id="79r-t5-AnH"/>
+                        <constraint firstItem="NBt-EZ-8bi" firstAttribute="top" secondItem="RXZ-6j-HFL" secondAttribute="top" id="9Oc-GO-50f"/>
+                        <constraint firstItem="MCn-lo-UzB" firstAttribute="leading" secondItem="RXZ-6j-HFL" secondAttribute="leading" id="AbU-TS-y49"/>
+                        <constraint firstItem="DP3-Py-cYv" firstAttribute="leading" secondItem="Hzv-Hd-le3" secondAttribute="leading" id="FQr-wg-grm"/>
+                        <constraint firstItem="zpy-Mt-GIJ" firstAttribute="top" secondItem="DP3-Py-cYv" secondAttribute="top" id="IzV-Um-S2H"/>
+                        <constraint firstItem="zpy-Mt-GIJ" firstAttribute="bottom" secondItem="DP3-Py-cYv" secondAttribute="bottom" id="KKf-R3-R9V"/>
+                        <constraint firstItem="zpy-Mt-GIJ" firstAttribute="leading" secondItem="DP3-Py-cYv" secondAttribute="leading" id="KgL-Xs-uMm"/>
+                        <constraint firstItem="RXZ-6j-HFL" firstAttribute="bottom" secondItem="zpy-Mt-GIJ" secondAttribute="bottom" id="M2M-zi-fo8"/>
+                        <constraint firstItem="DP3-Py-cYv" firstAttribute="top" secondItem="Hzv-Hd-le3" secondAttribute="top" id="PAN-4a-zAb"/>
+                        <constraint firstItem="NBt-EZ-8bi" firstAttribute="leading" secondItem="RXZ-6j-HFL" secondAttribute="leading" id="QGY-r0-Myz"/>
+                        <constraint firstItem="zpy-Mt-GIJ" firstAttribute="trailing" secondItem="DP3-Py-cYv" secondAttribute="trailing" id="QVF-FF-62M"/>
+                        <constraint firstItem="MCn-lo-UzB" firstAttribute="trailing" secondItem="RXZ-6j-HFL" secondAttribute="trailing" id="Ssh-d5-1Kw"/>
+                        <constraint firstItem="DP3-Py-cYv" firstAttribute="trailing" secondItem="Hzv-Hd-le3" secondAttribute="trailing" id="Vb6-mt-tcr"/>
+                        <constraint firstItem="RXZ-6j-HFL" firstAttribute="top" secondItem="zpy-Mt-GIJ" secondAttribute="top" id="YPM-T5-9lA"/>
+                        <constraint firstItem="NBt-EZ-8bi" firstAttribute="bottom" secondItem="RXZ-6j-HFL" secondAttribute="bottom" id="Z7y-od-1kh"/>
+                        <constraint firstItem="zLZ-TU-fn6" firstAttribute="top" secondItem="f1f-C0-6nX" secondAttribute="top" constant="20" id="bVO-uC-q2A"/>
+                        <constraint firstItem="Hzv-Hd-le3" firstAttribute="leading" secondItem="f1f-C0-6nX" secondAttribute="leading" constant="20" id="gqp-ER-ngq"/>
+                        <constraint firstAttribute="trailing" secondItem="Hzv-Hd-le3" secondAttribute="trailing" constant="20" id="jMm-eE-IRb"/>
+                        <constraint firstItem="NBt-EZ-8bi" firstAttribute="trailing" secondItem="RXZ-6j-HFL" secondAttribute="trailing" id="kAa-JA-dDt"/>
+                        <constraint firstItem="RXZ-6j-HFL" firstAttribute="trailing" secondItem="zpy-Mt-GIJ" secondAttribute="trailing" id="oA2-mN-Am7"/>
+                        <constraint firstItem="ul6-QY-HzG" firstAttribute="centerX" secondItem="f1f-C0-6nX" secondAttribute="centerX" id="pPE-20-Mhz"/>
+                        <constraint firstItem="RXZ-6j-HFL" firstAttribute="leading" secondItem="zpy-Mt-GIJ" secondAttribute="leading" id="pt5-PW-lo0"/>
+                        <constraint firstItem="zLZ-TU-fn6" firstAttribute="centerX" secondItem="f1f-C0-6nX" secondAttribute="centerX" id="qfG-1v-zmG"/>
+                        <constraint firstItem="ul6-QY-HzG" firstAttribute="top" secondItem="zLZ-TU-fn6" secondAttribute="bottom" constant="20" id="tQs-1v-cEv"/>
+                        <constraint firstItem="DP3-Py-cYv" firstAttribute="bottom" secondItem="Hzv-Hd-le3" secondAttribute="bottom" id="xHE-Z4-ayn"/>
+                        <constraint firstItem="MCn-lo-UzB" firstAttribute="bottom" secondItem="RXZ-6j-HFL" secondAttribute="bottom" id="xmQ-cM-JDr"/>
+                    </constraints>
+                </view>
+                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKe-Ih-b1y">
+                    <rect key="frame" x="0.0" y="108" width="369" height="593"/>
+                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <wkWebViewConfiguration key="configuration">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                </wkWebView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="aEE-9G-Ld4"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="f1f-C0-6nX" firstAttribute="top" secondItem="aEE-9G-Ld4" secondAttribute="top" constant="60" id="Ej7-gu-joE"/>
+                <constraint firstItem="aEE-9G-Ld4" firstAttribute="trailing" secondItem="hKe-Ih-b1y" secondAttribute="trailing" id="Psu-Qb-WoR"/>
+                <constraint firstItem="aEE-9G-Ld4" firstAttribute="bottom" secondItem="f1f-C0-6nX" secondAttribute="bottom" constant="20" id="UvS-0C-von"/>
+                <constraint firstItem="aEE-9G-Ld4" firstAttribute="trailing" secondItem="f1f-C0-6nX" secondAttribute="trailing" constant="20" id="V2z-OF-kpw"/>
+                <constraint firstItem="aEE-9G-Ld4" firstAttribute="bottom" secondItem="hKe-Ih-b1y" secondAttribute="bottom" id="cfp-bA-7Aw"/>
+                <constraint firstItem="hKe-Ih-b1y" firstAttribute="leading" secondItem="aEE-9G-Ld4" secondAttribute="leading" id="f6u-yN-cnT"/>
+                <constraint firstItem="f1f-C0-6nX" firstAttribute="leading" secondItem="aEE-9G-Ld4" secondAttribute="leading" constant="20" id="fJP-TE-hs7"/>
+                <constraint firstItem="hKe-Ih-b1y" firstAttribute="top" secondItem="f1f-C0-6nX" secondAttribute="top" id="wuQ-5d-3Bh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-99.275362318840592" y="41.852678571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Group 7996" width="72" height="75.5"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

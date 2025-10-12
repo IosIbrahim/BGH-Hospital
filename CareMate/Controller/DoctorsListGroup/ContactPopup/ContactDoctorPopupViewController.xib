@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Tajawal-Bold.ttf">
+            <string>Tajawal-Bold</string>
+        </array>
+        <array key="Tajawal-Regular.ttf">
+            <string>Tajawal-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactDoctorPopupViewController" customModule="CareMate" customModuleProvider="target">
+            <connections>
+                <outlet property="imageViewCopy" destination="Mip-vu-GEl" id="ZdG-aw-KOG"/>
+                <outlet property="imageViewCopy2" destination="AYT-bd-8TB" id="Lug-EV-lam"/>
+                <outlet property="imageViewPhoneNumber" destination="hNZ-oA-Fx8" id="4LT-iy-N2X"/>
+                <outlet property="labelClinicPlaceTitle" destination="5qd-IO-9Mm" id="ObK-0V-2XE"/>
+                <outlet property="labelPhone2" destination="PPW-6K-otZ" id="Tyk-pl-v37"/>
+                <outlet property="labelPhoneNumber" destination="gOR-AT-ICh" id="uLE-AH-pLU"/>
+                <outlet property="labelPhoneNumberHeader" destination="VS4-Uo-uZr" id="pbR-zD-0Gm"/>
+                <outlet property="labelPlace" destination="naH-9Z-GSo" id="Eqh-Jx-hhM"/>
+                <outlet property="labelTitle" destination="8n3-Ge-DQZ" id="5vZ-sR-bGB"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewPhone1" destination="Eog-82-Ll5" id="0SH-Gc-5Le"/>
+                <outlet property="viewPhone2" destination="8CP-ml-Iju" id="kKp-qE-koe"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lb-F1-8ex">
+                    <rect key="frame" x="20" y="68" width="374" height="774"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7gR-n6-taw">
+                            <rect key="frame" x="20" y="20" width="334" height="734"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For reservation please Call us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8n3-Ge-DQZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="334" height="20"/>
+                                    <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="20"/>
+                                    <color key="textColor" red="0.10196078431372549" green="0.60392156862745094" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VS4-Uo-uZr">
+                                    <rect key="frame" x="0.0" y="40" width="334" height="16"/>
+                                    <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="16"/>
+                                    <color key="textColor" red="0.19607843137254902" green="0.19215686274509802" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Eog-82-Ll5">
+                                    <rect key="frame" x="0.0" y="76" width="334" height="25"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 7991-1" translatesAutoresizingMaskIntoConstraints="NO" id="hNZ-oA-Fx8">
+                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="Akg-uU-jff"/>
+                                                <constraint firstAttribute="width" constant="25" id="hoR-4r-bHr"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOR-AT-ICh">
+                                            <rect key="frame" x="33" y="0.0" width="268" height="25"/>
+                                            <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="16"/>
+                                            <color key="textColor" red="0.33725490196078434" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="copy-svgrepo-com (1)" translatesAutoresizingMaskIntoConstraints="NO" id="Mip-vu-GEl">
+                                            <rect key="frame" x="309" y="0.0" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="AVZ-kp-bhd"/>
+                                                <constraint firstAttribute="width" constant="25" id="h59-cI-LN5"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8CP-ml-Iju">
+                                    <rect key="frame" x="0.0" y="121" width="334" height="25"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 7991-1" translatesAutoresizingMaskIntoConstraints="NO" id="iyq-Ol-j9n">
+                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="jDl-ox-kDc"/>
+                                                <constraint firstAttribute="width" constant="25" id="xzy-Ap-dPD"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPW-6K-otZ">
+                                            <rect key="frame" x="33" y="0.0" width="268" height="25"/>
+                                            <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="16"/>
+                                            <color key="textColor" red="0.33725490200000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="copy-svgrepo-com (1)" translatesAutoresizingMaskIntoConstraints="NO" id="AYT-bd-8TB">
+                                            <rect key="frame" x="309" y="0.0" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="jVA-lc-BUA"/>
+                                                <constraint firstAttribute="width" constant="25" id="yAX-Px-w7C"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clinic place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qd-IO-9Mm">
+                                    <rect key="frame" x="0.0" y="166" width="334" height="16"/>
+                                    <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="16"/>
+                                    <color key="textColor" red="0.1960784314" green="0.19215686269999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="place" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naH-9Z-GSo">
+                                    <rect key="frame" x="0.0" y="202" width="334" height="532"/>
+                                    <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="16"/>
+                                    <color key="textColor" red="0.33725490200000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="7gR-n6-taw" firstAttribute="leading" secondItem="2lb-F1-8ex" secondAttribute="leading" constant="20" id="3mV-Ox-EbN"/>
+                        <constraint firstAttribute="bottom" secondItem="7gR-n6-taw" secondAttribute="bottom" constant="20" id="gOx-AA-PM9"/>
+                        <constraint firstAttribute="trailing" secondItem="7gR-n6-taw" secondAttribute="trailing" constant="20" id="qeL-7n-RiY"/>
+                        <constraint firstItem="7gR-n6-taw" firstAttribute="top" secondItem="2lb-F1-8ex" secondAttribute="top" constant="20" id="sNc-zv-HiT"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="hrBorderColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="hrBorderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="2lb-F1-8ex" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="9jl-ae-SVt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2lb-F1-8ex" secondAttribute="trailing" constant="20" id="GAx-Bu-rgz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="2lb-F1-8ex" secondAttribute="bottom" constant="20" id="WFi-aA-aZ2"/>
+                <constraint firstItem="2lb-F1-8ex" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="tdT-Rg-UxE"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="101.78571428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Group 7991-1" width="75" height="75"/>
+        <image name="copy-svgrepo-com (1)" width="59" height="61"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

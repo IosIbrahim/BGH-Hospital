@@ -1,0 +1,14 @@
+
+/* Class = "UILabel"; text = "Search"; ObjectID = "CiE-fk-sxD"; */
+"CiE-fk-sxD.text" = "بحث";
+
+/* Class = "UITextField"; text = "Select branch"; ObjectID = "Mcj-yv-NDE"; */
+"Mcj-yv-NDE.text" = "إختر الفرع";
+
+/* Class = "UITextField"; placeholder = "Doctor name"; ObjectID = "Z4W-Oz-b1p"; */
+"Z4W-Oz-b1p.placeholder" = "اسم الطبيب";
+
+/* Class = "UITextField"; text = "All clinics"; ObjectID = "yRo-xS-879"; */
+"yRo-xS-879.text" = "كل التخصصات";
+
+"ITt-oc-zCF.text" = "لا يوجد اطباء";

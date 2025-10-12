@@ -1,0 +1,6 @@
+framework module NitroNSDictionaryCategories {
+  umbrella header "NitroNSDictionaryCategories-umbrella.h"
+
+  export *
+  module * { export * }
+}

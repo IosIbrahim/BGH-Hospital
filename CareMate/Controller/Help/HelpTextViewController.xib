@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HelpTextViewController" customModule="CareMate" customModuleProvider="target">
+            <connections>
+                <outlet property="byEmail" destination="8KA-Oe-KV1" id="f8t-gc-ygY"/>
+                <outlet property="diffcultiesLAbel" destination="wJa-sj-LNn" id="hNx-WF-LYS"/>
+                <outlet property="email" destination="znG-RK-JTv" id="L1X-4j-Qc4"/>
+                <outlet property="tel" destination="wnZ-jy-f2S" id="S5S-R9-Ef9"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="242"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJa-sj-LNn">
+                    <rect key="frame" x="20" y="64" width="320" height="61"/>
+                    <string key="text">If you are Facing difficulties or you need any assistance contact
+the Call Center on </string>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tel:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnZ-jy-f2S">
+                    <rect key="frame" x="20" y="140" width="29.5" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bt1-2m-MOQ">
+                    <rect key="frame" x="54.5" y="135.5" width="73" height="30"/>
+                    <state key="normal" title="24997000"/>
+                    <connections>
+                        <action selector="call:" destination="-1" eventType="touchUpInside" id="qyf-GU-Xrf"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znG-RK-JTv">
+                    <rect key="frame" x="20" y="196" width="50" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjl-7c-cd1">
+                    <rect key="frame" x="75" y="191.5" width="122" height="30"/>
+                    <state key="normal" title="cs@sidra.hospital"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" by Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8KA-Oe-KV1">
+                    <rect key="frame" x="20" y="170.5" width="72.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Bt1-2m-MOQ" firstAttribute="centerY" secondItem="wnZ-jy-f2S" secondAttribute="centerY" id="65i-R3-Qnf"/>
+                <constraint firstItem="wnZ-jy-f2S" firstAttribute="top" secondItem="wJa-sj-LNn" secondAttribute="bottom" constant="15" id="8RX-va-yaO"/>
+                <constraint firstItem="wJa-sj-LNn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="9bX-0D-psW"/>
+                <constraint firstItem="8KA-Oe-KV1" firstAttribute="top" secondItem="Bt1-2m-MOQ" secondAttribute="bottom" constant="5" id="EbP-km-VMN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="znG-RK-JTv" secondAttribute="bottom" constant="25" id="I7j-Z6-ke8"/>
+                <constraint firstItem="hjl-7c-cd1" firstAttribute="leading" secondItem="znG-RK-JTv" secondAttribute="trailing" constant="5" id="NzY-jJ-Lnh"/>
+                <constraint firstItem="wJa-sj-LNn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="PMg-WD-PsQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wJa-sj-LNn" secondAttribute="trailing" constant="20" id="Q7X-rU-Lzy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="znG-RK-JTv" secondAttribute="bottom" constant="25" id="SuV-gl-NOz"/>
+                <constraint firstItem="znG-RK-JTv" firstAttribute="top" secondItem="wnZ-jy-f2S" secondAttribute="bottom" constant="35" id="fhj-F5-1N0"/>
+                <constraint firstItem="wnZ-jy-f2S" firstAttribute="leading" secondItem="wJa-sj-LNn" secondAttribute="leading" id="lE8-zt-FYy"/>
+                <constraint firstItem="8KA-Oe-KV1" firstAttribute="leading" secondItem="wJa-sj-LNn" secondAttribute="leading" id="loN-xk-FqN"/>
+                <constraint firstItem="Bt1-2m-MOQ" firstAttribute="leading" secondItem="wnZ-jy-f2S" secondAttribute="trailing" constant="5" id="m10-df-8QW"/>
+                <constraint firstItem="znG-RK-JTv" firstAttribute="leading" secondItem="wnZ-jy-f2S" secondAttribute="leading" id="ok8-p1-c0q"/>
+                <constraint firstItem="hjl-7c-cd1" firstAttribute="centerY" secondItem="znG-RK-JTv" secondAttribute="centerY" id="x3s-HL-rj1"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="176.81159420289856" y="-147.99107142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

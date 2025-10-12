@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "Choosse Caller Type"; ObjectID = "7yF-fZ-6xn"; */
+"7yF-fZ-6xn.text" = "Choosse Caller Type";
+
+/* Class = "UILabel"; text = "Choosse Caller Type"; ObjectID = "7yk-IQ-kTw"; */
+"7yk-IQ-kTw.text" = "Choosse Caller Type";
+
+/* Class = "UILabel"; text = "Sevice Name"; ObjectID = "8zi-4v-Hay"; */
+"8zi-4v-Hay.text" = "اسم العمليه";
+
+/* Class = "UILabel"; text = "EXPECTEDDONE DATE"; ObjectID = "VvZ-f8-Jqs"; */
+"VvZ-f8-Jqs.text" = "موعد الانتهاء كم العمليه";
+
+/* Class = "UILabel"; text = "Choosse Caller Type"; ObjectID = "WdH-wd-wq0"; */
+"WdH-wd-wq0.text" = "Choosse Caller Type";
+
+/* Class = "UILabel"; text = "SURGEON NAME"; ObjectID = "p1b-aE-gKV"; */
+"p1b-aE-gKV.text" = "اسم الجراح";
+
+/* Class = "UILabel"; text = "Choosse Caller Type"; ObjectID = "psK-pR-ztr"; */
+"psK-pR-ztr.text" = "Choosse Caller Type";
+
+/* Class = "UILabel"; text = "OPER DURATION DESC"; ObjectID = "x9Q-oh-Y6z"; */
+"x9Q-oh-Y6z.text" = "وقت العمليه";
+
+/* Class = "UILabel"; text = "ANTHESIA NAME"; ObjectID = "zDh-3r-wKQ"; */
+"zDh-3r-wKQ.text" = "اسم المريض";

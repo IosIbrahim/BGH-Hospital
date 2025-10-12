@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListPopupViewController2" customModule="CareMate" customModuleProvider="target">
+            <connections>
+                <outlet property="constraintHeightViewBackground" destination="ZQl-vg-45e" id="Iu2-Vz-ll9"/>
+                <outlet property="labelTitle" destination="giG-Yb-des" id="tZS-2K-PEn"/>
+                <outlet property="tableView" destination="vzj-bW-Rte" id="qN7-py-76V"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewBack" destination="2lv-SM-FME" id="RAF-3O-gT2"/>
+                <outlet property="viewBackground" destination="znR-Kc-Zpf" id="59e-CB-vE3"/>
+                <outlet property="viewClose" destination="hLv-T9-mQK" id="bdk-pQ-yWD"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="znR-Kc-Zpf">
+                    <rect key="frame" x="0.0" y="762" width="414" height="100"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLv-T9-mQK">
+                            <rect key="frame" x="356" y="8" width="50" height="50"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.down.app" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7vf-Af-ynR">
+                                    <rect key="frame" x="10" y="11" width="30" height="27.5"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="7vf-Af-ynR" secondAttribute="trailing" constant="10" id="5sF-jW-loR" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                                <constraint firstAttribute="bottom" secondItem="7vf-Af-ynR" secondAttribute="bottom" constant="10" id="Acj-5w-hGV" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                                <constraint firstItem="7vf-Af-ynR" firstAttribute="top" secondItem="hLv-T9-mQK" secondAttribute="top" constant="10" id="CWb-hw-EgA" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                                <constraint firstItem="7vf-Af-ynR" firstAttribute="leading" secondItem="hLv-T9-mQK" secondAttribute="leading" constant="10" id="kw7-V9-DnJ" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                                <constraint firstAttribute="width" secondItem="hLv-T9-mQK" secondAttribute="height" id="o2t-eI-ELk"/>
+                                <constraint firstAttribute="width" constant="50" id="tjm-mj-nHv" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select size" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giG-Yb-des" customClass="CustomLabel" customModule="CareMate" customModuleProvider="target">
+                            <rect key="frame" x="168" y="23.5" width="78.5" height="19.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.22745098039215686" green="0.22745098039215686" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53f-3T-XL7">
+                            <rect key="frame" x="0.0" y="66" width="414" height="1"/>
+                            <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="JuY-jB-hVa" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vzj-bW-Rte">
+                            <rect key="frame" x="0.0" y="75" width="414" height="25"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="Gkw-nu-qPP"/>
+                                <outlet property="delegate" destination="-1" id="GfJ-BA-CfL"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="vzj-bW-Rte" firstAttribute="top" secondItem="53f-3T-XL7" secondAttribute="bottom" constant="8" id="2A9-cf-BQn" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                        <constraint firstItem="giG-Yb-des" firstAttribute="centerY" secondItem="hLv-T9-mQK" secondAttribute="centerY" id="4qb-yq-5ef"/>
+                        <constraint firstItem="giG-Yb-des" firstAttribute="centerX" secondItem="znR-Kc-Zpf" secondAttribute="centerX" id="7Tz-OO-cF0"/>
+                        <constraint firstAttribute="trailing" secondItem="53f-3T-XL7" secondAttribute="trailing" id="Cmg-Ar-fml"/>
+                        <constraint firstItem="hLv-T9-mQK" firstAttribute="top" secondItem="znR-Kc-Zpf" secondAttribute="top" constant="8" id="Hj9-sC-weV" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                        <constraint firstItem="vzj-bW-Rte" firstAttribute="leading" secondItem="znR-Kc-Zpf" secondAttribute="leading" id="LhW-qR-aPk"/>
+                        <constraint firstItem="53f-3T-XL7" firstAttribute="top" secondItem="hLv-T9-mQK" secondAttribute="bottom" constant="8" id="UTf-dK-Nia" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                        <constraint firstAttribute="height" constant="100" id="ZQl-vg-45e"/>
+                        <constraint firstAttribute="trailing" secondItem="hLv-T9-mQK" secondAttribute="trailing" constant="8" id="asn-qH-GoL" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                        <constraint firstAttribute="trailing" secondItem="vzj-bW-Rte" secondAttribute="trailing" id="jKK-yR-8fH"/>
+                        <constraint firstAttribute="bottom" secondItem="vzj-bW-Rte" secondAttribute="bottom" id="o36-mG-SJj"/>
+                        <constraint firstItem="53f-3T-XL7" firstAttribute="leading" secondItem="znR-Kc-Zpf" secondAttribute="leading" id="stg-m2-6mo"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lv-SM-FME">
+                    <rect key="frame" x="0.0" y="48" width="414" height="714"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="znR-Kc-Zpf" firstAttribute="top" secondItem="2lv-SM-FME" secondAttribute="bottom" id="HTa-HV-gSF"/>
+                <constraint firstItem="2lv-SM-FME" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ozp-8e-XHK"/>
+                <constraint firstItem="2lv-SM-FME" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="TPM-no-n8o"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="znR-Kc-Zpf" secondAttribute="bottom" id="eRk-II-O6f"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="znR-Kc-Zpf" secondAttribute="trailing" id="n9W-Gd-lkC"/>
+                <constraint firstItem="znR-Kc-Zpf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nqy-E5-a1L"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2lv-SM-FME" secondAttribute="trailing" id="uEK-l5-RO7"/>
+            </constraints>
+            <point key="canvasLocation" x="60.869565217391312" y="52.232142857142854"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow.down.app" catalog="system" width="128" height="114"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

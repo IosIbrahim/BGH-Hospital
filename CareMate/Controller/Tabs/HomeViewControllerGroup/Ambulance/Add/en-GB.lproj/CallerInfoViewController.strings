@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "Choosse Caller Type"; ObjectID = "1Kt-fd-Kni"; */
+"1Kt-fd-Kni.text" = "Choosse Caller Type";
+
+/* Class = "UILabel"; text = "Patient Info"; ObjectID = "Fxa-Xb-qUP"; */
+"Fxa-Xb-qUP.text" = "Patient Info";
+
+/* Class = "UILabel"; text = "Other Info"; ObjectID = "Meh-RS-ghc"; */
+"Meh-RS-ghc.text" = "Other Info";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "NVk-ZH-h2X"; */
+"NVk-ZH-h2X.text" = "Next";
+
+/* Class = "UILabel"; text = "Call Type"; ObjectID = "Pyc-eU-g0H"; */
+"Pyc-eU-g0H.text" = "Call Type";
+
+/* Class = "UILabel"; text = "Patient Address"; ObjectID = "SNt-fx-k4P"; */
+"SNt-fx-k4P.text" = "Patient Address";
+
+/* Class = "UILabel"; text = "Caller Info"; ObjectID = "aNs-Jh-jdx"; */
+"aNs-Jh-jdx.text" = "Caller Info";
+
+/* Class = "UILabel"; text = "Call Phone number"; ObjectID = "cZ5-zd-tgU"; */
+"cZ5-zd-tgU.text" = "Call Phone number";
+
+/* Class = "UITextField"; placeholder = "   Enter Caller Name"; ObjectID = "nRc-mN-Ec6"; */
+"nRc-mN-Ec6.placeholder" = "   Enter Caller Name";
+
+/* Class = "UILabel"; text = "Caller Name"; ObjectID = "sZL-hn-KZ7"; */
+"sZL-hn-KZ7.text" = "Caller Name";
+
+/* Class = "UITextField"; placeholder = "  Enter Phone Number"; ObjectID = "zQC-w4-wVX"; */
+"zQC-w4-wVX.placeholder" = "  Enter Phone Number";

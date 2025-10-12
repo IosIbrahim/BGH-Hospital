@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="cairo_bold.ttf">
+            <string>Cairo-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OperationsWithTypeViewController" customModule="CareMate" customModuleProvider="target">
+            <connections>
+                <outlet property="uiImageOperation" destination="8eX-gq-hv3" id="kiQ-xb-uin"/>
+                <outlet property="uiImagecatheter" destination="whA-Zv-HdP" id="8OY-YS-itL"/>
+                <outlet property="uiImageendoscpoies" destination="DjT-JV-lnc" id="WWy-Tn-jXs"/>
+                <outlet property="uiLabelOperation" destination="AKA-YQ-TU8" id="gmq-ZJ-CsL"/>
+                <outlet property="uiLabelcatheter" destination="aoA-RK-JjB" id="9Tq-2u-aza"/>
+                <outlet property="uiLabelendoscpoies" destination="71I-ua-Yev" id="0Wo-IE-FHU"/>
+                <outlet property="uiviewOperation" destination="yWq-Kt-2uC" id="t6r-R0-e4S"/>
+                <outlet property="uiviewcatheter" destination="A0B-EV-muf" id="ooh-dM-sC6"/>
+                <outlet property="uiviewendoscpoies" destination="gMF-C6-uJB" id="qmQ-eb-YtI"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hlx-LD-eeu">
+                    <rect key="frame" x="20" y="64" width="374" height="150"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yWq-Kt-2uC" customClass="RoundUIView" customModule="CareMate" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="187" height="150"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8eX-gq-hv3">
+                                    <rect key="frame" x="68.5" y="15" width="50" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="Adx-3F-dsy" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                                        <constraint firstAttribute="height" constant="50" id="bhN-Tv-4dQ" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKA-YQ-TU8" customClass="GTLabel" customModule="CareMate" customModuleProvider="target">
+                                    <rect key="frame" x="5" y="65" width="177" height="80"/>
+                                    <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="16"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="AKA-YQ-TU8" secondAttribute="bottom" constant="5" id="6Mt-5V-2YU"/>
+                                <constraint firstItem="8eX-gq-hv3" firstAttribute="top" secondItem="yWq-Kt-2uC" secondAttribute="top" constant="15" id="914-9d-HbN" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                                <constraint firstItem="8eX-gq-hv3" firstAttribute="centerX" secondItem="yWq-Kt-2uC" secondAttribute="centerX" id="FZS-Xv-nzB"/>
+                                <constraint firstItem="AKA-YQ-TU8" firstAttribute="centerX" secondItem="yWq-Kt-2uC" secondAttribute="centerX" id="azb-lU-nwi"/>
+                                <constraint firstItem="AKA-YQ-TU8" firstAttribute="top" secondItem="8eX-gq-hv3" secondAttribute="bottom" id="biC-R5-0d2"/>
+                                <constraint firstAttribute="trailing" secondItem="AKA-YQ-TU8" secondAttribute="trailing" constant="5" id="rgH-Cn-WZe"/>
+                                <constraint firstItem="AKA-YQ-TU8" firstAttribute="leading" secondItem="yWq-Kt-2uC" secondAttribute="leading" constant="5" id="wrf-xp-B4u"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="addShadow" value="YES"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" systemColor="systemGray4Color"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gMF-C6-uJB" customClass="RoundUIView" customModule="CareMate" customModuleProvider="target">
+                            <rect key="frame" x="187" y="0.0" width="187" height="150"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DjT-JV-lnc">
+                                    <rect key="frame" x="68.5" y="15" width="50" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="2Ki-hM-HWn" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                                        <constraint firstAttribute="height" constant="50" id="nfQ-If-ZNb" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="71I-ua-Yev" customClass="GTLabel" customModule="CareMate" customModuleProvider="target">
+                                    <rect key="frame" x="5" y="65" width="177" height="80"/>
+                                    <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="16"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="DjT-JV-lnc" firstAttribute="top" secondItem="gMF-C6-uJB" secondAttribute="top" constant="15" id="VDt-WT-C55" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                                <constraint firstItem="DjT-JV-lnc" firstAttribute="centerX" secondItem="gMF-C6-uJB" secondAttribute="centerX" id="ZjK-ts-s6n"/>
+                                <constraint firstItem="71I-ua-Yev" firstAttribute="leading" secondItem="gMF-C6-uJB" secondAttribute="leading" constant="5" id="bBZ-sG-xFK"/>
+                                <constraint firstAttribute="trailing" secondItem="71I-ua-Yev" secondAttribute="trailing" constant="5" id="n6L-mf-I6N"/>
+                                <constraint firstAttribute="bottom" secondItem="71I-ua-Yev" secondAttribute="bottom" constant="5" id="s8e-gS-1uD"/>
+                                <constraint firstItem="71I-ua-Yev" firstAttribute="top" secondItem="DjT-JV-lnc" secondAttribute="bottom" id="wHt-vr-iQz"/>
+                                <constraint firstItem="71I-ua-Yev" firstAttribute="centerX" secondItem="gMF-C6-uJB" secondAttribute="centerX" id="xk7-SZ-gNR"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="addShadow" value="YES"/>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" systemColor="systemGray4Color"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="Hyy-pW-orz"/>
+                    </constraints>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0B-EV-muf" customClass="RoundUIView" customModule="CareMate" customModuleProvider="target">
+                    <rect key="frame" x="20" y="234" width="187" height="150"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="whA-Zv-HdP">
+                            <rect key="frame" x="68.5" y="15" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="I6W-hV-Y7D" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                                <constraint firstAttribute="height" constant="50" id="Rnj-72-cbW" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoA-RK-JjB" customClass="GTLabel" customModule="CareMate" customModuleProvider="target">
+                            <rect key="frame" x="5" y="65" width="177" height="80"/>
+                            <fontDescription key="fontDescription" name="Cairo-Bold" family="Cairo" pointSize="16"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="whA-Zv-HdP" firstAttribute="top" secondItem="A0B-EV-muf" secondAttribute="top" constant="15" id="2Wi-xe-57q" customClass="CustomConstraint" customModule="CareMate" customModuleProvider="target"/>
+                        <constraint firstItem="aoA-RK-JjB" firstAttribute="leading" secondItem="A0B-EV-muf" secondAttribute="leading" constant="5" id="2yZ-sN-DMJ"/>
+                        <constraint firstAttribute="bottom" secondItem="aoA-RK-JjB" secondAttribute="bottom" constant="5" id="7Qq-rB-H2T"/>
+                        <constraint firstItem="aoA-RK-JjB" firstAttribute="centerX" secondItem="A0B-EV-muf" secondAttribute="centerX" id="LBV-yk-yIZ"/>
+                        <constraint firstItem="aoA-RK-JjB" firstAttribute="top" secondItem="whA-Zv-HdP" secondAttribute="bottom" id="Lhc-Xa-C4v"/>
+                        <constraint firstAttribute="trailing" secondItem="aoA-RK-JjB" secondAttribute="trailing" constant="5" id="hdx-Kc-EGc"/>
+                        <constraint firstItem="whA-Zv-HdP" firstAttribute="centerX" secondItem="A0B-EV-muf" secondAttribute="centerX" id="rAn-vp-aoD"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="addShadow" value="YES"/>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" systemColor="systemGray4Color"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="hlx-LD-eeu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="Aat-8e-8fa"/>
+                <constraint firstItem="hlx-LD-eeu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="KLH-PE-z67"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hlx-LD-eeu" secondAttribute="trailing" constant="20" id="VAo-tf-lTP"/>
+                <constraint firstItem="A0B-EV-muf" firstAttribute="leading" secondItem="yWq-Kt-2uC" secondAttribute="leading" id="Whg-mT-Ngy"/>
+                <constraint firstItem="A0B-EV-muf" firstAttribute="top" secondItem="hlx-LD-eeu" secondAttribute="bottom" constant="20" id="rKR-qv-aT0"/>
+                <constraint firstItem="A0B-EV-muf" firstAttribute="width" secondItem="yWq-Kt-2uC" secondAttribute="width" id="tQX-7S-9RH"/>
+                <constraint firstItem="A0B-EV-muf" firstAttribute="height" secondItem="yWq-Kt-2uC" secondAttribute="height" id="vDB-Ao-rpy"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="82"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

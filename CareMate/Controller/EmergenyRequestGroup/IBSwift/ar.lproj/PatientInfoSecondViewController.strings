@@ -1,0 +1,42 @@
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "3er-EX-ZNT"; */
+"3er-EX-ZNT.text" = "النوع";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "4XB-VI-v2p"; */
+"4XB-VI-v2p.text" = "التالي";
+
+/* Class = "UILabel"; text = "NickName"; ObjectID = "5aR-VV-hvK"; */
+"5aR-VV-hvK.text" = "اللقب";
+
+/* Class = "UILabel"; text = "Third Name"; ObjectID = "8Lc-6v-7kk"; */
+"8Lc-6v-7kk.text" = "الاسم الثالث";
+
+/* Class = "UILabel"; text = "Birthday of Date"; ObjectID = "E5F-Nt-N6D"; */
+"E5F-Nt-N6D.text" = "تاريخ الميلاد";
+
+/* Class = "UILabel"; text = "Birthday of Date"; ObjectID = "IPw-ks-XAq"; */
+"IPw-ks-XAq.text" = "تاريخ الميلاد";
+
+/* Class = "UILabel"; text = "Age"; ObjectID = "KCD-4v-cBc"; */
+"KCD-4v-cBc.text" = "العمر";
+
+/* Class = "UILabel"; text = "First Name"; ObjectID = "MU3-f2-pcF"; */
+"MU3-f2-pcF.text" = "الاسم الاول";
+
+/* Class = "UILabel"; text = "Patient Address"; ObjectID = "Okt-ii-nQR"; */
+"Okt-ii-nQR.text" = "عنوان المريض";
+
+/* Class = "UILabel"; text = "Other Info"; ObjectID = "ZT9-91-5at"; */
+"ZT9-91-5at.text" = "بيانات اخري";
+
+/* Class = "UILabel"; text = "Caller Info"; ObjectID = "aJF-UH-SDA"; */
+"aJF-UH-SDA.text" = "بيانات المتصل";
+
+/* Class = "UILabel"; text = "Patient Type"; ObjectID = "ep0-RX-FI6"; */
+"ep0-RX-FI6.text" = "نوع المريض";
+
+/* Class = "UILabel"; text = "Second Name"; ObjectID = "fR0-Yu-2rP"; */
+"fR0-Yu-2rP.text" = "الاسم الثاني";
+
+/* Class = "UILabel"; text = "Patient Info"; ObjectID = "sGJ-Tg-oEx"; */
+"sGJ-Tg-oEx.text" = "بيانات المريض";

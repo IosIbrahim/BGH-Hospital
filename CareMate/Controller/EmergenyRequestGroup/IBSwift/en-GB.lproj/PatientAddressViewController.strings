@@ -1,0 +1,51 @@
+
+/* Class = "UILabel"; text = "Choose Street"; ObjectID = "1Au-9x-10I"; */
+"1Au-9x-10I.text" = "Choose Street";
+
+/* Class = "UILabel"; text = "Chosse Gov"; ObjectID = "5uW-vT-IMi"; */
+"5uW-vT-IMi.text" = "Choose Gov";
+
+/* Class = "UILabel"; text = "Caller Info"; ObjectID = "AE6-Lm-ZhG"; */
+"AE6-Lm-ZhG.text" = "Caller Info";
+
+/* Class = "UILabel"; text = "coupon"; ObjectID = "HGB-WY-ev7"; */
+"HGB-WY-ev7.text" = "coupon";
+
+/* Class = "UILabel"; text = "Area"; ObjectID = "KLP-3f-dff"; */
+"KLP-3f-dff.text" = "Area";
+
+/* Class = "UILabel"; text = "District"; ObjectID = "M0Y-p4-BEU"; */
+"M0Y-p4-BEU.text" = "District";
+
+/* Class = "UILabel"; text = "Chosse City"; ObjectID = "R4x-l9-wZ9"; */
+"R4x-l9-wZ9.text" = "Choose City";
+
+/* Class = "UILabel"; text = "Group"; ObjectID = "RGK-DL-wHF"; */
+"RGK-DL-wHF.text" = "Group";
+
+/* Class = "UILabel"; text = "Patient Address"; ObjectID = "UwR-cW-Sj4"; */
+"UwR-cW-Sj4.text" = "Patient Address";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Vgb-n5-LYz"; */
+"Vgb-n5-LYz.text" = "Label";
+
+/* Class = "UILabel"; text = "Adrress"; ObjectID = "g6b-Ex-EmI"; */
+"g6b-Ex-EmI.text" = "Adrress";
+
+/* Class = "UILabel"; text = "Patient Info"; ObjectID = "k0B-WE-kbm"; */
+"k0B-WE-kbm.text" = "Patient Info";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "k6B-TA-6dg"; */
+"k6B-TA-6dg.text" = "Next";
+
+/* Class = "UILabel"; text = "Buliding Number"; ObjectID = "l6V-2J-mLp"; */
+"l6V-2J-mLp.text" = "Buliding Number";
+
+/* Class = "UILabel"; text = "Automated figure"; ObjectID = "mvz-C0-kO6"; */
+"mvz-C0-kO6.text" = "Automated figure";
+
+/* Class = "UILabel"; text = "Other Info"; ObjectID = "tAg-Zk-EUf"; */
+"tAg-Zk-EUf.text" = "Other Info";
+
+/* Class = "UILabel"; text = "Street"; ObjectID = "zqg-d3-NRE"; */
+"zqg-d3-NRE.text" = "Street";

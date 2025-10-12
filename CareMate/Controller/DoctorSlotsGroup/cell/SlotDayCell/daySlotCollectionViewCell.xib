@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Tajawal-Bold.ttf">
+            <string>Tajawal-Bold</string>
+        </array>
+        <array key="Tajawal-Regular.ttf">
+            <string>Tajawal-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="daySlotCollectionViewCell" customModule="CareMate" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="131" height="82"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="131" height="82"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RVH-fr-Myq">
+                        <rect key="frame" x="5" y="5" width="121" height="72"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Aw-XX-y2B" customClass="uilabelCenter" customModule="CareMate" customModuleProvider="target">
+                                <rect key="frame" x="2" y="31" width="117" height="10"/>
+                                <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NvZ-Hr-yNG">
+                                <rect key="frame" x="46.5" y="55" width="28" height="12"/>
+                                <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="12"/>
+                                <color key="textColor" red="0.41176470590000003" green="0.41568627450000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="9Aw-XX-y2B" secondAttribute="trailing" constant="2" id="Qpw-T6-OL7"/>
+                            <constraint firstAttribute="bottom" secondItem="NvZ-Hr-yNG" secondAttribute="bottom" constant="5" id="SXC-5V-e5R"/>
+                            <constraint firstItem="NvZ-Hr-yNG" firstAttribute="centerX" secondItem="RVH-fr-Myq" secondAttribute="centerX" id="cYd-RI-LWq"/>
+                            <constraint firstItem="9Aw-XX-y2B" firstAttribute="centerY" secondItem="RVH-fr-Myq" secondAttribute="centerY" id="ctY-a5-SiF"/>
+                            <constraint firstItem="9Aw-XX-y2B" firstAttribute="leading" secondItem="RVH-fr-Myq" secondAttribute="leading" constant="2" id="r3X-O2-u7g"/>
+                            <constraint firstItem="9Aw-XX-y2B" firstAttribute="centerX" secondItem="RVH-fr-Myq" secondAttribute="centerX" id="v6S-6H-22K"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
+                                <real key="value" value="7"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="RVH-fr-Myq" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="MY7-FX-iVn"/>
+                <constraint firstItem="RVH-fr-Myq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="ViC-Sr-sKu"/>
+                <constraint firstAttribute="bottom" secondItem="RVH-fr-Myq" secondAttribute="bottom" constant="5" id="cqG-qA-Yf6"/>
+                <constraint firstAttribute="trailing" secondItem="RVH-fr-Myq" secondAttribute="trailing" constant="5" id="vxt-AP-hCr"/>
+            </constraints>
+            <size key="customSize" width="131" height="82"/>
+            <connections>
+                <outlet property="labelDayText" destination="9Aw-XX-y2B" id="fHT-oK-BJZ"/>
+                <outlet property="labelDaynumber" destination="NvZ-Hr-yNG" id="ntd-q6-Vel"/>
+                <outlet property="mainView" destination="RVH-fr-Myq" id="uqa-yN-vWf"/>
+            </connections>
+            <point key="canvasLocation" x="196.37681159420291" y="85.714285714285708"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

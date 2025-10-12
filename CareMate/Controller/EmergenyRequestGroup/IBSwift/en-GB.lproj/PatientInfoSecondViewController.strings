@@ -1,0 +1,39 @@
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "3er-EX-ZNT"; */
+"3er-EX-ZNT.text" = "Type";
+
+/* Class = "UILabel"; text = "Next"; ObjectID = "4XB-VI-v2p"; */
+"4XB-VI-v2p.text" = "Next";
+
+/* Class = "UILabel"; text = "Third Name"; ObjectID = "8Lc-6v-7kk"; */
+"8Lc-6v-7kk.text" = "Third Name";
+
+/* Class = "UILabel"; text = "Birthday of Date"; ObjectID = "IPw-ks-XAq"; */
+"IPw-ks-XAq.text" = "Birthday of Date";
+
+/* Class = "UILabel"; text = "Age"; ObjectID = "KCD-4v-cBc"; */
+"KCD-4v-cBc.text" = "Age";
+
+/* Class = "UILabel"; text = "First Name"; ObjectID = "MU3-f2-pcF"; */
+"MU3-f2-pcF.text" = "First Name";
+
+/* Class = "UILabel"; text = "Patient Address"; ObjectID = "Okt-ii-nQR"; */
+"Okt-ii-nQR.text" = "Patient Address";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "RtG-Wq-2T3"; */
+"RtG-Wq-2T3.text" = "Label";
+
+/* Class = "UILabel"; text = "Other Info"; ObjectID = "ZT9-91-5at"; */
+"ZT9-91-5at.text" = "Other Info";
+
+/* Class = "UILabel"; text = "Caller Info"; ObjectID = "aJF-UH-SDA"; */
+"aJF-UH-SDA.text" = "Caller Info";
+
+/* Class = "UILabel"; text = "Second Name"; ObjectID = "fR0-Yu-2rP"; */
+"fR0-Yu-2rP.text" = "Second Name";
+
+/* Class = "UILabel"; text = "Patient Info"; ObjectID = "sGJ-Tg-oEx"; */
+"sGJ-Tg-oEx.text" = "Patient Info";
+
+/* Class = "UILabel"; text = "Last Name"; ObjectID = "ymM-od-n8f"; */
+"ymM-od-n8f.text" = "Last Name";

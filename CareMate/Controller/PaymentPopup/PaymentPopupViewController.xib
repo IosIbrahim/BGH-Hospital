@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaymentPopupViewController" customModule="CareMate" customModuleProvider="target">
+            <connections>
+                <outlet property="subTitle" destination="vD6-FK-XvI" id="W5O-hu-gWQ"/>
+                <outlet property="title1" destination="SeZ-On-UH4" id="Gnl-y9-pzg"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please use this code at the nearest fawry machine to complete the payment before" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeZ-On-UH4">
+                    <rect key="frame" x="20" y="84" width="374" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="1my-vi-1bv"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+9651830003" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqt-8w-Jex" customClass="GTLabel" customModule="CareMate" customModuleProvider="target">
+                    <rect key="frame" x="60" y="324" width="294" height="30"/>
+                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                    <color key="textColor" systemColor="linkColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLS-bw-4Xd">
+                    <rect key="frame" x="186" y="49" width="42.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                    <color key="textColor" systemColor="linkColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phone-icon" translatesAutoresizingMaskIntoConstraints="NO" id="pTe-26-HZe">
+                    <rect key="frame" x="20" y="317" width="32" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="7kf-Md-TmW"/>
+                        <constraint firstAttribute="width" constant="32" id="KKb-C9-6wh"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please use this code at the nearest fawry machine to complete the payment before" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vD6-FK-XvI">
+                    <rect key="frame" x="20" y="379" width="374" height="41"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Xm-wf-PeS">
+                    <rect key="frame" x="60" y="324" width="294" height="30"/>
+                    <connections>
+                        <action selector="phoneCliked:" destination="-1" eventType="touchUpInside" id="YJO-df-KzL"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oU1-tf-p1l">
+                    <rect key="frame" x="0.0" y="425" width="414" height="150"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whatsapp" translatesAutoresizingMaskIntoConstraints="NO" id="iXs-VJ-YpT">
+                            <rect key="frame" x="20" y="5" width="41" height="64"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="41" id="Hqv-8b-ENB"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+9651830003" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sja-f0-piM">
+                            <rect key="frame" x="81" y="26.5" width="119" height="21"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" systemColor="linkColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylE-Fd-5Vf">
+                            <rect key="frame" x="20" y="5" width="180" height="64"/>
+                            <connections>
+                                <action selector="openWhatsApp:" destination="-1" eventType="touchUpInside" id="5oV-Dk-Vs5"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="ylE-Fd-5Vf" firstAttribute="trailing" secondItem="sja-f0-piM" secondAttribute="trailing" id="6GL-Ey-edu"/>
+                        <constraint firstItem="ylE-Fd-5Vf" firstAttribute="bottom" secondItem="iXs-VJ-YpT" secondAttribute="bottom" id="8Vb-qF-fhf"/>
+                        <constraint firstItem="iXs-VJ-YpT" firstAttribute="top" secondItem="oU1-tf-p1l" secondAttribute="top" constant="5" id="AyV-Xd-p2t"/>
+                        <constraint firstItem="sja-f0-piM" firstAttribute="leading" secondItem="iXs-VJ-YpT" secondAttribute="trailing" constant="20" id="PVn-Rr-WRG"/>
+                        <constraint firstItem="ylE-Fd-5Vf" firstAttribute="leading" secondItem="iXs-VJ-YpT" secondAttribute="leading" id="YR3-yb-Ljr"/>
+                        <constraint firstItem="ylE-Fd-5Vf" firstAttribute="top" secondItem="iXs-VJ-YpT" secondAttribute="top" id="fAB-uN-xrN"/>
+                        <constraint firstItem="iXs-VJ-YpT" firstAttribute="leading" secondItem="oU1-tf-p1l" secondAttribute="leading" constant="20" id="oLq-HV-axP"/>
+                        <constraint firstItem="sja-f0-piM" firstAttribute="centerY" secondItem="iXs-VJ-YpT" secondAttribute="centerY" id="y8F-xE-e0e"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="SeZ-On-UH4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="5aH-dU-uOX"/>
+                <constraint firstItem="6Xm-wf-PeS" firstAttribute="top" secondItem="Fqt-8w-Jex" secondAttribute="top" id="6u1-oR-Dmb"/>
+                <constraint firstItem="oU1-tf-p1l" firstAttribute="top" secondItem="vD6-FK-XvI" secondAttribute="bottom" constant="5" id="9PQ-Wg-2sy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SeZ-On-UH4" secondAttribute="trailing" constant="20" id="E0b-Zx-ecW"/>
+                <constraint firstItem="6Xm-wf-PeS" firstAttribute="leading" secondItem="Fqt-8w-Jex" secondAttribute="leading" id="IPd-JS-Dfu"/>
+                <constraint firstItem="oU1-tf-p1l" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ile-YX-3Pj"/>
+                <constraint firstItem="vD6-FK-XvI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Js4-6o-EkB"/>
+                <constraint firstItem="SeZ-On-UH4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="MSZ-No-1ZP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oU1-tf-p1l" secondAttribute="trailing" id="Mw3-cV-6Sy"/>
+                <constraint firstItem="pTe-26-HZe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="NkB-hz-bMa"/>
+                <constraint firstItem="xLS-bw-4Xd" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="Oyv-lQ-voz"/>
+                <constraint firstItem="vD6-FK-XvI" firstAttribute="top" secondItem="pTe-26-HZe" secondAttribute="bottom" constant="20" id="Rjw-67-uhW"/>
+                <constraint firstItem="pTe-26-HZe" firstAttribute="top" secondItem="SeZ-On-UH4" secondAttribute="bottom" constant="33" id="SJa-OU-1nP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Fqt-8w-Jex" secondAttribute="trailing" constant="60" id="XEV-4k-VJx"/>
+                <constraint firstItem="Fqt-8w-Jex" firstAttribute="top" secondItem="SeZ-On-UH4" secondAttribute="bottom" constant="40" id="XEk-xi-jWt"/>
+                <constraint firstItem="Fqt-8w-Jex" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="60" id="a9T-Hm-FhF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vD6-FK-XvI" secondAttribute="trailing" constant="20" id="gv9-Vf-0et"/>
+                <constraint firstItem="6Xm-wf-PeS" firstAttribute="bottom" secondItem="Fqt-8w-Jex" secondAttribute="bottom" id="j8Z-Qw-4lb"/>
+                <constraint firstItem="xLS-bw-4Xd" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="q6a-MD-JUm"/>
+                <constraint firstItem="6Xm-wf-PeS" firstAttribute="trailing" secondItem="Fqt-8w-Jex" secondAttribute="trailing" id="vnj-lz-DEp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="oU1-tf-p1l" secondAttribute="bottom" constant="287" id="xQe-Kl-jtk"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="47.544642857142854"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Phone-icon" width="256" height="256"/>
+        <image name="whatsapp" width="64" height="64"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

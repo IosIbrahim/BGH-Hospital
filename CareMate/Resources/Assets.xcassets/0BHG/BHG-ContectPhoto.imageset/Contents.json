@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "BHG-ContectPhoto.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "63bbf22710f7d2fedab33ea2_contact us 1@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "63bbf22710f7d2fedab33ea2_contact us 1@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
