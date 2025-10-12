@@ -19,6 +19,7 @@ class DoctorsSearchViewController: BaseViewController {
     @IBOutlet weak var viewSearch: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var labelNoDoctorsFound: UILabel!
+    @IBOutlet weak var lblSearch: UILabel!
     
     var arrayBranches = [Branch]()
     var selectedBranches = [Branch]()
@@ -39,6 +40,10 @@ class DoctorsSearchViewController: BaseViewController {
     
     func initViews() {
         initCollectionView()
+        lblSearch.text =  UserManager.isArabic ? "بحث" : "Search"
+        labelBranch.text =  UserManager.isArabic ? "كل الفروع" : "All Branches"
+        labelClinic.text =  UserManager.isArabic ? "جميع التخصصات" : "All Specialities"
+        textfieldDoctorName.placeholder = UserManager.isArabic ? "اسم الطبيب":"Doctor Name"
         viewBranches.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openBranches)))
         viewClinics.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openClinics)))
         viewSearch.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(searchClicked)))

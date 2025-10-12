@@ -55,9 +55,11 @@ PODS:
     - GoogleUtilities/Reachability (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - nanopb (< 2.30911.0, >= 2.30908.0)
-  - FMDB (2.7.5):
-    - FMDB/standard (= 2.7.5)
-  - FMDB/standard (2.7.5)
+  - FMDB (2.7.12):
+    - FMDB/standard (= 2.7.12)
+  - FMDB/Core (2.7.12)
+  - FMDB/standard (2.7.12):
+    - FMDB/Core
   - FSCalendar (2.8.1)
   - GiFHUD-Swift (0.3)
   - GoogleAppMeasurement (10.29.0):
@@ -190,7 +192,7 @@ PODS:
   - SwiftyCodeView (0.3.6):
     - SwiftyCodeView/Core (= 0.3.6)
   - SwiftyCodeView/Core (0.3.6)
-  - SwiftyJSON (4.1.0)
+  - SwiftyJSON (5.0.2)
   - TPPDF (2.3.5)
 
 DEPENDENCIES:
@@ -310,7 +312,7 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: df84dd300b561c27d5571684f389bf60b0a5c934
   FirebaseInstallations: 913cf60d0400ebd5d6b63a28b290372ab44590dd
   FirebaseMessaging: 7b5d8033e183ab59eb5b852a53201559e976d366
-  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  FMDB: 728731dd336af3936ce00f91d9d8495f5718a0e6
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
   GiFHUD-Swift: 73cc759c387f1ae3d8c7f19f268639dc9720d111
   GoogleAppMeasurement: f9de05ee17401e3355f68e8fc8b5064d429f5918
@@ -346,9 +348,9 @@ SPEC CHECKSUMS:
   Stuff: 830e1ba3e792a96ea3c1a8db46e17a31d7fcbc82
   SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
   SwiftyCodeView: 0252e3520749a3fda1a9b141873401f8e6c570ad
-  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  SwiftyJSON: f5b1bf1cd8dd53cd25887ac0eabcfd92301c6a5a
   TPPDF: dd128b2ed179216e055a871b528e61d5e572da56
 
-PODFILE CHECKSUM: 99832287edf327ad7c740ebcd2bfaa70f8597857
+PODFILE CHECKSUM: 9d873ae816f1fd35c3b2b88ab08cb93551ef5d83
 
 COCOAPODS: 1.16.2
