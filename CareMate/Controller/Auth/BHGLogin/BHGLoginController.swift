@@ -41,8 +41,8 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
         let gesturecontinuAsGuest = UITapGestureRecognizer(target: self, action:  #selector(self.openAsGuest))
         self.pickerGuest.addGestureRecognizer(gesturecontinuAsGuest)
       
-        pickerForgot.setView(hidden: !showPassword)
-        pickerPassword.setView(hidden: !showPassword)
+    //    pickerForgot.setView(hidden: !showPassword)
+     //   pickerPassword.setView(hidden: !showPassword)
 
         // Do any additional setup after loading the view.
     }
@@ -71,7 +71,7 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
         btnLogin.setTitle(UserManager.isArabic ? "دخول":"Sign In", for: .normal)
         lblDont.text = UserManager.isArabic ? "لا تمتلك حساب ؟":"Don't have account ?"
         btnRegister.setTitle(UserManager.isArabic ? "تسجيل الدخول":"Sign Up", for: .normal)
-        lblGuest.text = UserManager.isArabic ? "الدخول كضيف":"Sign as guest"
+        lblGuest.text = UserManager.isArabic ? "البحث عن طبيب": "Search For a Doctor"
         lblContact.text = UserManager.isArabic ? "تواصل معنا":"Contact Us"
 
     }
@@ -91,11 +91,12 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
     }
     
     @IBAction func loginTap(_ sender: Any) {
-        if showPassword {
-            loginWithPassword()
-        }else {
-            login()
-        }
+//        if showPassword {
+//            loginWithPassword()
+//        }else {
+//            login()
+//        }
+        loginWithPassword()
     }
     
     fileprivate func PresentRetrieveViewController(retrieveType: RetrieveType) {
@@ -285,14 +286,22 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
     private func loginWithPassword(){
           var urlString = ""
         let enter = LanguageManager.isArabic() ? "ادخل ":"Enter "
+        guard let medicalId = self.txfID.text,
+              !medicalId.isEmpty else {
+                Utilities.showAlert(messageToDisplay: enter + txfID.placeholder!)
+                  return
+              }
+        
           guard  let password = txfPassword.text,
                 !password.isEmpty else {
               Utilities.showAlert(messageToDisplay: enter + txfPassword.placeholder!)
                     return
                 }
           let tokeen = UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""
-        let patientId = Utilities.sharedInstance.getPatientId()
-          urlString = Constants.APIProvider.Login+"detect_text=\(patientId)&PASSWORD=\(password)&MOBILEAPP_TYPE=2&MOBILEAPP_KEY=\(tokeen)&detect_type=5&PATIENT_ID=\(patientId)"
+      //  let patientId = Utilities.sharedInstance.getPatientId()
+        let patientId = medicalId
+
+          urlString = Constants.APIProvider.Login+"detect_text=\(patientId)&PASSWORD=\(password)&MOBILEAPP_TYPE=2&MOBILEAPP_KEY=\(tokeen)&detect_type=5"
         let id = txfID.text!
         if code == "6850" {
             urlString = Constants.APIProvider.Login+"detect_text=\(id)&PASSWORD=\(password)&MOBILEAPP_TYPE=2&MOBILEAPP_KEY=\(tokeen)&detect_type=2"

@@ -310,7 +310,7 @@ class LoginViewController: BaseViewController, clinicOrEmergency {
         
         let tokeen = UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""
 //        phoneCode = ""
-        urlString = Constants.APIProvider.Login+"detect_text=\(phoneCode)\(medicalId)&MOBILEAPP_TYPE=2&MOBILEAPP_KEY=\(tokeen)&detect_type=2"
+        urlString = Constants.APIProvider.Login+"detect_text=\(medicalId)&MOBILEAPP_TYPE=2&MOBILEAPP_KEY=\(tokeen)&detect_type=2"
         print(urlString)
         indicator.sharedInstance.show()
         print(urlString)
