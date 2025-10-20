@@ -14,6 +14,7 @@ protocol DoctorSearchCellDelegate {
 
 class DoctorCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var lblShow: UILabel!
     @IBOutlet weak var viewBackground: UIView!
     @IBOutlet weak var imageViewDoctor: UIImageView!
     @IBOutlet weak var labelName: UILabel!
@@ -40,6 +41,7 @@ class DoctorCollectionViewCell: UICollectionViewCell {
         labelSpeciality.text = UserManager.isArabic ? model.SPECIALITY_AR : model.SPECIALITY_EN
         labelName.textAlignment = .center
         labelSpeciality.textAlignment = .center
+        lblShow.text = UserManager.isArabic ? "عرض":"Show"
     }
     
     @objc func openDocDetails() {

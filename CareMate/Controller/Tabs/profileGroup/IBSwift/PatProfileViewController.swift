@@ -11,6 +11,7 @@ import MOLH
 
 class PatProfileViewController: BaseViewController {
 
+    @IBOutlet weak var imgBack: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var viewBackground: UIView!
     @IBOutlet weak var laeblWelcom: UILabel!
@@ -49,6 +50,7 @@ class PatProfileViewController: BaseViewController {
         super.viewDidLoad()
         initTable()
         viewBackground.layer.cornerRadius = 20
+        imgBack.layer.cornerRadius = 20
         viewBackgroundData.setBorder(color: .fromHex(hex: "#EBE8E8", alpha: 1), radius: 10, borderWidth: 1)
         viewEdit.setBorder(color: .fromHex(hex: "#2E4E8E", alpha: 1), radius: 10, borderWidth: 1)
         viewChangeAccount.setBorder(color: .fromHex(hex: "#2E4E8E", alpha: 1), radius: 10, borderWidth: 1)
@@ -145,8 +147,7 @@ class PatProfileViewController: BaseViewController {
         listOfFamilies.removeAll()
         tableView.reloadData()
         dispatchGroup.enter()
-        var urlString = Constants.APIProvider.load_patient_family+"PatientID=\(Utilities.sharedInstance.getPatientId())&branchID=1"
-//        urlString =   urlString.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)!
+        let urlString = Constants.APIProvider.load_patient_family+"PatientID=\(Utilities.sharedInstance.getPatientId())&branchID=1"
         WebserviceMananger.sharedInstance.makeCall(method: .get, url: urlString, parameters: nil, vc: self, showIndicator: false) { (data, error) in
             if error == nil {
                 if let bigRoot = (data as? [String: Any])?["Root"] as? [String: Any] {
@@ -196,7 +197,11 @@ class PatProfileViewController: BaseViewController {
             labelMRN.text = Utilities.sharedInstance.getPatientId()
            if UserManager.isArabic {
 //               self.labelName.text =  root["PATIENT"]?["COMPLETEPATNAME"]  as? String
-               self.labelName.text =  root["PATIENT"]?["COMPLETEPATNAME_EN"]  as? String
+               if UserManager.isArabic {
+                   self.labelName.text =  root["PATIENT"]?["COMPLETEPATNAME"]  as? String
+               }else {
+                   self.labelName.text =  root["PATIENT"]?["COMPLETEPATNAME_EN"]  as? String
+               }
                labelPhone.text = root["PATIENT"]?["CONTACT_HOMETEL_1"]  as? String
                labelEmail.text = root["PATIENT"]?["CONTACT_HOMETEL_3"]  as? String
                labelBirthday.text = "".formateDAte(dateString: root["PATIENT"]?["DATEOFBIRTH"]  as? String, formateString: "MM/dd/yyyy")

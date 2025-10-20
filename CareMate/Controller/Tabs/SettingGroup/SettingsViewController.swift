@@ -32,6 +32,8 @@ class SettingsViewController: BaseViewController {
         super.viewDidLoad()
         userBackgroungimage.layer.cornerRadius = 20
             userBackgroungimage.clipsToBounds = true
+     //   userBackgroungimage.image = userBackgroungimage.image?.withRenderingMode(.alwaysTemplate)
+     //   userBackgroungimage.tintColor = UIColor.fromHex(hex: "#00ABC8")
         setPatientInfo()
         labelAppVersion.text = "\(UserManager.isArabic ? "إصدار" : "Version"): \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String)"
         labelAppVersion.textAlignment = .center
@@ -147,11 +149,15 @@ class SettingsViewController: BaseViewController {
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
             if let loadedPerson = try? decoder.decode(LoginedUser.self, from: savedPerson) {
-//                if UserManager.isArabic == true{
-//                    uilableName.text = loadedPerson.COMPLETEPATNAME_AR}
-//                else{
+                if UserManager.isArabic == true{
+                    uilableName.text = loadedPerson.COMPLETEPATNAME_AR
+                    uilableName.textAlignment = .right
+                }else{
                     uilableName.text = loadedPerson.COMPLETEPATNAME_EN
-//                }
+                    uilableName.textAlignment = .left
+                }
+                uilableName.textAlignment = .center
+
 //                uilableEmail.text = loadedPerson.PAT_EMAIL
             }
         }

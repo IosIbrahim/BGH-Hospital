@@ -122,11 +122,11 @@ class WebserviceMananger: NSObject {
                                        if url.contains("INDEX_FROM") {
                                            if url.contains("INDEX_FROM=0") {
                                                let nc = NotificationCenter.default
-                                               nc.post(name: Notification.Name("nodataFound"), object: nil)
+                                            //   nc.post(name: Notification.Name("nodataFound"), object: nil)
                                            }
                                        }else {
                                            let nc = NotificationCenter.default
-                                           nc.post(name: Notification.Name("nodataFound"), object: nil)
+                                        //   nc.post(name: Notification.Name("nodataFound"), object: nil)
                                        }
                                     }
                              }
@@ -145,8 +145,8 @@ class WebserviceMananger: NSObject {
 
                              }
                              else{
-                                 let nc = NotificationCenter.default
-                                 nc.post(name: Notification.Name("nodataFound"), object: nil)
+                              //   let nc = NotificationCenter.default
+                               //  nc.post(name: Notification.Name("nodataFound"), object: nil)
                              }
                              
                          }

@@ -24,14 +24,10 @@ class MedicalRecordVC: BaseViewController
     @IBOutlet weak var questionareLbl: UILabel!
     @IBOutlet weak var myappointmentLbl: UILabel!
     @IBOutlet weak var MedicalـOverview : UILabel!
-    @IBOutlet weak var openPatientHistory: UIView!
     @IBOutlet weak var openSickLeave: UIView!
-    @IBOutlet weak var openHospitalViews: UIView!
     @IBOutlet weak var openLocationss: UIView!
     @IBOutlet weak var openCurrentMedVC: UIView!
-    @IBOutlet weak var openQuestionary: UIView!
     @IBOutlet weak var openMedicationOverView: UIView!
-    @IBOutlet weak var openOperation: UIView!
     @IBOutlet weak var openProfile: UIView!
     @IBOutlet weak var reservationCliked: UIView!
     @IBOutlet weak var viewMyAppoiment: UIView!
@@ -55,14 +51,11 @@ class MedicalRecordVC: BaseViewController
     
    
     @IBOutlet weak var imageViewUser: UIImageView!
-    @IBOutlet weak var openHospitalCliked: UIView!
     @IBOutlet weak var viewMakeRequest: UIView!
     @IBOutlet weak var reservationsLAbel: UILabel!
     @IBOutlet weak var DoseReminder: UILabel!
-    @IBOutlet weak var Diet: UILabel!
     @IBOutlet weak var Locations: UILabel!
-    var branches = [Branch]()
-    var selectedBranch: Branch?
+  
 
     @IBOutlet weak var reportRequets: UIView!
     @IBOutlet weak var invoices: UIView!
@@ -73,8 +66,8 @@ class MedicalRecordVC: BaseViewController
     @IBOutlet weak var viewKnowYourDoctor: UIView!
     @IBOutlet weak var labelKnowDoctor: uilabelCenter!
     
-    @IBOutlet weak var cellOne: UITableViewCell!
-    
+    @IBOutlet weak var pickerSuggestions: UIView!
+    @IBOutlet weak var pickerLocations: UIView!
     @IBOutlet weak var imageViewIn: UIImageView!
     @IBOutlet weak var imageViewFacebook: UIImageView!
     @IBOutlet weak var imageViewinsta: UIImageView!
@@ -88,16 +81,18 @@ class MedicalRecordVC: BaseViewController
     @IBOutlet weak var labelChat: uilabelCenter!
     @IBOutlet weak var viewHelpSupport: UIView!
     @IBOutlet weak var labelHelp: uilabelCenter!
-    var isLoaded = true
     
+    var isLoaded = true
+    var branches = [Branch]()
+    var selectedBranch: Branch?
     override func viewDidLoad() {
         super.viewDidLoad()
         print("✅ Current lang:", MOLHLanguage.currentAppleLanguage())
 
-        openQuestionary.Rounded(corner: 20)
+        pickerSuggestions.Rounded(corner: 20)
         
         imageViewSurvey.loadFromUrl(url: ConstantsData.survey, placeHolder: "quetionary")
-        imageViewVirtualTour.loadFromUrl(url: ConstantsData.vitual, placeHolder: "Image 5")
+        imageViewVirtualTour.loadFromUrl(url: ConstantsData.vitual, placeHolder: "ic-hosploc")
 
         if UserManager.isArabic
         {
@@ -159,10 +154,12 @@ class MedicalRecordVC: BaseViewController
        // viewHelpSupport.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(chatWhatsapp2)))
         let openMedicationOverViewCliked = UITapGestureRecognizer(target: self, action:  #selector(self.opendMedication))
         self.openMedicationOverView.addGestureRecognizer(openMedicationOverViewCliked)
-        let gestureopenopenopenQuestionary = UITapGestureRecognizer(target: self, action:  #selector(self.openquesCliked))
-        self.openQuestionary.addGestureRecognizer(gestureopenopenopenQuestionary)
+      
+        let gestureopenopenopenQuestionary = UITapGestureRecognizer(target: self, action:  #selector(self.openRequestlocationsss))
+        self.pickerSuggestions.addGestureRecognizer(gestureopenopenopenQuestionary)
+        
         let gestureopenHospitalViews = UITapGestureRecognizer(target: self, action:  #selector(self.openHospitalViewsCliked))
-        self.openHospitalViews.addGestureRecognizer(gestureopenHospitalViews)
+        self.pickerLocations.addGestureRecognizer(gestureopenHospitalViews)
 
 
         imageViewIn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(linkedIn)))
@@ -229,7 +226,10 @@ class MedicalRecordVC: BaseViewController
     
     
     @objc func openHospitalViewsCliked(sender : UITapGestureRecognizer) {
-        navigationController?.pushViewController(Choose365HospitalViewController(), animated: true)
+        navigationController?.pushViewController(AllSurviesViewController(), animated: true)
+     //   let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+     //   let nextViewController = storyBoard.instantiateViewController(withIdentifier: "QuestionaryVC") as? QuestionaryVC
+    //    self.navigationController?.pushViewController(nextViewController!, animated: true)
     }
     
     @objc func openquesCliked(sender : UITapGestureRecognizer) {
@@ -353,9 +353,9 @@ class MedicalRecordVC: BaseViewController
         self.uilabelBookAppoiment.text = UserManager.isArabic ? "حجز موعد" : "Book Appointment"
         
         self.uilabelBookAppoimentDetails.text = UserManager.isArabic ? "لحجز موعد مع نخبة متميزة من الأطباء" : "Book an appointment with a distinguished group of doctors"
-        let p = "Virtual Tour (360)"
-        self.uilabel365.text = UserManager.isArabic ? "جولة إفتراضيه (360)" : p
-        self.uilabel365Details.text = UserManager.isArabic ? "تجول في مرافقنا" : "Tour our facilities"
+        let p = "Our Locations"
+        self.uilabel365.text = UserManager.isArabic ? "فروعنا" : p
+        self.uilabel365Details.text = UserManager.isArabic ? "مواقع المستشفي المتنوعة" : "Different hospital locations"
         self.uilabelQuetinaryDetails.text = UserManager.isArabic ? "آرائكم تهمنا" : "Your opinion matters"
 
         self.MedicalـOverview.text = UserManager.isArabic ? "الملف الطبي" : "Medical Overview"
@@ -363,7 +363,7 @@ class MedicalRecordVC: BaseViewController
         self.questionareLbl.text = UserManager.isArabic ? "إستطلاع رأي" : "Survey"
         self.DoseReminder.text = UserManager.isArabic ? "منبه الدواء" : "Dose Reminder"
         
-        self.Locations.text = UserManager.isArabic ? "موقعنا" : "Our Locations"
+        self.Locations.text = UserManager.isArabic ? "مواقعنا" : "Our Locations"
         uilabelRequestEmegency.text =  UserManager.isArabic ? "زيارة منزلية/اسعاف" : "Ambulance/ Home Visit"
         LabelInvocies.text = UserManager.isArabic ? "الماليات"  :"Invocies"
         LabelrequestReport.text = UserManager.isArabic ? "طلب تقرير طبي" : "Medical Report Request"
@@ -373,7 +373,7 @@ class MedicalRecordVC: BaseViewController
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
             if let loadedPerson = try? decoder.decode(LoginedUser.self, from: savedPerson) {
-                userNameLabel.text = loadedPerson.COMPLETEPATNAME_EN
+                userNameLabel.text = UserManager.isArabic ? loadedPerson.COMPLETEPATNAME_AR : loadedPerson.COMPLETEPATNAME_EN
                 usernumberLabel.text = loadedPerson.PATIENTID.trimmed
             }
         }

@@ -11,11 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BHGRegisterController" customModule="CareMate" customModuleProvider="target">
             <connections>
+                <outlet property="PickerEmail" destination="552-0q-lzN" id="Qhw-ji-74n"/>
                 <outlet property="btnBack" destination="Zy3-60-o8o" id="kmM-Qn-Wrk"/>
                 <outlet property="btnSignIn" destination="g2U-g9-uAf" id="6H5-zA-hHr"/>
                 <outlet property="pickerCode" destination="Jbl-Ih-rjq" id="dFH-qX-BJt"/>
+                <outlet property="pickerID" destination="Eye-67-XAr" id="0Nj-dy-pDE"/>
+                <outlet property="pickerPhone" destination="rce-Ap-DtV" id="MCQ-BM-u5z"/>
                 <outlet property="stkPassword" destination="pnl-WI-rAG" id="xqb-PB-WG7"/>
-                <outlet property="txfConfirmEmail" destination="CT1-8X-qcE" id="SP7-Yt-uj3"/>
                 <outlet property="txfConfirmPassword" destination="vfG-KB-6To" id="tTg-92-CKt"/>
                 <outlet property="txfEmail" destination="tYl-XR-hUh" id="IgC-ap-JFM"/>
                 <outlet property="txfID" destination="2eJ-Yy-Rp7" id="INw-Ec-3nX"/>
@@ -33,10 +35,10 @@
                     <rect key="frame" x="0.0" y="118" width="393" height="734"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qHj-A6-cgk">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="584.33333333333337"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="529.33333333333337"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6yN-sz-Dav">
-                                    <rect key="frame" x="10" y="20" width="373" height="554.33333333333337"/>
+                                    <rect key="frame" x="10" y="19.999999999999972" width="373" height="499.33333333333326"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oxz-A5-NIh">
                                             <rect key="frame" x="0.0" y="0.0" width="373" height="124.33333333333333"/>
@@ -55,13 +57,13 @@
                                             </constraints>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MrM-LI-VFN">
-                                            <rect key="frame" x="0.0" y="144.33333333333331" width="373" height="340"/>
+                                            <rect key="frame" x="0.0" y="144.33333333333331" width="373" height="285"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gZf-HD-O7d">
-                                                    <rect key="frame" x="0.0" y="0.0" width="373" height="340"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="373" height="285"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Eb6-Vx-eXF">
-                                                            <rect key="frame" x="10" y="10" width="353" height="320"/>
+                                                            <rect key="frame" x="10" y="10" width="353" height="265"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eye-67-XAr" customClass="RoundUIView" customModule="CareMate" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="353" height="45"/>
@@ -76,7 +78,7 @@
                                                                                     <rect key="frame" x="20" y="0.0" width="318" height="45"/>
                                                                                     <color key="textColor" red="0.0" green="0.23137254900000001" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                                                    <textInputTraits key="textInputTraits"/>
+                                                                                    <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad"/>
                                                                                 </textField>
                                                                             </subviews>
                                                                         </stackView>
@@ -117,7 +119,7 @@
                                                                                 <textField opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xZj-6E-7d8">
                                                                                     <rect key="frame" x="105" y="0.0" width="233" height="45"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                                    <textInputTraits key="textInputTraits"/>
+                                                                                    <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad"/>
                                                                                 </textField>
                                                                             </subviews>
                                                                         </stackView>
@@ -142,87 +144,49 @@
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pnl-WI-rAG">
-                                                                    <rect key="frame" x="0.0" y="110" width="353" height="210"/>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="552-0q-lzN" customClass="RoundUIView" customModule="CareMate" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="110" width="353" height="45"/>
                                                                     <subviews>
-                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="552-0q-lzN" customClass="RoundUIView" customModule="CareMate" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="353" height="45"/>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="i3V-AW-v64">
+                                                                            <rect key="frame" x="10" y="0.0" width="338" height="45"/>
                                                                             <subviews>
-                                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="i3V-AW-v64">
-                                                                                    <rect key="frame" x="10" y="0.0" width="338" height="45"/>
-                                                                                    <subviews>
-                                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-email" translatesAutoresizingMaskIntoConstraints="NO" id="6IP-GS-KgG">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="18" height="45"/>
-                                                                                        </imageView>
-                                                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tYl-XR-hUh">
-                                                                                            <rect key="frame" x="23" y="0.0" width="315" height="45"/>
-                                                                                            <color key="textColor" red="0.0" green="0.23137254900000001" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                                                            <textInputTraits key="textInputTraits"/>
-                                                                                        </textField>
-                                                                                    </subviews>
-                                                                                </stackView>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-email" translatesAutoresizingMaskIntoConstraints="NO" id="6IP-GS-KgG">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="18" height="45"/>
+                                                                                </imageView>
+                                                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tYl-XR-hUh">
+                                                                                    <rect key="frame" x="23" y="0.0" width="315" height="45"/>
+                                                                                    <color key="textColor" red="0.0" green="0.23137254900000001" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                                                </textField>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="bottom" secondItem="i3V-AW-v64" secondAttribute="bottom" id="7TZ-xz-s1m"/>
-                                                                                <constraint firstItem="i3V-AW-v64" firstAttribute="leading" secondItem="552-0q-lzN" secondAttribute="leading" constant="10" id="VSH-MK-wIG"/>
-                                                                                <constraint firstAttribute="height" constant="45" id="Yr2-67-sGD"/>
-                                                                                <constraint firstAttribute="trailing" secondItem="i3V-AW-v64" secondAttribute="trailing" constant="5" id="mhd-s5-sAq"/>
-                                                                                <constraint firstItem="i3V-AW-v64" firstAttribute="top" secondItem="552-0q-lzN" secondAttribute="top" id="uvF-AK-eCE"/>
-                                                                            </constraints>
-                                                                            <userDefinedRuntimeAttributes>
-                                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                                    <real key="value" value="1"/>
-                                                                                </userDefinedRuntimeAttribute>
-                                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                    <real key="value" value="22"/>
-                                                                                </userDefinedRuntimeAttribute>
-                                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                </userDefinedRuntimeAttribute>
-                                                                            </userDefinedRuntimeAttributes>
-                                                                        </view>
-                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DtZ-5T-f8A" customClass="RoundUIView" customModule="CareMate" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="55" width="353" height="45"/>
-                                                                            <subviews>
-                                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QoF-s3-FED">
-                                                                                    <rect key="frame" x="10" y="0.0" width="338" height="45"/>
-                                                                                    <subviews>
-                                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-email" translatesAutoresizingMaskIntoConstraints="NO" id="6Xj-qJ-MwZ">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="18" height="45"/>
-                                                                                        </imageView>
-                                                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CT1-8X-qcE">
-                                                                                            <rect key="frame" x="23" y="0.0" width="315" height="45"/>
-                                                                                            <color key="textColor" red="0.0" green="0.23137254900000001" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                                                            <textInputTraits key="textInputTraits"/>
-                                                                                        </textField>
-                                                                                    </subviews>
-                                                                                </stackView>
-                                                                            </subviews>
-                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                            <constraints>
-                                                                                <constraint firstItem="QoF-s3-FED" firstAttribute="leading" secondItem="DtZ-5T-f8A" secondAttribute="leading" constant="10" id="62G-ex-AyG"/>
-                                                                                <constraint firstItem="QoF-s3-FED" firstAttribute="top" secondItem="DtZ-5T-f8A" secondAttribute="top" id="Dp7-Ds-UNN"/>
-                                                                                <constraint firstAttribute="height" constant="45" id="H1J-Gn-rzh"/>
-                                                                                <constraint firstAttribute="trailing" secondItem="QoF-s3-FED" secondAttribute="trailing" constant="5" id="W83-uu-aez"/>
-                                                                                <constraint firstAttribute="bottom" secondItem="QoF-s3-FED" secondAttribute="bottom" id="ip4-Bm-7qs"/>
-                                                                            </constraints>
-                                                                            <userDefinedRuntimeAttributes>
-                                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                                    <real key="value" value="1"/>
-                                                                                </userDefinedRuntimeAttribute>
-                                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                    <real key="value" value="22"/>
-                                                                                </userDefinedRuntimeAttribute>
-                                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                </userDefinedRuntimeAttribute>
-                                                                            </userDefinedRuntimeAttributes>
-                                                                        </view>
+                                                                        </stackView>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="bottom" secondItem="i3V-AW-v64" secondAttribute="bottom" id="7TZ-xz-s1m"/>
+                                                                        <constraint firstItem="i3V-AW-v64" firstAttribute="leading" secondItem="552-0q-lzN" secondAttribute="leading" constant="10" id="VSH-MK-wIG"/>
+                                                                        <constraint firstAttribute="height" constant="45" id="Yr2-67-sGD"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="i3V-AW-v64" secondAttribute="trailing" constant="5" id="mhd-s5-sAq"/>
+                                                                        <constraint firstItem="i3V-AW-v64" firstAttribute="top" secondItem="552-0q-lzN" secondAttribute="top" id="uvF-AK-eCE"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="22"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pnl-WI-rAG">
+                                                                    <rect key="frame" x="0.0" y="165" width="353" height="100"/>
+                                                                    <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTw-kp-u6J" customClass="RoundUIView" customModule="CareMate" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="110.00000000000006" width="353" height="45"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="353" height="45"/>
                                                                             <subviews>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1Kt-ee-m0z">
                                                                                     <rect key="frame" x="10" y="0.0" width="338" height="45"/>
@@ -271,7 +235,7 @@
                                                                             </userDefinedRuntimeAttributes>
                                                                         </view>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIr-bs-Zba" customClass="RoundUIView" customModule="CareMate" customModuleProvider="target">
-                                                                            <rect key="frame" x="0.0" y="165.00000000000006" width="353" height="45"/>
+                                                                            <rect key="frame" x="0.0" y="55.000000000000057" width="353" height="45"/>
                                                                             <subviews>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Hl8-ny-uKi">
                                                                                     <rect key="frame" x="10" y="0.0" width="338" height="45"/>
@@ -335,14 +299,14 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iXP-7m-MWG">
-                                            <rect key="frame" x="0.0" y="504.33333333333337" width="373" height="50"/>
+                                            <rect key="frame" x="0.0" y="449.33333333333337" width="373" height="50"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pGi-6f-9hI">
                                                     <rect key="frame" x="0.0" y="0.0" width="373" height="50"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g2U-g9-uAf">
                                                             <rect key="frame" x="15" y="5" width="343" height="40"/>
-                                                            <color key="backgroundColor" red="0.035294117649999998" green="0.23529411759999999" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="backgroundColor" red="0.0" green="0.6705882352941176" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                             <state key="normal" title="Login">

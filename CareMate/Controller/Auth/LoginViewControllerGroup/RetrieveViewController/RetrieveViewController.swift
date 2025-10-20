@@ -54,7 +54,7 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
         selectedCountry = viewCountry.selectedCountry
         phoneCode = viewCountry.selectedCountry.phoneCode
         viewCountry.delegate = self
-        viewMobile.setShadowLight()
+       // viewMobile.setShadowLight()
         if UserManager.isArabic {
             labelMobileNumber.text = "رقم الهاتف النقال"
             btnSubmit.setTitle("ارسال كود التحقيق", for: .normal)
@@ -64,7 +64,13 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
             initHeader(isNotifcation: false, isLanguage: false, title: UserManager.isArabic ? "إستعلام عن المواعيد" : "Appointment Inquiry" , hideBack: false)
             labelMobileNumber.text = UserManager.isArabic ? "الرجاء إدخال رقم الهاتف الذي تم تسجيله عند حجز الموعد" : "Please enter the phone number registered when booking the appointment"
         } else {
-            initHeader(isNotifcation: false, isLanguage: false, title: UserManager.isArabic ? "استرجاع كلمة المرور" : "Forgot Password" , hideBack: false)
+            initHeader(isNotifcation: false, isLanguage: false, title: "" , hideBack: false)
+            if UserManager.isArabic {
+                labelHint.text =  "تغيير كلمة المرور"
+            }else {
+                labelHint.text = "Change Password"
+            }
+
         }
         txfID.placeholder = UserManager.isArabic ? "رقم الهوية/ رقم ملف طبي / رقم الاقامة":"Civil ID/Medical file ID/Residence ID"
         lblID.text = txfID.placeholder
@@ -77,13 +83,11 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
             medicalCodeTextField.transform = CGAffineTransform(scaleX: -1, y: 1)
             medicalCodeTextField.textAlignment = .left
             viewCountry.initWithArabic()
-            labelHint.text = " الرجاء إكمال رقم هاتفك المحمول أدناه للحصول على كلمة المرور لمرة واحدة وإكمال عملية التحقق"
             lblID.textAlignment = .right
             txfID.textAlignment = .right
             
         } else {
             medicalCodeTextField.placeholder = "Please enter your Mobile Number"
-            labelHint.text = "Please complete your mobile number below to receive the OTP and complete the verification process"
             lblID.textAlignment = .left
             txfID.textAlignment = .left
         }
@@ -223,7 +227,7 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
         
         var pars : [String : String]?
         if retrieveType == .password {
-            pars = ["MOBILE":"\(phoneCode)\(phoneNumber)"] as [String : String]
+            pars = ["MOBILE":"\(phoneCode)\(phoneNumber)","detect_text":id] as [String : String]
         }else {
             pars = ["MOBILE":"\(phoneNumber)","MOBILE_COUNTERY_CODE": "\(phoneCode)","detect_text":id] as [String : String]
 

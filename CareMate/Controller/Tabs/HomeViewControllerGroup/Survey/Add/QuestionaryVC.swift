@@ -56,7 +56,6 @@ class QuestionaryVC: BaseViewController ,MainQuestionCellDelagete,UITableViewDel
             if (data as! [String: AnyObject]).keys.contains("Root") {
                 if let root = (((data as! [String: AnyObject])["Root"] as! [String:AnyObject])["STP_PAT_SATISFACTION_DETAIL"] as! [String:AnyObject])["STP_PAT_SATISFACTION_DETAIL_ROW"] as? [String:AnyObject] {
                     self.branches = [QuestionaryModel]()
-                    
                     self.branches.append(QuestionaryModel(JSON: root)!)
                     self.tableView.reloadData()
                     

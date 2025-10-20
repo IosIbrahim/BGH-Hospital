@@ -144,7 +144,7 @@ class LabResultController: BaseViewController ,UISearchBarDelegate, showPanicIfo
     func generatPdfFromUrl(){
         
 //
-        var urlString = "\(Constants.APIProvider.APIBaseURL)/LaboratoryController/generatePdf?R_LANG=2&USER_ID=KHABEER&SECURITYLEVEL=0&PRINT_DELV_RESULT=1&BRANCH_ID=1&print=undefined&ClearCache=1&SavePDF=1&PDFFOLDERNAME=IOS\(aCCESSION_NO)&PDFFILENAME=fileIOS\(aCCESSION_NO)"
+        var urlString = "\(Constants.APIProvider.APIBaseURL)LaboratoryController/generatePdf?R_LANG=2&USER_ID=KHABEER&SECURITYLEVEL=0&PRINT_DELV_RESULT=1&BRANCH_ID=1&print=undefined&ClearCache=1&SavePDF=1&PDFFOLDERNAME=IOS\(aCCESSION_NO)&PDFFILENAME=fileIOS\(aCCESSION_NO)"
         if data?.mICROBIOLOGY_SERV ?? "" == "1" {
             urlString += "&R_NAME=ReportsDLL.Laboratory.rpt_LABORATORY_WRITE_RESULT_culture_services_result_print&ACCESSION_NO=\(aCCESSION_NO)"
         } else if data?.pATHOLOGY_SERV ?? "" == "1" {

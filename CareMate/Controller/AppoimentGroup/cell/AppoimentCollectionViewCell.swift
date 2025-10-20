@@ -89,7 +89,8 @@ class AppoimentCollectionViewCell: UICollectionViewCell {
             cancel.isHidden = false
             rescudle.isHidden = false
             viewRate.isHidden = false
-            viewRate.backgroundColor = .blue
+           // viewRate.backgroundColor = .blue
+            rescudle.backgroundColor = .blue
             labelRate.text = UserManager.isArabic ? "تأكيد" : "Confirm"
             self.statusView.backgroundColor = UIColor(fromRGBHexString: "008AAF")
             break
@@ -128,6 +129,7 @@ class AppoimentCollectionViewCell: UICollectionViewCell {
         default:
             cancel.isHidden = false
             rescudle.isHidden = false
+            rescudle.backgroundColor = .blue
             viewRate.isHidden = true
             self.statusView.backgroundColor = UIColor(fromRGBHexString: "008AAF")
             break

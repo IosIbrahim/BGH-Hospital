@@ -53,7 +53,6 @@ enum listOfOtherScreenTypeBrnach {
                
                let bakshClinicsObject =  branchData(nameAr: "عيادات الدكتور بخش", nameEn: "Dr.Bakhsh Clinics", Phone: "0126510555"
     ,descriptionAr: "شارع الامير سلطان مقابل ايه مول (عالم ساكو) المحمديه جدة ص.ب 6940 ، الرمز البريدي 21452",descriptionEn: "Prince Sultan Street, opposite Aya Mall (SACO World), Al-Mohammadiyah, Jeddah, P.O. Box 6940, Postal Code 21452")
-               let elsalamAhmadi =  branchData(nameAr: "مستشفى السلام الأحمدي", nameEn: "Al-Salam Al-Ahmadi Hospital", Phone: "1830003",descriptionAr: "المهبولة, شارع 119. محافظة الأحمدي -  الكويت",descriptionEn: "Mahboula, 119th Street, Ahmadi Governorate - Kuwait")
 
                arrayOfBranch.append(bakhshHospitalObject)
                arrayOfBranch.append(bakshClinicsObject)
@@ -127,17 +126,17 @@ enum listOfOtherScreenTypeBrnach {
     cell.configCell(onlineAppointment: arrayOfBranch[indexPath.row])
       if indexPath.row == 0
       {
-          cell.hospitalImage.image = UIImage(named: "Group 8011")
+          cell.hospitalImage.image = UIImage(named: "1")
       }
       else if indexPath.row == 1
                 
       {
-          cell.hospitalImage.image = UIImage(named: "Group 8012")
+          cell.hospitalImage.image = UIImage(named: "2")
 
       }
       else
       {
-          cell.hospitalImage.image = UIImage(named: "Group 8013")
+          cell.hospitalImage.image = UIImage(named: "1")
 
       }
       

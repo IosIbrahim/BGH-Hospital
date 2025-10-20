@@ -98,7 +98,14 @@ class DoctorProfileViewController: BaseViewController {
     }
     
     @objc func reserve() {
-        if noReservation {
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "loginOrNO") ==  false {
+            let msg = UserManager.isArabic ? "يجب عليك تسجيل الدخول للمتابعة مع حجزك":"You Must Login First To Continue"
+            OPEN_HINT_POPUP(container: self, message: msg) {
+                self.navigationController?.pushViewController(BHGLoginController(), animated: true)
+            }
+        }
+        else if noReservation {
             AppPopUpHandler.instance.openPopup(container: self, vc: ContactDoctorPopupViewController(phoneNumber: clinicPhoneNumber, place: clinicLetter))
         } else {
             if doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.count ?? .zero > 1 {

@@ -70,7 +70,7 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
         btnForgot.setTitle(UserManager.isArabic ? "نسيت كلمة المرور ؟":"Forgot your password ?", for: .normal)
         btnLogin.setTitle(UserManager.isArabic ? "دخول":"Sign In", for: .normal)
         lblDont.text = UserManager.isArabic ? "لا تمتلك حساب ؟":"Don't have account ?"
-        btnRegister.setTitle(UserManager.isArabic ? "تسجيل الدخول":"Sign Up", for: .normal)
+        btnRegister.setTitle(UserManager.isArabic ? "تسجيل جديد":"Sign Up", for: .normal)
         lblGuest.text = UserManager.isArabic ? "البحث عن طبيب": "Search For a Doctor"
         lblContact.text = UserManager.isArabic ? "تواصل معنا":"Contact Us"
 

@@ -39,11 +39,9 @@ class ConfirmAfterSignUpVC: BaseViewController {
 
     @IBAction func confirmChangePassword(_ sender: Any) {
         if passwordTextField.text?.count ?? 0 < 6 {
-//            self.view.showToast(toastMessage: UserManager.isArabic ? "كلمة المرور يجب الا تقل عن 6 عناصر" : "The password shouldn't be less than 6 digits.", duration: 2)
             Utilities.showAlert(messageToDisplay: UserManager.isArabic ? "كلمة المرور يجب الا تقل عن 6 عناصر" : "The password shouldn't be less than 6 digits.")
             return
         } else if passwordTextField.text != repeatPasswordField.text {
-//            self.view.showToast(toastMessage: UserManager.isArabic ? "كلمتا المرور يجب ان يكونا متطابقتين" : "The passwords should be identical", duration: 2)
             Utilities.showAlert(messageToDisplay: UserManager.isArabic ? "كلمتا المرور يجب ان يكونا متطابقتين" : "THe passwords should be identical")
             return
         }
@@ -73,7 +71,6 @@ class ConfirmAfterSignUpVC: BaseViewController {
                     }
                 } else {
                     Utilities.showAlert(messageToDisplay: UserManager.isArabic ?  json["Root"]["MESSAGE"]["MESSAGE_ROW"]["NAME_AR"].string ?? "" : json["Root"]["MESSAGE"]["MESSAGE_ROW"]["NAME_EN"].string ?? "")
-//                    self.view.showToast(toastMessage: UserManager.isArabic ?  json["Root"]["MESSAGE"]["MESSAGE_ROW"]["NAME_AR"].string ?? "" : json["Root"]["MESSAGE"]["MESSAGE_ROW"]["NAME_EN"].string ?? "", duration: 3)
                     }
                 }
             }

@@ -13,32 +13,24 @@ import SwiftyJSON
 import PopupDialog
 protocol resendCodeDelgate {
     func resendCode()
-    //    func PushToMyAppoiment(MobiableNumber:String)
-    
     func resendCodeLogin(mobileNumber:String)
-    
 }
 
 class verifcationAddOtherVC: BaseViewController {
     
-    @IBOutlet weak var labelActiviationCode: UILabel!
+    @IBOutlet weak var lblResendHint: UILabel!
+    @IBOutlet weak var lblHint: UILabel!
     @IBOutlet weak var viewCode: SwiftyCodeView!
     @IBOutlet weak var sendCode: UIButton!
     @IBOutlet weak var resend: UILabel!
-    @IBOutlet weak var firstdighit: UITextField!
-    @IBOutlet weak var secondText: UITextField!
-    @IBOutlet weak var thirdText: UITextField!
-    @IBOutlet weak var fourText: UITextField!
-    @IBOutlet weak var fiveText: UITextField!
-    @IBOutlet weak var sixText: UITextField!
     @IBOutlet weak var secondLAbel: UILabel!
-    @IBOutlet weak var labelEnterVerificationCode: UILabel!
     
     var fromForget = false
     var code = ""
     var sencond = 59
     var fromLogin = false
     var mobileNumber = ""
+
     var socialId = ""
     var fromLAb = false
     var param = [String:Any]()
@@ -53,6 +45,7 @@ class verifcationAddOtherVC: BaseViewController {
     var phoneNumber = ""
     var countryCode = ""
     var fromGuest = false
+    var fromEmail = false
     
     init(PatientId: String?,patientIdArray:String?,vcType:reservationOfForget?) {
         self.PATIENT_ID = PatientId
@@ -82,25 +75,17 @@ class verifcationAddOtherVC: BaseViewController {
                                           selector: #selector(minsMintue),
                                           userInfo: nil,
                                           repeats: true)
-        // Do any additional setup after loading the view.
-        //        setupTabBar.instance.setuptabBar(vc: self)
-        if mobileNumberReservsation != "" {
-            labelEnterVerificationCode.text = UserManager.isArabic ? "لقد تم  ارسال كود  التفعيل الي  \(mobileNumberReservsation)" : "Verification code sent to \(mobileNumberReservsation)"
-        } else {
-            labelEnterVerificationCode.text = UserManager.isArabic ? "لقد تم  ارسال كود  التفعيل الي رقم \(countryCode)\(phoneNumber)" : "Verification code sent to number \(countryCode)\(phoneNumber)"
-        }
-        resend.setSpecificAttributes(texts: ["\(UserManager.isArabic ? "لم يصل كود التفعيل؟" : "Didn't get the code?") ", "\(UserManager.isArabic ? "إعادة الارسال" : "Resend")"], fonts: [UIFont.init(name: "Tajawal-Regular", size: 15)!, UIFont.init(name: "Tajawal-Regular", size: 15)!], colors: [.gray, .blue])
+        
         if UserManager.isArabic {
-            labelActiviationCode.text = "كود التحقيق"
-            sendCode.setTitle("تأكيد", for: .normal)
+            lblResendHint.text = "لم استلم الكود"
+            lblHint.text = "ارسال كود التاكيد"
+            resend.text = "ارسال الكود"
             sendCode.setTitle("تأكيد", for: .normal)
             viewCode.transform = CGAffineTransform(scaleX: -1, y: 1)
             for item in viewCode.stackView.subviews {
                 item.transform = CGAffineTransform(scaleX: -1, y: 1)
             }
         }
-        labelEnterVerificationCode.font = UIFont(name: "Tajawal-Regular", size: 17)
-        labelActiviationCode.font = UIFont(name: "Tajawal-Bold", size: 17)
         sendCode.titleLabel!.font = UIFont(name: "Tajawal-Regular", size: 17)
         resend.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(resendCode)))
     }

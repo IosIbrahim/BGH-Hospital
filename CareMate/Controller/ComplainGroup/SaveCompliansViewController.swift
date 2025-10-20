@@ -15,8 +15,6 @@ class SaveCompliansViewController: BaseViewController,ListPopupDelegate {
             viewHideVisit.isHidden = true
             visitId = listOfVisit[index].ID
             let object = listOfVisit[index]
-//            labelVisit.text =     UserManager.isArabic ?  "نوع الزياره :\(listOfVisit[index].CLASSNAME_EN)": " Vist Type : \(listOfVisit[index].CLASSNAME_EN)" + " ---Date: \(listOfVisit[index].VISIT_START_DATE)" + " ---healer : \(listOfVisit[index].EMP_EN_DATA)"
-//            + "---Place : \(listOfVisit[index].CLINIC_NAME_EN)"
             visitType.text = UserManager.isArabic ? object.CLASSNAME_AR : object.CLASSNAME_EN
             if visitType.text == "" {
                 visitType.text = object.CLASSNAME
@@ -257,21 +255,13 @@ class SaveCompliansViewController: BaseViewController,ListPopupDelegate {
 
     func loadData() {
         group.enter()
-        var urlString = Constants.APIProvider.CRMCOMPLAINTSLOAD + "patient_id=\(Utilities.sharedInstance.getPatientId())&branch_id=1"
-        let url = URL(string: urlString)
-        
-        
-//        urlString =   urlString.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)!
-//        let parseUrl = Constants.APIProvider.PatInvoices + Constants.getoAuthValue(url: url!, method: "GET")
+        let urlString = Constants.APIProvider.CRMCOMPLAINTSLOAD + "patient_id=\(Utilities.sharedInstance.getPatientId())"
         WebserviceMananger.sharedInstance.makeCall(method: .get, url: urlString, parameters: nil, vc: self, showIndicator: false) { (data, error) in
-            
             if error == nil
             {
                  if let root = ((data as! [String: AnyObject])["Root"] as! [String:AnyObject])["CRM_COMPLAINTS_TYPES"] as? [String:AnyObject]
                 {
-                    
-               
-                    
+
                     if root["CRM_COMPLAINTS_TYPES_ROW"] is [[String:AnyObject]]
                     {
                     
@@ -280,28 +270,15 @@ class SaveCompliansViewController: BaseViewController,ListPopupDelegate {
                     {
                         print(i)
                         self.complaintTypeList.append(visitDTO(JSON: i)!)
-                      
-                        
                     }
                     }
                     else if root["CRM_COMPLAINTS_TYPES_ROW"] is [String:AnyObject]
                     {
                         self.complaintTypeList.append(visitDTO(JSON:root["CRM_COMPLAINTS_TYPES_ROW"] as![String:AnyObject] )!)
-                     
-                        
                     }
-                  
-                    
                 }
-                else
-                 {
-                }
-                
                 if let root = ((data as! [String: AnyObject])["Root"] as! [String:AnyObject])["CRM_COMPLAINTS_CAT"] as? [String:AnyObject]
                {
-                   
-              
-                   
                    if root["CRM_COMPLAINTS_CAT_ROW"] is [[String:AnyObject]]
                    {
                    
@@ -310,76 +287,43 @@ class SaveCompliansViewController: BaseViewController,ListPopupDelegate {
                    {
                        print(i)
                        self.complaintCategoryList.append(visitDTO(JSON: i)!)
-                     
-                       
                    }
                    }
                    else if root["CRM_COMPLAINTS_CAT_ROW"] is [String:AnyObject]
                    {
                        self.complaintCategoryList.append(visitDTO(JSON:root["CRM_COMPLAINTS_CAT_ROW"] as![String:AnyObject] )!)
-                    
-                       
                    }
-                 
-                   
-               }
-               else
-                {
                }
             }
-
             self.group.leave()
-
-           
         }
     }
     func getdata() {
- 
-
-        var urlString = Constants.APIProvider.getVisitDetailsForPatient + "PATIENT_ID=\(Utilities.sharedInstance.getPatientId())&INDEX_FROM=0&INDEX_TO=10&BRANCH_ID=1"
-        let url = URL(string: urlString)
-        
-//        urlString =   urlString.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)!
-//        let parseUrl = Constants.APIProvider.PatInvoices + Constants.getoAuthValue(url: url!, method: "GET")
-        WebserviceMananger.sharedInstance.makeCall(method: .get, url: urlString, parameters: nil, vc: self, showIndicator: false) { (data, error) in
-            
-            if error == nil
-            {
-                if let root = ((data as? [String: AnyObject])?["Root"] as? [String:AnyObject])?["VISIT"] as? [String:AnyObject]
+        //if visitId?.isEmpty == false && visitId != "nil" {
+            let urlString = Constants.APIProvider.getVisitDetailsForPatient + "PATIENT_ID=\(Utilities.sharedInstance.getPatientId())&BRANCH_ID=1"
+            WebserviceMananger.sharedInstance.makeCall(method: .get, url: urlString, parameters: nil, vc: self, showIndicator: false) { (data, error) in
+                if error == nil
                 {
-                    
-               
-                    
-                    if root["VISIT_ROW"] is [[String:AnyObject]]
+                    if let root = ((data as? [String: AnyObject])?["Root"] as? [String:AnyObject])?["VISIT"] as? [String:AnyObject]
                     {
-                    
-                    let appoins = root["VISIT_ROW"] as! [[String: AnyObject]]
-                    for i in appoins
-                    {
-                        print(i)
-                        self.listOfVisit.append(visitDTO(JSON: i)!)
-                      
-                        
+                        if root["VISIT_ROW"] is [[String:AnyObject]]
+                        {
+                        let appoins = root["VISIT_ROW"] as! [[String: AnyObject]]
+                        for i in appoins
+                        {
+                            print(i)
+                            self.listOfVisit.append(visitDTO(JSON: i)!)
+                        }
+                        }
+                        else if root["VISIT_ROW"] is [String:AnyObject]
+                        {
+                            self.listOfVisit.append(visitDTO(JSON:root["VISIT_ROW"] as![String:AnyObject] )!)
+                        }
                     }
-                    }
-                    else if root["VISIT_ROW"] is [String:AnyObject]
-                    {
-                        self.listOfVisit.append(visitDTO(JSON:root["VISIT_ROW"] as![String:AnyObject] )!)
-                     
-                        
-                    }
-               
-                    
-                }
-             
-                else
-                 {
                 }
             }
-
-
-           
-        }
+   //     }
+        
     }
     
 

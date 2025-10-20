@@ -79,11 +79,7 @@ class VisitsViewController: BaseViewController {
     func getdata() {
  
 
-        var urlString = Constants.APIProvider.getVisitDetailsForPatient + "PATIENT_ID=\(Utilities.sharedInstance.getPatientId())&INDEX_FROM=0&INDEX_TO=10&BRANCH_ID=1"
-        let url = URL(string: urlString)
-        
-//        urlString =   urlString.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)!
-//        let parseUrl = Constants.APIProvider.PatInvoices + Constants.getoAuthValue(url: url!, method: "GET")
+        let urlString = Constants.APIProvider.getVisitDetailsForPatient + "PATIENT_ID=\(Utilities.sharedInstance.getPatientId())&BRANCH_ID=1"
         WebserviceMananger.sharedInstance.makeCall(method: .get, url: urlString, parameters: nil, vc: self) { (data, error) in
             
             if error == nil
@@ -99,12 +95,14 @@ class VisitsViewController: BaseViewController {
                     let appoins = root["VISIT_ROW"] as! [[String: AnyObject]]
                     for i in appoins
                     {
+                        let item = i["PAT_SURVEY_LINK"] as? String ?? ""
+                        print(item)
                         print(i)
-                        if self.gotoSurvery && i["PAT_SURVEY_LINK"] as? String ?? "" == "" {
-                            
-                        } else {
+                    //    if self.gotoSurvery && item == "" {
+                       //     print(item)
+                     //   } else {
                             self.listOfVisit.append(visitDTO(JSON: i)!)
-                        }
+                     //   }
                       
                         
                     }
@@ -177,10 +175,15 @@ extension VisitsViewController:UITableViewDelegate,UITableViewDataSource
 //                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "QuestionaryVC") as? QuestionaryVC
 //                    nextViewController?.visit_id = listOfVisit[indexPath.row].VISIT_ID
 //                    self.navigationController?.pushViewController(nextViewController!, animated: true)
-                    let url = listOfVisit[indexPath.row].PAT_SURVEY_LINK
-                    let vc = WebViewViewController(url, showShare: false)
-                    vc.pageTitle = UserManager.isArabic ? "التقييم" : "Survey"
-                    navigationController?.pushViewController(vc, animated: true)
+                  //  let url = listOfVisit[indexPath.row].PAT_SURVEY_LINK
+                //    let vc = WebViewViewController(url, showShare: false)
+                //    vc.pageTitle = UserManager.isArabic ? "التقييم" : "Survey"
+                //    navigationController?.pushViewController(vc, animated: true)
+                    
+                    let vc1:SaveViewController = SaveViewController()
+                    vc1.visitId = listOfVisit[indexPath.row].VISIT_ID
+                    vc1.hospID = listOfVisit[indexPath.row].NAME_EN.getBranchID()
+                    self.navigationController?.pushViewController(vc1, animated: true)
                 }
             } else {
                 let vc1:SaveViewController = SaveViewController()

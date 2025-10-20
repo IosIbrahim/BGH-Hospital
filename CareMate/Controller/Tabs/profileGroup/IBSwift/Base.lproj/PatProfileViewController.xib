@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="constraintHeightTableView" destination="zZh-dW-fDT" id="BoM-sH-C2A"/>
                 <outlet property="imageViewUser" destination="qC0-kK-Kxn" id="meb-jF-W3b"/>
+                <outlet property="imgBack" destination="bbK-1W-ubC" id="FUi-7s-WK0"/>
                 <outlet property="labelAddress" destination="s4L-R2-R0j" id="DWu-Fr-HLq"/>
                 <outlet property="labelAddressTitle" destination="clo-Zd-Wvt" id="6Am-XR-lAk"/>
                 <outlet property="labelBirthday" destination="o4c-eE-VRP" id="s2g-u4-Qun"/>
@@ -59,6 +60,9 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5aA-Dc-9SE">
                                             <rect key="frame" x="16" y="50" width="382" height="120"/>
                                             <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BHG-UserBackground" translatesAutoresizingMaskIntoConstraints="NO" id="bbK-1W-ubC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="120"/>
+                                                </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 2319" translatesAutoresizingMaskIntoConstraints="NO" id="qC0-kK-Kxn">
                                                     <rect key="frame" x="161" y="-30" width="60" height="60"/>
                                                     <constraints>
@@ -84,14 +88,18 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.0" green="0.6705882353" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="zBo-wj-qx6" firstAttribute="centerX" secondItem="5aA-Dc-9SE" secondAttribute="centerX" id="74N-yg-ZDS"/>
                                                 <constraint firstAttribute="height" constant="120" id="8K8-Hk-Clr"/>
+                                                <constraint firstAttribute="trailing" secondItem="bbK-1W-ubC" secondAttribute="trailing" id="Egu-7F-xtr"/>
                                                 <constraint firstItem="xrR-VN-aAy" firstAttribute="top" secondItem="zBo-wj-qx6" secondAttribute="bottom" constant="20" id="G4Q-Qx-yq1"/>
+                                                <constraint firstItem="bbK-1W-ubC" firstAttribute="top" secondItem="5aA-Dc-9SE" secondAttribute="top" id="HdN-FE-ntn"/>
                                                 <constraint firstItem="qC0-kK-Kxn" firstAttribute="top" secondItem="5aA-Dc-9SE" secondAttribute="top" constant="-30" id="PB1-EA-Q3t"/>
                                                 <constraint firstItem="xrR-VN-aAy" firstAttribute="leading" secondItem="5aA-Dc-9SE" secondAttribute="leading" constant="20" id="QDz-Ve-kax"/>
+                                                <constraint firstAttribute="bottom" secondItem="bbK-1W-ubC" secondAttribute="bottom" id="XDo-OV-9FJ"/>
                                                 <constraint firstItem="qC0-kK-Kxn" firstAttribute="centerX" secondItem="5aA-Dc-9SE" secondAttribute="centerX" id="iIJ-F6-pN1"/>
+                                                <constraint firstItem="bbK-1W-ubC" firstAttribute="leading" secondItem="5aA-Dc-9SE" secondAttribute="leading" id="iLP-aM-l9c"/>
                                                 <constraint firstItem="zBo-wj-qx6" firstAttribute="top" secondItem="qC0-kK-Kxn" secondAttribute="bottom" constant="8" id="nTa-1e-uSS"/>
                                                 <constraint firstAttribute="trailing" secondItem="xrR-VN-aAy" secondAttribute="trailing" constant="20" id="yH2-n9-pfL"/>
                                             </constraints>
@@ -389,6 +397,7 @@
         </view>
     </objects>
     <resources>
+        <image name="BHG-UserBackground" width="440" height="384"/>
         <image name="Group 2319" width="58.5" height="58.5"/>
         <image name="Group 7827" width="17.5" height="17.5"/>
         <image name="change" width="64" height="64"/>
