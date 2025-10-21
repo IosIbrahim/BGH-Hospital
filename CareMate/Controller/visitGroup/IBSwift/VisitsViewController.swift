@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SurveyProtocol {
+    func getVisitID(_ id:String)
+}
+
 class VisitsViewController: BaseViewController {
     
     @IBOutlet weak var table: UITableView!
@@ -20,7 +24,7 @@ class VisitsViewController: BaseViewController {
     var fromDropDown = false
     var gotoSurvery = false
     var isSurvey = false
-
+    var delegade:SurveyProtocol?
     var listPopupDelegate : ListPopupDelegate?
 
     override func viewDidLoad() {
@@ -179,11 +183,13 @@ extension VisitsViewController:UITableViewDelegate,UITableViewDataSource
                 //    let vc = WebViewViewController(url, showShare: false)
                 //    vc.pageTitle = UserManager.isArabic ? "التقييم" : "Survey"
                 //    navigationController?.pushViewController(vc, animated: true)
-                    
-                    let vc1:SaveViewController = SaveViewController()
-                    vc1.visitId = listOfVisit[indexPath.row].VISIT_ID
-                    vc1.hospID = listOfVisit[indexPath.row].NAME_EN.getBranchID()
-                    self.navigationController?.pushViewController(vc1, animated: true)
+//                    
+//                    let vc1:SaveViewController = SaveViewController()
+//                    vc1.visitId = listOfVisit[indexPath.row].VISIT_ID
+//                    vc1.hospID = listOfVisit[indexPath.row].NAME_EN.getBranchID()
+//                    self.navigationController?.pushViewController(vc1, animated: true)
+                    delegade?.getVisitID(listOfVisit[indexPath.row].VISIT_ID)
+                    navigationController?.popViewController(animated: true)
                 }
             } else {
                 let vc1:SaveViewController = SaveViewController()
@@ -192,20 +198,6 @@ extension VisitsViewController:UITableViewDelegate,UITableViewDataSource
                 self.navigationController?.pushViewController(vc1, animated: true)
             }
         }
-       
-              
-//        }
-      
-//        
-
-        
-  
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//
-//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "QuestionaryVC") as? QuestionaryVC
-//
-//        nextViewController?.visit_id = listOfVisit[indexPath.row].ID
-//        self.navigationController?.pushViewController(nextViewController!, animated: true)
     }
 }
 

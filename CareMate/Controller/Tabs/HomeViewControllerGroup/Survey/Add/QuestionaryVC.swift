@@ -167,11 +167,6 @@ class QuestionaryVC: BaseViewController ,MainQuestionCellDelagete,UITableViewDel
             let urlString = Constants.APIProvider.SaveQuestionary
             let url = URL(string: urlString)
             let parseUrl = Constants.APIProvider.SaveQuestionary + "?" + Constants.getoAuthValue(url: url!, method: "POST")
-//            WebserviceMananger.sharedInstance.makeCall(method: .post, url: parseUrl, parameters: parameters, vc: self) { (data, error) in
-//                Utilities.showAlert(self, messageToDisplay: UserManager.isArabic ? "تم الارسال" : "Done sucessfully")
-//                self.navigationController?.popViewController(animated: true)
-//            }
-            
             let request = getRequest(url: parseUrl, parameters: parameters, headers: nil)
             AF.request(request).responseJSON { (response:AFDataResponse<Any>) in
                 Utilities.showAlert(self, messageToDisplay: UserManager.isArabic ? "تم الارسال" : "Done sucessfully")

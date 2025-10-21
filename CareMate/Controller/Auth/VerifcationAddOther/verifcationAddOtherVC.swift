@@ -85,6 +85,8 @@ class verifcationAddOtherVC: BaseViewController {
             for item in viewCode.stackView.subviews {
                 item.transform = CGAffineTransform(scaleX: -1, y: 1)
             }
+        }else {
+            lblResendHint.text = "Don't Recieve Code"
         }
         sendCode.titleLabel!.font = UIFont(name: "Tajawal-Regular", size: 17)
         resend.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(resendCode)))

@@ -34,6 +34,7 @@ class AllSurviesViewController: BaseViewController {
     @objc func openAddSurvey() {
         let vc = VisitsViewController()
         vc.gotoSurvery = true
+        vc.delegade = self
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -64,6 +65,18 @@ class AllSurviesViewController: BaseViewController {
                 }
             }
         }
+    }
+}
+
+extension AllSurviesViewController:SurveyProtocol {
+    func getVisitID(_ id:String){
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "QuestionaryVC") as? QuestionaryVC
+            nextViewController?.visit_id = id
+            self.navigationController?.pushViewController(nextViewController!, animated: true)
+        }
+
     }
 }
 
