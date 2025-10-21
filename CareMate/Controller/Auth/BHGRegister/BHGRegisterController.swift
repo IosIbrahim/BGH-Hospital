@@ -87,6 +87,7 @@ class BHGRegisterController: BaseViewController {
         if showPassordPicker {
             sendPassword()
         }else if showEmail {
+            showEmail = false
             sendEmail()
         } else {
             sendIDPhone()
@@ -176,6 +177,8 @@ class BHGRegisterController: BaseViewController {
                   return
               }
         
+        sendEmailSession(email.replacingOccurrences(of: "@", with: "%40"), mobile: currentPatientMobile.replacingOccurrences(of: "+", with: "%2B"))
+        return
         let pars = ["email_address":email,
                     "mobile": currentPatientMobile,
                     "init":"0"]
@@ -206,10 +209,74 @@ class BHGRegisterController: BaseViewController {
                     }
                     
                 }
+            }else {
+                
             }
         }
     }
     
+    func sendEmailSession(_ email:String,mobile:String) {
+        let parameters = "init=0&email_address=\(email)&mobile=\(mobile)"
+        let postData =  parameters.data(using: .utf8)
+        let urlString = Constants.APIProvider.SignupSecond
+        var request = URLRequest(url: URL(string: urlString)!,timeoutInterval: Double.infinity)
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+        request.httpMethod = "POST"
+        request.httpBody = postData
+        if !showEmail {
+            indicator.sharedInstance.show()
+        }
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async() {
+                indicator.sharedInstance.dismiss()
+            }
+          guard let data = data else {
+            print(String(describing: error))
+            return
+          }
+          print(String(data: data, encoding: .utf8)!)
+            let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary ?? .init()
+            if let code = json?["CODE"] {
+                 if code as? Int == 200 {
+                    if json?["ALREADY_REGISTERED_FLAG"] as? String == "1" {
+                        DispatchQueue.main.async() {
+                            OPEN_HINT_POPUP(container: self, message: UserManager.isArabic ? "لديك ملف بالفعل في سجلات المستشفي لدينا, يمكنك الانتقال الي تسجيل الدخول, لمزيد من المعلومات يرجي الاتصال بنا" : "You have already registered on our hospital records, You can navigate to login, For more information please contact us")
+                        }
+                        return
+                    }else {
+                        if self.showEmail {
+                            print("Code Resended Again")
+                        }else {
+                            DispatchQueue.main.async() {
+                                self.showEmail = true
+                                let vc = verifcationAddOtherVC(PatientId: json?["PATIENT_ID"] as? String, patientIdArray: nil, vcType: .fromRetrive)
+                                vc.mobileNumberReservsation = email
+                                vc.delegate = self
+                                self.navigationController?.pushViewController(vc, animated: true)
+                            }
+                        }
+                       
+                    }
+                    
+                 }else {
+                     DispatchQueue.main.async() {
+                         let formSheet = MZFormSheetController.init(viewController: slotNot(messageAr: " عذرًا ، البيانات المدخلة لا تتطابق مع سجلاتنا ، لمزيد من المعلومات يرجى الاتصال بنا او مراسلاتنا بالبريد الإلكتروني", MessageEn:  "Sorry, the Entered data does not match our records, for more information please contact us By Calling on "))
+                         formSheet.shouldDismissOnBackgroundViewTap = true
+                         formSheet.transitionStyle = .slideFromBottom
+                         formSheet.presentedFormSheetSize = CGSize.init(width: UIScreen.main.bounds.width * 0.9, height: 380)
+                         formSheet.shouldCenterVertically = true
+                         formSheet.present(animated: true, completionHandler: nil)
+                         Utilities.showAlert(messageToDisplay:"  24997000 OR By Email: \(ConstantsData.email)")
+                     }
+                 }
+            }
+            self.showEmail = true
+        }
+
+        task.resume()
+
+    }
     
     func sendPassword() {
         

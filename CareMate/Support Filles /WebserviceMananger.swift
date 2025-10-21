@@ -71,13 +71,13 @@ class WebserviceMananger: NSObject {
                             }
                             else
                             {
-                                completionHandler(data as AnyObject?, nil)
+                                completionHandler(data as? AnyObject, nil)
 
                             }
                             }
                             else
                             {
-                                completionHandler(data as AnyObject?, nil)
+                                completionHandler(data as? AnyObject, nil)
                             }
                             
                         }
