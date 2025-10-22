@@ -308,8 +308,10 @@ class MedicalRecordVC: BaseViewController
     }
     
     @objc func openInvocie(sender : UITapGestureRecognizer) {
-        let vc1:InvoicesAndReceiptsViewController = InvoicesAndReceiptsViewController()
-       
+        // change to change account
+        
+    //    let vc1:InvoicesAndReceiptsViewController = InvoicesAndReceiptsViewController()
+        let vc1 = AccountsViewController()
         self.navigationController?.pushViewController(vc1, animated: true)
     }
     @objc func openRequestEmergency(sender : UITapGestureRecognizer) {
@@ -366,6 +368,9 @@ class MedicalRecordVC: BaseViewController
         self.Locations.text = UserManager.isArabic ? "مواقعنا" : "Our Locations"
         uilabelRequestEmegency.text =  UserManager.isArabic ? "زيارة منزلية/اسعاف" : "Ambulance/ Home Visit"
         LabelInvocies.text = UserManager.isArabic ? "الماليات"  :"Invocies"
+        LabelInvocies.text = UserManager.isArabic ? "تغيير الحساب"  :"Change Account"
+        LabelInvocies.text = UserManager.isArabic ? "عائلتي"  :"My Family"
+
         LabelrequestReport.text = UserManager.isArabic ? "طلب تقرير طبي" : "Medical Report Request"
 
 //        user name

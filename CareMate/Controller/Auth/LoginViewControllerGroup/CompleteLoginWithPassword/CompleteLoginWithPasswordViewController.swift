@@ -131,7 +131,6 @@ class CompleteLoginWithPasswordViewController: BaseViewController {
                                   Utilities.sharedInstance.setPatientId(patienId: OUT_PARMS_ROW["PATIENTID"] as? String ?? "")
                                   UserDefaults.standard.set(Utilities.sharedInstance.getPatientId(), forKey: "Utilities.sharedInstance.getPatientId()")
                                   currentPatientMobile =  OUT_PARMS_ROW["PAT_TEL"] as? String ?? ""
-//                                  Utilities.sharedInstance.getPatientId() =   Utilities.sharedInstance.getPatientId().replacingOccurrences(of: " ", with: "")
                                   UserDefaults.standard.set(true, forKey: "loginOrNO")
                                   UserDefaults.standard.set(currentPatientMobile, forKey: "PAT_TEL")
                                   

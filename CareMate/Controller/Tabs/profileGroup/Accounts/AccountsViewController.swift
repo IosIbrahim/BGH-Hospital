@@ -100,15 +100,29 @@ extension AccountsViewController: UITableViewDelegate, UITableViewDataSource {
             phoneWithoutCode = model.PAT_TEL ?? "1234"
             phoneWithoutCode.removeFirst(4)
         }
-        if model.isUnderAgepatient() {
-            underAge(patientId: model.PATIENTID ?? "", mobile: model.PAT_TEL ?? "",user: model)
-        }else {
-            let vc = CompleteLoginWithPasswordViewController(mobile: model.PAT_TEL ?? "", patientId: model.PATIENTID ?? "", code: "6850", mobileWithoutCode: phoneWithoutCode)
-            vc.user = model
-            vc.comesFromProfile = true
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        // new change
+//        if model.isUnderAgepatient() {
+//            underAge(patientId: model.PATIENTID ?? "", mobile: model.PAT_TEL ?? "",user: model)
+//        }else {
+//            let vc = CompleteLoginWithPasswordViewController(mobile: model.PAT_TEL ?? "", patientId: model.PATIENTID ?? "", code: "6850", mobileWithoutCode: phoneWithoutCode)
+//            vc.user = model
+//            vc.comesFromProfile = true
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+        setSelectUser(model)
         
+    }
+    
+    func setSelectUser(_ user:UserMobileDTO) {
+        currentPatientIDOrigni = user.PATIENTID ?? ""
+        Utilities.sharedInstance.setPatientId(patienId: user.PATIENTID ?? "")
+        UserDefaults.standard.set(Utilities.sharedInstance.getPatientId(), forKey: "Utilities.sharedInstance.getPatientId()")
+        currentPatientMobile =   user.PAT_TEL ?? ""
+        UserDefaults.standard.set(currentPatientMobile, forKey: "PAT_TEL")
+        user.saveToUser()
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
+        self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     
     func underAge(patientId:String,mobile:String,code:String = "6850",user:UserMobileDTO) {
