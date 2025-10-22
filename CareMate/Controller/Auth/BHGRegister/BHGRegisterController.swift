@@ -267,7 +267,7 @@ class BHGRegisterController: BaseViewController {
                          formSheet.presentedFormSheetSize = CGSize.init(width: UIScreen.main.bounds.width * 0.9, height: 380)
                          formSheet.shouldCenterVertically = true
                          formSheet.present(animated: true, completionHandler: nil)
-                         Utilities.showAlert(messageToDisplay:"  24997000 OR By Email: \(ConstantsData.email)")
+                         Utilities.showAlert(messageToDisplay:"\(ConstantsData.mobile) - \(ConstantsData.mobile1) OR By Email: \(ConstantsData.email)")
                      }
                  }
             }

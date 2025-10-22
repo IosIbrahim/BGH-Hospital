@@ -54,12 +54,8 @@ class DoseReminderHomeViewController: BaseViewController,UNUserNotificationCente
         initHeader(isNotifcation: true, isLanguage: true, title: UserManager.isArabic ? "منبه الدواء" : "Dose Reminder", hideBack: false)
         self.doseReminderTableView.emptyDataSetSource = self
         self.doseReminderTableView.emptyDataSetDelegate = self
-        
                 if #available(iOS 10.0, *) {
-        
                     let center = UNUserNotificationCenter.current()
-        
-                   
                     center.getPendingNotificationRequests { (notifications) in
                         print("Countkaskas: \(notifications.count)")
                         
@@ -67,13 +63,9 @@ class DoseReminderHomeViewController: BaseViewController,UNUserNotificationCente
                             print("item.identifier")
                             print(item.identifier)
                             print("item.trigger")
-
                             print(item.trigger)
-                            
-                            
                         }
                     }
-        
                 } else {
                     // Fallback on earlier versions
                 }
@@ -135,9 +127,9 @@ class DoseReminderHomeViewController: BaseViewController,UNUserNotificationCente
       
         if ddd.count == 0 {
             initNotDataShape(200)
-            viewNoDAtaIsHidden = false
+       //     viewNoDAtaIsHidden = false
             let nc = NotificationCenter.default
-            nc.post(name: Notification.Name("nodataFound"), object: nil)
+         //   nc.post(name: Notification.Name("nodataFound"), object: nil)
             nc.post(name: Notification.Name("changeErrorTitle"), object: nil)
 
         }
@@ -148,7 +140,6 @@ class DoseReminderHomeViewController: BaseViewController,UNUserNotificationCente
         self.doseReminderTableView.reloadData()
         doseReminderTableView.delegate = self
         doseReminderTableView.dataSource = self
-
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -167,17 +158,26 @@ class DoseReminderHomeViewController: BaseViewController,UNUserNotificationCente
         print("Local Notification :: ", response)
     }
     
-   
-    
-    
     func setupView(){
         setMonth(value: valueMonth)
         plusBtn.setTitle("", for: .normal)
         minsBtn.setTitle("", for: .normal)
         setupcollectionView()
-        
+        openTermsConditions()
         nc.addObserver(self, selector: #selector(refreshAfterAddDose), name: Notification.Name("refreshAfterAddDose"), object: nil)
     }
+    
+    private func openTermsConditions() {
+        let msg = UserManager.isArabic ? ConstantsData.termsDosAr:ConstantsData.termsDosEn
+        OPEN_HINT_POPUP(container: self, message: msg,dismiss: false) {
+            if self.ddd.isEmpty {
+                  self.viewNoDAtaIsHidden = false
+                  let nc = NotificationCenter.default
+                  nc.post(name: Notification.Name("nodataFound"), object: nil)
+            }
+        }
+    }
+    
     @objc func refreshAfterAddDose(){
     
         self.ddd = []
@@ -188,45 +188,31 @@ class DoseReminderHomeViewController: BaseViewController,UNUserNotificationCente
         let dateFormatterPrint = DateFormatter()
         dateFormatterPrint.dateFormat = "yyyy/MM/dd"
         self.dateCurrent =   dateFormatterPrint.string(from: Date())
-
         self.dateFromCalender = dateFormatterPrint.string(from: Date())
-
-        
-        var allDays: Results<reminderDrug> = (realm.objects(reminderDrug.self))
-        
+        let allDays: Results<reminderDrug> = (realm.objects(reminderDrug.self))
         for item in allDays
                 
         {
             print(item.drugName)
             print(item.allDate)
-
         }
         
-        var categories: Results<reminderDrug> = (realm.objects(reminderDrug.self).filter("allDate = '\( self.dateCurrent)'"))
-//
+        let categories: Results<reminderDrug> = (realm.objects(reminderDrug.self).filter("allDate = '\( self.dateCurrent)'"))
         print("categories")
         print(categories)
-
-
         let scope = (realm.objects(reminderDrug.self).distinct(by: ["date"]).filter("allDate = '\( self.dateCurrent)'").value(forKeyPath: "date") ) as?[String]
-        
-
         print("scope")
-        
         print(scope)
         for s in scope!{
-            var categories1: Results<reminderDrug> = (categories.filter("date = '\(s)'"))
+            let categories1: Results<reminderDrug> = (categories.filter("date = '\(s)'"))
             self.ddd.append([categories1])
-
         }
-      
         if ddd.count == 0 {
             initNotDataShape(200)
-            viewNoDAtaIsHidden = false
+          //  viewNoDAtaIsHidden = false
             let nc = NotificationCenter.default
-            nc.post(name: Notification.Name("nodataFound"), object: nil)
+         //   nc.post(name: Notification.Name("nodataFound"), object: nil)
             nc.post(name: Notification.Name("changeErrorTitle"), object: nil)
-
         }
         else{
             initNotDataShape(200)
@@ -471,9 +457,9 @@ extension DoseReminderHomeViewController:UITableViewDelegate,UITableViewDataSour
         }
         if ddd.count == 0 {
             initNotDataShape(200)
-            viewNoDAtaIsHidden = false
+          //  viewNoDAtaIsHidden = false
             let nc = NotificationCenter.default
-            nc.post(name: Notification.Name("nodataFound"), object: nil)
+        //    nc.post(name: Notification.Name("nodataFound"), object: nil)
             nc.post(name: Notification.Name("changeErrorTitle"), object: nil)
 
         }
@@ -614,9 +600,9 @@ extension DoseReminderHomeViewController:delete
         }
         if ddd.count == 0 {
             initNotDataShape(200)
-            viewNoDAtaIsHidden = false
+      //      viewNoDAtaIsHidden = false
             let nc = NotificationCenter.default
-            nc.post(name: Notification.Name("nodataFound"), object: nil)
+         //   nc.post(name: Notification.Name("nodataFound"), object: nil)
             nc.post(name: Notification.Name("changeErrorTitle"), object: nil)
 
         }
@@ -695,9 +681,9 @@ extension DoseReminderHomeViewController:delete
         }
         if ddd.count == 0 {
             initNotDataShape(200)
-            viewNoDAtaIsHidden = false
+        //    viewNoDAtaIsHidden = false
             let nc = NotificationCenter.default
-            nc.post(name: Notification.Name("nodataFound"), object: nil)
+         //   nc.post(name: Notification.Name("nodataFound"), object: nil)
             nc.post(name: Notification.Name("changeErrorTitle"), object: nil)
 
         }

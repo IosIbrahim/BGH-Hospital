@@ -213,6 +213,7 @@ struct ConstantsData {
     static let email = "info@drbakhsh.com"
     static let facebook = "https://www.facebook.com/bhghospital/"
     static let mobile = "0126510666"
+    static let mobile1 = "0126510555"
     static let unifiedNumber = "920009596"
     static let whatsapp = "0126510555"
     static let twitter = "https://x.com/BHGHOSPITAL"
@@ -222,4 +223,8 @@ struct ConstantsData {
     static let drama = "https://www.drbakhsh.com/"
     static let lat1 = 21.5203866
     static let long1 = 39.1910548
+    
+    static let termsDosAr = "تنويه هام: \n خدمة تذكير الدواء هي أداة تقنية مساعدة تهدف إلى تذكير المريض بمواعيد تناول الأدوية استنادًا إلى البيانات المسجَّلة في ملفه الطبي الإلكتروني، ولا تُعدّ بديلا ً عن التعليمات الصادرة من الطبيب المعالج أو الصيدلي. \n يتحمل المستخدم (المريض) كامل المسؤولية عن الالتزام بوصفته الطبية الأصلية، وتناول الجرعات في مواعيدها، والتحقق من دقة البيانات والتوقيتات الظاهرة في التطبيق. \n يُخلي مستشفى الدكتور عبد الرحمن طه بخش مسؤوليته كاملةً عن أي خطأ أو ضرر أو مضاعفات قد تنتج عن عدم الالتزام بمواعيد أو تعليمات الأدوية."
+    
+    static let termsDosEn = "Important Notice:\nThe Medication Reminder Service is a supportive digital tool designed to help patients remember their medication schedules based on the data recorded in their electronic medical records.\n It is not a substitute for the instructions provided by the treating physician or pharmacist The user (patient) is fully responsible for adhering to their original medical prescription, taking doses on time, and verifying the accuracy of the information and timings displayed in the application.\n Dr. Abdulrahman Taha Bakhsh Hospital bears no responsibility for any errors, harm, or complications that may result from failure to follow prescribed medication schedules or instructions."
 }
