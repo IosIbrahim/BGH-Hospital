@@ -42,7 +42,7 @@ class ContactUsViewController: BaseViewController, MFMailComposeViewControllerDe
             labelContact.text = "تواصل معنا"
             labelContactDetails.text = "لأي استفسار او مساعدة, يمكنكم التواصل معناعن طريق قنوات الاتصال المختلفة أدناه."
             labelPhoneNumber.text = "رقم الهاتف"
-            labelWhatsapp.text = "الرمز البريدي"
+            labelWhatsapp.text = "الرقم الموحد المختصر"
             labelEmail.text = "البريد الالكتروني"
             labelContactUsThrow.text = "تواصل معنا عبر"
             labelHelpAndSupport.text = "المساعدة والدعم"
@@ -84,7 +84,9 @@ class ContactUsViewController: BaseViewController, MFMailComposeViewControllerDe
     }
     
     @objc func openChatOnWhatsapp() {
-        openWhatsApp(number: ConstantsData.whatsapp)
+      //  openWhatsApp(number: ConstantsData.whatsapp)
+        call(phoneNumber: ConstantsData.unifiedNumber)
+
     }
     
     @objc func openHelpAndSupport() {
