@@ -74,8 +74,17 @@ class DoctorProfileViewController: BaseViewController {
                     self.labelTitleSpec.text = (UserManager.isArabic ? model["SPECIALTY_NAME_AR"] as? String : model["SPECIALTY_NAME_EN"] as? String) ?? ""
                     self.labelTitleSpec.textAlignment = .center
                     self.labelBranch.text = (UserManager.isArabic ? model["PLACE_AR"] as? String : model["PLACE_EN"] as? String) ?? ""
-                    self.branch?.arabicName = model["PLACE_AR"] as? String ?? self.branch?.arabicName ?? ""
-                    self.branch?.englishName = model["PLACE_EN"] as? String ?? self.branch?.englishName ?? ""
+                    if let loc = model["PLACE_AR"] as? String {
+                        self.branch?.arabicName = loc
+                    }else {
+                        self.branch?.arabicName = "كل الفروع"
+                    }
+                    if let locEn = model["PLACE_EN"] as? String {
+                        self.branch?.englishName = locEn
+                    }else {
+                        self.branch?.englishName = "All Branches"
+                    }
+                    
                     self.labelAbout.stringFromHtml(htmlString: (UserManager.isArabic ? model["EMP_BIO_DESC_AR"] as? String : model["EMP_BIO_DESC_EN"] as? String) ?? "")
                     self.labelAbout.font = UIFont(name: "Tajawal-Regular", size: 15)
                 }
