@@ -34,6 +34,7 @@ class OperationTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        viewReport.isHidden = true
         labelReport.text = UserManager.isArabic ? "طلب تقرير" : "Request report"
         viewReport.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openReport)))
         viewinstructions.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openInstructions)))
