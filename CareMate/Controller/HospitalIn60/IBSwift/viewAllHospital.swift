@@ -11,6 +11,7 @@ import WebKit
 
 class viewAllHospital: BaseViewController ,WKNavigationDelegate{
 
+    @IBOutlet weak var lblmobile: UILabel!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var labelDescription: UILabel!
     
@@ -44,7 +45,7 @@ class viewAllHospital: BaseViewController ,WKNavigationDelegate{
         let url = URL(string: self.url)!
         
         webView.load(URLRequest(url: url))
-        
+        lblmobile.text = "\(ConstantsData.mobile) - \(ConstantsData.mobile1)"
         // Do any additional setup after loading the view.
         if UserManager.isArabic {
             labelDescription.text = "إذا كنت بحاجة إلي المساعدة أو مزيد من الإستفسارات يمكنك التواصل معنا عن طريق الهاتف"

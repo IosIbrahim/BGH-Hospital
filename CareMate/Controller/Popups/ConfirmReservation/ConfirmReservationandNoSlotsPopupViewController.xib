@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,6 +24,8 @@
                 <outlet property="labelDear" destination="4O2-8x-tEe" id="AkY-5x-NGb"/>
                 <outlet property="labelDetails" destination="HBe-HE-P0Q" id="abQ-fV-vkz"/>
                 <outlet property="labelTitle" destination="2Qm-do-0KW" id="aOR-xy-COs"/>
+                <outlet property="lblEmail" destination="Xyx-mu-zKz" id="LBp-gl-XWM"/>
+                <outlet property="lblMobile" destination="vPn-FA-USI" id="QZh-ss-lEx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewBackground" destination="nwh-pl-MF8" id="5Tc-d3-JZ5"/>
                 <outlet property="viewClose" destination="u64-zM-0IR" id="Mkw-RL-iFf"/>
@@ -138,8 +140,8 @@
                                                 <constraint firstAttribute="bottom" secondItem="2oV-pQ-zJd" secondAttribute="bottom" id="zuT-xP-q0x"/>
                                             </constraints>
                                         </view>
-                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzm-uq-1pS">
-                                            <rect key="frame" x="0.0" y="39" width="294" height="35"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzm-uq-1pS">
+                                            <rect key="frame" x="0.0" y="43" width="294" height="35"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="66L-f4-G11">
                                                     <rect key="frame" x="55" y="0.0" width="220.5" height="35"/>
@@ -181,8 +183,8 @@
                                                 <constraint firstItem="66L-f4-G11" firstAttribute="top" secondItem="Bzm-uq-1pS" secondAttribute="top" id="gU7-tq-7P1"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYe-76-D0y">
-                                            <rect key="frame" x="0.0" y="43" width="294" height="35"/>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYe-76-D0y">
+                                            <rect key="frame" x="0.0" y="78" width="294" height="35"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ek-o6-c9o">
                                                     <rect key="frame" x="55" y="0.0" width="220.5" height="35"/>

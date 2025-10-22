@@ -12,6 +12,8 @@ class PaymentPopupViewController: BaseViewController {
    
     @IBOutlet weak var title1: UILabel!
     
+    @IBOutlet weak var lblWhats: UILabel!
+    @IBOutlet weak var lblMobile: UILabel!
     
     @IBOutlet weak var subTitle: UILabel!
     
@@ -44,10 +46,11 @@ class PaymentPopupViewController: BaseViewController {
             subTitle.text = "we wish You continued health and wellness"
 
         }
-       
+        lblMobile.text = "\(ConstantsData.mobile) - \(ConstantsData.mobile1)"
+        lblWhats.text = "\(ConstantsData.whatsapp)"
     }
     @IBAction func openWhatsApp(_ sender: Any) {
-        let phoneNumber =  "+9651830003" // you need to change this number
+        let phoneNumber =  "\(ConstantsData.whatsapp)" // you need to change this number
         let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(phoneNumber)")!
         if UIApplication.shared.canOpenURL(appURL) {
             if #available(iOS 10.0, *) {
@@ -62,7 +65,7 @@ class PaymentPopupViewController: BaseViewController {
         
     }
     @IBAction func phoneCliked(_ sender: Any) {
-        if let url = NSURL(string: "tel://9651830003"), UIApplication.shared.canOpenURL(url as URL) {
+        if let url = NSURL(string: "tel://\(ConstantsData.mobile)"), UIApplication.shared.canOpenURL(url as URL) {
             UIApplication.shared.openURL(url as URL)
         }
     }

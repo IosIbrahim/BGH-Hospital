@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,6 +14,8 @@
                 <outlet property="LabelAlert" destination="5In-NH-VWA" id="sGJ-9p-aXK"/>
                 <outlet property="labelHeightConstaint" destination="Lcl-op-fyS" id="YtF-WQ-krb"/>
                 <outlet property="labeleAlert" destination="sjB-ET-hBO" id="IfI-G3-5q3"/>
+                <outlet property="lblEmail" destination="WjG-ll-DqZ" id="oxA-fX-czq"/>
+                <outlet property="lblMobile" destination="n4G-UR-c5i" id="Obc-NQ-3Va"/>
                 <outlet property="textViewAlertMessage" destination="5In-NH-VWA" id="2vp-sd-xFE"/>
                 <outlet property="view" destination="sRX-TX-49T" id="bPi-TO-6Me"/>
                 <outlet property="wishMessage" destination="ZIG-9B-NTt" id="xol-PE-PH9"/>
@@ -71,7 +73,7 @@
                     <color key="textColor" systemColor="linkColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvF-25-nve">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AvF-25-nve">
                     <rect key="frame" x="20" y="145.5" width="30" height="25"/>
                     <connections>
                         <action selector="openWhatsApp:" destination="-1" eventType="touchUpInside" id="sgD-Yg-Gp6"/>

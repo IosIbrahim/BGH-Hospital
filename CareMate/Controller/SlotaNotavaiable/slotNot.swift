@@ -16,6 +16,8 @@ class slotNot: BaseViewController {
     var messageAr1 = ""
     var messageEn1 = ""
 
+    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var lblMobile: UILabel!
     @IBOutlet weak var textFieldHeigthConstaint: UITextView!
     @IBOutlet weak var labelHeightConstaint: NSLayoutConstraint!
     @IBOutlet weak var textViewAlertMessage: UILabel!
@@ -69,6 +71,8 @@ class slotNot: BaseViewController {
             labeleAlert.text = "Alert"
 
         }
+        lblMobile.text = "\(ConstantsData.mobile) - \(ConstantsData.mobile1)"
+        lblEmail.text = ConstantsData.email
 
         // Do any additional setup after loading the view.
     }
@@ -77,7 +81,7 @@ class slotNot: BaseViewController {
         mz_dismissFormSheetController(animated: true, completionHandler: nil)
     }
     @IBAction func phoneCiked(_ sender: Any) {
-        if let url = NSURL(string: "tel://96524997000"), UIApplication.shared.canOpenURL(url as URL) {
+        if let url = NSURL(string: "tel://\(ConstantsData.mobile)"), UIApplication.shared.canOpenURL(url as URL) {
             UIApplication.shared.openURL(url as URL)
         }
     }
@@ -97,7 +101,7 @@ class slotNot: BaseViewController {
            }
     }
     @IBAction func openWhatsApp(_ sender: Any) {
-        let phoneNumber =  "+9651830003" // you need to change this number
+        let phoneNumber =  ConstantsData.whatsapp// you need to change this number
         let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(phoneNumber)")!
         if UIApplication.shared.canOpenURL(appURL) {
             if #available(iOS 10.0, *) {

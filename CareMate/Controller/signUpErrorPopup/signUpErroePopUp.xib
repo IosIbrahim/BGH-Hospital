@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="signUpErroePopUp" customModule="CareMate" customModuleProvider="target">
             <connections>
+                <outlet property="btnEmail" destination="h1W-1i-Acg" id="tih-aJ-gkj"/>
+                <outlet property="lblMobile" destination="HZs-Kw-X2z" id="Had-iH-NHZ"/>
                 <outlet property="view" destination="F5H-r2-fQR" id="Nyk-An-DgZ"/>
             </connections>
         </placeholder>
@@ -20,53 +22,53 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7Z-Py-Psf">
-                    <rect key="frame" x="20" y="88" width="314" height="0.0"/>
+                    <rect key="frame" x="20" y="136" width="314" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+965-1830003" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZs-Kw-X2z" customClass="GTLabel" customModule="CareMate" customModuleProvider="target">
-                    <rect key="frame" x="60" y="128" width="234" height="30"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+965-1830003" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZs-Kw-X2z">
+                    <rect key="frame" x="60" y="176" width="234" height="30"/>
                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                     <color key="textColor" systemColor="linkColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alert" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTe-H3-HH2">
-                    <rect key="frame" x="156" y="53" width="42.5" height="29"/>
+                    <rect key="frame" x="156" y="101" width="42.5" height="29"/>
                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                     <color key="textColor" systemColor="linkColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phone-icon" translatesAutoresizingMaskIntoConstraints="NO" id="8oR-Zv-mjQ">
-                    <rect key="frame" x="20" y="121" width="32" height="42"/>
+                    <rect key="frame" x="20" y="169" width="32" height="42"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="42" id="bCa-wr-TKd"/>
                         <constraint firstAttribute="width" constant="32" id="vtC-gv-IIn"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Email" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvG-cL-eIi">
-                    <rect key="frame" x="20" y="183" width="314" height="118"/>
+                    <rect key="frame" x="20" y="231" width="314" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI2-Pu-HvQ">
-                    <rect key="frame" x="60" y="128" width="234" height="30"/>
+                    <rect key="frame" x="60" y="176" width="234" height="30"/>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blueemail" translatesAutoresizingMaskIntoConstraints="NO" id="eE5-E6-1M6">
-                    <rect key="frame" x="20" y="311" width="32" height="42"/>
+                    <rect key="frame" x="20" y="277" width="32" height="42"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="bPP-WR-eRm"/>
                         <constraint firstAttribute="height" constant="42" id="o6i-oC-2ld"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1W-1i-Acg">
-                    <rect key="frame" x="60" y="314.5" width="295" height="35"/>
+                    <rect key="frame" x="60" y="280.5" width="295" height="35"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                     <state key="normal" title="App_support@alsalamhosp.com"/>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTB-6h-ATR">
-                    <rect key="frame" x="5" y="358" width="344" height="66"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTB-6h-ATR">
+                    <rect key="frame" x="5" y="324" width="344" height="66"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whatsapp" translatesAutoresizingMaskIntoConstraints="NO" id="FDg-Eb-XET">
                             <rect key="frame" x="20" y="5" width="41" height="64"/>

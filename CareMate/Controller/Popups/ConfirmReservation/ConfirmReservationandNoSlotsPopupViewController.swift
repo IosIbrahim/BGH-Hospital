@@ -29,6 +29,8 @@ func OPEN_RESERVATION_AND_NO_SLOTS_POPUP(container: UIViewController, type: Rese
 
 class ConfirmReservationandNoSlotsPopupViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
+    @IBOutlet weak var lblEmail: UILabel!
+    @IBOutlet weak var lblMobile: UILabel!
     @IBOutlet weak var viewBackground: UIView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelDear: UILabel!
@@ -81,6 +83,8 @@ class ConfirmReservationandNoSlotsPopupViewController: UIViewController, MFMailC
                 labelDetails.text = "Sorry, the phone number data is not known to us at the hospital, so if you have a hospital file, please register account, or contact us for more help via:"
             }
         }
+        lblEmail.text = ConstantsData.email
+        lblMobile.text = "\(ConstantsData.mobile) - \(ConstantsData.mobile1)"
         viewPhone.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(makACall)))
         viewemail.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sendEmail)))
         viewWhatsapp.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sendWhatsapp)))
