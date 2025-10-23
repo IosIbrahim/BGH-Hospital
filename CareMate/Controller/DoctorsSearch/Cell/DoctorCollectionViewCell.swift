@@ -33,9 +33,8 @@ class DoctorCollectionViewCell: UICollectionViewCell {
     func setData(_ model: Doctor) {
 //        let imageUrl = "\(Constants.APIProvider.IMAGE_BASE)\(model.DOCTOR_PIC ?? "")"
 //        imageViewDoctor.loadFromUrl(url: imageUrl)
-        let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)\(model.DOCTOR_PIC ?? "")")
-        print("http://172.25.26.140/mobileApi/\(model.DOCTOR_PIC ?? "")")
-        print("\(Constants.APIProvider.IMAGE_BASE)\(model.DOCTOR_PIC ?? "")")
+        let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(model.DOCTOR_PIC ?? "")")
+        print("\(Constants.APIProvider.IMAGE_BASE)/\(model.DOCTOR_PIC ?? "")")
         imageViewDoctor.kf.setImage(with: url, placeholder: UIImage(named: model.GENDERCODE ?? "M" == "M" ? "RectangleMan" : "RectangleGirl"))
         labelName.text = UserManager.isArabic ? model.DOC_NAME_AR : model.DOC_NAME_EN ?? ""
         labelSpeciality.text = UserManager.isArabic ? model.SPECIALITY_AR : model.SPECIALITY_EN
