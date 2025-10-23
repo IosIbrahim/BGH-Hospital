@@ -895,32 +895,33 @@ extension UIViewController {
     }
     func GoToHomeView()  {
      
-        let defaults = UserDefaults.standard
-
-        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
-            let decoder = JSONDecoder()
-            if let loadedPerson = try? decoder.decode(LoginedUser.self, from: savedPerson) {
-              
-                let window = UIApplication.shared.delegate!.window
-                let mainViewController = self.storyboard!.instantiateViewController(withIdentifier: "SplashNavigation")
-                window!?.rootViewController = mainViewController
-                window!?.makeKeyAndVisible()
-                
-            }
-        }
-        else
-        {
-            
-            
-              let window = UIApplication.shared.delegate!.window
-              let vc = BHGLoginController()
-              window!?.rootViewController = vc
-              window!?.makeKeyAndVisible()
-          
-        }
-        
+//        let defaults = UserDefaults.standard
+//
+//        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
+//            let decoder = JSONDecoder()
+//            if let loadedPerson = try? decoder.decode(LoginedUser.self, from: savedPerson) {
+//              
+//                let window = UIApplication.shared.delegate!.window
+//                let mainViewController = self.storyboard!.instantiateViewController(withIdentifier: "SplashNavigation")
+//                window!?.rootViewController = mainViewController
+//                window!?.makeKeyAndVisible()
+//                
+//            }
+//        }
+//        else
+//        {
+//            
+//            
+//              let window = UIApplication.shared.delegate!.window
+//              let vc = BHGLoginController()
+//              window!?.rootViewController = vc
+//              window!?.makeKeyAndVisible()
+//          
+//        }
+        navigationController?.dismiss(animated: true)
         
     }
+    
     func GoToHomeReminderView()  {
         let window = UIApplication.shared.delegate!.window
         let mainViewController = self.storyboard!.instantiateViewController(withIdentifier: "DoseReminderVC")

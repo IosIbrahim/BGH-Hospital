@@ -405,7 +405,11 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     @objc func back() {
         UIView.setAnimationsEnabled(true)
-        navigationController?.popViewController(animated: true)
+        if navigationController?.viewControllers.count ?? 0 > 1 {
+            navigationController?.popViewController(animated: true)
+        }else {
+            navigationController?.dismiss(animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

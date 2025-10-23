@@ -54,6 +54,12 @@ class BHGRegisterController: BaseViewController {
         txfEmail.placeholder = UserManager.isArabic ? "البريد الاليكتروني" : "Email"
         txfMobile.placeholder = UserManager.isArabic ? "رقم الجوال" : "Mobile Number"
         txfID.placeholder =  UserManager.isArabic ? "رقم الهوية/ رقم ملف طبي / رقم الاقامة":"Civil ID/Medical file ID/Residence ID"
+        
+        if UserManager.isArabic {
+            pickerPhone.transform = CGAffineTransform(scaleX: -1, y: 1)
+            pickerCode.transform = CGAffineTransform(scaleX: -1, y: 1)
+            pickerCode.initWithArabic()
+        }
     }
 
     @IBAction func passwordTapped(_ sender: Any) {

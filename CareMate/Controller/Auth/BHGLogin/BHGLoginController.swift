@@ -104,6 +104,7 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
         vc.retrieveType = retrieveType
         vc.vcType = .fromRetrive
         vc.phoneNumber = txfID.text!
+        vc.comesFromLogin = true
       self.navigationController?.pushViewController(vc, animated: true)
 
     }

@@ -54,7 +54,7 @@ class doseTimes: BaseViewController {
         
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.presentingViewController!.dismiss(animated: true, completion: nil)
+      //  self.presentingViewController!.dismiss(animated: true, completion: nil)
         self.delegate?.reloadList()
         
     }

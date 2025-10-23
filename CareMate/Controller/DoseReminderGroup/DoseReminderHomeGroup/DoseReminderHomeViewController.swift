@@ -143,7 +143,7 @@ class DoseReminderHomeViewController: BaseViewController,UNUserNotificationCente
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
     }
     
     @available(iOS 10.0, *)
