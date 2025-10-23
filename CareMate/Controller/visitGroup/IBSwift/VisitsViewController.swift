@@ -188,8 +188,12 @@ extension VisitsViewController:UITableViewDelegate,UITableViewDataSource
 //                    vc1.visitId = listOfVisit[indexPath.row].VISIT_ID
 //                    vc1.hospID = listOfVisit[indexPath.row].NAME_EN.getBranchID()
 //                    self.navigationController?.pushViewController(vc1, animated: true)
-                    delegade?.getVisitID(listOfVisit[indexPath.row].VISIT_ID)
-                    navigationController?.popViewController(animated: true)
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "QuestionaryVC") as? QuestionaryVC
+                    nextViewController?.visit_id = listOfVisit[indexPath.row].VISIT_ID
+                    self.navigationController?.pushViewController(nextViewController!, animated: true)
+               //     delegade?.getVisitID(listOfVisit[indexPath.row].VISIT_ID)
+                //    navigationController?.popViewController(animated: true)
                 }
             } else {
                 let vc1:SaveViewController = SaveViewController()

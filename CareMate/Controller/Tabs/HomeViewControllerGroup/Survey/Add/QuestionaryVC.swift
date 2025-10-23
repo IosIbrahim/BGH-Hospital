@@ -158,7 +158,8 @@ class QuestionaryVC: BaseViewController ,MainQuestionCellDelagete,UITableViewDel
             }
         }
         if questCount != answeredCount {
-            Utilities.showAlert(messageToDisplay: "You must answer all questions")
+            let msg  = UserManager.isArabic ? "يجب عليك اجابة كل الاسئلة":"You must answer all questions"
+            Utilities.showAlert(messageToDisplay: msg)
         }
         else
         {
@@ -170,7 +171,13 @@ class QuestionaryVC: BaseViewController ,MainQuestionCellDelagete,UITableViewDel
             let request = getRequest(url: parseUrl, parameters: parameters, headers: nil)
             AF.request(request).responseJSON { (response:AFDataResponse<Any>) in
                 Utilities.showAlert(self, messageToDisplay: UserManager.isArabic ? "تم الارسال" : "Done sucessfully")
-                self.navigationController?.popViewController(animated: true)
+               // self.navigationController?.popViewController(animated: true)
+                for controller in self.navigationController!.viewControllers as Array {
+                    if controller.isKind(of: AllSurviesViewController.self) {
+                        self.navigationController!.popToViewController(controller, animated: true)
+                        break
+                    }
+                }
             }
         }
     }

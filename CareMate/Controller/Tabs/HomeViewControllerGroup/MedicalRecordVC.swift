@@ -424,7 +424,6 @@ class MedicalRecordVC: BaseViewController
     
     
     @objc func openMyAppoiment(sender : UITapGestureRecognizer) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let v1 = MyAppoimentViewController()
         self.navigationController?.pushViewController(v1, animated: true)
 //        let input = "This is a test with the URL https://www.hackingwithswift.com to be detected."
