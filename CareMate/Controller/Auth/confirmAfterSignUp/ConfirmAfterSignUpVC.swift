@@ -23,6 +23,7 @@ class ConfirmAfterSignUpVC: BaseViewController {
     
     var delegete:fromChangePass?
     var patientId = ""
+    var patientName = ""
     
     override func viewDidLoad() {
         initHeader(isNotifcation: false, isLanguage: false, title: "", hideBack: false)
@@ -35,6 +36,10 @@ class ConfirmAfterSignUpVC: BaseViewController {
             labelhint.text = "تنبيه: يجب ان يكون لكل حساب من افراد العائلة كلمة مرور محتلفة."
         }
         labelEnterPassword.font = UIFont(name: "Tajawal-Regular", size: 17)
+        if !patientName.isEmpty {
+            let welcome = UserManager.isArabic ? "مرحبا \(patientName)":"Welcome \(patientName)"
+            let msg = "\(labelEnterPassword.text!)\n\(welcome)"
+        }
     }
 
     @IBAction func confirmChangePassword(_ sender: Any) {

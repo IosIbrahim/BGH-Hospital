@@ -56,7 +56,7 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
         selectedCountry = viewCountry.selectedCountry
         phoneCode = viewCountry.selectedCountry.phoneCode
         viewCountry.delegate = self
-       // viewMobile.setShadowLight()
+        // viewMobile.setShadowLight()
         if UserManager.isArabic {
             labelMobileNumber.text = "رقم الهاتف النقال"
             btnSubmit.setTitle("ارسال كود التحقيق", for: .normal)
@@ -72,7 +72,7 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
             }else {
                 labelHint.text = "Change Password"
             }
-
+            
         }
         txfID.placeholder = UserManager.isArabic ? "رقم الهوية/ رقم ملف طبي / رقم الاقامة":"Civil ID/Medical file ID/Residence ID"
         lblID.text = txfID.placeholder
@@ -127,8 +127,8 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         //FIXed by HAMDIIIIII ....
-        let lenth = 8 - (labelPrefix.text?.count ?? 0)
-        medicalCodeTextField.text = String(textField.text!.prefix(lenth))
+        // let lenth = 10 - (labelPrefix.text?.count ?? 0)
+        // medicalCodeTextField.text = String(textField.text!.prefix(lenth))
         
     }
     
@@ -169,7 +169,7 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
     }
     
     func resendCodeLogin(mobileNumber: String) {
-    
+        
     }
     
     @objc func SNNCliked(sender : UITapGestureRecognizer) {
@@ -194,22 +194,22 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
     }
     
     @IBAction func didPressOkButton(sender: Any) {
-//        if phoneNumber.count > 5 {
-//            let phoneN = "\(labelPrefix.text ?? "")\(medicalCodeTextField.text ?? "")"
-//            if phoneN != self.phoneNumber {
-//                OPEN_HINT_POPUP(container: self, message: UserManager.isArabic ? "الرجاء التأكد من إدخال الرقم الصحيح" : "Please make sure that you enter the correct number")
-//                return
-//            }
-//        } else {
-//            phoneNumber = medicalCodeTextField.text!
-//            OPEN_HINT_POPUP(container: self, message: UserManager.isArabic ? "الرجاء التأكد من إدخال الرقم الصحيح" : "Please make sure that you enter the correct number")
-//            return
-//        }
+        //        if phoneNumber.count > 5 {
+        //            let phoneN = "\(labelPrefix.text ?? "")\(medicalCodeTextField.text ?? "")"
+        //            if phoneN != self.phoneNumber {
+        //                OPEN_HINT_POPUP(container: self, message: UserManager.isArabic ? "الرجاء التأكد من إدخال الرقم الصحيح" : "Please make sure that you enter the correct number")
+        //                return
+        //            }
+        //        } else {
+        //            phoneNumber = medicalCodeTextField.text!
+        //            OPEN_HINT_POPUP(container: self, message: UserManager.isArabic ? "الرجاء التأكد من إدخال الرقم الصحيح" : "Please make sure that you enter the correct number")
+        //            return
+        //        }
         guard var phoneN = self.medicalCodeTextField.text,
               !phoneN.isEmpty || phoneN.count <= 5 else {
             OPEN_HINT_POPUP(container: self, message: UserManager.isArabic ? "الرجاء التأكد من إدخال الرقم الصحيح" : "Please make sure that you enter the correct number")
-                  return
-              }
+            return
+        }
         phoneN = "\(labelPrefix.text ?? "")\(medicalCodeTextField.text ?? "")"
         phoneNumber = phoneN
         patientID = phoneNumber
@@ -234,60 +234,90 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
         let enter = LanguageManager.isArabic() ? "ادخل ":"Enter "
         guard let id = self.txfID.text,
               !id.isEmpty else {
-                Utilities.showAlert(messageToDisplay: enter + txfID.placeholder!)
-                  return
-              }
+            Utilities.showAlert(messageToDisplay: enter + txfID.placeholder!)
+            return
+        }
         
-        guard let mobile = self.medicalCodeTextField.text,
+        guard var mobile = self.medicalCodeTextField.text,
               !mobile.isEmpty else {
-                Utilities.showAlert(messageToDisplay: enter + medicalCodeTextField.placeholder!)
-                  return
-              }
-            let pars = ["Mobile": "\(phoneCode)\(mobile)","detect_text":id,"init":"1"]
-            let urlString = Constants.APIProvider.SignupFirst
-            WebserviceMananger.sharedInstance.makeCall(method: .post, url: urlString, parameters: pars, vc: self) { (data, error) in
-                if let root = ((data as? [String: AnyObject] ?? [String: AnyObject]())["CODE"] as? [String:AnyObject]) {
-                    print(root)
-                }
-                let json = data as! [String:Any]
-                if let code = json["CODE"] as? Int {
-                     if code == 200 || code == 5 {
-                        if (data as! [String: AnyObject])["ALREADY_REGISTERED_FLAG"] as! String == "1" {
-                            OPEN_HINT_POPUP(container: self, message: UserManager.isArabic ? "لديك ملف بالفعل في سجلات المستشفي لدينا, يمكنك الانتقال الي تسجيل الدخول, لمزيد من المعلومات يرجي الاتصال بنا" : "You have already registered on our hospital records, You can navigate to login, For more information please contact us")
-                            return
-                        }else {
-                            if code  != 5 {
-                                let json = data as? [String:AnyObject]
-                                let id = json?["PATIENT_ID"] as? String ?? ""
-                                print(id)
-                                currentPatientIDOrigni =  id
-                                Utilities.sharedInstance.setPatientId(patienId: id)
-                                currentPatientMobile =  json?["PAT_TEL"] as? String ?? ""
-                                UserDefaults.standard.set(id, forKey: "patientIdWithSpaces")
-                                UserDefaults.standard.set(json?["PAT_TEL"] as? String ?? "", forKey: "PAT_TEL")
-                               
-                            }else {
-                                currentPatientMobile = "\(self.phoneCode)\(mobile)"
-                            }
-                           
-                            let vc:verifcationAddOtherVC = verifcationAddOtherVC(PatientId: currentPatientIDOrigni, patientIdArray: nil, vcType: .fromRetrive)
-                            vc.fromForget = true
-                            vc.mobileNumber = self.phoneNumber
-                            vc.fromGuest = self.fromGuest
+            Utilities.showAlert(messageToDisplay: enter + medicalCodeTextField.placeholder!)
+            return
+        }
+        mobile = phoneCode + mobile
+        let mon = mobile.replacingOccurrences(of: "+", with: "%2B")
+        let parameters = "init=1&detect_text=\(id)&Mobile=\(mon)"
+        let postData =  parameters.data(using: .utf8)
+        
+        var request = URLRequest(url: URL(string: Constants.APIProvider.SignupFirst)!,timeoutInterval: Double.infinity)
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        
+        request.httpMethod = "POST"
+        request.httpBody = postData
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                print(String(describing: error))
+                return
+            }
+            print(String(data: data, encoding: .utf8)!)
+            let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary ?? .init()
+            if let code = json?["CODE"] as? Int {
+                if code == 200 || code == 5 {
+                    if json?["ALREADY_REGISTERED_FLAG"] as! String == "1" {
+                        let id = json?["PATIENT_ID"] as? String ?? ""
+                        print(id)
+                        currentPatientIDOrigni =  id
+                        let nameAr = json?["PATIENT_NAME_AR"] as? String ?? ""
+                        let nameEn = json?["PATIENT_NAME_EN"] as? String ?? ""
+                        Utilities.sharedInstance.setPatientId(patienId: id)
+                        currentPatientMobile =  json?["PAT_TEL"] as? String ?? ""
+                        UserDefaults.standard.set(id, forKey: "patientIdWithSpaces")
+                        UserDefaults.standard.set(json?["PAT_TEL"] as? String ?? "", forKey: "PAT_TEL")
+                        DispatchQueue.main.async {
+//                            let vc:verifcationAddOtherVC = verifcationAddOtherVC(PatientId: currentPatientIDOrigni, patientIdArray: nil, vcType: .fromRetrive)
+//                            vc.fromForget = true
+//                            vc.mobileNumber = self.phoneNumber
+//                            vc.fromGuest = self.fromGuest
+//                            self.navigationController?.pushViewController(vc, animated: true)
+                            let vc:ConfirmAfterSignUpVC =   ConfirmAfterSignUpVC()
+                            vc.patientId = id
+                            vc.patientName = UserManager.isArabic ? nameAr:nameEn
+                            vc.delegete = self
                             self.navigationController?.pushViewController(vc, animated: true)
                         }
+                        return
+                    }else {
+                      
+                        DispatchQueue.main.async {
+                            let formSheet = MZFormSheetController.init(viewController: slotNot(messageAr: " عذرًا ، البيانات المدخلة لا تتطابق مع سجلاتنا ، لمزيد من المعلومات يرجى الاتصال بنا او مراسلاتنا بالبريد الإلكتروني", MessageEn:  "Sorry, the Entered data does not match our records, for more information please contact us By Calling on "))
+                            formSheet.shouldDismissOnBackgroundViewTap = true
+                            formSheet.transitionStyle = .slideFromBottom
+                            formSheet.presentedFormSheetSize = CGSize.init(width: UIScreen.main.bounds.width * 0.9, height: 380)
+                            formSheet.shouldCenterVertically = true
+                            formSheet.present(animated: true, completionHandler: nil)
+                            Utilities.showAlert(messageToDisplay:"  \(ConstantsData.mobile) OR By Email: \(ConstantsData.email)")
+                        }
+
+                        
                     }
-                } else {
+                }
+            } else {
+                DispatchQueue.main.async {
                     let formSheet = MZFormSheetController.init(viewController: slotNot(messageAr: " عذرًا ، البيانات المدخلة لا تتطابق مع سجلاتنا ، لمزيد من المعلومات يرجى الاتصال بنا او مراسلاتنا بالبريد الإلكتروني", MessageEn:  "Sorry, the Entered data does not match our records, for more information please contact us By Calling on "))
                     formSheet.shouldDismissOnBackgroundViewTap = true
                     formSheet.transitionStyle = .slideFromBottom
                     formSheet.presentedFormSheetSize = CGSize.init(width: UIScreen.main.bounds.width * 0.9, height: 380)
                     formSheet.shouldCenterVertically = true
                     formSheet.present(animated: true, completionHandler: nil)
-                    Utilities.showAlert(messageToDisplay:"  24997000 OR By Email: \(ConstantsData.email)")
+                    Utilities.showAlert(messageToDisplay:"  \(ConstantsData.mobile) OR By Email: \(ConstantsData.email)")
                 }
+                
             }
+        }
+        task.resume()
+
     }
+    
     
     func sendCode()
     {
@@ -313,9 +343,9 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
         }
         let urlString = Constants.APIProvider.VERIFYPATIENTID
         print(urlString)
-        let url = URL(string: urlString)
-        let parseUrl = Constants.APIProvider.VERIFYPATIENTID + "?" + Constants.getoAuthValue(url: url!, method: "POST",parameters: nil)
-        WebserviceMananger.sharedInstance.makeCall(method: .post, url: parseUrl, parameters: pars, vc: self,showIndicator: true) { (data, error) in
+       // let url = URL(string: urlString)
+     //   let parseUrl = Constants.APIProvider.VERIFYPATIENTID + "?" + Constants.getoAuthValue(url: url!, method: "POST",parameters: nil)
+        WebserviceMananger.sharedInstance.makeCall(method: .post, url: urlString, parameters: pars, vc: self,showIndicator: true) { (data, error) in
             let root = (data as! [String:AnyObject])
             
             print(root)

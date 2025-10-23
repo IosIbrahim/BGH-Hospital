@@ -93,11 +93,13 @@ class SettingsViewController: BaseViewController {
                     currentPatientIDOrigni = ""
                     UserDefaults.standard.set(token, forKey: "pushToken")
                     UserDefaults.standard.set(lang, forKey: "appLang")
+                    self.navigationController?.dismiss(animated: true)
+
 //                    UserManager.language = lang
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    if let nav = appDelegate.window!.rootViewController as? UINavigationController {
-                        nav.popToRootViewController(animated: true)
-                    }
+//                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//                    if let nav = appDelegate.window!.rootViewController as? UINavigationController {
+//                        nav.popToRootViewController(animated: true)
+//                    }
 //                    }
                 }
             }
