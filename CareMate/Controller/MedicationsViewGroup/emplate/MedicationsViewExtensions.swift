@@ -37,7 +37,7 @@ extension MedicationsViewViewController:UICollectionViewDelegate,UICollectionVie
       //  list.append(medicalViewModel(imagee: UIImage(named: "BHG-medicine"), NameAr: "الوصفات الشهرية", NameEn:"Monthly Prescriptions", type: .monthlyPrescription))
         list.append(medicalViewModel(imagee: UIImage(named: "BHG-Labs"), NameAr: "المختبر", NameEn: "Lab", type: .lab))
         list.append(medicalViewModel(imagee: UIImage(named: "BHG-x-ray"), NameAr: "الأشعة", NameEn: "Rad", type: .rad))
-        list.append(medicalViewModel(imagee: UIImage(named: "BHG-MedicalRepp"), NameAr:"التقارير الطبية", NameEn:  "Medical Reports", type: .medicalReport))
+     //   list.append(medicalViewModel(imagee: UIImage(named: "BHG-MedicalRepp"), NameAr:"التقارير الطبية", NameEn:  "Medical Reports", type: .medicalReport))
         list.append(medicalViewModel(imagee: UIImage(named: "BHG-DocPice"), NameAr:  "التشخيص المرضي", NameEn: "Patient Diagnosis", type: .diagnosis))
         list.append(medicalViewModel(imagee: UIImage(named: "BHG-allergy"), NameAr: "الحساسيه", NameEn: "Allergies", type: .allergies))
         // list.append(medicalViewModel(imagee: UIImage(named: "OverViewHistoryIcon.png"), NameAr: "التاريخ المرضي" , NameEn:"Patient History", type: .medicalHistory))
