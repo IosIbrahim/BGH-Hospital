@@ -21,6 +21,7 @@ extension Array {
 }
 
 class SplashViewController: UIViewController{
+    private var isInit = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +37,13 @@ class SplashViewController: UIViewController{
             guard let self = self else { return }
             if self.navigationController?.viewControllers.last is SplashViewController {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
-                    self.navigationController?.pushViewController(NotifcationsViewController(), animated: true)
+                   // self.navigationController?.pushViewController(NotifcationsViewController(), animated: true)
+                    self.setNavigation(NotifcationsViewController())
                 }
             } else {
-                self.navigationController?.pushViewController(NotifcationsViewController(), animated: true)
+         //       self.navigationController?.pushViewController(NotifcationsViewController(), animated: true)
+                self.setNavigation(NotifcationsViewController())
+
             }
         }
         
@@ -103,7 +107,11 @@ class SplashViewController: UIViewController{
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getKnowYourDoctor()
+        if !isInit {
+            getKnowYourDoctor()
+        }else {
+            gotoScreen()
+        }
     }
 
     func getKnowYourDoctor() {
@@ -129,18 +137,23 @@ class SplashViewController: UIViewController{
 //            }
 //fwds
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                let defaults = UserDefaults.standard
-                if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
-                    let decoder = JSONDecoder()
-                    if let loadedPerson = try? decoder.decode(LoginedUser.self, from: savedPerson) {
-                        self.authenticateUser()
-                    }
-                } else {
-                    let vc = BHGLoginController()
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
+                self.gotoScreen()
             }
        // }
+    }
+    
+    func gotoScreen() {
+        isInit = true
+        let defaults = UserDefaults.standard
+        if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
+            let decoder = JSONDecoder()
+            if let loadedPerson = try? decoder.decode(LoginedUser.self, from: savedPerson) {
+                self.authenticateUser()
+            }
+        } else {
+            let vc = BHGLoginController()
+            self.setNavigation(vc)
+        }
     }
 
     func initBackGround() {
@@ -159,20 +172,51 @@ class SplashViewController: UIViewController{
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
                 DispatchQueue.main.async {
                     if success {
-                        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
-                        self.navigationController?.pushViewController(nextViewController, animated: true)
+                        self.showTabBar()
                     } else {
                         let vc = BHGLoginController()
-                        self.navigationController?.pushViewController(vc, animated: true)
+                        self.setNavigation(vc)
+                     //   self.navigationController?.pushViewController(vc, animated: true)
                     }
                 }
             }
         } else {
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
-            self.navigationController?.pushViewController(nextViewController, animated: true)
+            self.showTabBar()
         }
+    }
+    
+    private func setNavigation(_ vc:UIViewController) {
+        setApperance()
+        let nav = UINavigationController(rootViewController: vc)
+        nav.navigationBar.isHidden = true
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true)
+    }
+    
+    private func showTabBar() {
+        setApperance()
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
+        let nav = UINavigationController(rootViewController: nextViewController)
+        nav.navigationBar.isHidden = true
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true)
+    }
+    
+    private func setApperance() {
+        SplashViewController.getLanguageDirection {
+            UIView.appearance().semanticContentAttribute = $0
+            UITableViewCell.appearance().semanticContentAttribute = $0
+            UITextField.appearance().semanticContentAttribute = $0
+            UITextView.appearance().semanticContentAttribute = $0
+            UICollectionView.appearance().semanticContentAttribute = $0
+        }
+    }
+
+    private static func getLanguageDirection(_ handler: @escaping (UISemanticContentAttribute) -> Void) {
+        let isArabic = UserManager.isArabic
+        let direction: UISemanticContentAttribute = isArabic ? .forceRightToLeft : .forceLeftToRight
+        handler(direction)
     }
 }
 

@@ -146,10 +146,10 @@ class MedicalRecordVC: BaseViewController
 
         
         
-        let gestureLaguange = UITapGestureRecognizer(target: self, action:  #selector(self.openLanguageVC))
-        self.viewLanguage.addGestureRecognizer(gestureLaguange)
+   //     let gestureLaguange = UITapGestureRecognizer(target: self, action:  #selector(self.openLanguageVC))
+    //    self.viewLanguage.addGestureRecognizer(gestureLaguange)
         
-        viewNotifications.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openNotifications)))
+      //  viewNotifications.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openNotifications)))
         
        // viewHelpSupport.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(chatWhatsapp2)))
         let openMedicationOverViewCliked = UITapGestureRecognizer(target: self, action:  #selector(self.opendMedication))
@@ -173,6 +173,15 @@ class MedicalRecordVC: BaseViewController
         nc.addObserver(self, selector: #selector(noUserFound), name: Notification.Name("noUserFound"), object: nil)
         nc.addObserver(self, selector: #selector(updatePush), name: Notification.Name("new.push.notifications"), object: nil)
         showNotificationPopUp()
+    }
+    
+    
+    @IBAction func openLang(_ sender: Any) {
+        self.navigationController?.pushViewController(LanguageViewController(), animated: true)
+    }
+    
+    @IBAction func openNotif(_ sender: Any) {
+        navigationController?.pushViewController(NotifcationsViewController(), animated: true)
     }
     
     @objc func updatePush() {
@@ -212,7 +221,7 @@ class MedicalRecordVC: BaseViewController
         navigationController?.pushViewController(NotifcationsViewController(), animated: true)
     }
     
-    @objc func openLanguageVC(sender : UITapGestureRecognizer) {
+    @objc func openLanguageVC() {
         self.navigationController?.pushViewController(LanguageViewController(), animated: true)
     }
 

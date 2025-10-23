@@ -297,16 +297,17 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         let imageViewBack = UIImageView()
 
-        if UserManager.isArabic
-        {
-            imageViewBack.image = #imageLiteral(resourceName: "right-arrow-3")
-
-        }
-        else
-        {
-            imageViewBack.image = #imageLiteral(resourceName: "left-arrow")
-
-        }
+//        if UserManager.isArabic
+//        {
+//            imageViewBack.image = #imageLiteral(resourceName: "right-arrow-3")
+//
+//        }
+//        else
+//        {
+//            imageViewBack.image = #imageLiteral(resourceName: "left-arrow")
+//
+//        }
+        imageViewBack.image = #imageLiteral(resourceName: "left-arrow").imageFlippedForRightToLeftLayoutDirection()
         imageViewBack.contentMode = .scaleAspectFit
         viewBack.addSubview(imageViewBack)
         
@@ -459,27 +460,6 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @objc func language()
      {
-//         let alertView = SCLAlertView()
-//             alertView.addButton("English") {
-//                 alertView.dismissAnimated()
-//                 UserManager.language = "en"
-//                 let window = UIApplication.shared.delegate!.window
-//                 let mainViewController = self.storyboard!.instantiateViewController(withIdentifier: "SplashNavigation")
-//                 window!?.rootViewController = mainViewController
-//                 window!?.makeKeyAndVisible()
-//                 
-//             }
-//             alertView.addButton("Arabic") {
-//                 alertView.dismissAnimated()
-//                 UserManager.language = "ar"
-//                 let window = UIApplication.shared.delegate!.window
-//                 let mainViewController = self.storyboard!.instantiateViewController(withIdentifier: "SplashNavigation")
-//                 window!?.rootViewController = mainViewController
-//                 window!?.makeKeyAndVisible()
-//                 
-//             }
-//         alertView.showTitle("Note", subTitle:  "Choose language ", style: .notice, closeButtonTitle: "Dismiss", timeout: nil, colorStyle: 0x3788B0, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: .topToBottom)
-         
          self.navigationController?.pushViewController(LanguageViewController(), animated: true)
 
      }

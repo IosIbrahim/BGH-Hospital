@@ -37,6 +37,7 @@ class indicator {
 //        Progress = JGProgressHUD(style: JGProgressHUDStyle.dark)
 //        Progress?.textLabel.text = "Loading.."
     }
+    
     func show(_ vc:UIViewController? = nil) {
 ////        Progress?.show(in :vc.view)
 //

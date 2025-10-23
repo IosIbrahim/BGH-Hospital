@@ -32,6 +32,8 @@ class AccountsViewController: BaseViewController {
                             var model = UserMobileDTO()
                             model.PATIENTID = i["PATIENTID"] as? String ?? ""
                             model.COMPLETEPATNAME_EN = i["COMPLETEPATNAME_EN"] as? String ?? ""
+                            model.COMPLETEPATNAME_AR = i["COMPLETEPATNAME_AR"] as? String ?? ""
+
                             model.PAT_TEL = i["PAT_TEL"] as? String ?? ""
                             model.years = i["PAT_AGE_YEARS"] as? String ?? ""
                             model.months = i["PAT_AGE_MONTHS"] as? String ?? ""
@@ -49,6 +51,7 @@ class AccountsViewController: BaseViewController {
                         var model = UserMobileDTO()
                         model.PATIENTID = i["PATIENTID"] as? String ?? ""
                         model.COMPLETEPATNAME_EN = i["COMPLETEPATNAME_EN"] as? String ?? ""
+                        model.COMPLETEPATNAME_AR = i["COMPLETEPATNAME_AR"] as? String ?? ""
                         model.PAT_TEL = i["PAT_TEL"] as? String ?? ""
                         model.years = i["PAT_AGE_YEARS"] as? String ?? ""
                         model.months = i["PAT_AGE_MONTHS"] as? String ?? ""
@@ -120,9 +123,17 @@ extension AccountsViewController: UITableViewDelegate, UITableViewDataSource {
         currentPatientMobile =   user.PAT_TEL ?? ""
         UserDefaults.standard.set(currentPatientMobile, forKey: "PAT_TEL")
         user.saveToUser()
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
-        self.navigationController?.pushViewController(nextViewController, animated: true)
+//        for controller in self.navigationController!.viewControllers as Array {
+//            if controller.isKind(of: UITabBarController.self) {
+//                self.navigationController!.popToViewController(controller, animated: true)
+//                break
+//            }
+//        }
+        self.navigationController?.dismiss(animated: true)
+//
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
+//        self.navigationController?.pushViewController(nextViewController, animated: true)
     }
     
     func underAge(patientId:String,mobile:String,code:String = "6850",user:UserMobileDTO) {
@@ -154,10 +165,11 @@ extension AccountsViewController: UITableViewDelegate, UITableViewDataSource {
                             if let root = ((data as! [String: AnyObject])["Root"] as! [String:AnyObject])["PAT_DATA"] as? [String:AnyObject] {
                                 let patImage = ((root["PAT_DATA_ROW"] as? [String: Any])?["PAT_PIC"] as? [String: Any])?["BLOB_PATH"] as? String ?? ""
                                 UserDefaults.standard.set(patImage, forKey: "patImage")
-                                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
                                 user.saveToUser()
-                                self.navigationController?.pushViewController(nextViewController, animated: true)
+                                self.navigationController?.dismiss(animated: true)
+//                                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//                                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
+//                                self.navigationController?.pushViewController(nextViewController, animated: true)
                             }
                         }
                         else if loginStratues == "1"
@@ -172,9 +184,11 @@ extension AccountsViewController: UITableViewDelegate, UITableViewDataSource {
                                 UserDefaults.standard.set(Utilities.sharedInstance.getPatientId(), forKey: "Utilities.sharedInstance.getPatientId()")
                                 UserDefaults.standard.set(true, forKey: "loginOrNO")
                                 user.saveToUser()
-                                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
-                                self.navigationController?.pushViewController(nextViewController, animated: true)
+                                self.navigationController?.dismiss(animated: true)
+
+//                                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//                                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
+//                                self.navigationController?.pushViewController(nextViewController, animated: true)
                             }
                         }
                         else

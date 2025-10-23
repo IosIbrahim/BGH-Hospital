@@ -108,12 +108,13 @@ class CompleteLoginWithPasswordViewController: BaseViewController {
                               if let root = ((data as! [String: AnyObject])["Root"] as! [String:AnyObject])["PAT_DATA"] as? [String:AnyObject] {
                                   let patImage = ((root["PAT_DATA_ROW"] as? [String: Any])?["PAT_PIC"] as? [String: Any])?["BLOB_PATH"] as? String ?? ""
                                   UserDefaults.standard.set(patImage, forKey: "patImage")
-                                  let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                                  
-                                  let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
                                   UserDefaults.standard.set(password, forKey: "user_password")
                                   self.user?.saveToUser()
-                                  self.navigationController?.pushViewController(nextViewController, animated: true)
+//                                  let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//                                  let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
+//                                  self.navigationController?.pushViewController(nextViewController, animated: true)
+                                  self.navigationController?.dismiss(animated: true)
+
                                   
                               }
                           }
@@ -149,11 +150,13 @@ class CompleteLoginWithPasswordViewController: BaseViewController {
                                   if self.comesFromProfile {
                                       self.user?.saveToUser()
                                   }
-                                  let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                                  
-                                  let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
-                                  
-                                  self.navigationController?.pushViewController(nextViewController, animated: true)
+                                  self.navigationController?.dismiss(animated: true)
+
+//                                  let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//                                  
+//                                  let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
+//                                  
+//                                  self.navigationController?.pushViewController(nextViewController, animated: true)
                               }
                           }
                           else

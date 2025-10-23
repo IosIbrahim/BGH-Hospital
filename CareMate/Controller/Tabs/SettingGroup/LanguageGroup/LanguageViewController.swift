@@ -18,7 +18,7 @@ class LanguageViewController: BaseViewController {
         super.viewDidLoad()
 
         initHeader(isNotifcation: false, isLanguage: false,
-                   title: UserManager.isArabic ? "تغيير اللغه": "Change Language",
+                   title: UserManager.isArabic ? "تغيير اللغة": "Change Language",
                    hideBack: false)
         updateLanguageUI()
     }
@@ -50,9 +50,10 @@ class LanguageViewController: BaseViewController {
 
     private func reloadApp() {
         indicator.sharedInstance.dismiss()
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            appDelegate.reset() // MOLHResetable reset
-        }
+        self.navigationController?.dismiss(animated: true, completion: nil)
+//        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+//            appDelegate.reset() // MOLHResetable reset
+//        }
     }
 }
 

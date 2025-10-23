@@ -26,8 +26,9 @@ class AccoutMobileTableViewCell: UITableViewCell {
     
     func setData(_ user: UserMobileDTO) {
         labelNumber.text = user.PATIENTID
-        labelName.text = user.COMPLETEPATNAME_EN
+        labelName.text = UserManager.isArabic ? user.COMPLETEPATNAME_AR:user.COMPLETEPATNAME_EN
         let imageUrl = "\(Constants.APIProvider.IMAGE_BASE)\(user.PAT_PIC ?? "")"
+        print(imageUrl)
         imageViewUser.loadFromUrl(url: imageUrl, placeHolder: "Group 2319")
     }
 }

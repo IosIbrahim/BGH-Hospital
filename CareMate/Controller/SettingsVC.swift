@@ -25,7 +25,7 @@ class SettingsVC: UITableViewController
 
 
 //        self.tabBarController?.title = UserManager.isArabic ? "الإعدادات" : "Settings"
-    UIView.appearance().semanticContentAttribute = !UserManager.isArabic ? .forceLeftToRight : .forceRightToLeft
+  //  UIView.appearance().semanticContentAttribute = !UserManager.isArabic ? .forceLeftToRight : .forceRightToLeft
 
         
         let defaults = UserDefaults.standard
@@ -50,40 +50,9 @@ class SettingsVC: UITableViewController
     
     @IBAction func loginClicked()
     {
-//        if UserManager.isLoggedIn
-//        {
-//            UserManager.logout()
-//            handleLoginState()
-//        }
-//        else
-//        {
-////            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-////
-////            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "LoginVC")
-////
-////            self.navigationController?.pushViewController(nextViewController, animated: true)
-//            let vc = LoginViewController()
-//         self.navigationController?.pushViewController(vc, animated: true)
-//            
-////            self.performSegue(withIdentifier: "login", sender: nil)
-//        }
+
     }
     
-    
-
-//    @IBAction func ipServerClicked()
-//    {
-//        let alertView = SCLAlertView()
-//        let txt = alertView.addTextField()
-//        txt.text = Constants.APIProvider.IP
-//        alertView.addButton("Change Server IP") {
-//            alertView.dismissAnimated()
-//            UserManager.logout()
-//            self.handleLoginState()
-//            Constants().updateIP(ip: txt.text!)
-//        }
-//        alertView.showTitle("Note", subTitle:  "Write your Server IP", style: .notice, closeButtonTitle: "Dismiss", timeout: nil, colorStyle: 0x3788B0, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: .topToBottom)
-//    }
     @IBAction func ipServerClicked()
     {
        
@@ -115,6 +84,6 @@ class SettingsVC: UITableViewController
         return 70
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.dismiss(animated: true, completion: nil)
+      //  self.dismiss(animated: true, completion: nil)
     }
 }

@@ -390,11 +390,13 @@ class LoginViewController: BaseViewController, clinicOrEmergency {
                                     let defaults = UserDefaults.standard
                                     defaults.set(encoded, forKey: "SavedPerson")
                                 }
-                                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                                
-                                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
-                                
-                                self.navigationController?.pushViewController(nextViewController, animated: true)
+//                                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//                                
+//                                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
+//                                
+//                                self.navigationController?.pushViewController(nextViewController, animated: true)
+                                self.navigationController?.dismiss(animated: true)
+
                                 
                             }
                         }
