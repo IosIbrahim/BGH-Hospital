@@ -43,7 +43,7 @@ class DoctorProfileViewController: BaseViewController {
         super.viewDidLoad()
         initHeader(title: UserManager.isArabic ? "بيانات الطبيب" : "Doctor details")
         getData()
-        let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)\(doctor?.DOCTOR_PIC ?? "")")
+        let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor?.DOCTOR_PIC ?? "")")
         print("http://172.25.26.140/mobileApi/\(doctor?.DOCTOR_PIC ?? "")")
         imageViewDoctor.kf.setImage(with: url, placeholder: UIImage(named: doctor?.GENDERCODE ?? "M" == "M" ? "RectangleMan" : "RectangleGirl"))
         if UserManager.isArabic {
@@ -133,7 +133,7 @@ class DoctorProfileViewController: BaseViewController {
             doctorProfileVC.clincID = clincID
             doctorProfileVC.clicnName = clinicName
             doctorProfileVC.doctor?.clinicId = doctorProfileVC.clincID
-            let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)\(doctor?.DOCTOR_PIC ?? "")")
+            let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor?.DOCTOR_PIC ?? "")")
             doctorProfileVC.url = url
             isSelected = false
             self.navigationController?.pushViewController(doctorProfileVC, animated: true)

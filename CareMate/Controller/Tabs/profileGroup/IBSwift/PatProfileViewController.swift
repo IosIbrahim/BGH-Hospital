@@ -56,7 +56,7 @@ class PatProfileViewController: BaseViewController {
         viewChangeAccount.setBorder(color: .fromHex(hex: "#2E4E8E", alpha: 1), radius: 10, borderWidth: 1)
         viewEdit.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(editProfile)))
         viewChangeAccount.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeAccount)))
-        if MOLHLanguage.isArabic() {
+        if UserManager.isArabic {
             laeblWelcom.text = "اهلا وسهلا بك"
             laeblWelcom.font = UIFont(name: "Tajawal-Regular", size: 17)
             labelName.font = UIFont(name: "Tajawal-Bold", size: 17)
@@ -113,7 +113,7 @@ class PatProfileViewController: BaseViewController {
         showIndicator()
         getUserData()
         getRelativesData()
-        let imageUrl = "\(Constants.APIProvider.IMAGE_BASE)\(UserDefaults.standard.object(forKey: "patImage") as? String ?? "")"
+        let imageUrl = "\(Constants.APIProvider.IMAGE_BASE)/\(UserDefaults.standard.object(forKey: "patImage") as? String ?? "")"
         imageViewUser.loadFromUrl(url: imageUrl, placeHolder: "profileHome")
         dispatchGroup.notify(queue: .main) {
             hideIndicator()

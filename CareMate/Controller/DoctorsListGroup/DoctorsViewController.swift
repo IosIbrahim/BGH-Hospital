@@ -191,7 +191,7 @@ extension DoctorsViewController: UITableViewDelegate {
                 doctorProfileVC.isScedule = isScedule
                 doctorProfileVC.speciality = speciality
                 doctorProfileVC.selectedSpeciality = selectedSpeciality
-                let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)\(doctors[indexPath.row].DOCTOR_PIC ?? "")")
+                let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctors[indexPath.row].DOCTOR_PIC ?? "")")
                 doctorProfileVC.url = url
                 self.navigationController?.pushViewController(doctorProfileVC, animated: true)
             }

@@ -32,7 +32,7 @@ class BranchCellforBooking: UITableViewCell {
         
         self.hospitalName.text = UserManager.isArabic ? branch.arabicName : branch.englishName
         self.hospitalDescropation.text = UserManager.isArabic ? "مستشفي السلام الدولي" : "el Salam Hospital"
-        let imageUrl = "\(Constants.APIProvider.IMAGE_BASE)images/branch_\(branch.id).png"
+        let imageUrl = "\(Constants.APIProvider.IMAGE_BASE)/images/branch_\(branch.id).png"
         print("branchImage: \(imageUrl)")
         imageViewBranch.loadFromUrl(url: imageUrl, placeHolder: "Al-Salam-Hospital (1)")
     }

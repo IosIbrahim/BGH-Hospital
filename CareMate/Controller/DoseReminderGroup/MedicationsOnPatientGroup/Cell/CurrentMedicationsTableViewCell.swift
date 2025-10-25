@@ -34,7 +34,7 @@ class CurrentMedicationsTableViewCell: UITableViewCell {
         self.getCurrentMedDto = getCurrentMed
         self.drugName.text = UserManager.isArabic ? getCurrentMedDto?.ITEMARNAME : getCurrentMedDto?.ITEMENNAME
         self.drugDose.text = UserManager.isArabic ? getCurrentMedDto?.NOTES :getCurrentMedDto?.NOTES_EN
-        imageViewMed.loadFromUrl(url: "\(Constants.APIProvider.IMAGE_BASE)\(getCurrentMed.DRUG_IMAGE)", placeHolder: "BHG-medicineBottel")
+        imageViewMed.loadFromUrl(url: "\(Constants.APIProvider.IMAGE_BASE)/\(getCurrentMed.DRUG_IMAGE)", placeHolder: "BHG-medicineBottel")
       
 //        self.startDate.text = UserManager.isArabic ? getCurrentMedDto?.STARTDATE :getCurrentMedDto?.STARTDATE
 //        self.endDate.text = UserManager.isArabic ? getCurrentMedDto?.ENDDATE :getCurrentMedDto?.ENDDATE

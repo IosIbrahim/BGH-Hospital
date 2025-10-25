@@ -353,7 +353,7 @@ class MedicalRecordVC: BaseViewController
         }
         super.viewWillAppear(animated)
         
-        let imageUrl = "\(Constants.APIProvider.IMAGE_BASE)\(UserDefaults.standard.object(forKey: "patImage") as? String ?? "")"
+        let imageUrl = "\(Constants.APIProvider.IMAGE_BASE)/\(UserDefaults.standard.object(forKey: "patImage") as? String ?? "")"
         imageViewUser.loadFromUrl(url: imageUrl, placeHolder: "profileHome")
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.title = UserManager.isArabic ? "التقارير الطبية" : "Medical Record"

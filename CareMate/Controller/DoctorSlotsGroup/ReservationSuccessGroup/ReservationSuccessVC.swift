@@ -102,7 +102,7 @@ class ReservationSuccessVC: UIViewController {
     }
     
     @objc func getInstructions() {
-        openWebsite(url: "\(Constants.APIProvider.IMAGE_BASE)images/instructions.pdf")
+        openWebsite(url: "\(Constants.APIProvider.IMAGE_BASE)/images/instructions.pdf")
     }
     
     @objc func addToCalendar() {

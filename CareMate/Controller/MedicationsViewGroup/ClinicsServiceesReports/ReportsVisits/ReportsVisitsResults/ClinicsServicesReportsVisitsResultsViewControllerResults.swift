@@ -40,7 +40,7 @@ extension ClinicsServicesReportsVisitsResultsViewController: CLinicsServicesRepo
     
     func showReports(index: Int) {
         let vc = LabResultController()
-        vc.clinicsServiceReportPDFUrl = "\(Constants.APIProvider.IMAGE_BASE)\(arrayResults[index].RESULT_PATH)"
+        vc.clinicsServiceReportPDFUrl = "\(Constants.APIProvider.IMAGE_BASE)/\(arrayResults[index].RESULT_PATH)"
         navigationController?.pushViewController(vc, animated: true)
     }
 }

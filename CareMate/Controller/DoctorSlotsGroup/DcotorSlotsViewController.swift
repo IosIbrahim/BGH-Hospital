@@ -323,7 +323,7 @@ class DcotorSlotsViewController: BaseViewController {
             vc.branch = branch
             vc.selectedSpeciality = selectedSpeciality
             vc.specialityID = specialityID ?? ""
-            vc.url =    URL(string: "\(Constants.APIProvider.IMAGE_BASE)\(doctor?.DOCTOR_PIC ?? "")")
+            vc.url =    URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor?.DOCTOR_PIC ?? "")")
             
             self.navigationController?.pushViewController(vc, animated: true)
             
@@ -401,7 +401,7 @@ class DcotorSlotsViewController: BaseViewController {
             vc.branch = branch
             vc.selectedSpeciality = selectedSpeciality
             vc.specialityID = specialityID ?? ""
-            vc.url =    URL(string: "\(Constants.APIProvider.IMAGE_BASE)\(doctor?.DOCTOR_PIC ?? "")")
+            vc.url =    URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor?.DOCTOR_PIC ?? "")")
 
             self.navigationController?.pushViewController(vc, animated: true)
         }

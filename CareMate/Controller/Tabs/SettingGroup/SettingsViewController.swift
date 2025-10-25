@@ -40,7 +40,7 @@ class SettingsViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         setup()
-        let imageUrl = "\(Constants.APIProvider.IMAGE_BASE)\(UserDefaults.standard.object(forKey: "patImage") as? String ?? "")"
+        let imageUrl = "\(Constants.APIProvider.IMAGE_BASE)/\(UserDefaults.standard.object(forKey: "patImage") as? String ?? "")"
         imageViewUser.loadFromUrl(url: imageUrl, placeHolder: "profileHome")
     }
 
@@ -48,8 +48,8 @@ class SettingsViewController: BaseViewController {
     func setup(){
         initHeader(isNotifcation: false, isLanguage: true, title: UserManager.isArabic ? "الاعدادات" :" Settings", hideBack: true)
         if UserManager.isArabic{
-            uilableLanguageText.text  = "اللغه"
-            uilableGenerlSettingsText.text = "الاعدادات العامه"
+            uilableLanguageText.text  = "اللغة"
+            uilableGenerlSettingsText.text = "الاعدادات العامة"
             uilableAbout.text = "عن المستشفي"
             uilableLogout.text = "تسجيل الخروج"
             uilableEditProfile.text = "تعديل الحساب"

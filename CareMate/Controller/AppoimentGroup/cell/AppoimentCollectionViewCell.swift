@@ -67,7 +67,7 @@ class AppoimentCollectionViewCell: UICollectionViewCell {
         } else {
             uistackDate.isHidden = true
         }
-        let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)\(data.DOCTOR_PIC )")
+        let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(data.DOCTOR_PIC )")
         self.uiimageDoctor.kf.setImage(with: url, placeholder: data.EMP_GENDUR == "M" ? UIImage(named: "RectangleMan") : UIImage(named: "RectangleGirl") , options: nil, completionHandler: nil)
         
         

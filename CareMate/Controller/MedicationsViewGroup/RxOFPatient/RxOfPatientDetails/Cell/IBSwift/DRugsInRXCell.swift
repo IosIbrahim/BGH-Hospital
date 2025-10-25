@@ -51,7 +51,7 @@ class DRugsInRXCell: UITableViewCell {
             needApproveView.isHidden = true
 //            drugStatues.text = UserManager.isArabic ? "عادي" :"Regular"
         }
-        let url = "\(Constants.APIProvider.IMAGE_BASE)\(Object.DRUG_IMAGE)"
+        let url = "\(Constants.APIProvider.IMAGE_BASE)/\(Object.DRUG_IMAGE)"
         imageViewMed.loadFromUrl(url: url, placeHolder: "BHG-medicineBottel")
         if UserManager.isArabic {
             btnAddReminder.setTitle("اضافة منبه", for: .normal)

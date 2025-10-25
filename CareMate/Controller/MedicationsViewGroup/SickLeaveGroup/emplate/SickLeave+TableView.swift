@@ -21,7 +21,7 @@ extension sickLeaveViewController:UITableViewDelegate,UITableViewDataSource,goTo
         WebserviceMananger.sharedInstance.makeCall(method: .post, url: urlString, parameters: ["SER": _model.SERIAL_BLOB], vc: self) { (data, error) in
             if error == nil {
                 if let root = (data as? [String: AnyObject])?["BLOB_PATH"] as? String {
-                    let url = "\(Constants.APIProvider.IMAGE_BASE2)\(root)"
+                    let url = "\(Constants.APIProvider.IMAGE_BASE2)/\(root)"
                     self.navigationController?.pushViewController(WebViewViewController(url), animated: true)
                 } else {
                 }

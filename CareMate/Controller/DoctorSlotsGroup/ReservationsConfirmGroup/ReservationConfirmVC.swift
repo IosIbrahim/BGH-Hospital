@@ -110,7 +110,7 @@ class ReservationConfirmVC: BaseViewController {
         labelLocation.text = UserManager.isArabic ? "الفرع" : "Branch"
         labelPlaceTitle.text = UserManager.isArabic ? "الموقع" : "Location"
         let defaults = UserDefaults.standard
-        let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)\(SelectedDoctorFromSearch?.doctor?.DOCTOR_PIC ?? "")")
+        let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(SelectedDoctorFromSearch?.doctor?.DOCTOR_PIC ?? "")")
         print("http://172.25.26.140/mobileApi/\(SelectedDoctorFromSearch?.doctor?.DOCTOR_PIC ?? "")")
         self.doctorImg.kf.setImage(with: url, placeholder: SelectedDoctorFromSearch?.doctor?.gender == "M" ? UIImage(named: "RectangleMan") : UIImage(named: "RectangleGirl") , options: nil, completionHandler: nil)
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {

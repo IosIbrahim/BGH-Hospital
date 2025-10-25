@@ -103,7 +103,7 @@ class DoctorProfileVC: UITableViewController, FSCalendarDataSource, FSCalendarDe
 //        setupTabBar.instance.setuptabBar(vc: self)
         let nib = UINib(nibName: "ReservCell", bundle: nil)
         
-        let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)\(doctor?.DOCTOR_PIC ?? "")")
+        let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor?.DOCTOR_PIC ?? "")")
         
         print("http://192.168.1.235/primecaretest//\(doctor?.DOCTOR_PIC ?? "")")
 

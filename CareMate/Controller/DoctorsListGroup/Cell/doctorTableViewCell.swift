@@ -58,9 +58,9 @@ class doctorTableViewCell: UITableViewCell {
   //    self.doctorImageView.image = doctor.gender == "M" ? #imageLiteral(resourceName: "doctor") : #imageLiteral(resourceName: "doctor_woman")
       
       
-        let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)\(doctor.DOCTOR_PIC ?? "")")
+        let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor.DOCTOR_PIC ?? "")")
 
-        print("http://172.25.26.140/mobileApi/\(doctor.DOCTOR_PIC ?? "")")
+        print(url?.absoluteString ?? "")
       self.doctorImageView.kf.setImage(with: url, placeholder: doctor.gender == "M" ? UIImage(named: "RectangleMan") : UIImage(named: "RectangleGirl") , options: nil, completionHandler: nil)
         if doctor.NO_RESERVATION_VIEW_ONLY_TEL ?? "" == "1" || doctor.HIDE_SCHEDULE_MOBILE_APP ?? "" == "1" {
             viewTime.isHidden = true

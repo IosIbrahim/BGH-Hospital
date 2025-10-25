@@ -45,7 +45,7 @@ class DoctorCell: UITableViewCell {
     
     let url = URL(string: "http://172.25.26.140/mobileapi/\(doctor.DOCTOR_PIC ?? "")")
     print("lhhihojohjiguyfdresrdtfyguhijokiuhgyftdfguhijokjihugyftfyguhi")
-      print("\(Constants.APIProvider.IMAGE_BASE)\(doctor.DOCTOR_PIC ?? "")")
+      print("\(Constants.APIProvider.IMAGE_BASE)/\(doctor.DOCTOR_PIC ?? "")")
 
     self.doctorImageView.kf.setImage(with: url, placeholder: doctor.gender == "M" ? UIImage(named: "doctor") : UIImage(named: "doctor_woman") , options: nil, completionHandler: nil)
   }
