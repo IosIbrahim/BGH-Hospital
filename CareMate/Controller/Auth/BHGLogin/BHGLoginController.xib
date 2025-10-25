@@ -102,7 +102,7 @@
                                                                                     <rect key="frame" x="20" y="0.0" width="298" height="45"/>
                                                                                     <color key="textColor" red="0.0" green="0.23137254901960785" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                                                    <textInputTraits key="textInputTraits"/>
+                                                                                    <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad"/>
                                                                                 </textField>
                                                                             </subviews>
                                                                         </stackView>
