@@ -512,8 +512,8 @@ func showIndicator() {
     if appLoading { return }
     appLoading = true
     
-    guard let vc = ((UIApplication.shared.delegate as! AppDelegate).window!.rootViewController as? UINavigationController)?.viewControllers.last else { return }
-    
+   // guard let vc = ((UIApplication.shared.delegate as! AppDelegate).window!.rootViewController as? UINavigationController)?.viewControllers.last else { return }
+    guard let vc = rootNavigation.viewControllers.last else { return }
     viewLoading = UIView(frame: vc.view.bounds)
     viewLoading.backgroundColor = UIColor.black.withAlphaComponent(0.1)
     

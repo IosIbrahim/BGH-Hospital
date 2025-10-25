@@ -58,8 +58,11 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
         viewCountry.delegate = self
         // viewMobile.setShadowLight()
         if UserManager.isArabic {
-            labelMobileNumber.text = "رقم الهاتف النقال"
-            btnSubmit.setTitle("ارسال كود التحقيق", for: .normal)
+            labelMobileNumber.text = "رقم الهاتف"
+            btnSubmit.setTitle("تآكيد", for: .normal)
+        }else {
+            btnSubmit.setTitle("Confirm", for: .normal)
+
         }
         if search == true{
             imageViewPhone.image = UIImage.init(named: "calendar-svgrepo-com")
@@ -253,14 +256,18 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
         
         request.httpMethod = "POST"
         request.httpBody = postData
-        
+        indicator.sharedInstance.show()
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                indicator.sharedInstance.dismiss()
+            }
             guard let data = data else {
                 print(String(describing: error))
                 return
             }
             print(String(data: data, encoding: .utf8)!)
             let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary ?? .init()
+            
             if let code = json?["CODE"] as? Int {
                 if code == 200 || code == 5 {
                     if json?["ALREADY_REGISTERED_FLAG"] as! String == "1" {

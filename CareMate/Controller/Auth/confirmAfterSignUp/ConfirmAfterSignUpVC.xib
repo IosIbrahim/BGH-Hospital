@@ -24,8 +24,8 @@
             <rect key="frame" x="0.0" y="0.0" width="362" height="587"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4VL-VK-GyQ">
-                    <rect key="frame" x="94.5" y="168" width="173.5" height="22.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Change Password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4VL-VK-GyQ">
+                    <rect key="frame" x="20" y="168" width="322" height="22.5"/>
                     <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="20"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -146,6 +146,7 @@
                 <constraint firstItem="3rT-LU-u0L" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="FNB-4n-wTg"/>
                 <constraint firstItem="2qf-7t-Rhc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="FPP-77-n9T"/>
                 <constraint firstItem="Cuq-WJ-Lih" firstAttribute="trailing" secondItem="3rT-LU-u0L" secondAttribute="trailing" id="G8G-a5-0AU"/>
+                <constraint firstItem="4VL-VK-GyQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="GaW-Bd-bio"/>
                 <constraint firstItem="nb5-tk-da7" firstAttribute="leading" secondItem="2qf-7t-Rhc" secondAttribute="leading" id="GcH-Y6-RcL"/>
                 <constraint firstItem="Cuq-WJ-Lih" firstAttribute="top" secondItem="3rT-LU-u0L" secondAttribute="bottom" constant="8" id="XZT-Hx-cd5"/>
                 <constraint firstItem="Cuq-WJ-Lih" firstAttribute="leading" secondItem="3rT-LU-u0L" secondAttribute="leading" id="kj9-tP-dsk"/>

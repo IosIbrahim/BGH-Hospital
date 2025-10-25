@@ -248,6 +248,7 @@ class Utilities: NSObject {
 }
 
 func GET_NAV_CONTROLLER() -> UINavigationController {
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    return appDelegate.window!.rootViewController as! UINavigationController
+  //  let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//    return appDelegate.window!.rootViewController as! UINavigationController
+    return rootNavigation
 }

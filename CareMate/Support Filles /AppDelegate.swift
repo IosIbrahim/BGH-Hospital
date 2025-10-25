@@ -163,10 +163,10 @@ extension UITableViewCell {
 // MOLH Resetable لتغيير اللغة وإعادة تحميل التطبيق
 extension AppDelegate: MOLHResetable {
     func reset() {
-        guard let window = self.window else { return }
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let rootVC = storyboard.instantiateViewController(withIdentifier: "SplashNavigation")
-        window.rootViewController = rootVC
-        window.makeKeyAndVisible()
+     //   guard let window = self.window else { return }
+      //  let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      //  let rootVC = storyboard.instantiateViewController(withIdentifier: "SplashNavigation")
+      //  window.rootViewController = rootVC
+      //  window.makeKeyAndVisible()
     }
 }

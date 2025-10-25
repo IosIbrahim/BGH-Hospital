@@ -39,6 +39,7 @@ class ConfirmAfterSignUpVC: BaseViewController {
         if !patientName.isEmpty {
             let welcome = UserManager.isArabic ? "مرحبا \(patientName)":"Welcome \(patientName)"
             let msg = "\(labelEnterPassword.text!)\n\(welcome)"
+            labelEnterPassword.text = msg
         }
     }
 

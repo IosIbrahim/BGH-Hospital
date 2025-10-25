@@ -20,6 +20,8 @@ extension Array {
     }
 }
 
+var rootNavigation = UINavigationController()
+
 class SplashViewController: UIViewController{
     private var isInit = false
     
@@ -32,7 +34,11 @@ class SplashViewController: UIViewController{
         navigationController?.navigationBar.tintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         initBackGround()
-        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = self.navigationController
+        appDelegate.window?.makeKeyAndVisible()
+        rootNavigation = self.navigationController!
+
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "NotificationHandler"), object: nil, queue: nil) { [weak self] notification in
             guard let self = self else { return }
             if self.navigationController?.viewControllers.last is SplashViewController {
@@ -147,7 +153,7 @@ class SplashViewController: UIViewController{
         let defaults = UserDefaults.standard
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {
             let decoder = JSONDecoder()
-            if let loadedPerson = try? decoder.decode(LoginedUser.self, from: savedPerson) {
+            if let _ = try? decoder.decode(LoginedUser.self, from: savedPerson) {
                 self.authenticateUser()
             }
         } else {
@@ -191,6 +197,10 @@ class SplashViewController: UIViewController{
         nav.navigationBar.isHidden = true
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true)
+       // let appDelegate = UIApplication.shared.delegate as! AppDelegate
+     //   appDelegate.window?.rootViewController = nav
+        rootNavigation = nav
+
     }
     
     private func showTabBar() {
@@ -201,6 +211,7 @@ class SplashViewController: UIViewController{
         nav.navigationBar.isHidden = true
         nav.modalPresentationStyle = .fullScreen
         self.present(nav, animated: true)
+       rootNavigation = nav
     }
     
     private func setApperance() {
