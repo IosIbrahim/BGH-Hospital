@@ -44,6 +44,7 @@ class ConfirmReservationandNoSlotsPopupViewController: UIViewController, MFMailC
     
     var screenType: ReservationPopupScreenType = .reservationDone
     var closure: HintPopupClosure?
+    var msg = ""
     
     init(screenType: ReservationPopupScreenType) {
         super.init(nibName: "ConfirmReservationandNoSlotsPopupViewController", bundle: nil)
@@ -83,6 +84,7 @@ class ConfirmReservationandNoSlotsPopupViewController: UIViewController, MFMailC
                 labelDetails.text = "Sorry, the phone number data is not known to us at the hospital, so if you have a hospital file, please register account, or contact us for more help via:"
             }
         }
+       
         lblEmail.text = ConstantsData.email
         lblMobile.text = "\(ConstantsData.mobile) - \(ConstantsData.mobile1)"
         viewPhone.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(makACall)))

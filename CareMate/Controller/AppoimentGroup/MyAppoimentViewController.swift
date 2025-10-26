@@ -462,15 +462,15 @@ extension MyAppoimentViewController: UICollectionViewDelegateFlowLayout {
         let date = self.filteredData[indexPath.row].eXPECTEDDONEDATE.ConvertToDate
         if date.trimTime.compare(Date().trimTime) == ComparisonResult.orderedAscending {
             if filteredData[indexPath.row].sTATUS_NAME_EN == "Performed" && filteredData[indexPath.row].EVAL_STATUS == "0" {
-                size.height =  200
+                size.height =  300
             } else {
-                size.height =  200
+                size.height =  300
             }
         } else {
             if filteredData[indexPath.row].sTATUS_NAME_EN == "New" || filteredData[indexPath.row].sTATUS_NAME_EN == "Future" {
-                size.height =  300
+                size.height =  400
             } else {
-                size.height =  200
+                size.height =  400
             }
         }
         return size

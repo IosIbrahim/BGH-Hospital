@@ -321,19 +321,15 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
               if error == nil {
                   if let root = ((data as! [String: AnyObject])["Root"] as! [String:AnyObject])["OUT_PARMS"] as? [String:AnyObject] {
                       if root["OUT_PARMS_ROW"] is [String:AnyObject] {
-                          let OUT_PARMS_ROW = root["OUT_PARMS_ROW"] as!  AnyObject
+                          let OUT_PARMS_ROW = root["OUT_PARMS_ROW"] as  AnyObject
                           let loginStratues =  OUT_PARMS_ROW["LOGIN_STATUS"] as? String
                           if loginStratues == "2" {
                               if let root = ((data as! [String: AnyObject])["Root"] as! [String:AnyObject])["PAT_DATA"] as? [String:AnyObject] {
                                   let patImage = ((root["PAT_DATA_ROW"] as? [String: Any])?["PAT_PIC"] as? [String: Any])?["BLOB_PATH"] as? String ?? ""
                                   UserDefaults.standard.set(patImage, forKey: "patImage")
-                                  let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                                  
-                                  let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
-                                  UserDefaults.standard.set(password, forKey: "user_password")
                                   self.user?.saveToUser()
-                                  self.navigationController?.pushViewController(nextViewController, animated: true)
-                                  
+                                  UserDefaults.standard.set(password, forKey: "user_password")
+                                  self.navigationController?.dismiss(animated: true)
                               }
                           }
                           else if loginStratues == "1"
@@ -341,13 +337,13 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
                               
                               if let root = ((data as! [String: AnyObject])["Root"] as! [String:AnyObject])["PAT_DATA"] as? [String:AnyObject]
                               {
-                                  let OUT_PARMS_ROW = root["PAT_DATA_ROW"] as!  AnyObject
+                                  let OUT_PARMS_ROW = root["PAT_DATA_ROW"] as  AnyObject
                                   
-                                  let loginStratues =  OUT_PARMS_ROW["PATIENTID"] as? String
+                                  let id =  OUT_PARMS_ROW["PATIENTID"] as? String
                                   
                                   print( OUT_PARMS_ROW["PATIENTID"] as? String ?? "")
-                                  currentPatientIDOrigni =    OUT_PARMS_ROW["PATIENTID"] as? String ?? ""
-                                  Utilities.sharedInstance.setPatientId(patienId: OUT_PARMS_ROW["PATIENTID"] as? String ?? "")
+                                  currentPatientIDOrigni =    id ?? ""
+                                  Utilities.sharedInstance.setPatientId(patienId: id ?? "")
                                   UserDefaults.standard.set(Utilities.sharedInstance.getPatientId(), forKey: "Utilities.sharedInstance.getPatientId()")
                                   currentPatientMobile =  OUT_PARMS_ROW["PAT_TEL"] as? String ?? ""
                                   UserDefaults.standard.set(true, forKey: "loginOrNO")
@@ -365,19 +361,14 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
                                   UserDefaults.standard.set(password, forKey: "user_password")
 //                                  UserManager.saveUserInfo(user: Utilities.sharedInstance.getPatientId())
                                   //            NotificationCenter.default.post(name: NSNotification.Name("GoToHome"), object: nil)
-                                  let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                                  
-                                  let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
-                                  
-                                  self.navigationController?.pushViewController(nextViewController, animated: true)
+                                  self.navigationController?.dismiss(animated: true)
                               }
                           }
                           else
                           {
                               if let root = ((data as! [String: AnyObject])["Root"] as! [String:AnyObject])["MESSAGE"] as? [String:AnyObject]
                               {
-                                  let MESSAGE_ROW = root["MESSAGE_ROW"] as!  AnyObject
-                                  
+                                  let MESSAGE_ROW = root["MESSAGE_ROW"] as  AnyObject
                                   Utilities.showAlert(messageToDisplay: MESSAGE_ROW[UserManager.isArabic ? "NAME_AR" : "NAME_EN"] as? String ?? "")
 
                                   if let CODE = MESSAGE_ROW["CODE"] as? String

@@ -296,13 +296,14 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
                     }else {
                       
                         DispatchQueue.main.async {
-                            let formSheet = MZFormSheetController.init(viewController: slotNot(messageAr: " عذرًا ، البيانات المدخلة لا تتطابق مع سجلاتنا ، لمزيد من المعلومات يرجى الاتصال بنا او مراسلاتنا بالبريد الإلكتروني", MessageEn:  "Sorry, the Entered data does not match our records, for more information please contact us By Calling on "))
-                            formSheet.shouldDismissOnBackgroundViewTap = true
-                            formSheet.transitionStyle = .slideFromBottom
-                            formSheet.presentedFormSheetSize = CGSize.init(width: UIScreen.main.bounds.width * 0.9, height: 380)
-                            formSheet.shouldCenterVertically = true
-                            formSheet.present(animated: true, completionHandler: nil)
-                            Utilities.showAlert(messageToDisplay:"  \(ConstantsData.mobile) OR By Email: \(ConstantsData.email)")
+//                            let formSheet = MZFormSheetController.init(viewController: slotNot(messageAr: " عذرًا ، البيانات المدخلة لا تتطابق مع سجلاتنا ، لمزيد من المعلومات يرجى الاتصال بنا او مراسلاتنا بالبريد الإلكتروني", MessageEn:  "Sorry, the Entered data does not match our records, for more information please contact us By Calling on "))
+//                            formSheet.shouldDismissOnBackgroundViewTap = true
+//                            formSheet.transitionStyle = .slideFromBottom
+//                            formSheet.presentedFormSheetSize = CGSize.init(width: UIScreen.main.bounds.width * 0.9, height: 380)
+//                            formSheet.shouldCenterVertically = true
+//                            formSheet.present(animated: true, completionHandler: nil)
+//                            Utilities.showAlert(messageToDisplay:"  \(ConstantsData.mobile) OR By Email: \(ConstantsData.email)")
+                            OPEN_RESERVATION_AND_NO_SLOTS_POPUP(container: self, type: .register)
                         }
 
                         
@@ -310,13 +311,14 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
                 }
             } else {
                 DispatchQueue.main.async {
-                    let formSheet = MZFormSheetController.init(viewController: slotNot(messageAr: " عذرًا ، البيانات المدخلة لا تتطابق مع سجلاتنا ، لمزيد من المعلومات يرجى الاتصال بنا او مراسلاتنا بالبريد الإلكتروني", MessageEn:  "Sorry, the Entered data does not match our records, for more information please contact us By Calling on "))
-                    formSheet.shouldDismissOnBackgroundViewTap = true
-                    formSheet.transitionStyle = .slideFromBottom
-                    formSheet.presentedFormSheetSize = CGSize.init(width: UIScreen.main.bounds.width * 0.9, height: 380)
-                    formSheet.shouldCenterVertically = true
-                    formSheet.present(animated: true, completionHandler: nil)
-                    Utilities.showAlert(messageToDisplay:"  \(ConstantsData.mobile) OR By Email: \(ConstantsData.email)")
+//                    let formSheet = MZFormSheetController.init(viewController: slotNot(messageAr: " عذرًا ، البيانات المدخلة لا تتطابق مع سجلاتنا ، لمزيد من المعلومات يرجى الاتصال بنا او مراسلاتنا بالبريد الإلكتروني", MessageEn:  "Sorry, the Entered data does not match our records, for more information please contact us By Calling on "))
+//                    formSheet.shouldDismissOnBackgroundViewTap = true
+//                    formSheet.transitionStyle = .slideFromBottom
+//                    formSheet.presentedFormSheetSize = CGSize.init(width: UIScreen.main.bounds.width * 0.9, height: 380)
+//                    formSheet.shouldCenterVertically = true
+//                    formSheet.present(animated: true, completionHandler: nil)
+//                    Utilities.showAlert(messageToDisplay:"  \(ConstantsData.mobile) OR By Email: \(ConstantsData.email)")
+                    OPEN_RESERVATION_AND_NO_SLOTS_POPUP(container: self, type: .register)
                 }
                 
             }
