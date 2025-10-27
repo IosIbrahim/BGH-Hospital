@@ -92,7 +92,7 @@ class MedicalRecordVC: BaseViewController
         pickerSuggestions.Rounded(corner: 20)
         
         imageViewSurvey.loadFromUrl(url: ConstantsData.survey, placeHolder: "quetionary")
-        imageViewVirtualTour.loadFromUrl(url: ConstantsData.vitual, placeHolder: "ic-hosploc")
+        imageViewVirtualTour.loadFromUrl(url: ConstantsData.vitual, placeHolder: "br1")
 
         if UserManager.isArabic
         {

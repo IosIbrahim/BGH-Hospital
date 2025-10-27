@@ -26,9 +26,10 @@ class ContactUsViewController: BaseViewController, MFMailComposeViewControllerDe
     @IBOutlet weak var imageViewYoutube: UIImageView!
     @IBOutlet weak var imageViewDerma: UIImageView!
     @IBOutlet weak var imageViewTwitter: UIImageView!
-    @IBOutlet weak var viewHelpAndSupport: UIView!
-    @IBOutlet weak var labelHelpAndSupport: UILabel!
-    
+    @IBOutlet weak var viewBranches: UIView!
+    @IBOutlet weak var lblBranches: UILabel!
+    @IBOutlet weak var lblAllBranches: UILabel!
+
     @IBOutlet weak var lblContantinforamtion: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,7 @@ class ContactUsViewController: BaseViewController, MFMailComposeViewControllerDe
         viewPhone.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(callPhone)))
         viewWhatsapp.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openChatOnWhatsapp)))
         viewEmail.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openEmail)))
-        viewHelpAndSupport.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openHelpAndSupport)))
+        viewBranches.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openBranches)))
         if UserManager.isArabic {
             lblContantinforamtion.text = "بيانات التواصل"
             labelContact.text = "تواصل معنا"
@@ -45,7 +46,8 @@ class ContactUsViewController: BaseViewController, MFMailComposeViewControllerDe
             labelWhatsapp.text = "الرقم الموحد المختصر"
             labelEmail.text = "البريد الالكتروني"
             labelContactUsThrow.text = "تواصل معنا عبر"
-            labelHelpAndSupport.text = "المساعدة والدعم"
+            lblBranches.text = "فروعنا"
+            lblAllBranches.text = "كل الفروع"
             labelContactUsThrow.font = UIFont(name: "Tajawal-Regular", size: 12)
         }
         imageViewIn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(linkedIn)))
@@ -87,6 +89,14 @@ class ContactUsViewController: BaseViewController, MFMailComposeViewControllerDe
       //  openWhatsApp(number: ConstantsData.whatsapp)
         call(phoneNumber: ConstantsData.unifiedNumber)
 
+    }
+    
+    @objc func openBranches() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let v1 = storyBoard.instantiateViewController(withIdentifier: "BranchesViewController") as! BranchesViewController
+        v1.fromMedicalRecord = true
+        v1.vcType = .fromReservation
+        self.navigationController?.pushViewController(v1, animated: true)
     }
     
     @objc func openHelpAndSupport() {

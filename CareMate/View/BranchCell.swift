@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import ImageSlideshow
 
 class BranchCell: UITableViewCell {
     
+    @IBOutlet weak var slider: ImageSlideshow!
     @IBOutlet weak var hospitalImage: UIImageView!
     @IBOutlet weak var hospitalNumber: UILabel!
     @IBOutlet weak var hospitalName: UILabel!
@@ -22,6 +24,8 @@ class BranchCell: UITableViewCell {
         super.awakeFromNib()
 //        hospitalImage.layer.cornerRadius = 10
         btnVisit.layer.cornerRadius = 8
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BranchCell.didTap))
+      slider.addGestureRecognizer(gestureRecognizer)
     }
     
     func configCell(onlineAppointment: branchData)  {
@@ -31,6 +35,10 @@ class BranchCell: UITableViewCell {
 //        self.hospitalDescropation.text = UserManager.isArabic ? onlineAppointment.descriptionAr : onlineAppointment.descriptionEn
         getlocation.text =  UserManager.isArabic ? onlineAppointment.descriptionAr : onlineAppointment.descriptionEn
         btnVisit.setTitle(UserManager.isArabic ? "زيارة الموقع" : "Visit site", for: .normal)
+    }
+    
+    @objc func didTap() {
+      slider.presentFullScreenController(from: rootNavigation)
     }
     
     @IBAction func callBtn(_ sender: Any) {

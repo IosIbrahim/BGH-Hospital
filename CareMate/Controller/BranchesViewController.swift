@@ -6,12 +6,13 @@
  //  Copyright © 2017 khabeer Group. All rights reserved.
  //
  
- 
- import UIKit
- import PopupDialog
- import DZNEmptyDataSet
- import SCLAlertView
+import UIKit
+import PopupDialog
+import DZNEmptyDataSet
+import SCLAlertView
 import MZFormSheetController
+import ImageSlideshow
+
  var isFromOrder = false
 
 struct branchData{
@@ -35,7 +36,7 @@ enum listOfOtherScreenTypeBrnach {
   @IBOutlet weak var tableView: UITableView!
      var fromMedicalRecord = false
      var arrayOfBranch = [branchData]()
-
+     
   var branches = [Branch]()
   var specialityFilterPopup: PopupDialog?
   var selectedBranch: Branch?
@@ -52,7 +53,7 @@ enum listOfOtherScreenTypeBrnach {
          let bakhshHospitalObject =  branchData(nameAr: "مستشفي الدكتور بخش الفرع الرئيسي", nameEn: "Dr. Bakhsh Hospital – Main Branch", Phone: "0126510666",descriptionAr:" حي الشرفية، جدة، المملكة العربية السعودية ص.ب 6940 ،الرمز البريدي 21452",descriptionEn: "Al-Sharafiyah District, Jeddah, Saudi Arabia, P.O. Box 6940, Postal Code: 21452")
                
                let bakshClinicsObject =  branchData(nameAr: "عيادات الدكتور بخش", nameEn: "Dr.Bakhsh Clinics", Phone: "0126510555"
-    ,descriptionAr: "شارع الامير سلطان مقابل ايه مول (عالم ساكو) المحمديه جدة ص.ب 6940 ، الرمز البريدي 21452",descriptionEn: "Prince Sultan Street, opposite Aya Mall (SACO World), Al-Mohammadiyah, Jeddah, P.O. Box 6940, Postal Code 21452")
+    ,descriptionAr: "شارع الامير سلطان مقابل ايه مول (عالم ساكو) المحمدية جدة ص.ب 6940 ، الرمز البريدي 21452",descriptionEn: "Prince Sultan Street, opposite Aya Mall (SACO World), Al-Mohammadiyah, Jeddah, P.O. Box 6940, Postal Code 21452")
 
                arrayOfBranch.append(bakhshHospitalObject)
                arrayOfBranch.append(bakshClinicsObject)
@@ -124,14 +125,27 @@ enum listOfOtherScreenTypeBrnach {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "BranchCell", for: indexPath) as! BranchCell
     cell.configCell(onlineAppointment: arrayOfBranch[indexPath.row])
+      cell.slider.Rounded(corner: 15)
+      cell.slider.contentScaleMode = .scaleAspectFill
       if indexPath.row == 0
       {
           cell.hospitalImage.image = UIImage(named: "1")
+          cell.slider.setImageInputs([
+            ImageSource(image: UIImage(named: "br1")!),
+            ImageSource(image: UIImage(named: "br2")!),
+            ImageSource(image: UIImage(named: "br3")!)
+          ])
       }
       else if indexPath.row == 1
                 
       {
           cell.hospitalImage.image = UIImage(named: "2")
+          cell.slider.setImageInputs([
+            ImageSource(image: UIImage(named: "br4")!),
+            ImageSource(image: UIImage(named: "br5")!),
+            ImageSource(image: UIImage(named: "br1")!)
+          ])
+          cell.slider.contentScaleMode = .scaleAspectFill
 
       }
       else
@@ -139,6 +153,7 @@ enum listOfOtherScreenTypeBrnach {
           cell.hospitalImage.image = UIImage(named: "1")
 
       }
+      
       
     return cell
   }
@@ -169,23 +184,15 @@ enum listOfOtherScreenTypeBrnach {
       //zozo
           if indexPath.row == 0
           {
-              openMap(lat: 21.5203866, lng: 39.1910548)
-              
-          
-
+              openMap(lat: ConstantsData.lat1, lng: ConstantsData.long1)
           }
           else if indexPath.row == 1
           {
-              openMap(lat: 21.6658654, lng: 39.1222836)
-
-            
-
+              openMap(lat: ConstantsData.lat2, lng: ConstantsData.long2)
           }
           else
           {
-
-              openMap(lat: 29.147486, lng: 48.113684)
-
+              openMap(lat: ConstantsData.lat1, lng: ConstantsData.long1)
           }
       
 
@@ -204,7 +211,17 @@ enum listOfOtherScreenTypeBrnach {
      }
 
      func openTrackerInBrowser(lat: Double, lng: Double) {
-         if let browserUrl = URL(string: "https://www.google.com/maps/dir/?saddr=&daddr=\(lat),\(lng)&directionsmode=driving") {
+         var url = ConstantsData.branchLoc
+         if lat == ConstantsData.lat1 {
+             url = ConstantsData.branchLoc
+         }else if lat == ConstantsData.lat2 {
+             url = ConstantsData.branchLoc2
+         }
+//         if let browserUrl = URL(string: "https://www.google.com/maps/dir/?saddr=&daddr=\(lat),\(lng)&directionsmode=driving") {
+//             UIApplication.shared.open(browserUrl, options: [:], completionHandler: nil)
+//         }
+         
+         if let browserUrl = URL(string: url) {
              UIApplication.shared.open(browserUrl, options: [:], completionHandler: nil)
          }
      }

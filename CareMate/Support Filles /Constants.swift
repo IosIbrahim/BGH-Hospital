@@ -221,8 +221,12 @@ struct ConstantsData {
     static let snapchat = ""
     static let youtube = "https://www.youtube.com/@bhghospital"
     static let drama = "https://www.drbakhsh.com/"
-    static let lat1 = 21.5203866
-    static let long1 = 39.1910548
+    static let lat1 = 21.5218603
+    static let long1 = 39.1915136
+    static let lat2 = 21.5203898
+    static let long2 = 39.1916415
+    static let branchLoc = "https://maps.app.goo.gl/WVmK7yxBoKc39jvr5?g_st=iw"
+    static let branchLoc2 = "https://maps.app.goo.gl/WVmK7yxBoKc39jvr5?g_st=iw"
     
     static let termsDosAr = "تنويه هام: \n خدمة تذكير الدواء هي أداة تقنية مساعدة تهدف إلى تذكير المريض بمواعيد تناول الأدوية استنادًا إلى البيانات المسجَّلة في ملفه الطبي الإلكتروني، ولا تُعدّ بديلا ً عن التعليمات الصادرة من الطبيب المعالج أو الصيدلي. \n يتحمل المستخدم (المريض) كامل المسؤولية عن الالتزام بوصفته الطبية الأصلية، وتناول الجرعات في مواعيدها، والتحقق من دقة البيانات والتوقيتات الظاهرة في التطبيق. \n يُخلي مستشفى الدكتور عبد الرحمن طه بخش مسؤوليته كاملةً عن أي خطأ أو ضرر أو مضاعفات قد تنتج عن عدم الالتزام بمواعيد أو تعليمات الأدوية."
     

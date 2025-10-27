@@ -443,7 +443,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="szW-CB-Bym">
                                                     <rect key="frame" x="8" y="8" width="358" height="213"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlSalamAlAhmadiHospital" translatesAutoresizingMaskIntoConstraints="NO" id="ARC-wF-h3k">
+                                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlSalamAlAhmadiHospital" translatesAutoresizingMaskIntoConstraints="NO" id="ARC-wF-h3k">
                                                             <rect key="frame" x="0.0" y="0.0" width="358" height="213"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <userDefinedRuntimeAttributes>
@@ -452,6 +452,15 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
+                                                        <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="SJr-FR-HE5" customClass="ImageSlideshow" customModule="ImageSlideshow">
+                                                            <rect key="frame" x="-10" y="0.0" width="378" height="213"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
+                                                                    <real key="value" value="12"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cE5-vG-rce">
                                                             <rect key="frame" x="20" y="172.66666666666666" width="25" height="25"/>
                                                             <constraints>
@@ -495,6 +504,7 @@
                                                     <constraints>
                                                         <constraint firstItem="cE5-vG-rce" firstAttribute="leading" secondItem="szW-CB-Bym" secondAttribute="leading" constant="20" id="13O-0V-4dt"/>
                                                         <constraint firstItem="bUt-is-ppk" firstAttribute="top" secondItem="xLJ-Y7-GfP" secondAttribute="bottom" constant="20" id="7vG-SM-azs"/>
+                                                        <constraint firstAttribute="trailing" secondItem="SJr-FR-HE5" secondAttribute="trailing" constant="-10" id="CDJ-0J-cYH"/>
                                                         <constraint firstAttribute="bottom" secondItem="ARC-wF-h3k" secondAttribute="bottom" id="Dt3-Vt-UFU"/>
                                                         <constraint firstItem="ARC-wF-h3k" firstAttribute="top" secondItem="szW-CB-Bym" secondAttribute="top" id="NhW-Zh-mtC"/>
                                                         <constraint firstItem="bUt-is-ppk" firstAttribute="height" secondItem="cE5-vG-rce" secondAttribute="height" multiplier="0.986667" id="PZ8-hm-p0v"/>
@@ -505,10 +515,13 @@
                                                         <constraint firstAttribute="trailing" secondItem="ARC-wF-h3k" secondAttribute="trailing" id="Wz3-2l-6JB"/>
                                                         <constraint firstItem="9Bq-mv-LPz" firstAttribute="leading" secondItem="cE5-vG-rce" secondAttribute="trailing" constant="8" id="cFu-tu-TXc"/>
                                                         <constraint firstItem="ARC-wF-h3k" firstAttribute="leading" secondItem="szW-CB-Bym" secondAttribute="leading" id="eBb-DE-Q4G"/>
+                                                        <constraint firstItem="SJr-FR-HE5" firstAttribute="leading" secondItem="szW-CB-Bym" secondAttribute="leading" constant="-10" id="iCg-87-fdb"/>
+                                                        <constraint firstAttribute="bottom" secondItem="SJr-FR-HE5" secondAttribute="bottom" id="iRB-G9-zbk"/>
                                                         <constraint firstItem="cE5-vG-rce" firstAttribute="top" secondItem="bUt-is-ppk" secondAttribute="bottom" constant="8" id="iWD-J3-4HX"/>
                                                         <constraint firstItem="bUt-is-ppk" firstAttribute="leading" secondItem="cE5-vG-rce" secondAttribute="leading" id="jR7-7D-XZe"/>
                                                         <constraint firstAttribute="bottom" secondItem="9Bq-mv-LPz" secondAttribute="bottom" constant="20" id="mfi-5E-CLL"/>
                                                         <constraint firstItem="pEc-rY-pGs" firstAttribute="leading" secondItem="9Bq-mv-LPz" secondAttribute="leading" id="oK9-yK-n8m"/>
+                                                        <constraint firstItem="SJr-FR-HE5" firstAttribute="top" secondItem="szW-CB-Bym" secondAttribute="top" id="p4l-dB-ARy"/>
                                                         <constraint firstAttribute="trailing" secondItem="9Bq-mv-LPz" secondAttribute="trailing" constant="20" id="twS-oz-Zd0"/>
                                                         <constraint firstAttribute="trailing" secondItem="xLJ-Y7-GfP" secondAttribute="trailing" constant="20" id="uZl-Ne-OaE"/>
                                                     </constraints>
@@ -549,6 +562,7 @@
                                             <outlet property="hospitalImage" destination="ARC-wF-h3k" id="74I-tH-QQZ"/>
                                             <outlet property="hospitalName" destination="xLJ-Y7-GfP" id="8IV-Dx-klr"/>
                                             <outlet property="hospitalNumber" destination="pEc-rY-pGs" id="5cp-W5-S6C"/>
+                                            <outlet property="slider" destination="SJr-FR-HE5" id="GaI-lR-SYs"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
