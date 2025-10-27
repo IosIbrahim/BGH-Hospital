@@ -460,17 +460,22 @@ extension MyAppoimentViewController: UICollectionViewDelegateFlowLayout {
         size.width = (collectionView.bounds.size.width) - 10
         
         let date = self.filteredData[indexPath.row].eXPECTEDDONEDATE.ConvertToDate
+        let model = filteredData[indexPath.row]
         if date.trimTime.compare(Date().trimTime) == ComparisonResult.orderedAscending {
-            if filteredData[indexPath.row].sTATUS_NAME_EN == "Performed" && filteredData[indexPath.row].EVAL_STATUS == "0" {
-                size.height =  300
+            if model.sTATUS_NAME_EN == "Performed" && model.EVAL_STATUS == "0" {
+                size.height =  250
             } else {
-                size.height =  300
+                size.height =  250
             }
         } else {
-            if filteredData[indexPath.row].sTATUS_NAME_EN == "New" || filteredData[indexPath.row].sTATUS_NAME_EN == "Future" {
-                size.height =  400
+            if model.sTATUS_NAME_EN == "New" || model.sTATUS_NAME_EN == "Future" {
+                size.height =  300
             } else {
-                size.height =  400
+                if model.sTATUS_NAME_EN == "Canceled" {
+                    size.height =  250
+                }else {
+                    size.height =  300
+                }
             }
         }
         return size

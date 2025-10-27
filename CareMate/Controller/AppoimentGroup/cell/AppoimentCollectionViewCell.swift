@@ -12,6 +12,8 @@ import SCLAlertView
 class AppoimentCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var uiimageDoctor: UIImageView!
 
+    @IBOutlet weak var stkAction: UIStackView!
+    @IBOutlet weak var actionHight: NSLayoutConstraint!
     @IBOutlet weak var hospital: UILabel!
 //    @IBOutlet weak var time: UILabel!
 //    @IBOutlet weak var day: UILabel!
@@ -89,6 +91,7 @@ class AppoimentCollectionViewCell: UICollectionViewCell {
             cancel.isHidden = false
             rescudle.isHidden = false
             viewRate.isHidden = false
+            actionHight.constant = 40
            // viewRate.backgroundColor = .blue
             rescudle.backgroundColor = .blue
             labelRate.text = UserManager.isArabic ? "تأكيد" : "Confirm"
@@ -98,6 +101,7 @@ class AppoimentCollectionViewCell: UICollectionViewCell {
             cancel.isHidden = false
             rescudle.isHidden = true
             viewRate.isHidden = false
+            actionHight.constant = 40
             viewRate.backgroundColor = .blue
             labelRate.text = UserManager.isArabic ? "تأكيد" : "Confirm"
             self.statusView.backgroundColor = UIColor(fromRGBHexString: "008AAF")
@@ -107,12 +111,14 @@ class AppoimentCollectionViewCell: UICollectionViewCell {
             cancel.isHidden = true
             rescudle.isHidden = true
             viewRate.isHidden = true
+            actionHight.constant = 0
             self.statusView.backgroundColor = UIColor(fromRGBHexString: "B22222")
             break
         case "Confirmed":
             cancel.isHidden = true
             rescudle.isHidden = true
             viewRate.isHidden = true
+            actionHight.constant = 0
             self.statusView.backgroundColor = UIColor(fromRGBHexString: "228B22")
             break
         case "Performed":
@@ -121,8 +127,10 @@ class AppoimentCollectionViewCell: UICollectionViewCell {
             if data.EVAL_STATUS == "0" {
                 viewRate.isHidden = true
                 viewRate.backgroundColor = .green
+                actionHight.constant = 40
             } else {
                 viewRate.isHidden = true
+                actionHight.constant = 0
             }
             self.statusView.backgroundColor = UIColor(fromRGBHexString: "008080")
             break
@@ -132,8 +140,10 @@ class AppoimentCollectionViewCell: UICollectionViewCell {
             rescudle.backgroundColor = .blue
             viewRate.isHidden = true
             self.statusView.backgroundColor = UIColor(fromRGBHexString: "008AAF")
+            actionHight.constant = 40
             break
         }
+        stkAction.updateConstraints()
         print(isUpcomming)
 //        moreBtn.isHidden = isUpcomming
         

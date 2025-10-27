@@ -172,10 +172,10 @@
                                 </subviews>
                             </stackView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L5J-gk-RMV">
-                                <rect key="frame" x="0.0" y="286" width="508" height="75"/>
+                                <rect key="frame" x="0.0" y="306" width="508" height="55"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lhZ-CC-6i1">
-                                        <rect key="frame" x="10" y="20" width="488" height="35"/>
+                                        <rect key="frame" x="10" y="10" width="488" height="35"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AGK-dj-TXE">
                                                 <rect key="frame" x="0.0" y="0.0" width="159.5" height="35"/>
@@ -277,9 +277,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="lhZ-CC-6i1" firstAttribute="top" secondItem="L5J-gk-RMV" secondAttribute="top" constant="20" id="BqE-K3-Rsn"/>
+                                    <constraint firstItem="lhZ-CC-6i1" firstAttribute="top" secondItem="L5J-gk-RMV" secondAttribute="top" constant="10" id="BqE-K3-Rsn"/>
                                     <constraint firstItem="lhZ-CC-6i1" firstAttribute="leading" secondItem="L5J-gk-RMV" secondAttribute="leading" constant="10" id="L2h-V5-Y13"/>
-                                    <constraint firstAttribute="bottom" secondItem="lhZ-CC-6i1" secondAttribute="bottom" constant="20" id="Ppi-Zm-HN7"/>
+                                    <constraint firstAttribute="bottom" secondItem="lhZ-CC-6i1" secondAttribute="bottom" constant="10" id="Ppi-Zm-HN7"/>
                                     <constraint firstAttribute="trailing" secondItem="lhZ-CC-6i1" secondAttribute="trailing" constant="10" id="riI-d9-Ym8"/>
                                 </constraints>
                             </view>
@@ -317,6 +317,7 @@
             </constraints>
             <size key="customSize" width="518" height="371"/>
             <connections>
+                <outlet property="actionHight" destination="KVn-85-0HT" id="l4V-OP-TBB"/>
                 <outlet property="cancel" destination="CeD-ja-eXM" id="kSI-Zh-iI6"/>
                 <outlet property="doctorClinic" destination="9Nx-9P-3JV" id="gN9-6l-cB4"/>
                 <outlet property="doctorName" destination="3Mk-td-8rP" id="qzn-kN-KFd"/>
@@ -327,6 +328,7 @@
                 <outlet property="rescudle" destination="fxZ-SR-Enc" id="9ND-qJ-W2C"/>
                 <outlet property="status" destination="5Yd-Gf-KSO" id="HLx-aX-EOu"/>
                 <outlet property="statusView" destination="LeL-aY-FrW" id="axN-83-dxf"/>
+                <outlet property="stkAction" destination="lhZ-CC-6i1" id="xym-i7-Y6q"/>
                 <outlet property="uiimageDoctor" destination="fGe-RS-ZJQ" id="ZB4-s6-awD"/>
                 <outlet property="uilabelCancel" destination="ErC-mq-mIV" id="lQT-3m-C2j"/>
                 <outlet property="uilabelDate" destination="Vxd-1b-m1v" id="KpG-cl-4xS"/>
