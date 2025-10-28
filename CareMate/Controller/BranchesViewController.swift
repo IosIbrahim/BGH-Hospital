@@ -50,15 +50,30 @@ enum listOfOtherScreenTypeBrnach {
  }
      
      func loadData(){
-         let bakhshHospitalObject =  branchData(nameAr: "مستشفي الدكتور بخش الفرع الرئيسي", nameEn: "Dr. Bakhsh Hospital – Main Branch", Phone: "0126510666",descriptionAr:" حي الشرفية، جدة، المملكة العربية السعودية ص.ب 6940 ،الرمز البريدي 21452",descriptionEn: "Al-Sharafiyah District, Jeddah, Saudi Arabia, P.O. Box 6940, Postal Code: 21452")
-               
-               let bakshClinicsObject =  branchData(nameAr: "عيادات الدكتور بخش", nameEn: "Dr.Bakhsh Clinics", Phone: "0126510555"
-    ,descriptionAr: "شارع الامير سلطان مقابل ايه مول (عالم ساكو) المحمدية جدة ص.ب 6940 ، الرمز البريدي 21452",descriptionEn: "Prince Sultan Street, opposite Aya Mall (SACO World), Al-Mohammadiyah, Jeddah, P.O. Box 6940, Postal Code 21452")
+         let sharafia1 =  branchData(nameAr: "مستشفي الدكتور بخش فرع الشرفية",
+                                                nameEn: "Dr. Bakhsh Hospital – Sharafiyah Branch",
+                                                Phone: "0126510666",
+                                                descriptionAr:" حي الشرفية، جدة، المملكة العربية السعودية ص.ب 6940 ،الرمز البريدي 21452",
+                                                descriptionEn: "Al-Sharafiyah District, Jeddah, Saudi Arabia, P.O. Box 6940, Postal Code: 21452")
+         let sharafia2 =  branchData(nameAr: "عيادات الدكتور بخش - فرع الشرفية",
+                                                nameEn: "Dr.Bakhsh Clinics - Al-Sharafiyah",
+                                                Phone: "0126510666",
+                                                descriptionAr:" حي الشرفية، جدة، المملكة العربية السعودية ص.ب 6940 ،الرمز البريدي 21452",
+                                                descriptionEn: "Al-Sharafiyah District, Jeddah, Saudi Arabia, P.O. Box 6940, Postal Code: 21452")
+         let sharafia3 =  branchData(nameAr: "العلاج الطبيعي - فرع الشرفية",
+                                                nameEn: "Physio Therapy – Al-Sharafiyah  Branch",
+                                                Phone: "0126510666",
+                                                descriptionAr:" حي الشرفية، جدة، المملكة العربية السعودية ص.ب 6940 ،الرمز البريدي 21452",
+                                                descriptionEn: "Al-Sharafiyah District, Jeddah, Saudi Arabia, P.O. Box 6940, Postal Code: 21452")
+         
+         let bakshClinicsObject =  branchData(nameAr: "عيادات الدكتور بخش - فرع المحمدية", nameEn: "Dr.Bakhsh Clinics - Al-Mohammadiyah", Phone: "0126510555"
+                                            ,descriptionAr: "شارع الامير سلطان مقابل ايه مول (عالم ساكو) المحمدية جدة ص.ب 6940 ، الرمز البريدي 21452",descriptionEn: "Prince Sultan Street, opposite Aya Mall (SACO World), Al-Mohammadiyah, Jeddah, P.O. Box 6940, Postal Code 21452")
 
-               arrayOfBranch.append(bakhshHospitalObject)
-               arrayOfBranch.append(bakshClinicsObject)
-               //arrayOfBranch.append(elsalamAhmadi)
-               self.tableView.reloadData()
+        arrayOfBranch.append(sharafia1)
+        arrayOfBranch.append(sharafia2)
+        arrayOfBranch.append(sharafia3)
+        arrayOfBranch.append(bakshClinicsObject)
+        self.tableView.reloadData()
      }
      
      
@@ -129,29 +144,31 @@ enum listOfOtherScreenTypeBrnach {
       cell.slider.contentScaleMode = .scaleAspectFill
       if indexPath.row == 0
       {
-          cell.hospitalImage.image = UIImage(named: "1")
+          cell.hospitalImage.image = UIImage(named: "br1")
           cell.slider.setImageInputs([
             ImageSource(image: UIImage(named: "br1")!),
-            ImageSource(image: UIImage(named: "br2")!),
-            ImageSource(image: UIImage(named: "br3")!)
           ])
       }
       else if indexPath.row == 1
                 
       {
-          cell.hospitalImage.image = UIImage(named: "2")
+          cell.hospitalImage.image = UIImage(named: "br2")
           cell.slider.setImageInputs([
-            ImageSource(image: UIImage(named: "br4")!),
-            ImageSource(image: UIImage(named: "br5")!),
-            ImageSource(image: UIImage(named: "br1")!)
+            ImageSource(image: UIImage(named: "br2")!)
           ])
-          cell.slider.contentScaleMode = .scaleAspectFill
 
       }
-      else
+      else if indexPath.row == 2
       {
-          cell.hospitalImage.image = UIImage(named: "1")
-
+          cell.hospitalImage.image = UIImage(named: "br3")
+          cell.slider.setImageInputs([
+            ImageSource(image: UIImage(named: "br3")!)
+          ])
+      }else if indexPath.row == 3 {
+          cell.hospitalImage.image = UIImage(named: "br4")
+          cell.slider.setImageInputs([
+            ImageSource(image: UIImage(named: "br4")!)
+          ])
       }
       
       
@@ -182,23 +199,14 @@ enum listOfOtherScreenTypeBrnach {
 //      else if vcType == .fromOUrLocation
 //      {
       //zozo
-          if indexPath.row == 0
+          if indexPath.row <= 2
           {
               openMap(lat: ConstantsData.lat1, lng: ConstantsData.long1)
-          }
-          else if indexPath.row == 1
-          {
-              openMap(lat: ConstantsData.lat2, lng: ConstantsData.long2)
           }
           else
           {
               openMap(lat: ConstantsData.lat1, lng: ConstantsData.long1)
           }
-      
-
-      
-
-      
   }
      
      func openMap(lat: Double, lng: Double) {

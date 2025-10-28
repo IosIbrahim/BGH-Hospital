@@ -914,7 +914,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FAm-wT-S1n" userLabel="استطلاع ">
                                             <rect key="frame" x="0.0" y="0.0" width="189.5" height="240"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="br1" translatesAutoresizingMaskIntoConstraints="NO" id="eKz-ns-aqV">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="br" translatesAutoresizingMaskIntoConstraints="NO" id="eKz-ns-aqV">
                                                     <rect key="frame" x="0.0" y="0.0" width="189.5" height="168"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTp-dB-8Y5">
@@ -1124,7 +1124,7 @@
         <image name="MOniesIcon" width="41" height="41"/>
         <image name="WhatsApp Image 2024-03-04 at 8.54.22 PM" width="800" height="800"/>
         <image name="bell" width="16" height="16"/>
-        <image name="br1" width="449" height="299"/>
+        <image name="br" width="449" height="299"/>
         <image name="change" width="64" height="64"/>
         <image name="global" width="64" height="64"/>
         <image name="imageHome" width="392" height="122"/>
