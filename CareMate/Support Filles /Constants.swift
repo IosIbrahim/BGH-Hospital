@@ -225,8 +225,11 @@ struct ConstantsData {
     static let long1 = 39.1915136
     static let lat2 = 21.5203898
     static let long2 = 39.1916415
-    static let branchLoc = "https://maps.app.goo.gl/WVmK7yxBoKc39jvr5?g_st=iw"
-    static let branchLoc2 = "https://maps.app.goo.gl/WVmK7yxBoKc39jvr5?g_st=iw"
+    static let branchLoc = "https://maps.app.goo.gl/fftouqraHuJm1b7x7"
+    static let branchLoc2 = "https://maps.app.goo.gl/kvT2ojgrRV3sB1PN9"
+    static let branchLoc3 = "https://maps.app.goo.gl/WVmK7yxBoKc39jvr5?g_st=iw"
+    static let branchLoc4 = "https://maps.app.goo.gl/rHvDp7gPZHvcrH7U9?g_st=aw"
+
     
     static let termsDosAr = "تنويه هام: \n خدمة تذكير الدواء هي أداة تقنية مساعدة تهدف إلى تذكير المريض بمواعيد تناول الأدوية استنادًا إلى البيانات المسجَّلة في ملفه الطبي الإلكتروني، ولا تُعدّ بديلا ً عن التعليمات الصادرة من الطبيب المعالج أو الصيدلي. \n يتحمل المستخدم (المريض) كامل المسؤولية عن الالتزام بوصفته الطبية الأصلية، وتناول الجرعات في مواعيدها، والتحقق من دقة البيانات والتوقيتات الظاهرة في التطبيق. \n يُخلي مستشفى الدكتور عبد الرحمن طه بخش مسؤوليته كاملةً عن أي خطأ أو ضرر أو مضاعفات قد تنتج عن عدم الالتزام بمواعيد أو تعليمات الأدوية."
     

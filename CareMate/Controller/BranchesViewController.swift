@@ -50,21 +50,22 @@ enum listOfOtherScreenTypeBrnach {
  }
      
      func loadData(){
-         let sharafia1 =  branchData(nameAr: "مستشفي الدكتور بخش فرع الشرفية",
-                                                nameEn: "Dr. Bakhsh Hospital – Sharafiyah Branch",
+         let sharafia1 =  branchData(nameAr: "مستشفي د. بخش - فرع الشرفية",
+                                                nameEn: "Dr.Bakhsh Hospital-Al Sharafeyah",
                                                 Phone: "0126510666",
                                                 descriptionAr:" حي الشرفية، جدة، المملكة العربية السعودية ص.ب 6940 ،الرمز البريدي 21452",
                                                 descriptionEn: "Al-Sharafiyah District, Jeddah, Saudi Arabia, P.O. Box 6940, Postal Code: 21452")
-         let sharafia2 =  branchData(nameAr: "عيادات الدكتور بخش - فرع الشرفية",
-                                                nameEn: "Dr.Bakhsh Clinics - Al-Sharafiyah",
+         let sharafia2 =  branchData(nameAr: "عيادات د. بخش - فرع الشرفية",
+                                                nameEn: "Dr.Bakhsh Clinics-Al Sharafeyah",
                                                 Phone: "0126510666",
-                                                descriptionAr:" حي الشرفية، جدة، المملكة العربية السعودية ص.ب 6940 ،الرمز البريدي 21452",
-                                                descriptionEn: "Al-Sharafiyah District, Jeddah, Saudi Arabia, P.O. Box 6940, Postal Code: 21452")
+                                                descriptionAr:" حي الشرفية، جدة، المملكة العربية السعودية ص.ب 6940 ،الرمز البريدي 23218",
+                                                descriptionEn: "7239 Al Abbas Ibn Abd Al Mouttaleb، Sharafeyah District، 3228, Jeddah 23218, Saudi Arabia")
+         
          let sharafia3 =  branchData(nameAr: "العلاج الطبيعي - فرع الشرفية",
-                                                nameEn: "Physio Therapy – Al-Sharafiyah  Branch",
+                                                nameEn: "Physical Therapy -Al Sharafeyah",
                                                 Phone: "0126510666",
-                                                descriptionAr:" حي الشرفية، جدة، المملكة العربية السعودية ص.ب 6940 ،الرمز البريدي 21452",
-                                                descriptionEn: "Al-Sharafiyah District, Jeddah, Saudi Arabia, P.O. Box 6940, Postal Code: 21452")
+                                                descriptionAr:" حي الشرفية، جدة، المملكة العربية السعودية ص.ب 6940 ،الرمز البريدي 23216",
+                                                descriptionEn: "G5CR+5M2، Al Sharafeyah, Jeddah 23216, Saudi Arabia")
          
          let bakshClinicsObject =  branchData(nameAr: "عيادات الدكتور بخش - فرع المحمدية", nameEn: "Dr.Bakhsh Clinics - Al-Mohammadiyah", Phone: "0126510555"
                                             ,descriptionAr: "شارع الامير سلطان مقابل ايه مول (عالم ساكو) المحمدية جدة ص.ب 6940 ، الرمز البريدي 21452",descriptionEn: "Prince Sultan Street, opposite Aya Mall (SACO World), Al-Mohammadiyah, Jeddah, P.O. Box 6940, Postal Code 21452")
@@ -199,31 +200,36 @@ enum listOfOtherScreenTypeBrnach {
 //      else if vcType == .fromOUrLocation
 //      {
       //zozo
-          if indexPath.row <= 2
-          {
-              openMap(lat: ConstantsData.lat1, lng: ConstantsData.long1)
-          }
-          else
-          {
-              openMap(lat: ConstantsData.lat1, lng: ConstantsData.long1)
-          }
+//          if indexPath.row <= 2
+//          {
+//              openMap(lat: ConstantsData.lat1, lng: ConstantsData.long1)
+//          }
+//          else
+//          {
+//              openMap(lat: ConstantsData.lat1, lng: ConstantsData.long1)
+//          }
+      openMap(lat: Double(indexPath.row), lng: Double(indexPath.row))
   }
      
      func openMap(lat: Double, lng: Double) {
-         if let googleMapsUrl = URL(string: "comgooglemaps://?saddr=&daddr=\(lat),\(lng)&directionsmode=driving"),
-            UIApplication.shared.canOpenURL(googleMapsUrl) {
-             UIApplication.shared.open(googleMapsUrl, options: [:], completionHandler: nil)
-         } else {
+//         if let googleMapsUrl = URL(string: "comgooglemaps://?saddr=&daddr=\(lat),\(lng)&directionsmode=driving"),
+//            UIApplication.shared.canOpenURL(googleMapsUrl) {
+//             UIApplication.shared.open(googleMapsUrl, options: [:], completionHandler: nil)
+//         } else {
              openTrackerInBrowser(lat: lat, lng: lng)
-         }
+        // }
      }
 
      func openTrackerInBrowser(lat: Double, lng: Double) {
          var url = ConstantsData.branchLoc
-         if lat == ConstantsData.lat1 {
+         if lat == 0{
              url = ConstantsData.branchLoc
-         }else if lat == ConstantsData.lat2 {
+         }else if lat == 1{
              url = ConstantsData.branchLoc2
+         }else if lat == 2 {
+             url = ConstantsData.branchLoc3
+         }else if lat == 3 {
+             url = ConstantsData.branchLoc4
          }
 //         if let browserUrl = URL(string: "https://www.google.com/maps/dir/?saddr=&daddr=\(lat),\(lng)&directionsmode=driving") {
 //             UIApplication.shared.open(browserUrl, options: [:], completionHandler: nil)
