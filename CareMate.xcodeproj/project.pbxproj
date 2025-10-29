@@ -115,6 +115,8 @@
 		0F8FA8752D6CA6A5001D8B62 /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8FA8732D6CA6A5001D8B62 /* GroupCell.xib */; };
 		0F8FA8782D6CC4F9001D8B62 /* NotificationGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8FA8772D6CC4EC001D8B62 /* NotificationGroupModel.swift */; };
 		0F8FA87A2D6CCCDB001D8B62 /* NotificationGroupDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8FA8792D6CCCCF001D8B62 /* NotificationGroupDetailsModel.swift */; };
+		0FD96BBA2EB226F700FE1402 /* BranchNCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD96BB82EB226F700FE1402 /* BranchNCell.swift */; };
+		0FD96BBB2EB226F700FE1402 /* BranchNCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD96BB92EB226F700FE1402 /* BranchNCell.xib */; };
 		360D889D2798307B0075890F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 464F40241FADE07B0098D19D /* Assets.xcassets */; };
 		3611D247216D5DA700FB198C /* RetrieveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3611D246216D5DA700FB198C /* RetrieveViewController.swift */; };
 		36139FB62869CAE1002A7475 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36139FB42869CAE1002A7475 /* SettingsViewController.swift */; };
@@ -621,6 +623,8 @@
 		0F8FA8732D6CA6A5001D8B62 /* GroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
 		0F8FA8772D6CC4EC001D8B62 /* NotificationGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGroupModel.swift; sourceTree = "<group>"; };
 		0F8FA8792D6CCCCF001D8B62 /* NotificationGroupDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGroupDetailsModel.swift; sourceTree = "<group>"; };
+		0FD96BB82EB226F700FE1402 /* BranchNCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchNCell.swift; sourceTree = "<group>"; };
+		0FD96BB92EB226F700FE1402 /* BranchNCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BranchNCell.xib; sourceTree = "<group>"; };
 		3611D246216D5DA700FB198C /* RetrieveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveViewController.swift; sourceTree = "<group>"; };
 		36139FB42869CAE1002A7475 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		36139FB52869CAE1002A7475 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -1503,6 +1507,24 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		0FD96BB22EB2222300FE1402 /* StaticBranches */ = {
+			isa = PBXGroup;
+			children = (
+				0FD96BB32EB2223D00FE1402 /* Cell */,
+				46FCFB211FB6EFEE0055D35C /* BranchesViewController.swift */,
+			);
+			path = StaticBranches;
+			sourceTree = "<group>";
+		};
+		0FD96BB32EB2223D00FE1402 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0FD96BB82EB226F700FE1402 /* BranchNCell.swift */,
+				0FD96BB92EB226F700FE1402 /* BranchNCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		36139FB32869CABE002A7475 /* SettingGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -2124,7 +2146,7 @@
 				5E4EE0702605EE8200171467 /* scuessPOPup */,
 				3658E42127FD9A5600E9C7CC /* FilterByDateGroup */,
 				AD5438F221CFE1E500C7D500 /* DoctorProfileVC.swift */,
-				46FCFB211FB6EFEE0055D35C /* BranchesViewController.swift */,
+				0FD96BB22EB2222300FE1402 /* StaticBranches */,
 				AD344CEB21DBA0D200FFB131 /* DrugVC.swift */,
 				46579CED1FBC431F001482EC /* DoctorProfileViewController2.swift */,
 				461B46EB1FC1ADE2005013A9 /* ReservationClinicAppiontmentViewController.swift */,
@@ -2982,6 +3004,7 @@
 				36926D732867383500387C08 /* DoseTimesViewController.xib in Resources */,
 				A2B78D482BB995B400C25E15 /* ForceUpdateViewController.xib in Resources */,
 				367C09DF279443DD00F1077A /* VisitCellTableViewCell.xib in Resources */,
+				0FD96BBB2EB226F700FE1402 /* BranchNCell.xib in Resources */,
 				A22B469B291D8EC900B8A5FC /* ReportTableViewCell.xib in Resources */,
 				A230AA9C2C12606000AF9E8B /* ClinicsServicesReportsVisitsResultsViewController.xib in Resources */,
 				0453AA8526E76A4D005A8434 /* PatProfileViewController.xib in Resources */,
@@ -3475,6 +3498,7 @@
 				469FC5BA1FC02A9D004FF772 /* Doctor.swift in Sources */,
 				A230AA882C12436000AF9E8B /* ClinicsServiceesReportsTableViewCell.swift in Sources */,
 				5E52E22626073FA200B9E549 /* forgetPassVC.swift in Sources */,
+				0FD96BBA2EB226F700FE1402 /* BranchNCell.swift in Sources */,
 				AD3652C422538E8100E69D80 /* WebviewController.swift in Sources */,
 				AD020CDA221ADDFF00894E81 /* QuestionCell.swift in Sources */,
 				AD668CDA2219BDCF000DF33C /* ITEM_TYPE_SETUP_ROW.swift in Sources */,
@@ -4007,7 +4031,7 @@
 				CODE_SIGN_ENTITLEMENTS = CareMate/CareMate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = W8QAC6TS8B;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -4040,7 +4064,7 @@
 				CODE_SIGN_ENTITLEMENTS = CareMate/CareMate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = W8QAC6TS8B;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
