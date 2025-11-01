@@ -115,17 +115,17 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
         medicalCodeTextField.autocorrectionType = .yes
         medicalCodeTextField.textContentType = UITextContentType.telephoneNumber
         medicalCodeTextField.keyboardType = .asciiCapableNumberPad
-        if phoneNumber.count > 5 {
-            labelPrefix.text = String(phoneNumber.prefix(3))
-            var asteriks = ""
-            for _ in 0...(phoneNumber.count - 4) {
-                asteriks += "* "
-            }
-            medicalCodeTextField.placeholder = asteriks
-        } else {
+//        if phoneNumber.count > 5 {
+//            labelPrefix.text = String(phoneNumber.prefix(3))
+//            var asteriks = ""
+//            for _ in 0...(phoneNumber.count - 4) {
+//                asteriks += "* "
+//            }
+//            medicalCodeTextField.placeholder = asteriks
+//        } else {
             labelPrefix.isHidden = true
             labelPrefix.text = ""
-        }
+       // }
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {

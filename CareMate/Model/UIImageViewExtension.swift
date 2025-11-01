@@ -42,6 +42,7 @@ extension UIImageView {
     }
     
     public func loadFromUrl(url:String, placeHolder: String = "") {
+        print("Image Url:",url)
         let url = URL(string: url.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)!)
         self.kf.indicatorType = .activity
         self.kf.setImage(with: url, placeholder:UIImage.init(named: placeHolder), options: nil, progressBlock: nil, completionHandler: nil)

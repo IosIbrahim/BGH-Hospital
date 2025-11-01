@@ -55,13 +55,8 @@ struct Constants {
     }
     
     struct APIProvider {
-        static var IP =  "patientmobapp.alsalamhosp.com"
-        static var IP_WITHOUT_PORT =  "patientmobapp.alsalamhosp.com"
-         //Test
-       // static var IMAGE_BASE2 = "https://patientmobapp.alsalamhosp.com/mobileapi/"  // live
-      //  static var APIBaseURL = "https://patientmobapp.alsalamhosp.com/mobileapi/api/"  // live
-      //  static var IMAGE_BASE = "https://patientmobapp.alsalamhosp.com/mobileapi/"
-        // live
+        static var IP =  "pr-h1services04.sherafia.bhg.com.sa"
+        static var IP_WITHOUT_PORT =  "pr-h1services04.sherafia.bhg.com.sa"
         static var APIBaseURL = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi/api/"    // test
         static var IMAGE_BASE = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi"   // test
         static var IMAGE_BASE2 = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi" // test

@@ -34,7 +34,11 @@ class BranchCellforBooking: UITableViewCell {
         self.hospitalDescropation.text = UserManager.isArabic ? "مستشفي السلام الدولي" : "el Salam Hospital"
         let imageUrl = "\(Constants.APIProvider.IMAGE_BASE)/images/branch_\(branch.id).png"
         print("branchImage: \(imageUrl)")
-        imageViewBranch.loadFromUrl(url: imageUrl, placeHolder: "Al-Salam-Hospital (1)")
+        if branch.id == "1" {
+            imageViewBranch.loadFromUrl(url: imageUrl, placeHolder: "br")
+        }else  {
+            imageViewBranch.loadFromUrl(url: imageUrl, placeHolder: "br4")
+        }
     }
     
 }
