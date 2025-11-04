@@ -24,7 +24,7 @@ class ForceUpdateViewController: UIViewController {
     }
 
     @IBAction func update(_ sender: Any) {
-        if let url = URL(string: "itms-apps://apple.com/us/app/al-salam-hosp/id1643490830") {
+        if let url = URL(string: "https://apps.apple.com/eg/app/dr-bakhsh-hospital-group/id1590769435") {
             UIApplication.shared.open(url)
         }
     }
