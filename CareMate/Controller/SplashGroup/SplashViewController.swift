@@ -76,7 +76,6 @@ class SplashViewController: UIViewController{
                 }
             }
         }
-        var returnArray = [Int]()
         return getArray(ranked: newRanked, player: player)
     }
     
@@ -121,30 +120,38 @@ class SplashViewController: UIViewController{
     }
 
     func getKnowYourDoctor() {
-        WebserviceMananger.sharedInstance.makeCall(method: .get, url: Constants.APIProvider.getKnowYourDoctor, parameters: nil, vc: self, showIndicator: false) { (data, error) in
-            if error == nil {
-                let data = data as? [String: AnyObject] ?? [:]
-                UserDefaults.standard.set(data["arabicLink"] as? String ?? "", forKey: "knowYourDoctorAr")
-                UserDefaults.standard.set(data["englishLink"] as? String ?? "", forKey: "knowYourDoctorEn")
-                UserDefaults.standard.set(data["UserGuideAr"] as? String ?? "", forKey: "UserGuideAr")
-                UserDefaults.standard.set(data["UserGuideEn"] as? String ?? "", forKey: "UserGuideEn")
-        //        UserDefaults.standard.set(data, forKey: "splashData")
-                //FIXED BY HAmdi
-                let serverForceUpdateVersion = data["IosVersion"] as? String ?? "0"
-                let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0"
-
-                print("Server version: \(serverForceUpdateVersion)")
-                print("Current version: \(currentVersion)")
-
-                if currentVersion.compare(serverForceUpdateVersion, options: .numeric) == .orderedAscending {
-                    self.navigationController?.pushViewController(ForceUpdateViewController(), animated: true)
-                    return
+        let firstCount = UserDefaults.standard.integer(forKey: "first_count")
+        if firstCount != .zero {
+            WebserviceMananger.sharedInstance.makeCall(method: .get, url: Constants.APIProvider.getKnowYourDoctor, parameters: nil, vc: self, showIndicator: false) { (data, error) in
+                if error == nil {
+                    let data = data as? [String: AnyObject] ?? [:]
+                    UserDefaults.standard.set(data["arabicLink"] as? String ?? "", forKey: "knowYourDoctorAr")
+                    UserDefaults.standard.set(data["englishLink"] as? String ?? "", forKey: "knowYourDoctorEn")
+                    UserDefaults.standard.set(data["UserGuideAr"] as? String ?? "", forKey: "UserGuideAr")
+                    UserDefaults.standard.set(data["UserGuideEn"] as? String ?? "", forKey: "UserGuideEn")
+            //        UserDefaults.standard.set(data, forKey: "splashData")
+                    //FIXED BY HAmdi
+                    let serverForceUpdateVersion = data["IosVersion"] as? String ?? "0"
+                    let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0"
+                    print("Server version: \(serverForceUpdateVersion)")
+                    print("Current version: \(currentVersion)")
+                    if currentVersion.compare(serverForceUpdateVersion, options: .numeric) == .orderedAscending {
+                        self.navigationController?.pushViewController(ForceUpdateViewController(), animated: true)
+                        return
+                    }else {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                            self.gotoScreen()
+                        }
+                    }
                 }
+                
             }
+        }else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.gotoScreen()
             }
         }
+        UserDefaults.standard.set(firstCount + 1, forKey: "first_count")
     }
     
     func gotoScreen() {

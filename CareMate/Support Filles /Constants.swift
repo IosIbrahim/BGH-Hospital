@@ -207,7 +207,7 @@ struct ConstantsData {
     static let linkedin = "https://www.linkedin.com/company/bhghospital"
     static let email = "info@drbakhsh.com"
     static let facebook = "https://www.facebook.com/bhghospital/"
-    static let mobile = "0126510666"
+    static let mobile = "920009596"
     static let mobile1 = "0126510555"
     static let unifiedNumber = "920009596"
     static let whatsapp = "0126510555"

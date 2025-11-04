@@ -1009,7 +1009,6 @@
 		ADCA434E21DA96E50099EF7A /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		ADCA435021DA9A3C0099EF7A /* MedicalRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalRecordVC.swift; sourceTree = "<group>"; };
 		ADEC748222257AC600BACEAD /* EnterCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeController.swift; sourceTree = "<group>"; };
-		AF1E84DE2E8D6760009FE427 /* ContactUsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactUsViewController.xib; sourceTree = "<group>"; };
 		AF548E59CD35D8AE4C800CAF /* Pods-CareMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareMate.release.xcconfig"; path = "Target Support Files/Pods-CareMate/Pods-CareMate.release.xcconfig"; sourceTree = "<group>"; };
 		BF34FE18817735E0CF770B71 /* Pods_CareMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CareMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -1944,7 +1943,6 @@
 				36CA7DB8279C3AF50016389A /* CompleteLoginWithPassword */,
 				464F404B1FADE0DC0098D19D /* LoginViewController.swift */,
 				3699A06F282A945300BAB545 /* LoginViewController.xib */,
-				AF1E84DE2E8D6760009FE427 /* ContactUsViewController.xib */,
 			);
 			path = LoginViewControllerGroup;
 			sourceTree = "<group>";
@@ -4031,7 +4029,7 @@
 				CODE_SIGN_ENTITLEMENTS = CareMate/CareMate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W8QAC6TS8B;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -4040,7 +4038,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Al Salam Hos";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.4;
+				MARKETING_VERSION = 1.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.drbakhsh.mobileApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4064,7 +4062,7 @@
 				CODE_SIGN_ENTITLEMENTS = CareMate/CareMate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W8QAC6TS8B;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -4127,7 +4125,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Al Salam Hos";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1.4;
+				MARKETING_VERSION = 1.1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.drbakhsh.mobileApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

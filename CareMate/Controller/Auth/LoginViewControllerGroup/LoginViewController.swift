@@ -321,50 +321,35 @@ class LoginViewController: BaseViewController, clinicOrEmergency {
         WebserviceMananger.sharedInstance.makeCall(method: .get, url: urlString, parameters: nil, vc: self) { (data, error) in
             var listOfOTher = [listOfTherPatient]()
             indicator.sharedInstance.dismiss()
-            
             if error == nil
             {
-                
                 if let root = ((data as? [String: AnyObject])?["Root"] as? [String:AnyObject])?["OUT_PARMS"] as? [String:AnyObject]
                 {
-                    
                     if root["OUT_PARMS_ROW"] is [String:AnyObject]
-                        
                     {
-                        let OUT_PARMS_ROW = root["OUT_PARMS_ROW"] as!  AnyObject
-                        
+                        let OUT_PARMS_ROW = root["OUT_PARMS_ROW"] as AnyObject
                         let loginStratues =  OUT_PARMS_ROW["LOGIN_STATUS"] as? String
                         
                         if loginStratues == "2"
                         {
                             if let root = ((data as! [String: AnyObject])["Root"] as! [String:AnyObject])["PAT_DATA"] as? [String:AnyObject]
                             {
-                                
-                                
-                                
                                 if root["PAT_DATA_ROW"] is [[String:AnyObject]]
                                 {
-                                    
                                     let appoins = root["PAT_DATA_ROW"] as! [[String: AnyObject]]
                                     for i in appoins
                                     {
                                         print(i)
                                         listOfOTher.append(listOfTherPatient(JSON: i)!)
-                                        
-                                        
                                     }
                                 }
                                 else if root["PAT_DATA_ROW"] is [String:AnyObject]
                                 {
                                     listOfOTher.append(listOfTherPatient(JSON:root["PAT_DATA_ROW"] as![String:AnyObject] )!)
-                                    
-                                    
                                 }
                                 let  vc = LitsOfPatientLogedBySameMobileNumberViewController(listOfOthers: listOfOTher, VcType: listOfOtherScreenType.fromLogin)
                                 vc.primaryPhoneNumber = medicalId
                                 self.navigationController?.pushViewController(vc, animated: true)
-                                
-                                
                             }
                         }
                         else if loginStratues == "1"
@@ -372,15 +357,13 @@ class LoginViewController: BaseViewController, clinicOrEmergency {
                             
                             if let root = ((data as! [String: AnyObject])["Root"] as! [String:AnyObject])["PAT_DATA"] as? [String:AnyObject]
                             {
-                                let OUT_PARMS_ROW = root["PAT_DATA_ROW"] as!  AnyObject
-                                
-                                let loginStratues =  OUT_PARMS_ROW["PATIENTID"] as? String
-                                
-                                print( OUT_PARMS_ROW["PATIENTID"] as? String ?? "")
-                                currentPatientIDOrigni =    OUT_PARMS_ROW["PATIENTID"] as? String ?? ""
-                                Utilities.sharedInstance.setPatientId(patienId: OUT_PARMS_ROW["PATIENTID"] as? String ?? "")  
+                                let OUT_PARMS_ROW = root["PAT_DATA_ROW"] as  AnyObject
+                                let id =  OUT_PARMS_ROW["PATIENTID"] as? String ?? ""
+                                print(id)
+                                currentPatientIDOrigni =  id
+                                Utilities.sharedInstance.setPatientId(patienId: id)
                                 currentPatientMobile =  OUT_PARMS_ROW["PAT_TEL"] as? String ?? ""
-                                UserDefaults.standard.set(OUT_PARMS_ROW["PATIENTID"] as? String ?? "", forKey: "patientIdWithSpaces")
+                                UserDefaults.standard.set(id, forKey: "patientIdWithSpaces")
                                 UserDefaults.standard.set(OUT_PARMS_ROW["PAT_TEL"] as? String ?? "", forKey: "PAT_TEL")
                                 UserDefaults.standard.set(true, forKey: "loginOrNO")
                                 
@@ -390,22 +373,14 @@ class LoginViewController: BaseViewController, clinicOrEmergency {
                                     let defaults = UserDefaults.standard
                                     defaults.set(encoded, forKey: "SavedPerson")
                                 }
-//                                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//                                
-//                                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
-//                                
-//                                self.navigationController?.pushViewController(nextViewController, animated: true)
                                 self.navigationController?.dismiss(animated: true)
-
-                                
                             }
                         }
                         else
                         {
                             if let root = ((data as! [String: AnyObject])["Root"] as! [String:AnyObject])["MESSAGE"] as? [String:AnyObject]
                             {
-                                let MESSAGE_ROW = root["MESSAGE_ROW"] as!  AnyObject
-                                
+                                let MESSAGE_ROW = root["MESSAGE_ROW"] as  AnyObject
                                 if let CODE = MESSAGE_ROW["CODE"] as? String
                                 {
                                     if CODE == "6850"
