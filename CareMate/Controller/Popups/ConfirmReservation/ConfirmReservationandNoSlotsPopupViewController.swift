@@ -86,7 +86,7 @@ class ConfirmReservationandNoSlotsPopupViewController: UIViewController, MFMailC
         }
        
         lblEmail.text = ConstantsData.email
-        lblMobile.text = "\(ConstantsData.mobile) - \(ConstantsData.mobile1)"
+        lblMobile.text = "\(ConstantsData.mobile)"
         viewPhone.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(makACall)))
         viewemail.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sendEmail)))
         viewWhatsapp.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(sendWhatsapp)))

@@ -14,7 +14,7 @@ class signUpErroePopUp: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        setupTabBar.instance.setuptabBar(vc: self)
-        lblMobile.text = "\(ConstantsData.mobile) - \(ConstantsData.mobile1)"
+        lblMobile.text = "\(ConstantsData.mobile)"
         btnEmail.setTitle(ConstantsData.email, for: .normal)
         // Do any additional setup after loading the view.
     }

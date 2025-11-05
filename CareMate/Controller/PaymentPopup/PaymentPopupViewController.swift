@@ -46,7 +46,7 @@ class PaymentPopupViewController: BaseViewController {
             subTitle.text = "we wish You continued health and wellness"
 
         }
-        lblMobile.text = "\(ConstantsData.mobile) - \(ConstantsData.mobile1)"
+        lblMobile.text = "\(ConstantsData.mobile)"
         lblWhats.text = "\(ConstantsData.whatsapp)"
     }
     @IBAction func openWhatsApp(_ sender: Any) {

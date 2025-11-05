@@ -72,7 +72,7 @@ enum listOfOtherScreenTypeBrnach {
                                                 site: ConstantsData.branchLoc3)
          
          let bakshClinicsObject =  branchData(nameAr: "عيادات د. بخش - فرع المحمدية",
-                                              nameEn: "Dr.Bakhsh Clinics - Al-Mohammadiyah", Phone: "0126510555"
+                                              nameEn: "Dr.Bakhsh Clinics - Al-Mohammadiyah", Phone: "920009596"
                                             ,descriptionAr: "شارع الامير سلطان مقابل ايه مول (عالم ساكو) المحمدية جدة ص.ب 6940 ، الرمز البريدي 21452",descriptionEn: "Prince Sultan Street, opposite Aya Mall (SACO World), Al-Mohammadiyah, Jeddah, P.O. Box 6940, Postal Code 21452",
                                               site: ConstantsData.branchLoc4)
 

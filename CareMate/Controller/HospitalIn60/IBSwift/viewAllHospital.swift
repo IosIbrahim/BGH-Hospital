@@ -45,7 +45,7 @@ class viewAllHospital: BaseViewController ,WKNavigationDelegate{
         let url = URL(string: self.url)!
         
         webView.load(URLRequest(url: url))
-        lblmobile.text = "\(ConstantsData.mobile) - \(ConstantsData.mobile1)"
+        lblmobile.text = "\(ConstantsData.mobile)"
         // Do any additional setup after loading the view.
         if UserManager.isArabic {
             labelDescription.text = "إذا كنت بحاجة إلي المساعدة أو مزيد من الإستفسارات يمكنك التواصل معنا عن طريق الهاتف"

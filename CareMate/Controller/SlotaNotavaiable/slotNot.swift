@@ -71,7 +71,7 @@ class slotNot: BaseViewController {
             labeleAlert.text = "Alert"
 
         }
-        lblMobile.text = "\(ConstantsData.mobile) - \(ConstantsData.mobile1)"
+        lblMobile.text = "\(ConstantsData.mobile)"
         lblEmail.text = ConstantsData.email
 
         // Do any additional setup after loading the view.
