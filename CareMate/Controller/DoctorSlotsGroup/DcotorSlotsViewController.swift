@@ -83,17 +83,6 @@ class DcotorSlotsViewController: BaseViewController {
         super.viewDidLoad()
         setupView()
         getData()
-//        Qualification.getQualifications(forDoctorWithId: docID!) { qualifications in
-//          guard let qualifications = qualifications else {return}
-//            self.uilabelSpkenLan.text = UserManager.isArabic ? qualifications.HREMPLOYEELANGUAGE_AR : qualifications.HREMPLOYEELANGUAGE_EN
-//            let arrSpec = (UserManager.isArabic ? qualifications.qualificationNameAR : qualifications.qualificationName).components(separatedBy: "-")
-//            var specs = ""
-//            for item in arrSpec {
-//                if item == "" { continue }
-//                specs += "- \(item.replacingOccurrences(of: "\\s?\\([^)]*\\)", with: "", options: .regularExpression))\n\n"
-//            }
-//            self.labelAbout.text = specs
-//        }
     }
     
     func getData() {
@@ -195,12 +184,10 @@ class DcotorSlotsViewController: BaseViewController {
             }
         }
         datesInMonthList = allDays
-      //  if !isEmptyDate {
         isEmptyDate = allDays.isEmpty
         if isEmptyDate && !allDays.isEmpty {
             datesInMonthList.removeLast()
         }
-       // }
         print(allDays)
         print("datesInMonthList")
         print(datesInMonthList)
@@ -229,15 +216,10 @@ class DcotorSlotsViewController: BaseViewController {
             print("Empty List")
         }else {
             let indexPath = IndexPath(item: selecteIndex, section: 0)
-    //        self.collectioViewSlotDays.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
-            
             if UserManager.isArabic{
                 collectioViewSlotDays.layoutIfNeeded()
-    //            collectioViewSlotDays.transform = CGAffineTransform(scaleX: -1, y: 1)
-
                 collectioViewSlotDays.semanticContentAttribute = .forceRightToLeft
                 self.collectioViewSlotDays.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
-    //            collectioViewSlotDays.scrollToItem(at: indexPath, at: .right,animated: true)
             }
             else{
                 collectioViewSlotDays.layoutIfNeeded()
@@ -254,6 +236,7 @@ class DcotorSlotsViewController: BaseViewController {
         
         if let serviceObjectConstant = self.serviceObject
         {
+            print(serviceObjectConstant.clinicID ?? "")
             if selectedIndexSlot == nil {
                 Utilities.showAlert(self, messageToDisplay: UserManager.isArabic ? "من فضلك اختر وقت الحجز اولا" : "Kindly choose reservation time")
                 return
@@ -326,8 +309,6 @@ class DcotorSlotsViewController: BaseViewController {
             vc.url =    URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor?.DOCTOR_PIC ?? "")")
             
             self.navigationController?.pushViewController(vc, animated: true)
-            
-//            self.performSegue(withIdentifier: "ReservationConfirmVC", sender: nil)
         }
         
         else
@@ -337,10 +318,6 @@ class DcotorSlotsViewController: BaseViewController {
                 return
             }
             if Utilities.sharedInstance.getPatientId() == "" {
-    //            Utilities.showLoginAlert(vc: self.navigationController!)
-    //            return
-                
-                
                 let vc :   SignUpAsGuestVC = SignUpAsGuestVC()
                 let shiftId = SlotArr[selectedIndexSlot!].shiftID
                 let schedSerial = SlotArr[selectedIndexSlot!].schedual
@@ -374,8 +351,6 @@ class DcotorSlotsViewController: BaseViewController {
                 return
                 
             }
-            
-//            self.performSegue(withIdentifier: "ReservationConfirmVC", sender: nil)
             
             let shiftId = SlotArr[selectedIndexSlot!].shiftID
             let schedSerial = SlotArr[selectedIndexSlot!].schedual
@@ -478,6 +453,7 @@ class DcotorSlotsViewController: BaseViewController {
                 constraintColleectionviewSlot.constant = CGFloat(slotheight)
                 let messageAr = "الدكتور الذي تم اختياره ليس له جدول مواعيد في هذا اليوم اذا كنت ترغب في حجز موعد في الاوقات الغير متاحة على التطبيق يرجى التواصل معنا عبر "
                 let messageEN = "The selected doctor does not have a schedule on the selected date.In case you which to take an appointment for unavailable dates please call"
+                print(messageAr,messageEN)
             } else if slotsTime != "" {
                 if selecteDate.ConvertToDate.month != slotsTime.ConvertToDate.month {
                     monthPlus(2)
@@ -501,25 +477,6 @@ class DcotorSlotsViewController: BaseViewController {
                 OPEN_RESERVATION_AND_NO_SLOTS_POPUP(container: self, type: .noSlots) {
 //                    self.navigationController?.popViewController(animated: true)
                 }
-//                if UserManager.isArabic{
-//                    
-//                    let formSheet = MZFormSheetController.init(viewController: slotNot(messageAr: messageAr, MessageEn: messageEN))
-//                    formSheet.shouldDismissOnBackgroundViewTap = true
-//                    formSheet.transitionStyle = .slideFromBottom
-//                    formSheet.presentedFormSheetSize = CGSize.init(width: UIScreen.main.bounds.width * 0.9, height: 380)
-//                    formSheet.shouldCenterVertically = true
-//                    formSheet.present(animated: true, completionHandler: nil)
-//                    
-//                }
-//                else{
-//                    let formSheet = MZFormSheetController.init(viewController:  slotNot(messageAr: messageAr, MessageEn: messageEN))
-//                    formSheet.shouldDismissOnBackgroundViewTap = true
-//                    formSheet.transitionStyle = .slideFromBottom
-//                    formSheet.presentedFormSheetSize = CGSize.init(width: UIScreen.main.bounds.width * 0.9, height: 340)
-//                    formSheet.shouldCenterVertically = true
-//                    formSheet.present(animated: true, completionHandler: nil)
-//                    
-//                }
              }
          
 

@@ -38,18 +38,12 @@ extension DcotorSlotsViewController:UICollectionViewDelegate,UICollectionViewDat
             let date = datesInMonthList[indexPath.row]
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "EEEE"
-          //  if UserManager.isArabic{
             dateFormatter.locale = .current
-//            }
-//            else{
-//                dateFormatter.locale = Locale(identifier: "en")
-//            }
             let dayInWeek = dateFormatter.string(from: date)
             cell.labelDayText.text = dayInWeek
             
             let dateFormatterYYYMMDD = DateFormatter()
             dateFormatterYYYMMDD.dateFormat = "yyyy-MM-dd"
-          //  dateFormatterYYYMMDD.locale = Locale(identifier: "en_US_POSIX")
             dateFormatterYYYMMDD.locale = .current
 
             let dayInYYYMMDDDateInCell = dateFormatterYYYMMDD.string(from: date)

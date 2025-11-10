@@ -40,7 +40,10 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
         
         let gesturecontinuAsGuest = UITapGestureRecognizer(target: self, action:  #selector(self.openAsGuest))
         self.pickerGuest.addGestureRecognizer(gesturecontinuAsGuest)
-      
+        #if DEBUG
+        txfID.text = "700008903"
+        txfPassword.text = "ibrahim051000"
+        #endif
     //    pickerForgot.setView(hidden: !showPassword)
      //   pickerPassword.setView(hidden: !showPassword)
 

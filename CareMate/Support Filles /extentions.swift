@@ -500,6 +500,12 @@ extension String
         if dateFormatter.date(from: dateString) != nil {
             return dateFormatter.date(from: dateString)!
         }
+        
+        dateFormatter.dateFormat = "dd/mm/yyyy hh24:mi:ss"
+        if dateFormatter.date(from: dateString) != nil {
+            return dateFormatter.date(from: dateString)!
+        }
+        
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS"
         if dateFormatter.date(from: dateString) != nil {
             return dateFormatter.date(from: dateString)!
