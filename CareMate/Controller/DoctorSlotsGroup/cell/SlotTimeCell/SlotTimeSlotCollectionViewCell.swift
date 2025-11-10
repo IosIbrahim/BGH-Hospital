@@ -20,12 +20,15 @@ class SlotTimeSlotCollectionViewCell: UICollectionViewCell {
     
     func configCell(slot: Slot)
     {
-//        var slot = String ( describing: slot.id )
-//        
-//        let timeOnly = String(slot.characters.suffix(8))
-        
-        
-        self.labelDayText.text = slot.id.ConvertToDate.ToTimeOnlyEn
+        let dateCom = slot.id.components(separatedBy: .whitespaces)
+        let date = dateCom.last?.ConvertToDate
+        print(date ?? .init())
+        if let dat = date?.ToTimeOnlyEn {
+            self.labelDayText.text = dat
+        }else {
+            self.labelDayText.text = dateCom.last
+        }
+       //   self.labelDayText.text = slot.id.ConvertToDate.ToTimeOnlyEn
     }
 
 }

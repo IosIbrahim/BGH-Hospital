@@ -495,6 +495,10 @@ extension String
     var ConvertToDate: Date
     {
         let dateString = self
+        let spitDate = dateString.components(separatedBy: .whitespaces)
+        print("Splits:\(spitDate)")
+        print("Date:\(dateString)")
+
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         if dateFormatter.date(from: dateString) != nil {
@@ -558,9 +562,16 @@ extension String
         {
             return Date()
         }
+        if let conDate = dateFormatter.date(from:dateString) {
+            return conDate
+        }else {
+            let spitDate = dateString.components(separatedBy: .whitespaces)
+            print("Splits:\(spitDate)")
+        }
         return dateFormatter.date(from:dateString) ?? Date()
     }
 }
+
 extension Array where Element: Hashable {
     func difference(from other: [Element]) -> [Element] {
         let thisSet = Set(self)
