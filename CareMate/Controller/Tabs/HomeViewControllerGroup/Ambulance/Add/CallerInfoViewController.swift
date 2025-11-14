@@ -494,6 +494,53 @@ extension String {
         number = number.replacingOccurrences(of: "٩", with: "9")
         return number
     }
+    
+    func getSlotTime() -> String {
+        var time = self.convertArabicNumbers()
+        var comp = time.components(separatedBy: ":")
+        let hour = comp.first
+        let Am = UserManager.isArabic ? "ص":"AM"
+        let pm = UserManager.isArabic ? "م":"PM"
+        var isPm: Bool = false
+        if hour == "13" {
+            isPm = true
+            comp[0] = "01"
+        }else if hour == "14" {
+            isPm = true
+            comp[0] = "02"
+        }else if hour == "15" {
+            isPm = true
+            comp[0] = "03"
+        }else if hour == "16" {
+            isPm = true
+            comp[0] = "04"
+        }else if hour == "17" {
+            isPm = true
+            comp[0] = "05"
+        }else if hour == "18" {
+            isPm = true
+            comp[0] = "06"
+        }else if hour == "19" {
+            isPm = true
+            comp[0] = "07"
+        }else if hour == "20" {
+            isPm = true
+            comp[0] = "08"
+        }else if hour == "21" {
+            isPm = true
+            comp[0] = "09"
+        }else if hour == "22" {
+            isPm = true
+            comp[0] = "10"
+        }else if hour == "23" {
+            isPm = true
+            comp[0] = "11"
+        }
+        let tt = isPm ? pm:Am
+        let format = comp.joined(separator: ":") + " \(tt)"
+        print(format)
+        return format
+    }
 }
     
 

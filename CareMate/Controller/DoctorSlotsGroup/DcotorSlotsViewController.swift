@@ -167,27 +167,30 @@ class DcotorSlotsViewController: BaseViewController {
     }
     
     func setMonth(value:Int){
-//        let index = Calendar.current.component(.month, from: Date())
+        
         let index = doctor?.FIRST_SLOT_TIME?.ConvertToDate.month ?? Calendar.current.component(.month, from: Date())
         year = doctor?.FIRST_SLOT_TIME?.ConvertToDate.year ?? Calendar.current.component(.year, from: Date())
         labelMonth.text = "\(UserManager.isArabic ?  monthsAr[index - 1] :  monthsEn[index - 1]) \(year)"
         valueIndex = index
+        
         let dateComponents = DateComponents(year: year, month: valueIndex)
         var calendar = Calendar.current
-       // calendar.locale = Locale(identifier: "en_US_POSIX")
         calendar.locale = .current
         let date34 = calendar.date(from: dateComponents)!
         var allDays = date34.getAllDays()
+        
         for day in allDays {
             if day < Date().dayBefore {
                 allDays.remove(at: 0)
             }
         }
+        
         datesInMonthList = allDays
         isEmptyDate = allDays.isEmpty
         if isEmptyDate && !allDays.isEmpty {
             datesInMonthList.removeLast()
         }
+        
         print(allDays)
         print("datesInMonthList")
         print(datesInMonthList)

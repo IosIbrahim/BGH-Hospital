@@ -17,7 +17,7 @@ struct Slot: Decodable {
   let shiftID : String
   let schedual : String
   let statuse : String
-    let TIME_SLOT_END : String
+  let TIME_SLOT_END : String
 
   enum CodingKeys : String ,CodingKey {
     case id = "ID"
@@ -25,7 +25,6 @@ struct Slot: Decodable {
     case shiftID =  "SHIFT_ID"
     case schedual = "SCHED_SER"
     case statuse = "SLOT_STATUS"
-    
     case TIME_SLOT_END = "TIME_SLOT_END"
     
 //    ID = "14/03/2021 16:45:00";
@@ -77,7 +76,9 @@ extension TimeSlots {
         dateFormatter.locale = Locale(identifier: "en")
         dateFormatter.dateFormat = "dd/MM/yyyy"
         let date = dateFormatter.string(from: date.ConvertToDate)
-        
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+        let nextdate = dateFormatter.string(from: date.ConvertToDate)
+
         indicator.sharedInstance.show()
         let urlString = Constants.APIProvider.GetDoctorTimeSlots+"Branch_ID=" + branchID + "&DOC_ID=" + docID + "&CLINIC_ID=" + clincID + "&Web_FromDate=" + date
 
@@ -121,7 +122,7 @@ extension TimeSlots {
                 }
                 else
                 {
-                    nextAv = date
+                    nextAv = nextdate
                 }
                 
                 //   i  want  to  change to  the  # Comment  link  there
