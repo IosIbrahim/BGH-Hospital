@@ -28,7 +28,7 @@ class NotifcationsViewController: BaseViewController {
         self.table.dataSource = self
         // Do any additional setup after loading the view.
      
-        let notif = UserManager.isArabic ? "الاشعارات" : "Notifcations"
+        let notif = UserManager.isArabic ? "الاشعارات" : "Notifications"
         let titl = showGroups ? notif:group?.getDes()
         initHeader(isNotifcation: false, isLanguage: false, title: titl ?? "", hideBack: false)
     }
