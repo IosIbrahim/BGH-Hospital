@@ -537,6 +537,9 @@ extension String {
             comp[0] = "11"
         }
         let tt = isPm ? pm:Am
+        if comp.count >= 3 {
+            comp = [comp[0],comp[1]]
+        }
         let format = comp.joined(separator: ":") + " \(tt)"
         print(format)
         return format
