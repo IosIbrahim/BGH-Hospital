@@ -16,13 +16,14 @@ enum ReservationPopupScreenType {
     case forgotPassword
 }
 
-func OPEN_RESERVATION_AND_NO_SLOTS_POPUP(container: UIViewController, type: ReservationPopupScreenType, closure: HintPopupClosure? = nil) {
+func OPEN_RESERVATION_AND_NO_SLOTS_POPUP(container: UIViewController,msg:String = "", type: ReservationPopupScreenType, closure: HintPopupClosure? = nil) {
     let vc = ConfirmReservationandNoSlotsPopupViewController(screenType: type)
     vc.closure = {
         vc.dismiss(animated: false) {
             closure?()
         }
     }
+    vc.msg = msg
     vc.modalPresentationStyle = .overFullScreen
     container.present(vc, animated: false)
 }
@@ -84,7 +85,9 @@ class ConfirmReservationandNoSlotsPopupViewController: UIViewController, MFMailC
                 labelDetails.text = "Sorry, the phone number data is not known to us at the hospital, so if you have a hospital file, please register account, or contact us for more help via:"
             }
         }
-       
+        if !msg.isEmpty {
+            labelDetails.text = msg
+        }
         lblEmail.text = ConstantsData.email
         lblMobile.text = "\(ConstantsData.mobile)"
         viewPhone.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(makACall)))

@@ -332,7 +332,8 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
                                   UserDefaults.standard.set(patImage, forKey: "patImage")
                                   self.user?.saveToUser()
                                   UserDefaults.standard.set(password, forKey: "user_password")
-                                  self.navigationController?.dismiss(animated: true)
+                                 // self.navigationController?.dismiss(animated: true)
+                                  self.showTabBar()
                               }
                           }
                           else if loginStratues == "1"
@@ -364,7 +365,8 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
                                   UserDefaults.standard.set(password, forKey: "user_password")
 //                                  UserManager.saveUserInfo(user: Utilities.sharedInstance.getPatientId())
                                   //            NotificationCenter.default.post(name: NSNotification.Name("GoToHome"), object: nil)
-                                  self.navigationController?.dismiss(animated: true)
+                                 // self.navigationController?.dismiss(animated: true)
+                                  self.showTabBar()
                               }
                           }
                           else
@@ -397,6 +399,12 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
           }
     
       }
+    
+    private func showTabBar() {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "homeNavNav") as! UITabBarController
+        navigationController?.pushViewController(nextViewController, animated: true)
+    }
 }
 
 

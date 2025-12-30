@@ -251,7 +251,7 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
         let parameters = "init=1&detect_text=\(id)&Mobile=\(mon)"
         let postData =  parameters.data(using: .utf8)
         
-        var request = URLRequest(url: URL(string: Constants.APIProvider.SignupFirst)!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: Constants.APIProvider.VERIFYPATIENTID)!,timeoutInterval: Double.infinity)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
         request.httpMethod = "POST"
@@ -267,19 +267,20 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
             }
             print(String(data: data, encoding: .utf8)!)
             let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary ?? .init()
+            let message_row = (((json?["Root"] as? [String: AnyObject])?["MESSAGE"] as? [String: AnyObject])?["MESSAGE_ROW"] as? [String: AnyObject])
+            let Code = message_row?["CODE"] as? String ?? ""
             
-            if let code = json?["CODE"] as? Int {
-                if code == 200 || code == 5 {
-                    if json?["ALREADY_REGISTERED_FLAG"] as! String == "1" {
-                        let id = json?["PATIENT_ID"] as? String ?? ""
+            if Code == "200" || Code == "5" {
+                    if message_row?["ALREADY_REGISTERED_FLAG"] as! String == "1" {
+                        let id = message_row?["PATIENT_ID"] as? String ?? ""
                         print(id)
                         currentPatientIDOrigni =  id
-                        let nameAr = json?["PATIENT_NAME_AR"] as? String ?? ""
-                        let nameEn = json?["PATIENT_NAME_EN"] as? String ?? ""
+                        let nameAr = message_row?["PATIENT_NAME_AR"] as? String ?? ""
+                        let nameEn = message_row?["PATIENT_NAME_EN"] as? String ?? ""
                         Utilities.sharedInstance.setPatientId(patienId: id)
-                        currentPatientMobile =  json?["PAT_TEL"] as? String ?? ""
+                        currentPatientMobile =  message_row?["PAT_TEL"] as? String ?? ""
                         UserDefaults.standard.set(id, forKey: "patientIdWithSpaces")
-                        UserDefaults.standard.set(json?["PAT_TEL"] as? String ?? "", forKey: "PAT_TEL")
+                        UserDefaults.standard.set(message_row?["PAT_TEL"] as? String ?? "", forKey: "PAT_TEL")
                         DispatchQueue.main.async {
 //                            let vc:verifcationAddOtherVC = verifcationAddOtherVC(PatientId: currentPatientIDOrigni, patientIdArray: nil, vcType: .fromRetrive)
 //                            vc.fromForget = true
@@ -303,12 +304,20 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
 //                            formSheet.shouldCenterVertically = true
 //                            formSheet.present(animated: true, completionHandler: nil)
 //                            Utilities.showAlert(messageToDisplay:"  \(ConstantsData.mobile) OR By Email: \(ConstantsData.email)")
-                            OPEN_RESERVATION_AND_NO_SLOTS_POPUP(container: self, type: .register)
+                            let nameAr = message_row?["NAME_AR"] as? String ?? ""
+                            let nameEn = message_row?["NAME_EN"] as? String ?? ""
+                            let msg = UserManager.isArabic ? nameAr:nameEn
+                            if msg.isEmpty {
+                                OPEN_RESERVATION_AND_NO_SLOTS_POPUP(container: self, type: .forgotPassword)
+                            }else {
+                                OPEN_RESERVATION_AND_NO_SLOTS_POPUP(container: self,msg: msg ,type: .forgotPassword)
+
+                            }
                         }
 
                         
                     }
-                }
+                
             } else {
                 DispatchQueue.main.async {
 //                    let formSheet = MZFormSheetController.init(viewController: slotNot(messageAr: " عذرًا ، البيانات المدخلة لا تتطابق مع سجلاتنا ، لمزيد من المعلومات يرجى الاتصال بنا او مراسلاتنا بالبريد الإلكتروني", MessageEn:  "Sorry, the Entered data does not match our records, for more information please contact us By Calling on "))
@@ -318,7 +327,16 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
 //                    formSheet.shouldCenterVertically = true
 //                    formSheet.present(animated: true, completionHandler: nil)
 //                    Utilities.showAlert(messageToDisplay:"  \(ConstantsData.mobile) OR By Email: \(ConstantsData.email)")
-                    OPEN_RESERVATION_AND_NO_SLOTS_POPUP(container: self, type: .register)
+                    let nameAr = message_row?["NAME_AR"] as? String ?? ""
+                    let nameEn = message_row?["NAME_EN"] as? String ?? ""
+                    let msg = UserManager.isArabic ? nameAr:nameEn
+                    if msg.isEmpty {
+                        OPEN_RESERVATION_AND_NO_SLOTS_POPUP(container: self, type: .forgotPassword)
+                    }else {
+                        OPEN_RESERVATION_AND_NO_SLOTS_POPUP(container: self,msg: msg ,type: .forgotPassword)
+
+                    }
+
                 }
                 
             }
