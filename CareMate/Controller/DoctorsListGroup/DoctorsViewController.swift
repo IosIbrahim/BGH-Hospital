@@ -149,11 +149,10 @@ extension DoctorsViewController: UITableViewDataSource {
 }
 
 extension DoctorsViewController: UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let model = doctors[indexPath.row]
-        if model.NO_RESERVATION_VIEW_ONLY_TEL ?? "" == "1" {
-//            OPEN_HINT_POPUP(container: self, message: "\(UserManager.isArabic ? "اضغط للنسخ" : "Click to copy")\n\(model.CLINIC_PHONE_NUMBER ?? "")\n\(UserManager.isArabic ? model.CLINIC_LETTER ?? "" : model.CLINIC_LETTER_EN ?? "")")
+        if model.NO_RESERVATION_VIEW_ONLY_TEL ?? "" == "1" || model.INFORMAT_ONLY == "1" {
             AppPopUpHandler.instance.openPopup(container: self, vc: ContactDoctorPopupViewController(phoneNumber: model.CLINIC_PHONE_NUMBER ?? "", place: UserManager.isArabic ? model.CLINIC_LETTER ?? "" : model.CLINIC_LETTER_EN ?? ""))
         } else if model.HIDE_SCHEDULE_MOBILE_APP ?? "" == "1" {
             AppPopUpHandler.instance.openPopup(container: self, vc: ContactDoctorPopupViewController(phoneNumber: model.CONTACT_TEL1 ?? "", place: UserManager.isArabic ? model.CLINIC_LETTER ?? "" : model.CLINIC_LETTER_EN ?? "", phoneNumber2: model.CONTACT_TEL2 ?? ""))

@@ -32,6 +32,7 @@ struct Doctor: Decodable {
     var CLINIC_PHONE_NUMBER: String?
     var DOCCATNAME:String?
     var NO_RESERVATION_VIEW_ONLY_TEL: String?
+    var INFORMAT_ONLY:String?
     var CLINIC_LETTER: String?
     var CLINIC_LETTER_EN: String?
     var DOC_ID: String?
@@ -63,6 +64,7 @@ struct Doctor: Decodable {
         case RNUM = "RNUM"
         case DOCTOR_CLINICS = "DOCTOR_CLINICS"
         case id = "EMP_ID"
+        case INFORMAT_ONLY = "MOBILEAPP_RESERV_INFORMAT_ONLY"
         case englishName = "EMP_NAME_EN"
         case englishNameAR = "EMP_NAME_AR"
         case gender = "EMP_GENDUR"

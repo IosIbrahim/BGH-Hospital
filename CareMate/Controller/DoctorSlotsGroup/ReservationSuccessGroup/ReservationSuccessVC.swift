@@ -66,19 +66,10 @@ class ReservationSuccessVC: UIViewController {
         successLabel.textAlignment = .center
         labelAddToCart.textAlignment = .center
         doctorName.text = UserManager.isArabic ?  SelectedDoctorFromSearch?.doctor?.englishNameAR :  SelectedDoctorFromSearch?.doctor?.englishName
-        dateLbl.text = SelectedDoctorFromSearch!.dateDone.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "" , formateString: "dd MMMM yyyy")
-        dayTextLabel.text = SelectedDoctorFromSearch?.dateDone.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "" , formateString: "EEEE")
-//        pmTextLabel.text = SelectedDoctorFromSearch!.dateDone.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "" , formateString: "a")
-//        let time = SelectedDoctorFromSearch!.slot!.id.characters.suffix(8)
-//        let arr = time.components(separatedBy: ":")
-//        if arr.count > 1 {
-//            if Int(arr[0]) ?? 0 > 12 {
-//                timeLbl.text = "\((Int(arr[0]) ?? 0) - 12):\(arr[1])"
-//            } else {
-//                timeLbl.text = "\((Int(arr[0]) ?? 0)):\(arr[1])"
-//            }
-//        }
-        timeLbl.text = SelectedDoctorFromSearch?.slot?.id.ConvertToDate.ToTimeOnly ?? "asdasdasd"
+        
+   
+        
+        
         reservationID.text = SelectedDoctorFromSearch?.reservationID ?? "asdasdas"
         bookNowBtn.text = UserManager.isArabic ? "تم" : "Ok"
         labelBranch.text = UserManager.isArabic ? SelectedDoctorFromSearch?.branch?.arabicName ?? "" : SelectedDoctorFromSearch?.branch?.englishName ?? ""
@@ -87,6 +78,29 @@ class ReservationSuccessVC: UIViewController {
         if labelClinic.text == "" {
             labelClinic.text = clinicName
         }
+    }
+    
+    private func setDate() {
+        let dateCom = SelectedDoctorFromSearch?.dateDone.convertArabicNumbers().components(separatedBy: .whitespaces) ?? .init()
+        let date = dateCom.last?.ConvertToDate
+        print(date ?? .init())
+        if let dat = date?.ToTimeOnlyEn {
+            if dat != Date().ToTimeOnlyEn {
+                dateLbl.text = dat.ConvertToDate.getFormattedDate(format: "dd MMMM yyyy")
+                dayTextLabel.text = dat.ConvertToDate.getFormattedDate(format: "EEEE")
+                timeLbl.text = dat.ConvertToDate.ToTimeOnly
+            }else {
+                dateLbl.text = dateCom.first?.ConvertToDate.getFormattedDate(format: "dd MMMM yyyy")
+                dayTextLabel.text = dateCom.first?.ConvertToDate.getFormattedDate(format: "EEEE")
+                timeLbl.text = dateCom.last?.getSlotTime()
+            }
+        }else {
+            dateLbl.text = SelectedDoctorFromSearch!.dateDone.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "" , formateString: "dd MMMM yyyy")
+            dayTextLabel.text = SelectedDoctorFromSearch?.dateDone.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "" , formateString: "EEEE")
+            timeLbl.text = SelectedDoctorFromSearch?.slot?.id.ConvertToDate.ToTimeOnly ?? ""
+        }
+        
+        
     }
     
     @objc func confirmClicked() {
@@ -107,10 +121,23 @@ class ReservationSuccessVC: UIViewController {
     
     @objc func addToCalendar() {
         let eventTitle = "\(UserManager.isArabic ? "حجز مع الدكتور" : "Reservation with doctor") \(UserManager.isArabic ? SelectedDoctorFromSearch!.doctor!.englishNameAR! :  SelectedDoctorFromSearch!.doctor!.englishName!)"
-        let eventStartDate = SelectedDoctorFromSearch?.dateDone.ConvertToDate ?? Date() // Set your start date
-        let eventEndDate = eventStartDate.addingTimeInterval(900) // 1/4 hour later
-
-        addEventToCalendar(title: eventTitle, startDate: eventStartDate, endDate: eventEndDate)
+        if let dat = SelectedDoctorFromSearch?.dateDone {
+            if dat != Date().ToTimeOnlyEn {
+                let eventStartDate = dat.ConvertToDate  // Set your start date
+                let eventEndDate = eventStartDate.addingTimeInterval(900) // 1/4 hour later
+                addEventToCalendar(title: eventTitle, startDate: eventStartDate, endDate: eventEndDate)
+            }else {
+                let dateCom = dat.convertArabicNumbers().components(separatedBy: .whitespaces)
+                let eventStartDate = dateCom.first?.ConvertToDate  ?? .init()// Set your start date
+                let eventEndDate = eventStartDate.addingTimeInterval(900) // 1/4 hour later
+                addEventToCalendar(title: eventTitle, startDate: eventStartDate, endDate: eventEndDate)
+            }
+        }else {
+            let eventStartDate = SelectedDoctorFromSearch?.dateDone.ConvertToDate ?? Date() // Set your start date
+            let eventEndDate = eventStartDate.addingTimeInterval(900) // 1/4 hour later
+            addEventToCalendar(title: eventTitle, startDate: eventStartDate, endDate: eventEndDate)
+        }
+        
     }
     
     func addEventToCalendar(title: String, startDate: Date, endDate: Date) {
