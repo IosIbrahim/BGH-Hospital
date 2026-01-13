@@ -449,3 +449,12 @@ extension UIImage {
         return newImage!
     }
 }
+
+
+//extension UIImageView{
+//    
+//    open override func awakeFromNib() {
+//        self.image = self.image?.withRenderingMode(.alwaysTemplate)
+//        self.tintColor = .red
+//    }
+//}

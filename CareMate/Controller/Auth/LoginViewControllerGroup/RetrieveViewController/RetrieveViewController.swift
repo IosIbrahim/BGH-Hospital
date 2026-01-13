@@ -269,8 +269,24 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
             let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary ?? .init()
             let message_row = (((json?["Root"] as? [String: AnyObject])?["MESSAGE"] as? [String: AnyObject])?["MESSAGE_ROW"] as? [String: AnyObject])
             let Code = message_row?["CODE"] as? String ?? ""
-            
-            if Code == "200" || Code == "5" {
+            if let cde = json?["Code"] as? Int {
+                if cde == 200 || cde == 5 {
+                    let id = json?["PATIENT_ID"] as? String ?? ""
+                    print(id)
+                    currentPatientIDOrigni =  id
+                    Utilities.sharedInstance.setPatientId(patienId: id)
+                    currentPatientMobile =  json?["PAT_TEL"] as? String ?? ""
+                    UserDefaults.standard.set(id, forKey: "patientIdWithSpaces")
+                    UserDefaults.standard.set(message_row?["PAT_TEL"] as? String ?? "", forKey: "PAT_TEL")
+                    DispatchQueue.main.async {
+                        let vc:ConfirmAfterSignUpVC =   ConfirmAfterSignUpVC()
+                        vc.patientId = id
+                        vc.delegete = self
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                    return
+                }
+            }else if Code == "200" || Code == "5" {
                     if message_row?["ALREADY_REGISTERED_FLAG"] as! String == "1" {
                         let id = message_row?["PATIENT_ID"] as? String ?? ""
                         print(id)
@@ -282,11 +298,6 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
                         UserDefaults.standard.set(id, forKey: "patientIdWithSpaces")
                         UserDefaults.standard.set(message_row?["PAT_TEL"] as? String ?? "", forKey: "PAT_TEL")
                         DispatchQueue.main.async {
-//                            let vc:verifcationAddOtherVC = verifcationAddOtherVC(PatientId: currentPatientIDOrigni, patientIdArray: nil, vcType: .fromRetrive)
-//                            vc.fromForget = true
-//                            vc.mobileNumber = self.phoneNumber
-//                            vc.fromGuest = self.fromGuest
-//                            self.navigationController?.pushViewController(vc, animated: true)
                             let vc:ConfirmAfterSignUpVC =   ConfirmAfterSignUpVC()
                             vc.patientId = id
                             vc.patientName = UserManager.isArabic ? nameAr:nameEn
@@ -297,13 +308,6 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
                     }else {
                       
                         DispatchQueue.main.async {
-//                            let formSheet = MZFormSheetController.init(viewController: slotNot(messageAr: " عذرًا ، البيانات المدخلة لا تتطابق مع سجلاتنا ، لمزيد من المعلومات يرجى الاتصال بنا او مراسلاتنا بالبريد الإلكتروني", MessageEn:  "Sorry, the Entered data does not match our records, for more information please contact us By Calling on "))
-//                            formSheet.shouldDismissOnBackgroundViewTap = true
-//                            formSheet.transitionStyle = .slideFromBottom
-//                            formSheet.presentedFormSheetSize = CGSize.init(width: UIScreen.main.bounds.width * 0.9, height: 380)
-//                            formSheet.shouldCenterVertically = true
-//                            formSheet.present(animated: true, completionHandler: nil)
-//                            Utilities.showAlert(messageToDisplay:"  \(ConstantsData.mobile) OR By Email: \(ConstantsData.email)")
                             let nameAr = message_row?["NAME_AR"] as? String ?? ""
                             let nameEn = message_row?["NAME_EN"] as? String ?? ""
                             let msg = UserManager.isArabic ? nameAr:nameEn
