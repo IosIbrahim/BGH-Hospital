@@ -50,7 +50,12 @@ class DublicateReservationPopupViewController: UIViewController {
         if UserManager.isArabic {
             labelContinue.text = "استمرار"
             labelContinueAndCancel.text = "استمرار والغاء القديم"
+            labelContinueAndCancel.text = "تابع بهذا الموعد، وسيتم إلغاء الموعد الآخر."
             labelCancel.text = "الغاء"
+        }else {
+            labelContinue.text = "Proceed"
+            labelContinueAndCancel.text = "Continue and cancel the old"
+            labelContinueAndCancel.text = "Proceed with this one, the other will be cancelled"
         }
         viewCancel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancel)))
         viewContinue.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(continueWithOld)))
@@ -60,7 +65,7 @@ class DublicateReservationPopupViewController: UIViewController {
         labelContinue.textAlignment = .center
         labelContinueAndCancel.textAlignment = .center
         labelMessage.text = message
-        viewContinue.isHidden = true
+      //  viewContinue.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
