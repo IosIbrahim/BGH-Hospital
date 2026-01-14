@@ -49,7 +49,8 @@ class AppoimentCollectionViewCell: UICollectionViewCell {
         mainView.makeShadow(color: .black, alpha: 0.25, radius: 3)
 
         uilabelCancel.text = UserManager.isArabic ? "الغاء" : "Cancel"
-        uilabelResudle.text = UserManager.isArabic ? "اعاده الجدوله" : "Reschedule"
+        uilabelResudle.text = UserManager.isArabic ? "اعاده الجدولة" : "Reschedule"
+        uilabelResudle.adjustsFontSizeToFitWidth = true
         labelRate.text = UserManager.isArabic ? "تقييم" : "Rate"
         rescudle.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(RescheduleRequestClicked)))
         cancel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelCliked)))

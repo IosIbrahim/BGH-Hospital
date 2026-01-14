@@ -58,7 +58,9 @@ class ReservationSuccessVC: UIViewController {
         viewAddToCalendar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addToCalendar)))
         labelGetInstructions.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(getInstructions)))
         labelGetInstructions.underline()
+        setDate()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         successLabel.text = UserManager.isArabic ? "تم الحجز بنجاح" : "Your Booking is Successful"
@@ -66,9 +68,6 @@ class ReservationSuccessVC: UIViewController {
         successLabel.textAlignment = .center
         labelAddToCart.textAlignment = .center
         doctorName.text = UserManager.isArabic ?  SelectedDoctorFromSearch?.doctor?.englishNameAR :  SelectedDoctorFromSearch?.doctor?.englishName
-        
-   
-        
         
         reservationID.text = SelectedDoctorFromSearch?.reservationID ?? "asdasdas"
         bookNowBtn.text = UserManager.isArabic ? "تم" : "Ok"
@@ -81,22 +80,24 @@ class ReservationSuccessVC: UIViewController {
     }
     
     private func setDate() {
+        let selectDate = SelectedDoctorFromSearch?.dateDone.convertArabicNumbers()
         let dateCom = SelectedDoctorFromSearch?.dateDone.convertArabicNumbers().components(separatedBy: .whitespaces) ?? .init()
+        print(dateCom)
         let date = dateCom.last?.ConvertToDate
         print(date ?? .init())
         if let dat = date?.ToTimeOnlyEn {
             if dat != Date().ToTimeOnlyEn {
-                dateLbl.text = dat.ConvertToDate.getFormattedDate(format: "dd MMMM yyyy")
-                dayTextLabel.text = dat.ConvertToDate.getFormattedDate(format: "EEEE")
-                timeLbl.text = dat.ConvertToDate.ToTimeOnly
+                dateLbl.text = selectDate?.ConvertToDate.getFormattedDate(format: "dd MMMM yyyy")
+                dayTextLabel.text = selectDate?.ConvertToDate.getFormattedDate(format: "EEEE")
+                timeLbl.text = dateCom.last?.getSlotTime()
             }else {
-                dateLbl.text = dateCom.first?.ConvertToDate.getFormattedDate(format: "dd MMMM yyyy")
-                dayTextLabel.text = dateCom.first?.ConvertToDate.getFormattedDate(format: "EEEE")
+                dateLbl.text = selectDate?.ConvertToDate.getFormattedDate(format: "dd MMMM yyyy")
+                dayTextLabel.text = selectDate?.ConvertToDate.getFormattedDate(format: "EEEE")
                 timeLbl.text = dateCom.last?.getSlotTime()
             }
         }else {
-            dateLbl.text = SelectedDoctorFromSearch!.dateDone.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "" , formateString: "dd MMMM yyyy")
-            dayTextLabel.text = SelectedDoctorFromSearch?.dateDone.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "" , formateString: "EEEE")
+            dateLbl.text = selectDate?.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "" , formateString: "dd MMMM yyyy")
+            dayTextLabel.text = selectDate?.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "" , formateString: "EEEE")
             timeLbl.text = SelectedDoctorFromSearch?.slot?.id.ConvertToDate.ToTimeOnly ?? ""
         }
         

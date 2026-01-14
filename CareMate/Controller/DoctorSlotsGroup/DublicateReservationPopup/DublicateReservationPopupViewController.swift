@@ -57,6 +57,7 @@ class DublicateReservationPopupViewController: UIViewController {
             labelContinueAndCancel.text = "Continue and cancel the old"
             labelContinueAndCancel.text = "Proceed with this one, the other will be cancelled"
         }
+        labelContinueAndCancel.adjustsFontSizeToFitWidth = true
         viewCancel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancel)))
         viewContinue.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(continueWithOld)))
         viewContinueAndCancel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(continueAndCancel)))

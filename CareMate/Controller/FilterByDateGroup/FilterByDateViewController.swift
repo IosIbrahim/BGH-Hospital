@@ -124,6 +124,7 @@ extension Date {
    func getFormattedDate(format: String) -> String {
         let dateformat = DateFormatter()
         dateformat.dateFormat = format
+       dateformat.locale = .init(identifier: UserManager.isArabic ? "ar":"en")
         return dateformat.string(from: self)
     }
 }
