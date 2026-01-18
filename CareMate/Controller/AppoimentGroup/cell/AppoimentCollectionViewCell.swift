@@ -56,17 +56,41 @@ class AppoimentCollectionViewCell: UICollectionViewCell {
         cancel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelCliked)))
         viewRate.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(rateCliked)))
         if data.eXPECTEDDONEDATE != ""{
-            uilabelDate.text = data.eXPECTEDDONEDATE.formateDAte(dateString: data.eXPECTEDDONEDATE, formateString: "dd MMM yyyy")
-            let time = data.eXPECTEDDONEDATE.formateDAte(dateString: data.eXPECTEDDONEDATE, formateString: "HH:mm", localEn: true)
-            let arr = time.components(separatedBy: ":")
-            if arr.count > 1 {
-                if Int(arr[0]) ?? 0 > 12 {
-                    uilabelTime.text = "\((Int(arr[0]) ?? 0) - 12):\(arr[1]) \(UserManager.isArabic ? "مساء" : "pm")"
-                } else {
-                    uilabelTime.text = "\((Int(arr[0]) ?? 0)):\(arr[1]) \(UserManager.isArabic ? "صباحا" : "am")"
+//            uilabelDate.text = data.eXPECTEDDONEDATE.formateDAte(dateString: data.eXPECTEDDONEDATE, formateString: "dd MMM yyyy")
+//            let time = data.eXPECTEDDONEDATE.formateDAte(dateString: data.eXPECTEDDONEDATE, formateString: "HH:mm", localEn: true)
+//            let arr = time.components(separatedBy: ":")
+//            if arr.count > 1 {
+//                if Int(arr[0]) ?? 0 > 12 {
+//                    uilabelTime.text = "\((Int(arr[0]) ?? 0) - 12):\(arr[1]) \(UserManager.isArabic ? "مساء" : "pm")"
+//                } else {
+//                    uilabelTime.text = "\((Int(arr[0]) ?? 0)):\(arr[1]) \(UserManager.isArabic ? "صباحا" : "am")"
+//                }
+//            }
+            let dateCom = data.eXPECTEDDONEDATE.convertArabicNumbers().components(separatedBy: .whitespaces)
+            let date = dateCom.last?.ConvertToDate
+            if let dat = date?.ToTimeOnlyEn {
+                if dat != Date().ToTimeOnlyEn {
+                    self.uilabelTime.text = dateCom.last?.ConvertToDate.getFormattedDate(format: "hh:mm a")
+                    self.uilabelDate.text = dateCom.first?.ConvertToDate.getFormattedDate(format: "dd MMM yyyy")
+                }else {
+                    self.uilabelTime.text = dateCom.last?.getSlotTime()
+                    self.uilabelDate.text = dateCom.first?.ConvertToDate.getFormattedDate(format: "dd MMM yyyy")
                 }
+            }else {
+                self.uilabelTime.text = dateCom.last?.getSlotTime()
+                self.uilabelDate.text = dateCom.first?.ConvertToDate.getFormattedDate(format: "dd MMM yyyy")
             }
-                uistackDate.isHidden = false
+            if uilabelTime.text?.lowercased().contains("pm") == true {
+                uilabelTime.text = uilabelTime.text?.replacingOccurrences(of: "pm", with: "PM")
+            }else if uilabelTime.text?.lowercased().contains("am") == true {
+                uilabelTime.text = uilabelTime.text?.replacingOccurrences(of: "am", with: "AM")
+            }else if uilabelTime.text?.lowercased().contains("ص") == true {
+                uilabelTime.text = uilabelTime.text?.replacingOccurrences(of: "ص", with: "صباحا")
+            }else if uilabelTime.text?.lowercased().contains("م") == true {
+                uilabelTime.text = uilabelTime.text?.replacingOccurrences(of: "م", with: "مساءا")
+            }
+            
+            uistackDate.isHidden = false
         } else {
             uistackDate.isHidden = true
         }
@@ -162,10 +186,8 @@ class AppoimentCollectionViewCell: UICollectionViewCell {
     
     {
         print("data?.DOC_ID")
-
-        print(data?.DOC_ID)
+        print(data?.DOC_ID ?? "")
         self.delegate!.CancelOrderClicked(self)
-
     }
     
     @objc func rateCliked() {
@@ -175,12 +197,10 @@ class AppoimentCollectionViewCell: UICollectionViewCell {
     @objc func RescheduleRequestClicked()
     {
         self.delegate!.CellClicked(self)
-
     }
     
     @IBAction func CancelClicked(sender: UIButton)
     {
-        
         let alertView = SCLAlertView()
         alertView.addButton( UserManager.isArabic ? "إلغاء الحجز" : "Cancel Appointment") {
             alertView.dismissAnimated()
@@ -193,17 +213,16 @@ class AppoimentCollectionViewCell: UICollectionViewCell {
         
         alertView.showTitle( UserManager.isArabic ? "المزيد" : "More Options", subTitle:   UserManager.isArabic ? "ماذا تريد ؟ " : "What would you like to do?", style: .notice, closeButtonTitle:  UserManager.isArabic ? "إخفاء" : "Dismiss", timeout: nil, colorStyle: 0x3788B0, colorTextButton: 0xFFFFFF, circleIconImage: nil, animationStyle: .topToBottom)
     }
+    
     func CancelAppointment()
     {
         let alertView = SCLAlertView()
-        
         alertView.addButton(UserManager.isArabic ? "إلغاء الحجز" : "Cancel Appointment") {
             alertView.dismissAnimated()
             self.delegate!.CancelOrderClicked(self)
         }
+        
         alertView.showTitle(UserManager.isArabic ? "ملحوظة" : "Note", subTitle:  UserManager.isArabic ? "هل تريد إلغاء الحجز" : "Do you want to cancel appointment", style: .notice, closeButtonTitle: UserManager.isArabic ? "إخفاء" : "Dismiss", timeout: nil, colorStyle: 0x3788B0, colorTextButton: 0xFFFFFF, circleIconImage: nil , animationStyle: .topToBottom)
-   
-    
     }
     
     @IBAction func CellClicked(sender: UIButton)
