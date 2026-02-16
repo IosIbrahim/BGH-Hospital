@@ -126,11 +126,12 @@ class DcotorSlotsViewController: BaseViewController {
         setupcollectionView()
         doctorName.text = UserManager.isArabic ? doctor?.englishNameAR :doctor?.englishName
         doctorName.textAlignment = .center
-        if doctor?.qualificationAR == nil {
-            self.doctorSpeciality.text = UserManager.isArabic ? "\(doctor?.clinicNameAR ?? "") - \(doctor?.DOCCATNAME ?? "")" : "\(doctor?.clinicName ?? "") - \(doctor?.doctorCategory ?? "")"
-        } else {
-            self.doctorSpeciality.text = UserManager.isArabic ? doctor?.qualificationAR ?? "" : doctor?.qualification ?? ""
-        }
+//        if doctor?.qualificationAR == nil {
+//            self.doctorSpeciality.text = UserManager.isArabic ? "\(doctor?.clinicNameAR ?? "") - \(doctor?.DOCCATNAME ?? "")" : "\(doctor?.clinicName ?? "") - \(doctor?.doctorCategory ?? "")"
+//        } else {
+//            self.doctorSpeciality.text = UserManager.isArabic ? doctor?.qualificationAR ?? "" : doctor?.qualification ?? ""
+//        }
+        self.doctorSpeciality.text = UserManager.isArabic ? "\(doctor?.clinicNameAR ?? "") - \(doctor?.DOCCATNAME ?? "")" : "\(doctor?.clinicName ?? "") - \(doctor?.doctorCategory ?? "")"
         uilabelSpkenLan.text =  UserManager.isArabic ? doctor?.HREMPLOYEELANGUAGE_AR: doctor?.HREMPLOYEELANGUAGE_AR
         viewBook.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(bookCliked)))
         self.uiimageAvatar.kf.setImage(with: self.url, placeholder: doctor?.gender == "M" ? UIImage(named: "RectangleMan") : UIImage(named: "DoctorIconRX") , options: nil, completionHandler: nil)

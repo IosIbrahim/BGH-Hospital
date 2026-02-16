@@ -68,14 +68,6 @@ class ReservationConfirmVC: BaseViewController {
         }
         print(brachType)
         self.labelPlace.text = UserManager.isArabic ? SelectedDoctorFromSearch?.doctor?.CLINIC_LOCATION_AR : SelectedDoctorFromSearch?.doctor?.CLINIC_LOCATION_EN
-
-//        Doctor.getDoctors(withSpecialityId: selectedSpeciality?.id ?? specialityID, andBranchId: branch?.id ?? "", type: brachType,isload: false) { doctors in
-//            guard let doctors = doctors else {
-//                self.viewPlaceHolder.isHidden = true
-//                return
-//            }
-//            self.labelPlace.text = UserManager.isArabic ? doctors.first?.CLINIC_LOCATION_AR : doctors.first?.CLINIC_LOCATION_EN
-//        }
     }
     
     deinit {
@@ -99,7 +91,7 @@ class ReservationConfirmVC: BaseViewController {
          
             self.doctorSpeciality.text = UserManager.isArabic ? SelectedDoctorFromSearch?.doctor?.qualificationAR ?? "" : SelectedDoctorFromSearch?.doctor?.qualification ?? ""
         }
-        doctorName.text = UserManager.isArabic ? (SelectedDoctorFromSearch!.doctor!.englishNameAR!) : (SelectedDoctorFromSearch!.doctor!.englishName!)
+        doctorName.text = UserManager.isArabic ? (SelectedDoctorFromSearch?.doctor?.englishNameAR) : (SelectedDoctorFromSearch?.doctor?.englishName)
         doctorName.textAlignment = .center
         doctorLocation.text =  UserManager.isArabic ? branch!.arabicName :branch?.englishName
         dateLbl.text = SelectedDoctorFromSearch!.dateDone.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "", formateString: "yyyy MMMM dd")
