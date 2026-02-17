@@ -57,6 +57,9 @@ struct Constants {
     struct APIProvider {
         static var IP =  "pr-h1services04.sherafia.bhg.com.sa"
         static var IP_WITHOUT_PORT =  "pr-h1services04.sherafia.bhg.com.sa"
+        static var NEWIP = "41.33.82.156:29804"
+        static var APIBase = "http://"+NEWIP+"/MobileApi/api/"
+        //   static var APIBaseURL = "http://"+NEWIP+"/MobileApi/api/"    // test
         static var APIBaseURL = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi/api/"    // test
         static var IMAGE_BASE = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi"   // test
         static var IMAGE_BASE2 = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi" // test

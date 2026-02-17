@@ -247,6 +247,7 @@ class BHGRegisterController: BaseViewController {
           }
           print(String(data: data, encoding: .utf8)!)
             let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary ?? .init()
+            print(json ?? .init())
             if let code = json?["CODE"] {
                  if code as? Int == 200 {
                     if json?["ALREADY_REGISTERED_FLAG"] as? String == "1" {

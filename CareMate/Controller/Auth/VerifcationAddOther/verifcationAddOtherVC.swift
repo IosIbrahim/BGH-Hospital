@@ -147,9 +147,9 @@ class verifcationAddOtherVC: BaseViewController {
         var urlString = Constants.APIProvider.validateCode
 
         if PATIENT_ID != nil {
-            pars = ["mobile": PATIENT_ID,"VERIFY_TEXT":self.code,"MOBILE_COUNTERY_CODE":self.countryCode,"STATUS":1] as! [String:Any]
+            pars = ["mobile": currentPatientIDOrigni,"VERIFY_TEXT":self.code,"MOBILE_COUNTERY_CODE":self.countryCode,"STATUS":1] as! [String:Any]
             if fromGuest {
-                pars = ["mobile": PATIENT_ID,"verify_text":self.code, "MOBILE_COUNTERY_CODE":self.countryCode,"STATUS":2] as! [String:Any]
+                pars = ["mobile": currentPatientIDOrigni,"verify_text":self.code, "MOBILE_COUNTERY_CODE":self.countryCode,"STATUS":2] as! [String:Any]
             }
         }
         if patientIdArray != nil {
@@ -244,7 +244,7 @@ class verifcationAddOtherVC: BaseViewController {
                             self.navigationController?.pushViewController(vc, animated: true)
                         } else {
                             let vc:ConfirmAfterSignUpVC =   ConfirmAfterSignUpVC()
-                            vc.patientId = self.PATIENT_ID ?? ""
+                            vc.patientId = currentPatientIDOrigni
                             vc.delegete = self
 //                            let popup = PopupDialog(viewController: vc, buttonAlignment: .horizontal, transitionStyle: .zoomIn,  gestureDismissal: true)
 //                            self.present(popup, animated: true, completion: nil)
@@ -313,7 +313,7 @@ class verifcationAddOtherVC: BaseViewController {
                             self.navigationController?.pushViewController(vc, animated: true)
                         } else {
                             let vc:ConfirmAfterSignUpVC = ConfirmAfterSignUpVC()
-                            vc.patientId = self.PATIENT_ID ?? ""
+                            vc.patientId = currentPatientIDOrigni
                             vc.delegete = self
 //                            let popup = PopupDialog(viewController: vc, buttonAlignment: .horizontal, transitionStyle: .zoomIn,  gestureDismissal: true)
 //                            self.present(popup, animated: true, completion: nil)
