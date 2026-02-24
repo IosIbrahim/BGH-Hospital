@@ -30,7 +30,7 @@ class DoctorsSearchViewController: BaseViewController {
     var index = 0
     var selectBranchIndex = 0
     var arrayDoctors = [Doctor]()
-    
+    var selectDocIndex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         initHeader(title: UserManager.isArabic ? "إبحث عن طبيب" : "Search for doctor")
@@ -127,7 +127,11 @@ class DoctorsSearchViewController: BaseViewController {
         }
         labelNoDoctorsFound.isHidden = true
    //     let urlString = "\(Constants.APIProvider.searchDoctors)index_from=\(index)&index_to=\(index + 40)&branch_id%20in%20(\(selectBranchID))&spec_id=\(selectedSpeciality?.id ?? "")&detect_text=\(textfieldDoctorName.text ?? "")"
-        let urlString = "\(Constants.APIProvider.searchDoctors)index_from=\(index)&index_to=\(index + 40)&branch_id=\(selectBranchID)&spec_id=\(selectedSpeciality?.id ?? "")&detect_text=\(textfieldDoctorName.text ?? "")"
+        var urlString = "\(Constants.APIProvider.searchDoctors)index_from=\(index)&index_to=\(index + 40)&branch_id=\(selectBranchID)&spec_id=\(selectedSpeciality?.id ?? "")&detect_text=\(textfieldDoctorName.text ?? "")"
+        let brnText = UserManager.isArabic ? "كل الفروع" : "All Branches"
+        if labelBranch.text?.lowercased().contains(brnText.lowercased()) == true {
+            urlString = "\(Constants.APIProvider.searchDoctors)index_from=\(index)&index_to=\(index + 40)&spec_id=\(selectedSpeciality?.id ?? "")&detect_text=\(textfieldDoctorName.text ?? "")"
+        }
         index += 41
         Doctor.getSearchDoctors(url: urlString) { doctors in
             hideIndicator()

@@ -40,7 +40,43 @@ extension DoctorsSearchViewController: UICollectionViewDelegate, UICollectionVie
 extension DoctorsSearchViewController: DoctorSearchCellDelegate {
     
     func showDocDetails(_ index: Int) {
-        var model = arrayDoctors[index]
+        let model = arrayDoctors[index]
+//        if model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.count ?? 0 > 1 {
+//            selectDocIndex = index
+//            openClinicks(model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW ?? [])
+//        }else {
+            showDetails(model)
+     //   }
+    }
+    
+    func openClinicks(_ clinics:[DoctorClinic]) {
+        var clinicsStr = [String]()
+        for item in clinics {
+            for branch in arrayBranches {
+                if item.HOSP_ID == branch.id && branch.englishName != "All branches"  {
+                    let titl = "\(item.getName()) \n \(branch.getName())"
+                    clinicsStr.append(titl)
+                    break
+                }
+            }
+        }
+        // (clinics ).map({ $0.getName()})
+        OPEN_LIST_POPUP(container: self, arrayNames: clinicsStr) { index in
+            guard let index else { return }
+         //   for item in clinics {
+                for itm in self.arrayBranches {
+                    if clinics[index].HOSP_ID == itm.id && itm.englishName != "All branches" {
+                        self.selectedBranch = itm
+                            break
+                        }
+                    }
+             //   }
+            self.showDetails(self.arrayDoctors[self.selectDocIndex])
+        }
+    }
+    
+    func showDetails(_ doc:Doctor) {
+        var model = doc
         model.id = model.DOC_ID
         model.englishName = model.DOC_NAME_EN
         model.englishNameAR = model.DOC_NAME_AR
@@ -71,40 +107,5 @@ extension DoctorsSearchViewController: DoctorSearchCellDelegate {
             doctorProfileVC.clinicPhoneNumber = model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.CLINIC_PHONE_NUMBER ?? ""
             doctorProfileVC.clinicLetter = UserManager.isArabic ? model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.CLINIC_LETTER ?? "" : model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.CLINIC_LETTER_EN ?? ""
             self.navigationController?.pushViewController(doctorProfileVC, animated: true)
-//        } else {
-//            var branchName1 = ""
-//            var branchName2 = ""
-//            if !arrayBranches.isEmpty {
-//                if selectBranchIndex == 0 {
-//                    branchName1 = arrayBranches[1].getName()
-//                    branchName2 = arrayBranches[2].getName()
-//                }else if selectBranchIndex == arrayBranches.count - 1 {
-//                    branchName2 = arrayBranches[selectBranchIndex].getName()
-//                    branchName1 = arrayBranches[selectBranchIndex - 1].getName()
-//                }else {
-//                    branchName1 = arrayBranches[selectBranchIndex].getName()
-//                    branchName2 = arrayBranches[selectBranchIndex + 1].getName()
-//                }
-//            }
-//            var names = [String]()
-//            let itms = model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW ?? []
-//            for (i,item) in itms.enumerated() {
-//                if i % 2 > 0 {
-//                    names.append(item.getName() + " - " +  branchName1)
-//                }else {
-//                    names.append(item.getName() + " - " +  branchName2)
-//                }
-//            }
-//            OPEN_LIST_POPUP(container: self, arrayNames: names) { index in
-//                guard let index else { return }
-//                doctorProfileVC.clincID =  model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?[index].CLINIC_ID ?? ""
-//                doctorProfileVC.doctor?.clinicId = doctorProfileVC.clincID
-//                doctorProfileVC.clinicName = UserManager.isArabic ? model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?[index].CLINIC_NAME_AR ?? "" : model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?[index].CLINIC_NAME_EN ?? ""
-//                doctorProfileVC.noReservation =  model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?[index].NO_RESERVATION_ONLINE_ONLY_TEL ?? "" == "1"
-//                doctorProfileVC.clinicPhoneNumber = model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?[index].CLINIC_PHONE_NUMBER ?? ""
-//                doctorProfileVC.clinicLetter = UserManager.isArabic ? model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?[index].CLINIC_LETTER ?? "" : model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?[index].CLINIC_LETTER_EN ?? ""
-//                self.navigationController?.pushViewController(doctorProfileVC, animated: true)
-//            }
-//        }
     }
 }
