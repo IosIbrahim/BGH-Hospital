@@ -13,25 +13,12 @@ class ReservationConfirmVC: BaseViewController {
     @IBOutlet weak var doctorSpeciality: UILabel!
     @IBOutlet weak var doctorName: UILabel!
     @IBOutlet weak var doctorImg: UIImageView!
-    @IBOutlet weak var costLbl: UILabel!
-    @IBOutlet weak var feesLbl: UILabel!
-    @IBOutlet weak var currencyLbl: UILabel!
-    
-    @IBOutlet weak var waitingTimeLbl: UILabel!
-    @IBOutlet weak var waitingTimeTitleLbl: UILabel!
-
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
-    @IBOutlet weak var locationBlock: UIView!
-    @IBOutlet weak var phoneNumberBlock: UIView!
-    @IBOutlet weak var emailBlock: UIView!
     @IBOutlet weak var viewBook: UIView!
     @IBOutlet weak var dayText: UILabel!
     @IBOutlet weak var pmTextLabel: UILabel!
     @IBOutlet weak var doctorLocation: UILabel!
-    @IBOutlet weak var patientnameLbl: UILabel!
-    @IBOutlet weak var patientemailLbl: UILabel!
-    @IBOutlet weak var patientmobileLbl: UILabel!
     @IBOutlet weak var BookDetailsText: UILabel!
     @IBOutlet weak var labelPlaceTitle: UILabel!
     @IBOutlet weak var viewPlaceHolder: UIView!
@@ -46,6 +33,7 @@ class ReservationConfirmVC: BaseViewController {
     var url :URL?
     var gender = ""
     var branch: Branch?
+    var clinicName = ""
     var selectedSpeciality: Speciality?
 
     @IBOutlet weak var bookNowBtn: UILabel!
@@ -67,7 +55,13 @@ class ReservationConfirmVC: BaseViewController {
             brachType = branch?.BRANCH_TYPE ?? "1"
         }
         print(brachType)
-        self.labelPlace.text = UserManager.isArabic ? SelectedDoctorFromSearch?.doctor?.CLINIC_LOCATION_AR : SelectedDoctorFromSearch?.doctor?.CLINIC_LOCATION_EN
+        let clinic = UserManager.isArabic ? SelectedDoctorFromSearch?.doctor?.CLINIC_LOCATION_AR : SelectedDoctorFromSearch?.doctor?.CLINIC_LOCATION_EN
+        if let clc = clinic {
+            self.labelPlace.text = clc
+        }else {
+            labelPlace.text = "\(clinicName) -  \(branch?.getName() ?? "")"
+        }
+        
     }
     
     deinit {

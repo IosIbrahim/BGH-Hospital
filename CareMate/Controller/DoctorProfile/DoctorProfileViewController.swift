@@ -150,7 +150,8 @@ class DoctorProfileViewController: BaseViewController {
                 }
             }
         }
-        OPEN_LIST_POPUP(container: self, arrayNames: names) { index in
+        let choose = UserManager.isArabic ? "الرجاء إختيار الفرع و العيادة":"Please Choose Branch And  Clinic"
+        OPEN_LIST_POPUP(container: self,title: choose ,arrayNames: names) { index in
             guard let index else { return }
             self.clincID =  self.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?[index].CLINIC_ID ?? ""
             self.doctor?.clinicId = self.clincID

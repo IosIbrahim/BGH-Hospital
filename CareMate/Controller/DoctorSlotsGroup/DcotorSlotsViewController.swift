@@ -72,6 +72,7 @@ class DcotorSlotsViewController: BaseViewController {
     var guestIdentityType = ""
     var guestSSN = ""
     var speciality = ""
+    var clinicID = ""
     var selecteDate = ""
     var isEmptyDate:Bool = false
     let monthsEn = ["January","February","March","April","May","June","July","August","September","October","November","December"]
@@ -131,7 +132,20 @@ class DcotorSlotsViewController: BaseViewController {
 //        } else {
 //            self.doctorSpeciality.text = UserManager.isArabic ? doctor?.qualificationAR ?? "" : doctor?.qualification ?? ""
 //        }
-        self.doctorSpeciality.text = UserManager.isArabic ? "\(doctor?.clinicNameAR ?? "") - \(doctor?.DOCCATNAME ?? "")" : "\(doctor?.clinicName ?? "") - \(doctor?.doctorCategory ?? "")"
+        if let cat = doctor?.doctorCategory {
+            self.doctorSpeciality.text = UserManager.isArabic ? "\(doctor?.clinicNameAR ?? "") - \(doctor?.DOCCATNAME ?? "")" : "\(doctor?.clinicName ?? "") - \(cat)"
+        }else {
+            if doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.count ?? .zero > 1 {
+                for item in doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW ?? [] {
+                    if item.CLINIC_ID == clincID {
+                        let spec = UserManager.isArabic ? doctor?.SPECIALITY_AR :doctor?.SPECIALITY_EN
+                        doctorSpeciality.text = "\(item.getName()) - \(spec ?? "")"
+                        break
+                    }
+                }
+            }
+        }
+      
         uilabelSpkenLan.text =  UserManager.isArabic ? doctor?.HREMPLOYEELANGUAGE_AR: doctor?.HREMPLOYEELANGUAGE_AR
         viewBook.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(bookCliked)))
         self.uiimageAvatar.kf.setImage(with: self.url, placeholder: doctor?.gender == "M" ? UIImage(named: "RectangleMan") : UIImage(named: "DoctorIconRX") , options: nil, completionHandler: nil)
@@ -345,6 +359,7 @@ class DcotorSlotsViewController: BaseViewController {
                 vc.guestPhone = guestPhone
                 vc.guestPhoneCode = guestPhoneCode
                 vc.isScedule = isScedule
+                
                 vc.guestBithDate = guestBithDate
                 vc.guestGender = guestGender
                 vc.guestIdentityType = guestIdentityType
@@ -378,6 +393,7 @@ class DcotorSlotsViewController: BaseViewController {
             vc.SelectedDoctorFromSearch = appoint
             vc.gender = doctor?.gender ?? ""
             vc.branch = branch
+            vc.clinicName = doctorSpeciality.text?.components(separatedBy: "-").first ?? ""
             vc.selectedSpeciality = selectedSpeciality
             vc.specialityID = specialityID ?? ""
             vc.url =    URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor?.DOCTOR_PIC ?? "")")
