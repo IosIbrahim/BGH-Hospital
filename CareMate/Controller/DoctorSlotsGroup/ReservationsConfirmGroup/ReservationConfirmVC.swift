@@ -48,8 +48,6 @@ class ReservationConfirmVC: BaseViewController {
         initHeader(isNotifcation: true, isLanguage: true, title: UserManager.isArabic ? "تأكيد الحجز": "Book Confirmation", hideBack: false)
         viewBook.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(confirmClicked)))
         BookDetailsText.text = UserManager.isArabic ? "تفاصيل الحجز" : "Booking Details"
-        
-        print("urlurlurlurlurlurlurlurlurlurlurlurlurlurl")
         var brachType = "1"
         if branch?.BRANCH_TYPE != "" {
             brachType = branch?.BRANCH_TYPE ?? "1"

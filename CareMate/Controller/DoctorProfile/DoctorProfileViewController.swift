@@ -51,9 +51,9 @@ class DoctorProfileViewController: BaseViewController {
             uilabelSpkenLanText.text = "لغة التواصل:"
             labelReserve.text = "حجز موعد"
         }
-        if !selectedBranches.isEmpty {
-            branch = selectedBranches.first
-        }
+//        if !selectedBranches.isEmpty {
+//            branch = selectedBranches.first
+//        }
         viewReerve.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(reserve)))
         labelName.text = DocName
         labelName2.text = DocName
@@ -75,14 +75,16 @@ class DoctorProfileViewController: BaseViewController {
                     self.labelBranch.text = (UserManager.isArabic ? model["PLACE_AR"] as? String : model["PLACE_EN"] as? String) ?? ""
                     if let loc = model["PLACE_AR"] as? String {
                         self.branch?.arabicName = loc
-                    }else {
-                        self.branch?.arabicName = "كل الفروع"
                     }
+//                    else {
+//                        self.branch?.arabicName = "كل الفروع"
+//                    }
                     if let locEn = model["PLACE_EN"] as? String {
                         self.branch?.englishName = locEn
-                    }else {
-                        self.branch?.englishName = "All Branches"
                     }
+//                    else {
+//                        self.branch?.englishName = "All Branches"
+//                    }
                     
                     self.labelAbout.stringFromHtml(htmlString: (UserManager.isArabic ? model["EMP_BIO_DESC_AR"] as? String : model["EMP_BIO_DESC_EN"] as? String) ?? "")
                     self.labelAbout.font = UIFont(name: "Tajawal-Regular", size: 15)

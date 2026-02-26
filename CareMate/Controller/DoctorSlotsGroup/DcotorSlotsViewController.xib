@@ -95,14 +95,14 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="354" height="1057"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BHG-DocPice" translatesAutoresizingMaskIntoConstraints="NO" id="Waz-gf-giN">
-                                                                            <rect key="frame" x="16" y="521" width="15" height="15"/>
+                                                                            <rect key="frame" x="157" y="521" width="15" height="15"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="15" id="Ngj-KY-L3d"/>
                                                                                 <constraint firstAttribute="width" constant="15" id="tRW-rR-xTH"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" misplaced="YES" text="Label lasdngaknsd;fl knas;ldkn a;skd n;alksnd f;kans ;kasd f" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUe-Gz-7WJ">
-                                                                            <rect key="frame" x="36" y="5" width="283" height="832"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUe-Gz-7WJ">
+                                                                            <rect key="frame" x="177" y="5" width="0.0" height="1047"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" red="0.41176470590000003" green="0.41568627450000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>

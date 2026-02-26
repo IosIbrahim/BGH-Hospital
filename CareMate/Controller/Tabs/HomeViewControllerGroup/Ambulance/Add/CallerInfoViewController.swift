@@ -496,7 +496,7 @@ extension String {
     }
     
     func getSlotTime() -> String {
-        var time = self.convertArabicNumbers()
+        let time = self.convertArabicNumbers()
         var comp = time.components(separatedBy: ":")
         let hour = comp.first
         let Am = UserManager.isArabic ? "ص":"AM"

@@ -132,19 +132,35 @@ class DcotorSlotsViewController: BaseViewController {
 //        } else {
 //            self.doctorSpeciality.text = UserManager.isArabic ? doctor?.qualificationAR ?? "" : doctor?.qualification ?? ""
 //        }
-        if let cat = doctor?.doctorCategory {
-            self.doctorSpeciality.text = UserManager.isArabic ? "\(doctor?.clinicNameAR ?? "") - \(doctor?.DOCCATNAME ?? "")" : "\(doctor?.clinicName ?? "") - \(cat)"
-        }else {
+//        if let cat = doctor?.doctorCategory {
+//            self.doctorSpeciality.text = UserManager.isArabic ? "\(doctor?.clinicNameAR ?? "") - \(doctor?.DOCCATNAME ?? "")" : "\(doctor?.clinicName ?? "") - \(cat)"
+//        }else {
             if doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.count ?? .zero > 1 {
                 for item in doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW ?? [] {
                     if item.CLINIC_ID == clincID {
-                        let spec = UserManager.isArabic ? doctor?.SPECIALITY_AR :doctor?.SPECIALITY_EN
-                        doctorSpeciality.text = "\(item.getName()) - \(spec ?? "")"
+                        let cat = UserManager.isArabic ? doctor?.doctorCategoryAR:doctor?.doctorCategory
+                        if let categ = cat {
+                            doctorSpeciality.text = "\(item.getName()) - \(categ)"
+                        }else {
+                            let spec = UserManager.isArabic ? doctor?.SPECIALITY_AR :doctor?.SPECIALITY_EN
+                            doctorSpeciality.text = "\(item.getName()) - \(spec ?? "")"
+                        }
+                        
                         break
                     }
                 }
+            }else {
+                let cat = UserManager.isArabic ? doctor?.doctorCategoryAR:doctor?.doctorCategory
+                let spec = UserManager.isArabic ? doctor?.SPECIALITY_AR :doctor?.SPECIALITY_EN
+                let clinic = UserManager.isArabic ? doctor?.clinicNameAR :doctor?.clinicName
+                if let categ = cat, let clin = clinic {
+                    doctorSpeciality.text = "\(clin) - \(categ)"
+                }else {
+                    let spec = UserManager.isArabic ? doctor?.SPECIALITY_AR :doctor?.SPECIALITY_EN
+                    doctorSpeciality.text = "\(cat ?? "") - \(spec ?? "")"
+                }
             }
-        }
+      //  }
       
         uilabelSpkenLan.text =  UserManager.isArabic ? doctor?.HREMPLOYEELANGUAGE_AR: doctor?.HREMPLOYEELANGUAGE_AR
         viewBook.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(bookCliked)))
