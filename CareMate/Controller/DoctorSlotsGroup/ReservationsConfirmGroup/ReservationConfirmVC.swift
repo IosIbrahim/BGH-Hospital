@@ -22,7 +22,10 @@ class ReservationConfirmVC: BaseViewController {
     @IBOutlet weak var BookDetailsText: UILabel!
     @IBOutlet weak var labelPlaceTitle: UILabel!
     @IBOutlet weak var viewPlaceHolder: UIView!
-    
+    @IBOutlet weak var bookNowBtn: UILabel!
+    @IBOutlet weak var labelAppoiment: UILabel!
+    @IBOutlet weak var labelLocation: UILabel!
+    @IBOutlet weak var labelPlace: UILabel!
     
     var SelectedDoctorFromSearch : makeAppointment?
     var loginUseeer:LoginedUser?
@@ -36,11 +39,7 @@ class ReservationConfirmVC: BaseViewController {
     var clinicName = ""
     var selectedSpeciality: Speciality?
 
-    @IBOutlet weak var bookNowBtn: UILabel!
-    @IBOutlet weak var labelAppoiment: UILabel!
-
-    @IBOutlet weak var labelLocation: UILabel!
-    @IBOutlet weak var labelPlace: UILabel!
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,12 +52,7 @@ class ReservationConfirmVC: BaseViewController {
             brachType = branch?.BRANCH_TYPE ?? "1"
         }
         print(brachType)
-        let clinic = UserManager.isArabic ? SelectedDoctorFromSearch?.doctor?.CLINIC_LOCATION_AR : SelectedDoctorFromSearch?.doctor?.CLINIC_LOCATION_EN
-        if let clc = clinic {
-            self.labelPlace.text = clc
-        }else {
-            labelPlace.text = "\(clinicName) -  \(branch?.getName() ?? "")"
-        }
+       
         
     }
     
@@ -85,7 +79,23 @@ class ReservationConfirmVC: BaseViewController {
         }
         doctorName.text = UserManager.isArabic ? (SelectedDoctorFromSearch?.doctor?.englishNameAR) : (SelectedDoctorFromSearch?.doctor?.englishName)
         doctorName.textAlignment = .center
-        doctorLocation.text =  UserManager.isArabic ? branch!.arabicName :branch?.englishName
+        let clinic = UserManager.isArabic ? SelectedDoctorFromSearch?.doctor?.CLINIC_LOCATION_AR : SelectedDoctorFromSearch?.doctor?.CLINIC_LOCATION_EN
+        
+        if branch?.englishName.lowercased().contains("All Branches".lowercased()) == true {
+            labelPlace.text =  SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getName()
+            doctorLocation.text = branch?.getName()
+        }else {
+            doctorLocation.text =  branch?.getName()
+            if clinicName.isEmpty {
+                labelPlace.text =  SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getName()
+            }else {
+                let clc = SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getName()
+                labelPlace.text = "\(clinicName) -  \(clc ?? "")"
+            }
+        }
+        if let clc = clinic {
+            self.labelPlace.text = clc
+        }
         dateLbl.text = SelectedDoctorFromSearch!.dateDone.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "", formateString: "yyyy MMMM dd")
         dayText.text = SelectedDoctorFromSearch!.dateDone.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "", formateString: "EEEE")
         timeLbl.text = SelectedDoctorFromSearch!.slot!.id.ConvertToDate.ToTimeOnly

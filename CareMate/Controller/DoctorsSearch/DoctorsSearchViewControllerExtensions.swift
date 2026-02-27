@@ -100,6 +100,7 @@ extension DoctorsSearchViewController: DoctorSearchCellDelegate {
             }
             doctorProfileVC.selectedBranches = selectedBranches
         }
+        doctorProfileVC.allBranches = arrayBranches
             doctorProfileVC.clincID =  model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.CLINIC_ID ?? ""
             doctorProfileVC.clinicName = UserManager.isArabic ? model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.CLINIC_NAME_AR ?? "" : model.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.CLINIC_NAME_EN ?? ""
             doctorProfileVC.doctor?.clinicId = doctorProfileVC.clincID

@@ -36,6 +36,7 @@ class DoctorProfileViewController: BaseViewController {
     var noReservation = false
     var clinicPhoneNumber = ""
     var clinicLetter = ""
+    var allBranches = [Branch]()
     var selectedBranches = [Branch]()
     var isSelected:Bool = false
     
@@ -82,9 +83,19 @@ class DoctorProfileViewController: BaseViewController {
                     if let locEn = model["PLACE_EN"] as? String {
                         self.branch?.englishName = locEn
                     }
-//                    else {
-//                        self.branch?.englishName = "All Branches"
-//                    }
+                    else {
+                      //  self.branch?.englishName = "All Branches"
+                        if self.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.count ?? .zero == 1 {
+                            for item in self.allBranches {
+                                let clcID = self.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.HOSP_ID
+                                if clcID == item.id && !item.BRANCH_TYPE.isEmpty{
+                                    self.branch = item
+                                    break
+                                }
+                            }
+                        }
+                    }
+                    
                     
                     self.labelAbout.stringFromHtml(htmlString: (UserManager.isArabic ? model["EMP_BIO_DESC_AR"] as? String : model["EMP_BIO_DESC_EN"] as? String) ?? "")
                     self.labelAbout.font = UIFont(name: "Tajawal-Regular", size: 15)
