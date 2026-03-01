@@ -23,56 +23,56 @@ class DoctorProfileVC: UITableViewController, FSCalendarDataSource, FSCalendarDe
     @IBOutlet weak var doctorQualifications: UILabel!
     @IBOutlet weak var doctorName: UILabel!
     @IBOutlet weak var doctorImg: UIImageView!
-  
+    @IBOutlet weak var qualifcationCell: UITableViewCell!
+    @IBOutlet weak var qulifactionCellDetails: UITableViewCell!
+    @IBOutlet weak var currencyLbl: UILabel!
+    @IBOutlet weak var waitingTimeLbl: UILabel!
+    @IBOutlet weak var waitingTimeTitleLbl: UILabel!
+    @IBOutlet weak var viewsCountLbl: UILabel!
+    @IBOutlet weak var viewTitleLbl: UILabel!
+    let Label = UILabel()
+    @IBOutlet weak var calendar: FSCalendar!
+    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var aboutHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var slotsViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var slotCollectionConstraint: NSLayoutConstraint!
+    @IBOutlet weak var NoBranches: UILabel!
+    @IBOutlet weak var doctorLocation: UILabel!
+    @IBOutlet weak var patientReviewsBtn: UIButton!
+    @IBOutlet weak var bookNoteLbl: UILabel!
+    @IBOutlet weak var bookNowLbl: UILabel!
+    @IBOutlet weak var slotsCollectionView: UICollectionView!
+    
+    
+    var doctor: Doctor?
+    var totalHeight = Constants.ScreenHeight - 50
     private var animationFinished = true
     var selectedIndex = 0
     var  serviceObject:Service?
-
-    @IBOutlet weak var qualifcationCell: UITableViewCell!
-    @IBOutlet weak var qulifactionCellDetails: UITableViewCell!
-    var totalHeight = Constants.ScreenHeight-50
-    @IBOutlet weak var currencyLbl: UILabel!
     
-    @IBOutlet weak var waitingTimeLbl: UILabel!
-    @IBOutlet weak var waitingTimeTitleLbl: UILabel!
-    
-    @IBOutlet weak var viewsCountLbl: UILabel!
-    
-    @IBOutlet weak var viewTitleLbl: UILabel!
-    var doctor: Doctor?
     var qualifications = [Qualification]()
+    var comesFromDoctors:Bool = false
+    
     var specialityID:String?
     var clincID: String?
     var branchID: String?
     var branch: Branch?
     var docID: String?
+    
     var clicnName: String?
     var DocName: String?
     var ReservArr: [TimeSlots] = []
     var dateID: TimeSlots?
     var SlotArr:[Slot] = []
-    @IBOutlet weak var NoBranches: UILabel!
-
-    @IBOutlet weak var doctorLocation: UILabel!
+    
     var BusyDays: [Date] = [Date]()
-
-    @IBOutlet weak var patientReviewsBtn: UIButton!
-    @IBOutlet weak var bookNoteLbl: UILabel!
-    @IBOutlet weak var bookNowLbl: UILabel!
-    @IBOutlet weak var slotsCollectionView: UICollectionView!
     var currentDate = Date()
     var selectedDate : Date?
     var isFav = false
     var selectedTimeSlot = ""
     
     
-    let Label = UILabel()
- 
-    @IBOutlet weak var calendar: FSCalendar!
-    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var aboutHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var slotsViewConstraint: NSLayoutConstraint!
-    @IBOutlet weak var slotCollectionConstraint: NSLayoutConstraint!
+
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"

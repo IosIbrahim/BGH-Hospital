@@ -31,6 +31,7 @@ struct Doctor: Decodable {
     var HREMPLOYEELANGUAGE_AR:String?
     var CLINIC_PHONE_NUMBER: String?
     var DOCCATNAME:String?
+    var DOCCATNAMEen:String?
     var NO_RESERVATION_VIEW_ONLY_TEL: String?
     var INFORMAT_ONLY:String?
     var CLINIC_LETTER: String?
@@ -50,6 +51,25 @@ struct Doctor: Decodable {
     var CONTACT_TEL2: String?
     var CLINIC_LOCATION_AR: String?
     var CLINIC_LOCATION_EN: String?
+    var branchAr:String?
+    var branchEn:String?
+    
+    func getDocName()-> String? {
+        UserManager.isArabic ? DOCCATNAME:DOCCATNAMEen
+    }
+    
+    func getBranch() -> String? {
+        UserManager.isArabic ? branchAr:branchEn
+    }
+    
+    func getClinicAddress() -> String? {
+        UserManager.isArabic ? CLINIC_LOCATION_AR:CLINIC_LOCATION_EN
+    }
+    
+    func getClinic() -> String? {
+        UserManager.isArabic ? clinicNameAR:clinicName
+    }
+    
     
     enum CodingKeys: String, CodingKey {
         case CLINIC_LOCATION_AR = "CLINIC_LOCATION_AR"
@@ -82,6 +102,7 @@ struct Doctor: Decodable {
         case HREMPLOYEELANGUAGE_EN = "HREMPLOYEELANGUAGE_EN"
         case HREMPLOYEELANGUAGE_AR = "HREMPLOYEELANGUAGE_AR"
         case DOCCATNAME = "DOCCATNAME"
+        case DOCCATNAMEen = "DOCCATENNAME"
         case NO_RESERVATION_VIEW_ONLY_TEL = "NO_RESERVATION_VIEW_ONLY_TEL"
         case CLINIC_PHONE_NUMBER = "CLINIC_PHONE_NUMBER"
         case CLINIC_LETTER = "CLINIC_LETTER"
@@ -90,6 +111,8 @@ struct Doctor: Decodable {
         case HIDE_SCHEDULE_MOBILE_APP = "HIDE_SCHEDULE_MOBILE_APP"
         case CONTACT_TEL1 = "CONTACT_TEL1"
         case CONTACT_TEL2 = "CONTACT_TEL2"
+        case branchAr = "BRANCH_NAME_AR"
+        case branchEn = "BRANCH_NAME_EN"
     }
 }
 

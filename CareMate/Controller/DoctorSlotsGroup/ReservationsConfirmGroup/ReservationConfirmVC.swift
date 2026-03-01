@@ -38,7 +38,8 @@ class ReservationConfirmVC: BaseViewController {
     var branch: Branch?
     var clinicName = ""
     var selectedSpeciality: Speciality?
-
+    var comesFromDoctors:Bool = false
+    
   
     
     override func viewDidLoad() {
@@ -80,8 +81,10 @@ class ReservationConfirmVC: BaseViewController {
         doctorName.text = UserManager.isArabic ? (SelectedDoctorFromSearch?.doctor?.englishNameAR) : (SelectedDoctorFromSearch?.doctor?.englishName)
         doctorName.textAlignment = .center
         let clinic = UserManager.isArabic ? SelectedDoctorFromSearch?.doctor?.CLINIC_LOCATION_AR : SelectedDoctorFromSearch?.doctor?.CLINIC_LOCATION_EN
-        
-        if branch?.englishName.lowercased().contains("All Branches".lowercased()) == true {
+        if comesFromDoctors {
+            doctorLocation.text = SelectedDoctorFromSearch?.doctor?.getBranch()
+            labelPlace.text = SelectedDoctorFromSearch?.doctor?.getClinic()
+        }else if branch?.englishName.lowercased().contains("All Branches".lowercased()) == true {
             labelPlace.text =  SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getName()
             doctorLocation.text = branch?.getName()
         }else {
@@ -91,11 +94,12 @@ class ReservationConfirmVC: BaseViewController {
             }else {
                 let clc = SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getName()
                 labelPlace.text = "\(clinicName) -  \(clc ?? "")"
+                labelPlace.text = clc
             }
         }
-        if let clc = clinic {
-            self.labelPlace.text = clc
-        }
+//        if let clc = clinic {
+//            self.labelPlace.text = clc
+//        }
         dateLbl.text = SelectedDoctorFromSearch!.dateDone.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "", formateString: "yyyy MMMM dd")
         dayText.text = SelectedDoctorFromSearch!.dateDone.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "", formateString: "EEEE")
         timeLbl.text = SelectedDoctorFromSearch!.slot!.id.ConvertToDate.ToTimeOnly

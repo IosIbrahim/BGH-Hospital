@@ -103,7 +103,7 @@ class DoctorsViewController: BaseViewController ,UISearchBarDelegate{
                 doctorProfileVC.clicnName = doctor.clinicName
                 doctorProfileVC.DocName = doctor.englishName
                 doctorProfileVC.docID = doctor.id
-                
+                doctorProfileVC.comesFromDoctors = true
                 doctorProfileVC.serviceObject = serviceOb
             }
             else
@@ -118,13 +118,9 @@ class DoctorsViewController: BaseViewController ,UISearchBarDelegate{
                 doctorProfileVC.clicnName = doctor.clinicName
                 doctorProfileVC.DocName = doctor.englishName
                 doctorProfileVC.docID = doctor.id
-                
+                doctorProfileVC.comesFromDoctors = true
                 doctorProfileVC.serviceObject = serviceOb
             }
-           
-          
-            
-
         }
     }
 }
@@ -181,6 +177,7 @@ extension DoctorsViewController: UITableViewDelegate {
                 doctorProfileVC.docID = self.doctors[indexPath.row].id ?? ""
                 doctorProfileVC.serviceObject = serviceOb
                 doctorProfileVC.guestName = guestName
+                doctorProfileVC.comesFromDoctors = true
                 doctorProfileVC.guestPhone = guestPhone
                 doctorProfileVC.guestPhoneCode = guestPhoneCode
                 doctorProfileVC.guestGender = guestGender

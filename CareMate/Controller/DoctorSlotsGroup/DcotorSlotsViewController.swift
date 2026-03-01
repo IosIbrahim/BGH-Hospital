@@ -75,6 +75,7 @@ class DcotorSlotsViewController: BaseViewController {
     var clinicID = ""
     var selecteDate = ""
     var isEmptyDate:Bool = false
+    var comesFromDoctors = false
     let monthsEn = ["January","February","March","April","May","June","July","August","September","October","November","December"]
   //  let monthsAr = ["يناير","فبراير","مارس","ابريل","مايو","يونيه","يوليو","اغسطس","سبتمبر","اكتوبر","نوفمبر","ديسمبر"]
     let monthsAr = ["يناير","فبراير","مارس","ابريل","مايو","يونيو","يوليو","اغسطس","سبتمبر","اكتوبر","نوفمبر","ديسمبر"]
@@ -135,28 +136,29 @@ class DcotorSlotsViewController: BaseViewController {
 //        if let cat = doctor?.doctorCategory {
 //            self.doctorSpeciality.text = UserManager.isArabic ? "\(doctor?.clinicNameAR ?? "") - \(doctor?.DOCCATNAME ?? "")" : "\(doctor?.clinicName ?? "") - \(cat)"
 //        }else {
-            if doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.count ?? .zero > 1 {
+        if comesFromDoctors {
+            doctorSpeciality.text = "\(doctor?.getDocName() ?? "") - \(doctor?.getClinic() ?? "")"
+        }else if doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.count ?? .zero > 1 {
                 for item in doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW ?? [] {
                     if item.CLINIC_ID == clincID {
                         let cat = UserManager.isArabic ? doctor?.doctorCategoryAR:doctor?.doctorCategory
                         if let categ = cat {
-                            doctorSpeciality.text = "\(item.getName()) - \(categ)"
+                            doctorSpeciality.text = " \(categ) - \(item.getName())"
                         }else {
                             let spec = UserManager.isArabic ? doctor?.SPECIALITY_AR :doctor?.SPECIALITY_EN
-                            doctorSpeciality.text = "\(item.getName()) - \(spec ?? "")"
+                            doctorSpeciality.text = "\(spec ?? "") - \(item.getName())"
                         }
                         
                         break
                     }
                 }
-            }else {
+        }else {
                 let cat = UserManager.isArabic ? doctor?.doctorCategoryAR:doctor?.doctorCategory
                 let spec = UserManager.isArabic ? doctor?.SPECIALITY_AR :doctor?.SPECIALITY_EN
                 let clinic = UserManager.isArabic ? doctor?.clinicNameAR :doctor?.clinicName
                 if let categ = cat, let clin = clinic {
                     doctorSpeciality.text = "\(clin) - \(categ)"
                 }else {
-                    let spec = UserManager.isArabic ? doctor?.SPECIALITY_AR :doctor?.SPECIALITY_EN
                     doctorSpeciality.text = "\(cat ?? "") - \(spec ?? "")"
                 }
             }
@@ -336,6 +338,7 @@ class DcotorSlotsViewController: BaseViewController {
             let vc =  ReservationConfirmVC()
             vc.speciality = speciality
             vc.serviceId = serviceObject?.id ?? ""
+            vc.comesFromDoctors = comesFromDoctors
             vc.SelectedDoctorFromSearch = appoint
             vc.branch = branch
             vc.selectedSpeciality = selectedSpeciality
