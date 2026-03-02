@@ -412,6 +412,7 @@ class DcotorSlotsViewController: BaseViewController {
             vc.SelectedDoctorFromSearch = appoint
             vc.gender = doctor?.gender ?? ""
             vc.branch = branch
+            vc.comesFromDoctors = comesFromDoctors
             vc.clinicName = doctorSpeciality.text?.components(separatedBy: "-").first ?? ""
             vc.selectedSpeciality = selectedSpeciality
             vc.specialityID = specialityID ?? ""

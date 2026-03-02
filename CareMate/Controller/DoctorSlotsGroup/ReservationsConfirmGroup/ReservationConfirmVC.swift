@@ -84,6 +84,8 @@ class ReservationConfirmVC: BaseViewController {
         if comesFromDoctors {
             doctorLocation.text = SelectedDoctorFromSearch?.doctor?.getBranch()
             labelPlace.text = SelectedDoctorFromSearch?.doctor?.getClinic()
+            doctorSpeciality.text = "\(SelectedDoctorFromSearch?.doctor?.getDocName() ?? "") - \(SelectedDoctorFromSearch?.doctor?.getClinic() ?? "")"
+
         }else if branch?.englishName.lowercased().contains("All Branches".lowercased()) == true {
             labelPlace.text =  SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getName()
             doctorLocation.text = branch?.getName()
@@ -104,7 +106,7 @@ class ReservationConfirmVC: BaseViewController {
         dayText.text = SelectedDoctorFromSearch!.dateDone.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "", formateString: "EEEE")
         timeLbl.text = SelectedDoctorFromSearch!.slot!.id.ConvertToDate.ToTimeOnly
         bookNowBtn.text = UserManager.isArabic ? "تأكيد" : "Confirmation"
-        labelAppoiment.text = UserManager.isArabic ? "الموعد" : "Appoiment"
+        labelAppoiment.text = UserManager.isArabic ? "الموعد" : "Appointment"
         labelLocation.text = UserManager.isArabic ? "الفرع" : "Branch"
         labelPlaceTitle.text = UserManager.isArabic ? "الموقع" : "Location"
         let defaults = UserDefaults.standard
