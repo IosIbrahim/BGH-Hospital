@@ -80,21 +80,22 @@ class ReservationConfirmVC: BaseViewController {
         }
         doctorName.text = UserManager.isArabic ? (SelectedDoctorFromSearch?.doctor?.englishNameAR) : (SelectedDoctorFromSearch?.doctor?.englishName)
         doctorName.textAlignment = .center
-        let clinic = UserManager.isArabic ? SelectedDoctorFromSearch?.doctor?.CLINIC_LOCATION_AR : SelectedDoctorFromSearch?.doctor?.CLINIC_LOCATION_EN
         if comesFromDoctors {
             doctorLocation.text = SelectedDoctorFromSearch?.doctor?.getBranch()
-            labelPlace.text = SelectedDoctorFromSearch?.doctor?.getClinic()
+            labelPlace.text = SelectedDoctorFromSearch?.doctor?.getClinicAddress()
             doctorSpeciality.text = "\(SelectedDoctorFromSearch?.doctor?.getDocName() ?? "") - \(SelectedDoctorFromSearch?.doctor?.getClinic() ?? "")"
 
         }else if branch?.englishName.lowercased().contains("All Branches".lowercased()) == true {
             labelPlace.text =  SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getName()
+            labelPlace.text =  SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getLocation()
             doctorLocation.text = branch?.getName()
         }else {
             doctorLocation.text =  branch?.getName()
             if clinicName.isEmpty {
                 labelPlace.text =  SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getName()
             }else {
-                let clc = SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getName()
+                var clc = SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getName()
+                clc = SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getLocation()
                 labelPlace.text = "\(clinicName) -  \(clc ?? "")"
                 labelPlace.text = clc
             }

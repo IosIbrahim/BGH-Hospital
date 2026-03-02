@@ -142,12 +142,19 @@ struct DoctorClinic: Codable {
     let CLINIC_NAME_EN: String?
     let NO_RESERVATION_ONLINE_ONLY_TEL: String?
     var CLINIC_PHONE_NUMBER: String?
+    var CLINIC_LOCATION_AR: String?
+    var CLINIC_LOCATION_EN: String?
+
     var CLINIC_LETTER: String?
     var CLINIC_LETTER_EN: String?
     var HOSP_ID:String?
     
     func getName() -> String {
         MOLHLanguage.isArabic() ? CLINIC_NAME_AR ?? "" : CLINIC_NAME_EN ?? ""
+    }
+    
+    func getLocation() -> String {
+        MOLHLanguage.isArabic() ? CLINIC_LOCATION_AR ?? "" : CLINIC_LOCATION_EN ?? ""
     }
 }
 
