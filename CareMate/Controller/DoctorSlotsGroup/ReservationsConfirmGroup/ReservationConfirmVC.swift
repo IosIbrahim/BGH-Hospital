@@ -94,10 +94,21 @@ class ReservationConfirmVC: BaseViewController {
             if clinicName.isEmpty {
                 labelPlace.text =  SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getName()
             }else {
-                var clc = SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getName()
-                clc = SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getLocation()
-                labelPlace.text = "\(clinicName) -  \(clc ?? "")"
-                labelPlace.text = clc
+                let clinics = SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW ?? []
+                if clinics.count > 1 {
+                    for item in clinics {
+                        if item.HOSP_ID == branch?.id {
+                            labelPlace.text = item.getLocation()
+                            break
+                        }
+                    }
+                }else {
+                    var clc = SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getName()
+                    clc = SelectedDoctorFromSearch?.doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.first?.getLocation()
+                    labelPlace.text = "\(clinicName) -  \(clc ?? "")"
+                    labelPlace.text = clc
+                }
+
             }
         }
 //        if let clc = clinic {
