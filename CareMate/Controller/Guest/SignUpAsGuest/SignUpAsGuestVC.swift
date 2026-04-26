@@ -443,7 +443,7 @@ class SignUpAsGuestVC: BaseViewController {
                 vc.delegate = self
                 vc.clinicName = self.clinicName
                 vc.SelectedDoctorFromSearch = self.SelectedDoctorFromSearch!
-                AppPopUpHandler.instance.openVCPop(vc, height: 500, dismiss: false)
+                AppPopUpHandler.instance.openVCPop(vc, height: 550, dismiss: false)
             } else if root.keys.contains("MESSAGE") {
                 let messageRow = (root["MESSAGE"] as! [String: AnyObject])["MESSAGE_ROW"] as! [String : AnyObject]
                 let englishMsg = messageRow["NAME_EN"] as! String
