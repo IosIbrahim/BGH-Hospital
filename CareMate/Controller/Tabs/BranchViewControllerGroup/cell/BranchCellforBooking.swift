@@ -8,15 +8,29 @@
 
 import UIKit
 
+protocol BranchSessionProtocol {
+    func selectSessionBranch(_ index:Int,new:Bool)
+}
+
 class BranchCellforBooking: UITableViewCell {
-    @IBOutlet weak var hospitalNumber: UILabel!
+    
+    @IBOutlet weak var btnNewSession: UIButton!
+    @IBOutlet weak var btnSessions: UIButton!
+    @IBOutlet weak var stkAction: UIStackView!
     @IBOutlet weak var hospitalName: UILabel!
-    @IBOutlet weak var hospitalDescropation: UILabel!
     @IBOutlet weak var mainview: UIView!
-    @IBOutlet weak var imageViewBranch: UIImageView!
+
+    var isPhysical:Bool = false
+    var selectIndex:Int = .zero
+    var delegate:BranchSessionProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        stkAction.isHidden = !isPhysical
+        let sessions = UserManager.isArabic ? "الجلسات":"Sessions"
+        btnSessions.setTitle(sessions, for: .normal)
+        let new = UserManager.isArabic ? "جلسة جديدة":"New Session"
+        btnNewSession.setTitle(new, for: .normal)
         // Initialization code
     }
 
@@ -27,18 +41,16 @@ class BranchCellforBooking: UITableViewCell {
     }
     
     func configCell(branch: Branch)  {
-
-
-        
+        stkAction.isHidden = !isPhysical
         self.hospitalName.text = UserManager.isArabic ? branch.arabicName : branch.englishName
-        self.hospitalDescropation.text = UserManager.isArabic ? "مستشفي السلام الدولي" : "el Salam Hospital"
-        let imageUrl = "\(Constants.APIProvider.IMAGE_BASE)/images/branch_\(branch.id).png"
-        print("branchImage: \(imageUrl)")
-        if branch.id == "1" {
-            imageViewBranch.loadFromUrl(url: imageUrl, placeHolder: "br")
-        }else  {
-            imageViewBranch.loadFromUrl(url: imageUrl, placeHolder: "br4")
-        }
+    }
+    
+    @IBAction func sessionsOnTap(_ sender: Any) {
+        delegate?.selectSessionBranch(selectIndex, new: false)
+    }
+    
+    @IBAction func newSessionOnTap(_ sender: Any) {
+        delegate?.selectSessionBranch(selectIndex, new: true)
     }
     
 }

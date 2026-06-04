@@ -19,7 +19,7 @@ class DoctorsViewController: BaseViewController ,UISearchBarDelegate{
     var doctors = [Doctor]()
     var fullDoctors = [Doctor]()
     var delegate :gotToDoctorProfileFromDermenology?
-    
+    var isPhysical:Bool = false
     var indexRowDermenology = 0
     
     var serviceOb:Service?
@@ -187,6 +187,7 @@ extension DoctorsViewController: UITableViewDelegate {
                 doctorProfileVC.isScedule = isScedule
                 doctorProfileVC.speciality = speciality
                 doctorProfileVC.selectedSpeciality = selectedSpeciality
+                doctorProfileVC.isPhysical = isPhysical
                 let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctors[indexPath.row].DOCTOR_PIC ?? "")")
                 doctorProfileVC.url = url
                 self.navigationController?.pushViewController(doctorProfileVC, animated: true)

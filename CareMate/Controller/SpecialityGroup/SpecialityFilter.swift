@@ -18,15 +18,15 @@ protocol SpecialityFilterDelegate: class {
 class SpecialityFilter: BaseViewController {
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var collectionview: UICollectionView!
-    var selectedBranch: Branch?
-
     
+    
+    var selectedBranch: Branch?
     var fromMedicalRecord = false
-  
-  var specialities = [Speciality]()
-  var filterData = [Speciality]()
-  var isSearching = false
-  weak var delegate: SpecialityFilterDelegate?
+    var specialities = [Speciality]()
+    var filterData = [Speciality]()
+    var isSearching = false
+    var isPhysical:Bool = false
+    weak var delegate: SpecialityFilterDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()

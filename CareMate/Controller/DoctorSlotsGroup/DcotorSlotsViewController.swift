@@ -76,6 +76,8 @@ class DcotorSlotsViewController: BaseViewController {
     var selecteDate = ""
     var isEmptyDate:Bool = false
     var comesFromDoctors = false
+    var isPhysical:Bool = false
+    
     let monthsEn = ["January","February","March","April","May","June","July","August","September","October","November","December"]
   //  let monthsAr = ["يناير","فبراير","مارس","ابريل","مايو","يونيه","يوليو","اغسطس","سبتمبر","اكتوبر","نوفمبر","ديسمبر"]
     let monthsAr = ["يناير","فبراير","مارس","ابريل","مايو","يونيو","يوليو","اغسطس","سبتمبر","اكتوبر","نوفمبر","ديسمبر"]
@@ -88,6 +90,7 @@ class DcotorSlotsViewController: BaseViewController {
     }
     
     func getData() {
+        
         let parseUrl = "\(Constants.APIProvider.doctorProfiledata)branch=\(branchID ?? "")&emp_id=\(doctor?.id ?? "")"
         indicator.sharedInstance.show()
         WebserviceMananger.sharedInstance.makeCall(method: .get, url: parseUrl, parameters: nil, vc: self) { (data, error) in
@@ -343,6 +346,7 @@ class DcotorSlotsViewController: BaseViewController {
             vc.branch = branch
             vc.selectedSpeciality = selectedSpeciality
             vc.specialityID = specialityID ?? ""
+            vc.isPhysical = isPhysical
             vc.url =    URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor?.DOCTOR_PIC ?? "")")
             
             self.navigationController?.pushViewController(vc, animated: true)
@@ -416,8 +420,8 @@ class DcotorSlotsViewController: BaseViewController {
             vc.clinicName = doctorSpeciality.text?.components(separatedBy: "-").first ?? ""
             vc.selectedSpeciality = selectedSpeciality
             vc.specialityID = specialityID ?? ""
+            vc.isPhysical = isPhysical
             vc.url =    URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor?.DOCTOR_PIC ?? "")")
-
             self.navigationController?.pushViewController(vc, animated: true)
         }
        
@@ -462,7 +466,7 @@ class DcotorSlotsViewController: BaseViewController {
     
     func loadSlots(){
         self.ReservArr.removeAll()
-        TimeSlots.getSlotsTimes(branchID: branchID ?? "", clincID: clincID ?? "", docID: docID ?? "",date:selecteDate){ [self] slots,avDate, slotsTime in
+        TimeSlots.getSlotsTimes(branchID: branchID ?? "", clincID: clincID ?? "", docID: docID ?? "",date:selecteDate,isPhysical: isPhysical){ [self] slots,avDate, slotsTime in
           
             if selecteDate == slotsTime {
                 self.ReservArr = slots ?? []

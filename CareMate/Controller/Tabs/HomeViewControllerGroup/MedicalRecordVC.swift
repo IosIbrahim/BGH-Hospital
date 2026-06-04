@@ -14,6 +14,8 @@ import MOLH
 class MedicalRecordVC: BaseViewController
 {
     
+    @IBOutlet weak var lblPhysical: UILabel!
+    @IBOutlet weak var pickerPhysical: UIView!
     @IBOutlet weak var uilabelRequestEmegency: UILabel!
     @IBOutlet weak var LabelInvocies: UILabel!
     @IBOutlet weak var LabelRequestEmerency: UILabel!
@@ -24,17 +26,12 @@ class MedicalRecordVC: BaseViewController
     @IBOutlet weak var questionareLbl: UILabel!
     @IBOutlet weak var myappointmentLbl: UILabel!
     @IBOutlet weak var MedicalـOverview : UILabel!
-    @IBOutlet weak var openSickLeave: UIView!
-    @IBOutlet weak var openLocationss: UIView!
     @IBOutlet weak var openCurrentMedVC: UIView!
     @IBOutlet weak var openMedicationOverView: UIView!
-    @IBOutlet weak var openProfile: UIView!
     @IBOutlet weak var reservationCliked: UIView!
     @IBOutlet weak var viewMyAppoiment: UIView!
     @IBOutlet weak var viewLanguage: UIView!
     @IBOutlet weak var viewBook: UIView!
-
-
     @IBOutlet weak var lblCounter: UILabel!
     @IBOutlet weak var pickerCounter: RoundUIView!
     @IBOutlet weak var uilabelQuetinaryDetails: UILabel!
@@ -46,17 +43,10 @@ class MedicalRecordVC: BaseViewController
     @IBOutlet weak var uilabelBookAppoiment: UILabel!
     @IBOutlet weak var uilabelBookAppoimentDetails: UILabel!
     @IBOutlet weak var uilabelBook: UILabel!
-
-
-    
-   
     @IBOutlet weak var imageViewUser: UIImageView!
     @IBOutlet weak var viewMakeRequest: UIView!
     @IBOutlet weak var reservationsLAbel: UILabel!
     @IBOutlet weak var DoseReminder: UILabel!
-    @IBOutlet weak var Locations: UILabel!
-  
-
     @IBOutlet weak var reportRequets: UIView!
     @IBOutlet weak var invoices: UIView!
     @IBOutlet weak var requestEmergency: UIView!
@@ -65,7 +55,6 @@ class MedicalRecordVC: BaseViewController
     @IBOutlet weak var viewOpenProfile: UIView!
     @IBOutlet weak var viewKnowYourDoctor: UIView!
     @IBOutlet weak var labelKnowDoctor: uilabelCenter!
-    
     @IBOutlet weak var pickerSuggestions: UIView!
     @IBOutlet weak var pickerLocations: UIView!
     @IBOutlet weak var imageViewIn: UIImageView!
@@ -126,8 +115,9 @@ class MedicalRecordVC: BaseViewController
         let gestureRequestEmergency = UITapGestureRecognizer(target: self, action:  #selector(self.openRequestEmergency))
         self.requestEmergency.addGestureRecognizer(gestureRequestEmergency)
         
-        let gestureLoctionss = UITapGestureRecognizer(target: self, action:  #selector(self.openRequestlocationsss))
-        self.openLocationss.addGestureRecognizer(gestureLoctionss)
+        
+        let gestureLoctionss = UITapGestureRecognizer(target: self, action:  #selector(self.openPhysical))
+        self.pickerPhysical.addGestureRecognizer(gestureLoctionss)
         
 
         let gestureReports = UITapGestureRecognizer(target: self, action:  #selector(self.openReportsRequest))
@@ -374,7 +364,7 @@ class MedicalRecordVC: BaseViewController
         self.questionareLbl.text = UserManager.isArabic ? "إستطلاع رأي" : "Survey"
         self.DoseReminder.text = UserManager.isArabic ? "منبه الدواء" : "Dose Reminder"
         
-        self.Locations.text = UserManager.isArabic ? "مواقعنا" : "Our Locations"
+        self.lblPhysical.text = UserManager.isArabic ? "العلاج الطبيعي" : "Physical Therapy"
         uilabelRequestEmegency.text =  UserManager.isArabic ? "زيارة منزلية/اسعاف" : "Ambulance/ Home Visit"
         LabelInvocies.text = UserManager.isArabic ? "الماليات"  :"Invocies"
         LabelInvocies.text = UserManager.isArabic ? "تغيير الحساب"  :"Change Account"
@@ -431,6 +421,12 @@ class MedicalRecordVC: BaseViewController
         self.navigationController?.pushViewController(v1, animated: true)
     }
     
+    
+    @objc func openPhysical(sender : UITapGestureRecognizer) {
+        let vc = BrnachiesViewController()
+        vc.fromPhysical = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     @objc func openMyAppoiment(sender : UITapGestureRecognizer) {
         let v1 = MyAppoimentViewController()

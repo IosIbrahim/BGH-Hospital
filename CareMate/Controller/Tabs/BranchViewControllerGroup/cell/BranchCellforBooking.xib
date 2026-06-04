@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,9 +11,6 @@
     <customFonts key="customFonts">
         <array key="Tajawal-Black.ttf">
             <string>Tajawal-Black</string>
-        </array>
-        <array key="Tajawal-Bold.ttf">
-            <string>Tajawal-Bold</string>
         </array>
     </customFonts>
     <objects>
@@ -29,56 +26,69 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vo9-gZ-IZG">
                         <rect key="frame" x="10" y="5" width="334" height="101"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5lU-5U-GyD">
-                                <rect key="frame" x="20" y="10" width="68" height="68"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iTN-dS-fHa">
+                                <rect key="frame" x="10" y="10" width="314" height="81"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Al-Salam-Hospital (1)" translatesAutoresizingMaskIntoConstraints="NO" id="8Qu-tL-Jfr">
-                                        <rect key="frame" x="5" y="5" width="58" height="58"/>
-                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kx6-xi-Hrn">
+                                        <rect key="frame" x="0.0" y="0.0" width="314" height="31"/>
+                                        <fontDescription key="fontDescription" name="Tajawal-Black" family="Tajawal" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="REg-Fg-mSR">
+                                        <rect key="frame" x="0.0" y="41" width="314" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5m-qG-d6e">
+                                                <rect key="frame" x="0.0" y="0.0" width="137" height="40"/>
+                                                <color key="backgroundColor" red="0.035294117649999998" green="0.23529411759999999" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="hv1-qS-6aX"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Sessions">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="sessionsOnTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="W0E-33-cfQ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsE-Lq-9Zs">
+                                                <rect key="frame" x="177" y="0.0" width="137" height="40"/>
+                                                <color key="backgroundColor" red="0.035294117649999998" green="0.23529411759999999" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="V6F-qC-Hhx"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="New Session">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="newSessionOnTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="lMe-QH-jVf"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="68" id="P7g-X1-WDZ"/>
-                                    <constraint firstItem="8Qu-tL-Jfr" firstAttribute="top" secondItem="5lU-5U-GyD" secondAttribute="top" constant="5" id="WuT-zD-2vL"/>
-                                    <constraint firstItem="8Qu-tL-Jfr" firstAttribute="leading" secondItem="5lU-5U-GyD" secondAttribute="leading" constant="5" id="dea-tf-OGv"/>
-                                    <constraint firstAttribute="width" constant="68" id="dsw-Ka-Lhs"/>
-                                    <constraint firstAttribute="trailing" secondItem="8Qu-tL-Jfr" secondAttribute="trailing" constant="5" id="iLM-ub-Aiv"/>
-                                    <constraint firstAttribute="bottom" secondItem="8Qu-tL-Jfr" secondAttribute="bottom" constant="5" id="kbc-1q-sCz"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="hrBorderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
-                                        <real key="value" value="34"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="hrBorderColor">
-                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kx6-xi-Hrn">
-                                <rect key="frame" x="108" y="37" width="217" height="14"/>
-                                <fontDescription key="fontDescription" name="Tajawal-Black" family="Tajawal" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x05-DB-kOx">
-                                <rect key="frame" x="108" y="64" width="32.5" height="14"/>
-                                <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="14"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="x05-DB-kOx" firstAttribute="bottom" secondItem="5lU-5U-GyD" secondAttribute="bottom" id="0mf-Et-F9g"/>
-                            <constraint firstItem="x05-DB-kOx" firstAttribute="leading" secondItem="kx6-xi-Hrn" secondAttribute="leading" id="8qZ-Sb-hsT"/>
-                            <constraint firstItem="kx6-xi-Hrn" firstAttribute="leading" secondItem="5lU-5U-GyD" secondAttribute="trailing" constant="20" id="DgE-be-YNT"/>
-                            <constraint firstItem="kx6-xi-Hrn" firstAttribute="width" secondItem="Vo9-gZ-IZG" secondAttribute="width" multiplier="0.65" id="GK8-9g-CW7"/>
-                            <constraint firstItem="5lU-5U-GyD" firstAttribute="top" secondItem="Vo9-gZ-IZG" secondAttribute="top" constant="10" id="IXD-2u-N8r"/>
-                            <constraint firstItem="5lU-5U-GyD" firstAttribute="leading" secondItem="Vo9-gZ-IZG" secondAttribute="leading" constant="20" id="afM-81-xeB"/>
-                            <constraint firstItem="kx6-xi-Hrn" firstAttribute="centerY" secondItem="8Qu-tL-Jfr" secondAttribute="centerY" id="wn4-9a-NZh"/>
+                            <constraint firstAttribute="trailing" secondItem="iTN-dS-fHa" secondAttribute="trailing" constant="10" id="OxG-Q4-aJJ"/>
+                            <constraint firstItem="iTN-dS-fHa" firstAttribute="top" secondItem="Vo9-gZ-IZG" secondAttribute="top" constant="10" id="UbG-Qw-r3V"/>
+                            <constraint firstAttribute="bottom" secondItem="iTN-dS-fHa" secondAttribute="bottom" constant="10" id="e0f-ib-jm0"/>
+                            <constraint firstItem="iTN-dS-fHa" firstAttribute="leading" secondItem="Vo9-gZ-IZG" secondAttribute="leading" constant="10" id="tiU-nB-EXg"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
@@ -104,16 +114,16 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="hospitalDescropation" destination="x05-DB-kOx" id="bmV-gZ-tsc"/>
+                <outlet property="btnNewSession" destination="nsE-Lq-9Zs" id="ugK-8z-mHo"/>
+                <outlet property="btnSessions" destination="i5m-qG-d6e" id="Nop-B9-scp"/>
                 <outlet property="hospitalName" destination="kx6-xi-Hrn" id="beH-hR-Ndn"/>
-                <outlet property="imageViewBranch" destination="8Qu-tL-Jfr" id="QNG-hO-kwo"/>
                 <outlet property="mainview" destination="Vo9-gZ-IZG" id="33T-FC-QhU"/>
+                <outlet property="stkAction" destination="REg-Fg-mSR" id="oaV-PS-aHg"/>
             </connections>
             <point key="canvasLocation" x="162.31884057971016" y="118.19196428571428"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Al-Salam-Hospital (1)" width="2161" height="968"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

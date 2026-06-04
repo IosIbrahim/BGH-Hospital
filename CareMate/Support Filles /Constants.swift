@@ -59,10 +59,15 @@ struct Constants {
         static var IP_WITHOUT_PORT =  "pr-h1services04.sherafia.bhg.com.sa"
         static var NEWIP = "41.33.82.156:29804"
         static var APIBase = "http://"+NEWIP+"/MobileApi/api/"
+        
         //   static var APIBaseURL = "http://"+NEWIP+"/MobileApi/api/"    // test
-        static var APIBaseURL = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi/api/"    // test
-        static var IMAGE_BASE = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi"   // test
-        static var IMAGE_BASE2 = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi" // test
+   //     static var APIBaseURL = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi/api/"    // live
+   //     static var IMAGE_BASE = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi"   // live
+  //      static var IMAGE_BASE2 = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi" // live
+        
+        static var APIBaseURL = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApitest/api/"    // test
+        static var IMAGE_BASE = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApitest"   // test
+        static var IMAGE_BASE2 = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApitest" // test
        
         static var SIHORPriceCare = "Primecaresihtest"
         static var Register = APIBaseURL+"register"
@@ -84,9 +89,12 @@ struct Constants {
         static var getPacsUrlPatient = APIBaseURL+"Confirmwritting?"
 
         static var GetOnlineAppointment = APIBaseURL+"load_online_appointment"
+        static var PhysicalBranches = APIBaseURL + "PhysiotherapyController/getBranchsHasScheduling"
         static var getBranchesOnly = APIBaseURL+"loadBranches"
         static var getSpecialities = APIBaseURL+"loadBranchSpecilities?"
         static var GetDoctors = APIBaseURL+"get_doctors?"
+        static var GetPhysicalDoctors = APIBaseURL+"PhysiotherapyController/getPhysioDoctors?"
+
         static var SpeclitiesImages = "https://\(IP)/MobileApi/images/SpeclitiesImages"
         static var getReservationServices = APIBaseURL+"getReservationServices?"
         
@@ -140,8 +148,11 @@ struct Constants {
         static var getAmbuDocServicePrice = APIBaseURL+"getAmbuDocServicePrice?"
         static var GetDoctorProfile = APIBaseURL+"get_profile_docotr?emp_id="
         static var GetDoctorTimeSlots = APIBaseURL+"get_doc_next_availble_slot?"
+        static var GetDoctorPhysicalTimeSlots = APIBaseURL+"PhysiotherapyController/getDoctorSchedSlot?"
+
         static var SubmitAppointment = APIBaseURL+"submit_appointment?"
-        
+        static var SubmitPhysicalAppointment = APIBaseURL+"PhysiotherapyController/submitOnlineApp"
+
         static var ConfirmAppointment = APIBaseURL+"DoctorController/confirmPatientReservation?"
         static var sendMessage = IP+"MobileApi/api/MedicalRcordController/DDDocNurseNotesSave"
         static var SubmitStepNew = APIBaseURL+"SubmitStepNew"
@@ -231,4 +242,12 @@ struct ConstantsData {
     static let termsDosAr = "تنويه هام: \n خدمة تذكير الدواء هي أداة تقنية مساعدة تهدف إلى تذكير المريض بمواعيد تناول الأدوية استنادًا إلى البيانات المسجَّلة في ملفه الطبي الإلكتروني، ولا تُعدّ بديلا ً عن التعليمات الصادرة من الطبيب المعالج أو الصيدلي. \n يتحمل المستخدم (المريض) كامل المسؤولية عن الالتزام بوصفته الطبية الأصلية، وتناول الجرعات في مواعيدها، والتحقق من دقة البيانات والتوقيتات الظاهرة في التطبيق. \n يُخلي مستشفى الدكتور عبد الرحمن طه بخش مسؤوليته كاملةً عن أي خطأ أو ضرر أو مضاعفات قد تنتج عن عدم الالتزام بمواعيد أو تعليمات الأدوية."
     
     static let termsDosEn = "Important Notice:\nThe Medication Reminder Service is a supportive digital tool designed to help patients remember their medication schedules based on the data recorded in their electronic medical records.\n It is not a substitute for the instructions provided by the treating physician or pharmacist The user (patient) is fully responsible for adhering to their original medical prescription, taking doses on time, and verifying the accuracy of the information and timings displayed in the application.\n Dr. Abdulrahman Taha Bakhsh Hospital bears no responsibility for any errors, harm, or complications that may result from failure to follow prescribed medication schedules or instructions."
+    static let physical_blue = "#0EA6E9"
+    static let physical_black = "#161B29"
+    static let physical_gray = "#4F545A"
+    static let physical_greenB = "#DEFBE7"
+    static let physical_green = "#529B6E"
+    static let physical_yellow = "#FFEDD5"
+    static let physical_orange = "#BF4309"
 }
+

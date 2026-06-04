@@ -71,7 +71,7 @@ struct SINGLE_HOUR_SLOTS: Decodable {
 
 extension TimeSlots {
 
-    static func getSlotsTimes(branchID : String , clincID :String ,docID :String ,date: String,  completion: @escaping (([TimeSlots]?,String, String)->Void)) {
+    static func getSlotsTimes(branchID : String , clincID :String ,docID :String ,date: String,isPhysical:Bool = false,  completion: @escaping (([TimeSlots]?,String, String)->Void)) {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en")
         dateFormatter.dateFormat = "dd/MM/yyyy"
@@ -80,10 +80,13 @@ extension TimeSlots {
         let nextdate = dateFormatter.string(from: date.ConvertToDate)
 
         indicator.sharedInstance.show()
-        let urlString = Constants.APIProvider.GetDoctorTimeSlots+"Branch_ID=" + branchID + "&DOC_ID=" + docID + "&CLINIC_ID=" + clincID + "&Web_FromDate=" + date
-
+        
+        var urlString = Constants.APIProvider.GetDoctorTimeSlots+"Branch_ID=" + branchID + "&DOC_ID=" + docID + "&CLINIC_ID=" + clincID + "&Web_FromDate=" + date
+        if isPhysical {
+            urlString = Constants.APIProvider.GetDoctorPhysicalTimeSlots+"bRANCH_ID=" + branchID + "&mODALITY_ID=" + docID 
+        }
         print(urlString)
-    let url = URL(string: urlString)
+        let url = URL(string: urlString)
         let parseURl = Constants.APIProvider.GetDoctorTimeSlots + "&" + Constants.getoAuthValue(url: url!, method: "GET")
         URLSession.shared.dataTask(with: URL(string: parseURl)!) { data, response, error in
         indicator.sharedInstance.dismiss()

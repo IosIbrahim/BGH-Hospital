@@ -24,6 +24,7 @@ class BrnachiesViewController: BaseViewController {
     var vcType:listOfOtherScreenTypeBrnach?
     var branchesDic: [[String: Any]]?
     var arrBranchDetailsDic = [[String: Any]]()
+    var fromPhysical:Bool = false
     
     
     override func viewDidLoad() {
@@ -33,8 +34,12 @@ class BrnachiesViewController: BaseViewController {
         tableView.dataSource = self
         tableView.register("BranchCellforBooking")
         
-        
-        initHeader(isNotifcation: false, isLanguage: true, title: UserManager.isArabic ? "اختر الفرع" : "Choose Branch", hideBack: false)
+     //   if fromPhysical {
+            initHeader(isNotifcation: false, isLanguage: true, title: UserManager.isArabic ? "اختر الفرع" : "Choose Branch", hideBack: false)
+//        }else {
+//            initHeader(isNotifcation: false, isLanguage: true, title: UserManager.isArabic ? "اختر الفرع" : "Choose Branch", hideBack: false)
+//        }
+       
 //        loadData()
     }
     
@@ -42,7 +47,7 @@ class BrnachiesViewController: BaseViewController {
     
     
     func loadData(){
-        Branch.getOnlineAppointment() { onlineAppointments, branchesDic  in
+        Branch.getOnlineBranches(fromPhysical) { onlineAppointments, branchesDic  in
             guard let onlineAppointments = onlineAppointments else {
                 OPEN_HINT_POPUP(container: self, message: UserManager.isArabic ? "خطأ في الاتصال" : "Error in connection") {
                     self.loadData()
@@ -178,7 +183,7 @@ class BrnachiesViewController: BaseViewController {
     
 }
 
-extension BrnachiesViewController: UITableViewDataSource {
+extension BrnachiesViewController: UITableViewDataSource,BranchSessionProtocol {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return branches.count
     }
@@ -186,47 +191,61 @@ extension BrnachiesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BranchCellforBooking", for: indexPath) as! BranchCellforBooking
+        cell.isPhysical = fromPhysical
+        cell.selectIndex = indexPath.row
+        cell.delegate = self
         cell.configCell(branch: branches[indexPath.row])
-//        if indexPath.row == 1 {
-//            cell.imageViewBranch.image = UIImage.init(named: "IMG-20220425-WA0122 (1)")
-//        } else {
-//            cell.imageViewBranch.image = UIImage.init(named: "Al-Salam-Hospital (1)")
-//        }
         return cell
+    }
+    
+    func selectSessionBranch(_ index: Int, new: Bool) {
+        if new {
+            if let branch = hasChild(branchesDic?[index]) {
+                let doctorsVC = DoctorsViewController()
+                let spec = UserManager.isArabic ? "العلاج الطبيعي" : "Physical Therapy"
+                doctorsVC.speciality = spec
+                doctorsVC.branchId = branch.id
+                doctorsVC.branch = branch
+                doctorsVC.isPhysical = fromPhysical
+                isReschedule = false
+                self.navigationController?.pushViewController(doctorsVC, animated: true)
+            }
+        }else {
+            navigationController?.pushViewController(PhysicalController(), animated: true)
+        }
     }
     
 }
 
 extension BrnachiesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 95
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedBranch = branches[indexPath.row]
-        if vcType == .fromReservation {
-            if let branch = hasChild(branchesDic?[indexPath.row]) {
-                let vc = SpecialityFilter()
-                vc.selectedBranch = branch
-                self.navigationController?.pushViewController(vc, animated: true)
+        if !fromPhysical {
+            selectedBranch = branches[indexPath.row]
+            if vcType == .fromReservation {
+                if let branch = hasChild(branchesDic?[indexPath.row]) {
+                    let vc = SpecialityFilter()
+                    vc.selectedBranch = branch
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            } else if vcType == .fromOUrLocation {
+                if indexPath.row == 0 {
+                    openMap(lat: 29.36945, lng: 48.008099)
+                } else if indexPath.row == 1 {
+                    openMap(lat: 29.368741, lng: 48.009607)
+                } else {
+                    openMap(lat: 29.147021, lng: 48.113566)
+                }
             } else {
-//                let vc = SpecialityFilter()
-//                vc.selectedBranch = selectedBranch
-//                self.navigationController?.pushViewController(vc, animated: true)
+                UserDefaults.standard.set(branches[indexPath.row].id, forKey: "branchIdOForEmer") //setObject
+                self.mz_dismissFormSheetController(animated: true, completionHandler: nil)
             }
-        } else if vcType == .fromOUrLocation {
-            if indexPath.row == 0 {
-                openMap(lat: 29.36945, lng: 48.008099)
-            } else if indexPath.row == 1 {
-                openMap(lat: 29.368741, lng: 48.009607)
-            } else {
-                openMap(lat: 29.147021, lng: 48.113566)
-            }
-        } else {
-            UserDefaults.standard.set(branches[indexPath.row].id, forKey: "branchIdOForEmer") //setObject
-            self.mz_dismissFormSheetController(animated: true, completionHandler: nil)
+            tableView.deselectRow(at: indexPath, animated: true)
         }
-        tableView.deselectRow(at: indexPath, animated: true)
+ 
     }
     
     func hasChild(_ selectedBrachDic: [String: Any]?) -> Branch? {

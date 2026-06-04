@@ -47,3 +47,12 @@ extension UITableView {
         self.register(nib, forCellReuseIdentifier: nibName)
     }
 }
+
+
+extension UICollectionView {
+    
+    func register(_ nibName: String) {
+        let nib = UINib(nibName: nibName, bundle: nil)
+        self.register(nib, forCellWithReuseIdentifier: nibName)
+    }
+}

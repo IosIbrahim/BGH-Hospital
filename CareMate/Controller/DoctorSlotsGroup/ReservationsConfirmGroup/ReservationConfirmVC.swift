@@ -39,7 +39,7 @@ class ReservationConfirmVC: BaseViewController {
     var clinicName = ""
     var selectedSpeciality: Speciality?
     var comesFromDoctors:Bool = false
-    
+    var isPhysical:Bool = false
   
     
     override func viewDidLoad() {
@@ -174,9 +174,31 @@ class ReservationConfirmVC: BaseViewController {
             pars.updateValue("\(changeRequest)", forKey: "changeRequest")
             pars.updateValue("\(ser)", forKey: "CONFIRM_DOUBLICATION_SER")
         }
-        let urlString = Constants.APIProvider.SubmitAppointment
-        let url = URL(string: urlString)
-        let parseUrl = Constants.APIProvider.SubmitAppointment + Constants.getoAuthValue(url: url!, method: "POST",parameters: pars)
+        var urlString = Constants.APIProvider.SubmitAppointment
+        if isPhysical {
+            urlString = Constants.APIProvider.SubmitPhysicalAppointment
+            pars = [
+                        "BRANCH_ID": branch?.id ?? "" ,
+                        "PATIENT_ID": SelectedDoctorFromSearch!.patientID,
+                        "COMPUTER_NAME":"ios" ,
+                        "SERV_TYPE":"1",
+                        "DETECT_TYPE":"1",
+                        "CLINIC_ID": SelectedDoctorFromSearch!.doctor!.clinicId! ,
+                        "SHIFT_ID": SelectedDoctorFromSearch!.shiftID,
+                        "SCHED_SERIAL": SelectedDoctorFromSearch!.scheduleSerial,
+                        "DOC_ID": SelectedDoctorFromSearch!.doctor!.id!,
+                        "SPEC_ID": SelectedDoctorFromSearch!.specialityID,
+                        "buffer_status": isReschedule ? "2" : "1",
+                        "dateDone": SelectedDoctorFromSearch!.dateDone,
+                        "EXPECTEDDONEDATE": SelectedDoctorFromSearch!.dateDone,
+                        "EXPECTED_END_DATE": SelectedDoctorFromSearch!.dateDoneEnd,
+                        "SERVICE_ID":serviceId
+                        
+            ]
+            
+        }
+//        let url = URL(string: urlString)
+//        let parseUrl = Constants.APIProvider.SubmitAppointment + Constants.getoAuthValue(url: url!, method: "POST",parameters: pars)
         WebserviceMananger.sharedInstance.makeCall(method: .post, url: urlString, parameters: pars, vc: self) { [weak self] (data, error) in
             guard let self = self else { return }
             let root = (data as? [String:AnyObject])?["Root"] as? [String: AnyObject] ?? [:]

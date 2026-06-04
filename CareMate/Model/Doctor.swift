@@ -159,12 +159,15 @@ struct DoctorClinic: Codable {
 }
 
 extension Doctor {
-    static func getDoctors(withSpecialityId specialityId: String, andBranchId branchId: String, type: String,isload:Bool = true, completion: @escaping (([Doctor]?) -> Void)) {
+    static func getDoctors(withSpecialityId specialityId: String, andBranchId branchId: String, type: String,isload:Bool = true,isPhysical:Bool = false, completion: @escaping (([Doctor]?) -> Void)) {
         if isload {
             indicator.sharedInstance.show()
         }
 
-        let urlString = "\(Constants.APIProvider.GetDoctors)SPEC_ID=\(specialityId)&BRANCH_ID=\(branchId)&BRANCH_TYPE=\(type)&PROCESS_ID=0&PROCESS_INFO_CODE=0&object_id=0"
+        var urlString = "\(Constants.APIProvider.GetDoctors)SPEC_ID=\(specialityId)&BRANCH_ID=\(branchId)&BRANCH_TYPE=\(type)&PROCESS_ID=0&PROCESS_INFO_CODE=0&object_id=0"
+        if isPhysical {
+            urlString = "\(Constants.APIProvider.GetPhysicalDoctors)bRANCH_ID=\(branchId)"
+        }
     
         let url = URL(string: urlString)
         let parseURl = Constants.APIProvider.GetDoctors + Constants.getoAuthValue(url: url!, method: "GET")

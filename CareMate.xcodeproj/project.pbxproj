@@ -110,11 +110,22 @@
 		0F7DD7EA2E8E8B2B00B5CE73 /* BHGLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7DD7E72E8E8B2B00B5CE73 /* BHGLoginController.swift */; };
 		0F7DD7F02E8EA9C000B5CE73 /* BHGRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F7DD7EF2E8EA9C000B5CE73 /* BHGRegisterController.xib */; };
 		0F7DD7F12E8EA9C000B5CE73 /* BHGRegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7DD7EE2E8EA9C000B5CE73 /* BHGRegisterController.swift */; };
+		0F8676BC2FC2E96100C65030 /* PhysGroubCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8676BB2FC2E96100C65030 /* PhysGroubCell.xib */; };
+		0F8676BD2FC2E96100C65030 /* PhysGroubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8676BA2FC2E96100C65030 /* PhysGroubCell.swift */; };
+		0F8676C02FC2EE3400C65030 /* SessionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8676BF2FC2EE3400C65030 /* SessionCell.xib */; };
+		0F8676C12FC2EE3400C65030 /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8676BE2FC2EE3400C65030 /* SessionCell.swift */; };
+		0F8676C42FC31CB000C65030 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8676C32FC31CA800C65030 /* SessionModel.swift */; };
 		0F8FA8702D6C75E4001D8B62 /* NotificationCounterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8FA86F2D6C75E4001D8B62 /* NotificationCounterModel.swift */; };
 		0F8FA8742D6CA6A5001D8B62 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8FA8722D6CA6A5001D8B62 /* GroupCell.swift */; };
 		0F8FA8752D6CA6A5001D8B62 /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8FA8732D6CA6A5001D8B62 /* GroupCell.xib */; };
 		0F8FA8782D6CC4F9001D8B62 /* NotificationGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8FA8772D6CC4EC001D8B62 /* NotificationGroupModel.swift */; };
 		0F8FA87A2D6CCCDB001D8B62 /* NotificationGroupDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8FA8792D6CCCCF001D8B62 /* NotificationGroupDetailsModel.swift */; };
+		0F9069022FAA1D350021ED5B /* PhysicalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9069002FAA1D350021ED5B /* PhysicalController.swift */; };
+		0F9069032FAA1D350021ED5B /* PhysicalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9069012FAA1D350021ED5B /* PhysicalController.xib */; };
+		0F9069072FAA1E4C0021ED5B /* HeaderTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9069052FAA1E4C0021ED5B /* HeaderTabCell.swift */; };
+		0F9069082FAA1E4C0021ED5B /* HeaderTabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9069062FAA1E4C0021ED5B /* HeaderTabCell.xib */; };
+		0F90690C2FAA1E9F0021ED5B /* PhysicalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F90690A2FAA1E9F0021ED5B /* PhysicalCell.swift */; };
+		0F90690D2FAA1E9F0021ED5B /* PhysicalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F90690B2FAA1E9F0021ED5B /* PhysicalCell.xib */; };
 		0FD96BBA2EB226F700FE1402 /* BranchNCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD96BB82EB226F700FE1402 /* BranchNCell.swift */; };
 		0FD96BBB2EB226F700FE1402 /* BranchNCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD96BB92EB226F700FE1402 /* BranchNCell.xib */; };
 		360D889D2798307B0075890F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 464F40241FADE07B0098D19D /* Assets.xcassets */; };
@@ -618,11 +629,22 @@
 		0F7DD7E82E8E8B2B00B5CE73 /* BHGLoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BHGLoginController.xib; sourceTree = "<group>"; };
 		0F7DD7EE2E8EA9C000B5CE73 /* BHGRegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BHGRegisterController.swift; sourceTree = "<group>"; };
 		0F7DD7EF2E8EA9C000B5CE73 /* BHGRegisterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BHGRegisterController.xib; sourceTree = "<group>"; };
+		0F8676BA2FC2E96100C65030 /* PhysGroubCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysGroubCell.swift; sourceTree = "<group>"; };
+		0F8676BB2FC2E96100C65030 /* PhysGroubCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhysGroubCell.xib; sourceTree = "<group>"; };
+		0F8676BE2FC2EE3400C65030 /* SessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
+		0F8676BF2FC2EE3400C65030 /* SessionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SessionCell.xib; sourceTree = "<group>"; };
+		0F8676C32FC31CA800C65030 /* SessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
 		0F8FA86F2D6C75E4001D8B62 /* NotificationCounterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCounterModel.swift; sourceTree = "<group>"; };
 		0F8FA8722D6CA6A5001D8B62 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		0F8FA8732D6CA6A5001D8B62 /* GroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
 		0F8FA8772D6CC4EC001D8B62 /* NotificationGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGroupModel.swift; sourceTree = "<group>"; };
 		0F8FA8792D6CCCCF001D8B62 /* NotificationGroupDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGroupDetailsModel.swift; sourceTree = "<group>"; };
+		0F9069002FAA1D350021ED5B /* PhysicalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalController.swift; sourceTree = "<group>"; };
+		0F9069012FAA1D350021ED5B /* PhysicalController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhysicalController.xib; sourceTree = "<group>"; };
+		0F9069052FAA1E4C0021ED5B /* HeaderTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTabCell.swift; sourceTree = "<group>"; };
+		0F9069062FAA1E4C0021ED5B /* HeaderTabCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTabCell.xib; sourceTree = "<group>"; };
+		0F90690A2FAA1E9F0021ED5B /* PhysicalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalCell.swift; sourceTree = "<group>"; };
+		0F90690B2FAA1E9F0021ED5B /* PhysicalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhysicalCell.xib; sourceTree = "<group>"; };
 		0FD96BB82EB226F700FE1402 /* BranchNCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchNCell.swift; sourceTree = "<group>"; };
 		0FD96BB92EB226F700FE1402 /* BranchNCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BranchNCell.xib; sourceTree = "<group>"; };
 		3611D246216D5DA700FB198C /* RetrieveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveViewController.swift; sourceTree = "<group>"; };
@@ -1082,8 +1104,8 @@
 			children = (
 				04489BC626DCE7B00083040A /* Cell */,
 				04489BC026DCE6D90083040A /* DiagnosisViewController.swift */,
-				04489BC126DCE6D90083040A /* DiagnosisViewController.xib */,
 				04489BC426DCE7470083040A /* Diagnosis+TableView.swift */,
+				04489BC126DCE6D90083040A /* DiagnosisViewController.xib */,
 			);
 			path = DiagnosisGroup;
 			sourceTree = "<group>";
@@ -1480,6 +1502,14 @@
 			path = BHGRegister;
 			sourceTree = "<group>";
 		};
+		0F8676C22FC31C9D00C65030 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F8676C32FC31CA800C65030 /* SessionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0F8FA86E2D6C75CF001D8B62 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1504,6 +1534,40 @@
 				0F8FA8772D6CC4EC001D8B62 /* NotificationGroupModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0F9068FF2FAA1CDA0021ED5B /* PhysicalTherapyScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0F8676C22FC31C9D00C65030 /* Model */,
+				0F9069092FAA1E530021ED5B /* PhysicalScheduleCell */,
+				0F9069042FAA1E150021ED5B /* TabCell */,
+				0F9069002FAA1D350021ED5B /* PhysicalController.swift */,
+				0F9069012FAA1D350021ED5B /* PhysicalController.xib */,
+			);
+			path = PhysicalTherapyScreen;
+			sourceTree = "<group>";
+		};
+		0F9069042FAA1E150021ED5B /* TabCell */ = {
+			isa = PBXGroup;
+			children = (
+				0F9069052FAA1E4C0021ED5B /* HeaderTabCell.swift */,
+				0F9069062FAA1E4C0021ED5B /* HeaderTabCell.xib */,
+			);
+			path = TabCell;
+			sourceTree = "<group>";
+		};
+		0F9069092FAA1E530021ED5B /* PhysicalScheduleCell */ = {
+			isa = PBXGroup;
+			children = (
+				0F90690A2FAA1E9F0021ED5B /* PhysicalCell.swift */,
+				0F90690B2FAA1E9F0021ED5B /* PhysicalCell.xib */,
+				0F8676BA2FC2E96100C65030 /* PhysGroubCell.swift */,
+				0F8676BB2FC2E96100C65030 /* PhysGroubCell.xib */,
+				0F8676BE2FC2EE3400C65030 /* SessionCell.swift */,
+				0F8676BF2FC2EE3400C65030 /* SessionCell.xib */,
+			);
+			path = PhysicalScheduleCell;
 			sourceTree = "<group>";
 		};
 		0FD96BB22EB2222300FE1402 /* StaticBranches */ = {
@@ -2109,6 +2173,7 @@
 		46FECA4F1FB3018B0052F8C2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0F9068FF2FAA1CDA0021ED5B /* PhysicalTherapyScreen */,
 				A2B78D442BB995A100C25E15 /* ForceUpdate */,
 				A2A616752ACD70AF00D1A487 /* Choose365Hospital */,
 				A2BC4F3E2986A1C40056BF50 /* DoctorProfile */,
@@ -3002,6 +3067,7 @@
 				36926D732867383500387C08 /* DoseTimesViewController.xib in Resources */,
 				A2B78D482BB995B400C25E15 /* ForceUpdateViewController.xib in Resources */,
 				367C09DF279443DD00F1077A /* VisitCellTableViewCell.xib in Resources */,
+				0F90690D2FAA1E9F0021ED5B /* PhysicalCell.xib in Resources */,
 				0FD96BBB2EB226F700FE1402 /* BranchNCell.xib in Resources */,
 				A22B469B291D8EC900B8A5FC /* ReportTableViewCell.xib in Resources */,
 				A230AA9C2C12606000AF9E8B /* ClinicsServicesReportsVisitsResultsViewController.xib in Resources */,
@@ -3087,11 +3153,13 @@
 				46DAEBEF1FB882AE00B8B9F9 /* Localizable.strings in Resources */,
 				A230AA902C12479800AF9E8B /* ClinicsServicesReportsVisitsViewController.xib in Resources */,
 				5E45FE6C263958CA00247C4F /* DermatolgySpcialitiesCell.xib in Resources */,
+				0F8676C02FC2EE3400C65030 /* SessionCell.xib in Resources */,
 				A26A3AC02C56E84700BF38F9 /* AccountsViewController.xib in Resources */,
 				364C7B55283912FE00926BD5 /* Tajawal-ExtraBold.ttf in Resources */,
 				A26162AA28BF62D20024CDBD /* HintPopupViewController.xib in Resources */,
 				04489BB126DCD6210083040A /* PatientHistoryViewController.xib in Resources */,
 				365CE98B2860A3DF00794489 /* daySlotCollectionViewCell.xib in Resources */,
+				0F9069032FAA1D350021ED5B /* PhysicalController.xib in Resources */,
 				363AD619283CD72A008197E5 /* LabsTableViewCell.xib in Resources */,
 				04F5849D26CD25800027D098 /* PatientProfileViewController.xib in Resources */,
 				36806D902868658500480064 /* DatePickerPopUpVC.xib in Resources */,
@@ -3119,6 +3187,7 @@
 				043DF48126D3EF9B006AF79B /* PatientInfoViewController.xib in Resources */,
 				043DF48626D3F133006AF79B /* PatientAddressViewController.xib in Resources */,
 				A252ACCE28D8868F006613E3 /* AllServeyTableViewCell.xib in Resources */,
+				0F9069082FAA1E4C0021ED5B /* HeaderTabCell.xib in Resources */,
 				A26A3AC52C56F0E200BF38F9 /* AccoutMobileTableViewCell.xib in Resources */,
 				3697F60B2871A86B00A08881 /* HospitalStoryViewController.xib in Resources */,
 				A25036372AA355B200F1E9D7 /* ErmergenyClinicViewController.xib in Resources */,
@@ -3131,6 +3200,7 @@
 				04BB000E26E60DF6008E88F6 /* complainListViewController.xib in Resources */,
 				365F3EEA28350CC1004280EC /* MedicalRecordVC.xib in Resources */,
 				A2C03BFD28928987008073D6 /* AlertPopupViewController.xib in Resources */,
+				0F8676BC2FC2E96100C65030 /* PhysGroubCell.xib in Resources */,
 				5E3956B7265566DC00A9F6C2 /* cairo_black.ttf in Resources */,
 				367C09E927944F1F00F1077A /* EnterMobileForUpdatemobileNumberViewController.xib in Resources */,
 				461B46F01FC1BB92005013A9 /* ReservCell.xib in Resources */,
@@ -3342,6 +3412,7 @@
 			files = (
 				04F9533826DA72F20071496A /* RXOfPatientDetails.swift in Sources */,
 				A230AA922C12482000AF9E8B /* ClinicsServicesReportsVisitsExtensions.swift in Sources */,
+				0F90690C2FAA1E9F0021ED5B /* PhysicalCell.swift in Sources */,
 				AD5438EC21CFD56800C7D500 /* ESTabBarItem.swift in Sources */,
 				A230AA962C12553100AF9E8B /* ClinicsServicesReportsVisitsTableViewCell.swift in Sources */,
 				AD344CF021DBAE9A00FFB131 /* LabRadCell.swift in Sources */,
@@ -3380,6 +3451,7 @@
 				AD5438E421CFD56800C7D500 /* FSCalendarCalculator.m in Sources */,
 				A230AA9B2C12606000AF9E8B /* ClinicsServicesReportsVisitsResultsViewController.swift in Sources */,
 				5E4AB8DE25FF784200E218C0 /* groupCellsVC.swift in Sources */,
+				0F9069022FAA1D350021ED5B /* PhysicalController.swift in Sources */,
 				A2B10DB42BD197AA00A13820 /* GuideAndSupportViewController.swift in Sources */,
 				A2059CE629165F4300BCF021 /* ListPopupTableViewCell2.swift in Sources */,
 				04489BC226DCE6D90083040A /* DiagnosisViewController.swift in Sources */,
@@ -3514,11 +3586,13 @@
 				04CA7098270DC9F300FB3655 /* AddAddressFromMapViewController.swift in Sources */,
 				367C09E327944D6900F1077A /* ValidateMobileNumberViewController.swift in Sources */,
 				A2059CE429165F4300BCF021 /* ListPopupViewControllerExtensions2.swift in Sources */,
+				0F8676C12FC2EE3400C65030 /* SessionCell.swift in Sources */,
 				5E4AB8BB25FF640F00E218C0 /* ViewController.swift in Sources */,
 				04489BC526DCE7470083040A /* Diagnosis+TableView.swift in Sources */,
 				04F9532E26DA60780071496A /* RxOfPatientCell.swift in Sources */,
 				04F5849826CD054C0027D098 /* invoiceCell.swift in Sources */,
 				04489BB926DCDC020083040A /* PatientHistory+TableView.swift in Sources */,
+				0F8676C42FC31CB000C65030 /* SessionModel.swift in Sources */,
 				A2C03BFC28928987008073D6 /* AlertPopupViewController.swift in Sources */,
 				363AD618283CD72A008197E5 /* LabsTableViewCell.swift in Sources */,
 				464F401B1FADE07B0098D19D /* AppDelegate.swift in Sources */,
@@ -3624,11 +3698,13 @@
 				AD668CCC2219BC88000DF33C /* QuestionaryModel.swift in Sources */,
 				46DAEBEB1FB86F0400B8B9F9 /* Branch.swift in Sources */,
 				046415FB26D1477E00511015 /* PatientInfoViewController.swift in Sources */,
+				0F8676BD2FC2E96100C65030 /* PhysGroubCell.swift in Sources */,
 				5E6AF54D26550173002DBEA2 /* PaymentPopupViewController.swift in Sources */,
 				048A62BB26E796210088E5B8 /* VisitsViewController.swift in Sources */,
 				36703E2D2859CD83000492B3 /* AppPopUpHandler.swift in Sources */,
 				365F3EE928350442004280EC /* LanguageManger.swift in Sources */,
 				46579CEE1FBC431F001482EC /* DoctorProfileViewController2.swift in Sources */,
+				0F9069072FAA1E4C0021ED5B /* HeaderTabCell.swift in Sources */,
 				A2DC88A32918FA0800DE7393 /* UIApplication+JTSImageViewController.m in Sources */,
 				6602913D238E6FF900467786 /* MedicationOnPatientViewControoler.swift in Sources */,
 			);

@@ -62,8 +62,8 @@ struct IdenttypeRow: Codable {
 }
 
 extension Branch {
-    static func getOnlineAppointment(completion: @escaping (([Branch]?, [[String: Any]]?) -> Void)) {
-    var urlString = Constants.APIProvider.GetOnlineAppointment
+    static func getOnlineBranches(_ physical:Bool, completion: @escaping (([Branch]?, [[String: Any]]?) -> Void)) {
+        var urlString = physical ?  Constants.APIProvider.PhysicalBranches:Constants.APIProvider.GetOnlineAppointment
     indicator.sharedInstance.show()
 //    let url = URL(string: urlString)
 //    let parseUrl = urlString + "?" + Constants.getoAuthValue(url: url!, method: "GET")
