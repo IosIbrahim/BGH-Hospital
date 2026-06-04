@@ -43,6 +43,7 @@ class BranchCellforBooking: UITableViewCell {
     func configCell(branch: Branch)  {
         stkAction.isHidden = !isPhysical
         self.hospitalName.text = UserManager.isArabic ? branch.arabicName : branch.englishName
+        stkAction.isHidden = true
     }
     
     @IBAction func sessionsOnTap(_ sender: Any) {

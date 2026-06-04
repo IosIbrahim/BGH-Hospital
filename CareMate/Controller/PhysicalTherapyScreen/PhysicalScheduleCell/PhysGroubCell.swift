@@ -42,7 +42,7 @@ class PhysGroubCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func drawCell(_ session:ServiceSessionRowModel?) {
+    func drawCell(_ session:ServiceSessionRowModel?,filter:SessionFilter) {
         lblTitle.text = UserManager.isArabic ? "طلب جلسات علاج طبيعي":"Booking Physical Therapy Sessions"
         lblDocName.text =  session?.getDoctorName()
         lblDocSpeciality.text = session?.getDoctorSpecial()
@@ -63,8 +63,12 @@ class PhysGroubCell: UITableViewCell {
         }
         tblSessions.updateConstraints()
         hospitalTitle = session?.getHospital() ?? ""
-        dataSource = session?.sessions?.rows ?? []
-        
+        if filter == .all {
+            dataSource = session?.sessions?.rows ?? []
+        }else {
+            dataSource = session?.sessions?.getFiltered(filter) ?? []
+        }
+        tblSessions.reloadData()
     }
     
 }

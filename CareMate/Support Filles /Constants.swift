@@ -94,6 +94,7 @@ struct Constants {
         static var getSpecialities = APIBaseURL+"loadBranchSpecilities?"
         static var GetDoctors = APIBaseURL+"get_doctors?"
         static var GetPhysicalDoctors = APIBaseURL+"PhysiotherapyController/getPhysioDoctors?"
+        static var GetPhysicalSessions = APIBaseURL + "PhysiotherapyController/getPatSessions?"
 
         static var SpeclitiesImages = "https://\(IP)/MobileApi/images/SpeclitiesImages"
         static var getReservationServices = APIBaseURL+"getReservationServices?"

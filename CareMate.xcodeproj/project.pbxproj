@@ -124,8 +124,6 @@
 		0F9069032FAA1D350021ED5B /* PhysicalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9069012FAA1D350021ED5B /* PhysicalController.xib */; };
 		0F9069072FAA1E4C0021ED5B /* HeaderTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9069052FAA1E4C0021ED5B /* HeaderTabCell.swift */; };
 		0F9069082FAA1E4C0021ED5B /* HeaderTabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9069062FAA1E4C0021ED5B /* HeaderTabCell.xib */; };
-		0F90690C2FAA1E9F0021ED5B /* PhysicalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F90690A2FAA1E9F0021ED5B /* PhysicalCell.swift */; };
-		0F90690D2FAA1E9F0021ED5B /* PhysicalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F90690B2FAA1E9F0021ED5B /* PhysicalCell.xib */; };
 		0FD96BBA2EB226F700FE1402 /* BranchNCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD96BB82EB226F700FE1402 /* BranchNCell.swift */; };
 		0FD96BBB2EB226F700FE1402 /* BranchNCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD96BB92EB226F700FE1402 /* BranchNCell.xib */; };
 		360D889D2798307B0075890F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 464F40241FADE07B0098D19D /* Assets.xcassets */; };
@@ -643,8 +641,6 @@
 		0F9069012FAA1D350021ED5B /* PhysicalController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhysicalController.xib; sourceTree = "<group>"; };
 		0F9069052FAA1E4C0021ED5B /* HeaderTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTabCell.swift; sourceTree = "<group>"; };
 		0F9069062FAA1E4C0021ED5B /* HeaderTabCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTabCell.xib; sourceTree = "<group>"; };
-		0F90690A2FAA1E9F0021ED5B /* PhysicalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalCell.swift; sourceTree = "<group>"; };
-		0F90690B2FAA1E9F0021ED5B /* PhysicalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhysicalCell.xib; sourceTree = "<group>"; };
 		0FD96BB82EB226F700FE1402 /* BranchNCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchNCell.swift; sourceTree = "<group>"; };
 		0FD96BB92EB226F700FE1402 /* BranchNCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BranchNCell.xib; sourceTree = "<group>"; };
 		3611D246216D5DA700FB198C /* RetrieveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveViewController.swift; sourceTree = "<group>"; };
@@ -1560,8 +1556,6 @@
 		0F9069092FAA1E530021ED5B /* PhysicalScheduleCell */ = {
 			isa = PBXGroup;
 			children = (
-				0F90690A2FAA1E9F0021ED5B /* PhysicalCell.swift */,
-				0F90690B2FAA1E9F0021ED5B /* PhysicalCell.xib */,
 				0F8676BA2FC2E96100C65030 /* PhysGroubCell.swift */,
 				0F8676BB2FC2E96100C65030 /* PhysGroubCell.xib */,
 				0F8676BE2FC2EE3400C65030 /* SessionCell.swift */,
@@ -3067,7 +3061,6 @@
 				36926D732867383500387C08 /* DoseTimesViewController.xib in Resources */,
 				A2B78D482BB995B400C25E15 /* ForceUpdateViewController.xib in Resources */,
 				367C09DF279443DD00F1077A /* VisitCellTableViewCell.xib in Resources */,
-				0F90690D2FAA1E9F0021ED5B /* PhysicalCell.xib in Resources */,
 				0FD96BBB2EB226F700FE1402 /* BranchNCell.xib in Resources */,
 				A22B469B291D8EC900B8A5FC /* ReportTableViewCell.xib in Resources */,
 				A230AA9C2C12606000AF9E8B /* ClinicsServicesReportsVisitsResultsViewController.xib in Resources */,
@@ -3412,7 +3405,6 @@
 			files = (
 				04F9533826DA72F20071496A /* RXOfPatientDetails.swift in Sources */,
 				A230AA922C12482000AF9E8B /* ClinicsServicesReportsVisitsExtensions.swift in Sources */,
-				0F90690C2FAA1E9F0021ED5B /* PhysicalCell.swift in Sources */,
 				AD5438EC21CFD56800C7D500 /* ESTabBarItem.swift in Sources */,
 				A230AA962C12553100AF9E8B /* ClinicsServicesReportsVisitsTableViewCell.swift in Sources */,
 				AD344CF021DBAE9A00FFB131 /* LabRadCell.swift in Sources */,
