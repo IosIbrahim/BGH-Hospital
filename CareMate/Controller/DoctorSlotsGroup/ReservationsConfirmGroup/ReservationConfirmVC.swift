@@ -40,7 +40,7 @@ class ReservationConfirmVC: BaseViewController {
     var selectedSpeciality: Speciality?
     var comesFromDoctors:Bool = false
     var isPhysical:Bool = false
-  
+    var session:SessionRowModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -177,22 +177,15 @@ class ReservationConfirmVC: BaseViewController {
         var urlString = Constants.APIProvider.SubmitAppointment
         if isPhysical {
             urlString = Constants.APIProvider.SubmitPhysicalAppointment
+            if session?.canReSchedule == "1" {
+                urlString = Constants.APIProvider.SubmitRePhysicalAppointment
+            }
             pars = [
                         "BRANCH_ID": branch?.id ?? "" ,
-                        "PATIENT_ID": SelectedDoctorFromSearch!.patientID,
-                        "COMPUTER_NAME":"ios" ,
-                        "SERV_TYPE":"1",
-                        "DETECT_TYPE":"1",
-                        "CLINIC_ID": SelectedDoctorFromSearch!.doctor!.clinicId! ,
-                        "SHIFT_ID": SelectedDoctorFromSearch!.shiftID,
-                        "SCHED_SERIAL": SelectedDoctorFromSearch!.scheduleSerial,
-                        "DOC_ID": SelectedDoctorFromSearch!.doctor!.id!,
-                        "SPEC_ID": SelectedDoctorFromSearch!.specialityID,
-                        "buffer_status": isReschedule ? "2" : "1",
-                        "dateDone": SelectedDoctorFromSearch!.dateDone,
-                        "EXPECTEDDONEDATE": SelectedDoctorFromSearch!.dateDone,
-                        "EXPECTED_END_DATE": SelectedDoctorFromSearch!.dateDoneEnd,
-                        "SERVICE_ID":serviceId
+                        "START_SCHED_FORMATED": SelectedDoctorFromSearch!.dateDone.replacingOccurrences(of: "/", with: "-"),
+                        "END_SCHED_FORMATED": SelectedDoctorFromSearch!.dateDoneEnd.replacingOccurrences(of: "/", with: "-"),
+                        "MODALITY_ID":SelectedDoctorFromSearch?.doctor?.id ?? "",
+                        "PHYSIO_SER":session?.ser ?? ""
                         
             ]
             

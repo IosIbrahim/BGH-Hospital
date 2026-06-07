@@ -153,8 +153,9 @@ struct Constants {
 
         static var SubmitAppointment = APIBaseURL+"submit_appointment?"
         static var SubmitPhysicalAppointment = APIBaseURL+"PhysiotherapyController/submitOnlineApp"
-
+        static var SubmitRePhysicalAppointment = APIBaseURL+"PhysiotherapyController/submitReschedOnlineApp"
         static var ConfirmAppointment = APIBaseURL+"DoctorController/confirmPatientReservation?"
+        
         static var sendMessage = IP+"MobileApi/api/MedicalRcordController/DDDocNurseNotesSave"
         static var SubmitStepNew = APIBaseURL+"SubmitStepNew"
         static var PRINTREPORTSUBMIT = APIBaseURL+"MedicalRecordController/PRINTREPORTSUBMIT"

@@ -77,6 +77,7 @@ class DcotorSlotsViewController: BaseViewController {
     var isEmptyDate:Bool = false
     var comesFromDoctors = false
     var isPhysical:Bool = false
+    var session:SessionRowModel?
     
     let monthsEn = ["January","February","March","April","May","June","July","August","September","October","November","December"]
   //  let monthsAr = ["يناير","فبراير","مارس","ابريل","مايو","يونيه","يوليو","اغسطس","سبتمبر","اكتوبر","نوفمبر","ديسمبر"]
@@ -347,6 +348,7 @@ class DcotorSlotsViewController: BaseViewController {
             vc.selectedSpeciality = selectedSpeciality
             vc.specialityID = specialityID ?? ""
             vc.isPhysical = isPhysical
+            vc.session = session
             vc.url =    URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor?.DOCTOR_PIC ?? "")")
             
             self.navigationController?.pushViewController(vc, animated: true)
@@ -382,7 +384,6 @@ class DcotorSlotsViewController: BaseViewController {
                 vc.guestPhone = guestPhone
                 vc.guestPhoneCode = guestPhoneCode
                 vc.isScedule = isScedule
-                
                 vc.guestBithDate = guestBithDate
                 vc.guestGender = guestGender
                 vc.guestIdentityType = guestIdentityType
@@ -416,6 +417,7 @@ class DcotorSlotsViewController: BaseViewController {
             vc.SelectedDoctorFromSearch = appoint
             vc.gender = doctor?.gender ?? ""
             vc.branch = branch
+            vc.session = session
             vc.comesFromDoctors = comesFromDoctors
             vc.clinicName = doctorSpeciality.text?.components(separatedBy: "-").first ?? ""
             vc.selectedSpeciality = selectedSpeciality

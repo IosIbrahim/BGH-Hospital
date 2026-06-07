@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SessionRowProtocol {
-    func setlectSession(_ row:SessionRowModel)
+    func setlectSession(_ row:SessionRowModel,hospital:String)
 }
 
 class SessionCell: UITableViewCell {

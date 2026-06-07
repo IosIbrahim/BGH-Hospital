@@ -93,7 +93,7 @@ extension PhysGroubCell: UITableViewDelegate {
   }
  
  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     delegate?.setlectSession(dataSource[indexPath.row])
+     delegate?.setlectSession(dataSource[indexPath.row],hospital: hospitalTitle)
  }
 
 
