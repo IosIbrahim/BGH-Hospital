@@ -24,6 +24,8 @@ class HeaderTabCell: UICollectionViewCell {
     
     func drawCell(_ title:String) {
         lblTitle.text = title
+        lblTitle.textAlignment = .center
+        lblTitle.adjustsFontSizeToFitWidth = true
         picker.backgroundColor = cellSelected ? UIColor.fromHex(hex: ConstantsData.physical_blue, alpha: 1.0):.white
         lblTitle.textColor = cellSelected ? .white:UIColor.fromHex(hex: ConstantsData.physical_black, alpha: 1.0)
     }

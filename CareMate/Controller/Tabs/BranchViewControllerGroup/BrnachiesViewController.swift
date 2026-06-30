@@ -244,6 +244,8 @@ extension BrnachiesViewController: UITableViewDelegate {
                 self.mz_dismissFormSheetController(animated: true, completionHandler: nil)
             }
             tableView.deselectRow(at: indexPath, animated: true)
+        }else {
+            navigationController?.pushViewController(PhysicalController(), animated: true)
         }
  
     }

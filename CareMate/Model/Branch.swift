@@ -83,31 +83,15 @@ extension Branch {
         DispatchQueue.main.async {completion(nil, nil)}
         return
       }
-      guard let json = String.init(data: data, encoding: .utf8), json.contains("BRANCH_ROW") else {
+        guard let json = String.init(data: data, encoding: .utf8), json.contains(physical ? "BRANCHES_ROW":"BRANCH_ROW") else {
 //        Utilities.showAlert(messageToDisplay:"No branches found")
         DispatchQueue.main.async {completion(nil, nil)}
         return
       }
-        
         print(json)
-        
-      let onlineAppointments = try? Branch(data: data, keyPath: "Root.BRANCH.BRANCH_ROW")
-        
-        
+        let onlineAppointments = try? Branch(data: data, keyPath: physical ?  "Root.BRANCHES.BRANCHES_ROW":"Root.BRANCH.BRANCH_ROW")
         print("IDENTTYPE_ROW")
-        
         let json1 = try? JSON(data: data)
-        
-//        case id = "ID"
-//        case acceptValidation = "ACCEPT_VALIDATION"
-//        case nameAr = "NAME_AR"
-//        case nameEn = "NAME_EN"
-//        case regularExpression = "REGULAR_EXPRESSION"
-//        case identtypeRowDefault = "DEFAULT"
-//        case validationType = "VALIDATION_TYPE"
-//        case noIdentityFlag = "NO_IDENTITY_FLAG"
-     
-        
        var identityArray = [IdenttypeRow]()
         
         for (key, subJson) in json1!["Root"]["IDENTTYPE"]["IDENTTYPE_ROW"] {
@@ -126,15 +110,44 @@ extension Branch {
             if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
                 if let onlineAppointments = onlineAppointments {
                     DispatchQueue.main.async {
-                        completion([onlineAppointments], (((json["Root"] as? [String: Any])? ["BRANCH"] as? [String: Any])? ["BRANCH_ROW"]) as? [[String : Any]])
+                        completion([onlineAppointments], (((json["Root"] as? [String: Any])? [physical ? "BRANCHES": "BRANCH"] as? [String: Any])? [physical ? "BRANCHES_ROW":"BRANCH_ROW"]) as? [[String : Any]])
                     }
                 } else {
-                    let onlineAppointmentss = try? [Branch](data: data, keyPath: "Root.BRANCH.BRANCH_ROW")
+                    let onlineAppointmentss = try? [Branch](data: data, keyPath: physical ? "Root.BRANCHES.BRANCHES_ROW": "Root.BRANCH.BRANCH_ROW")
                     if let onlineAppointmentss = onlineAppointmentss {
                         DispatchQueue.main.async {
-                            completion(onlineAppointmentss, (((json["Root"] as? [String: Any])? ["BRANCH"] as? [String: Any])? ["BRANCH_ROW"]) as? [[String : Any]])
+                            completion(onlineAppointmentss, (((json["Root"] as? [String: Any])? [physical ? "BRANCHES": "BRANCH"] as? [String: Any])? [physical ? "BRANCHES_ROW":"BRANCH_ROW"]) as? [[String : Any]])
                         }
                     } else {
+                        if let jsn = json1?.dictionaryObject {
+                            let root = jsn["Root"] as? [String:Any] ?? .init()
+                            let branches = root[physical ? "BRANCHES": "BRANCH"] as? [String:Any] ?? .init()
+                            var dd = [Branch]()
+
+                            if let rows = branches[physical ? "BRANCHES_ROW":"BRANCH_ROW"] as? [[String:Any]] {
+                                for item in rows  {
+                                    var br = Branch()
+                                    br.id = item["HOSP_ID"] as? String ?? ""
+                                    br.arabicName = item["HOSP_NAME_AR"] as? String ?? ""
+                                    br.englishName = item["HOSP_NAME_EN"] as? String ?? ""
+                                    br.BRANCH_TYPE = item["BRANCH_LETTER"] as? String ?? ""
+                                    dd.append(br)
+                                }
+                                DispatchQueue.main.async {completion(dd, rows)}
+                                return
+                            }else if let rows = branches[physical ? "BRANCHES_ROW":"BRANCH_ROW"] as? [String:Any] {
+                                var br = Branch()
+                                br.id = rows["HOSP_ID"] as? String ?? ""
+                                br.arabicName = rows["HOSP_NAME_AR"] as? String ?? ""
+                                br.englishName = rows["HOSP_NAME_EN"] as? String ?? ""
+                                br.BRANCH_TYPE = rows["BRANCH_LETTER"] as? String ?? ""
+                                dd.append(br)
+                                DispatchQueue.main.async {completion(dd, [rows])}
+                                return
+                            }
+                                
+
+                        }
                         DispatchQueue.main.async {completion(nil, nil)}
                     }
                 }

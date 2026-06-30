@@ -61,9 +61,9 @@ struct Constants {
         static var APIBase = "http://"+NEWIP+"/MobileApi/api/"
         
         //   static var APIBaseURL = "http://"+NEWIP+"/MobileApi/api/"    // test
-   //     static var APIBaseURL = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi/api/"    // live
-   //     static var IMAGE_BASE = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi"   // live
-  //      static var IMAGE_BASE2 = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi" // live
+//        static var APIBaseURL = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi/api/"    // live
+//        static var IMAGE_BASE = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi"   // live
+//        static var IMAGE_BASE2 = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi" // live
         
         static var APIBaseURL = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApitest/api/"    // test
         static var IMAGE_BASE = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApitest"   // test

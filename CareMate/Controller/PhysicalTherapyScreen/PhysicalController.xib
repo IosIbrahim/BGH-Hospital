@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhysicalController" customModule="CareMate" customModuleProvider="target">
             <connections>
                 <outlet property="clcTabs" destination="eYM-CN-cHM" id="mUS-Kq-v2h"/>
+                <outlet property="lblNoData" destination="qvT-Fy-yIY" id="rJq-KE-dlo"/>
+                <outlet property="stkNoData" destination="fiA-HL-GdB" id="E1d-t4-XsC"/>
                 <outlet property="tblSessions" destination="lfx-Og-bJp" id="RlE-4B-Dol"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -56,19 +58,41 @@
                         </tableView>
                     </subviews>
                 </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fiA-HL-GdB">
+                    <rect key="frame" x="20" y="389.66666666666669" width="353" height="73"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-physical-therapy" translatesAutoresizingMaskIntoConstraints="NO" id="gTX-0Q-ubv">
+                            <rect key="frame" x="0.0" y="0.0" width="353" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="2t0-0Q-zjw"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvT-Fy-yIY">
+                            <rect key="frame" x="0.0" y="55" width="353" height="18"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fiA-HL-GdB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="1pw-TS-yqH"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0aJ-a2-5gf" secondAttribute="bottom" constant="10" id="74N-HC-mqT"/>
+                <constraint firstItem="fiA-HL-GdB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="AeX-ko-QfR"/>
+                <constraint firstItem="fiA-HL-GdB" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Eik-eG-oz5"/>
                 <constraint firstItem="0aJ-a2-5gf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="VSV-bZ-9fj"/>
                 <constraint firstItem="0aJ-a2-5gf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="63" id="YNx-DO-cL5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0aJ-a2-5gf" secondAttribute="trailing" constant="10" id="gMb-bF-3PR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fiA-HL-GdB" secondAttribute="trailing" constant="20" id="vqp-ER-Hfn"/>
             </constraints>
             <point key="canvasLocation" x="94" y="102"/>
         </view>
     </objects>
     <resources>
+        <image name="ic-physical-therapy" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

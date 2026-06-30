@@ -15,6 +15,8 @@ enum SessionFilter {
 
 class PhysicalController: BaseViewController {
 
+    @IBOutlet weak var lblNoData: UILabel!
+    @IBOutlet weak var stkNoData: UIStackView!
     @IBOutlet weak var tblSessions: UITableView!
     @IBOutlet weak var clcTabs: UICollectionView!
     
@@ -26,6 +28,9 @@ class PhysicalController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        stkNoData.isHidden = !dataSources.isEmpty
+        lblNoData.text = UserManager.isArabic ? "لا توجد جلسات" : "No Sessions Found"
+        lblNoData.textAlignment = .center
         initTable()
         getSessions()
         let titl = UserManager.isArabic ? "العلاج الطبيعي" : "Physical Therapy"
@@ -53,13 +58,13 @@ class PhysicalController: BaseViewController {
          indicator.sharedInstance.show()
 //    let url = URL(string: urlString)
 //    let parseUrl = urlString + "?" + Constants.getoAuthValue(url: url!, method: "GET")
-    print(urlString)
-    URLSession.shared.dataTask(with: request) { data, response, error in
-        indicator.sharedInstance.dismiss()
-        if error != nil {//Has error for request
-          if error?._code == -1001 {
-           //Domain=NSURLErrorDomain Code=-1001 "The request timed out."
-              DispatchQueue.main.async {
+         print(urlString)
+         URLSession.shared.dataTask(with: request) { data, response, error in
+             indicator.sharedInstance.dismiss()
+             if error != nil {//Has error for request
+                 if error?._code == -1001 {
+                     //Domain=NSURLErrorDomain Code=-1001 "The request timed out."
+            DispatchQueue.main.async {
                   print(error?.localizedDescription ?? "")
               }
             return
@@ -89,6 +94,7 @@ class PhysicalController: BaseViewController {
         let sessions = try? SessionResponseModel(data: data, keyPath: "PAT_SERVICES")
         self.dataSources = sessions?.services?.rows ?? []
         DispatchQueue.main.async {
+            self.stkNoData.isHidden = !self.dataSources.isEmpty
             self.tblSessions.reloadData()
         }
       }.resume()
