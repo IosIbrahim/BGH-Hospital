@@ -56,33 +56,33 @@ enum AIBotStrings {
         UserManager.isArabic ? "اكتب الأعراض هنا..." : "Type your symptoms here..."
     }
 
-    static var chatGreeting: String {
-        UserManager.isArabic
-            ? "مرحباً! أنا مساعد الأعراض. كيف يمكنني مساعدتك اليوم؟"
-            : "Hello! I'm your Symptom Assistant. How can I help you today?"
+    /// Opening line before the first question.
+    static var chatOpener: String {
+        UserManager.isArabic ? "حسناً فلنبدأ." : "Okay, let's start."
     }
 
-    static var chatDescribeSymptoms: String {
-        UserManager.isArabic
-            ? "هل يمكنك وصف الأعراض بالتفصيل؟"
-            : "Can you describe your symptoms in detail?"
+    /// Asked only in guest mode (we don't know the user's name).
+    static var chatAskName: String {
+        UserManager.isArabic ? "مرحبا، ما هو اسمك؟" : "Hello, what is your name?"
     }
 
-    /// Bot repeating back what it "heard".
-    static func chatHeard(_ text: String) -> String {
-        UserManager.isArabic
-            ? "سمعت: \"\(text)\". هل هذا صحيح؟"
-            : "I heard: \"\(text)\". Is this correct?"
+    /// Greeting for a logged-in user, whose name we already have.
+    static func chatGreetName(_ name: String) -> String {
+        UserManager.isArabic ? "مرحباً \(name)!" : "Hello \(name)!"
     }
 
-    static var chatReplyTrueFalse: String {
+    static var chatAskAge: String {
+        UserManager.isArabic ? "ما هو عمرك؟" : "What is your age?"
+    }
+
+    static var chatAskSymptoms: String {
         UserManager.isArabic
-            ? "من فضلك أجب بـ 'true' أو 'false'."
-            : "Please reply with 'true' or 'false'."
+            ? "ما الأعراض التي تشعر بها؟"
+            : "What are the symptoms you are experiencing?"
     }
 
     static var chatAnalyzing: String {
-        UserManager.isArabic ? "دعني أحلل الأعراض ..." : "Let me analyze your symptoms ..."
+        UserManager.isArabic ? "شكراً، جارٍ تحليل الأعراض ..." : "Thanks, analyzing your symptoms ..."
     }
 
     static func chatRecommend(_ specialty: String) -> String {
@@ -95,16 +95,8 @@ enum AIBotStrings {
         UserManager.isArabic ? "ابحث عن أفضل \(specialty) الآن" : "Find Best \(specialty) Now"
     }
 
-    // Demo (frontend-only) content used until the backend is wired.
-    static var demoHeadache: String {
-        UserManager.isArabic ? "لدي صداع" : "I have a headache"
-    }
-
+    // Placeholder used until the analysis endpoint is wired.
     static var demoSpecialty: String {
         UserManager.isArabic ? "طبيب أعصاب" : "Neurologist"
-    }
-
-    static var demoYes: String {
-        UserManager.isArabic ? "نعم" : "Yes"
     }
 }

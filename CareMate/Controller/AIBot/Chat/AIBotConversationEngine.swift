@@ -2,70 +2,151 @@
 //  AIBotConversationEngine.swift
 //  CareMate
 //
-//  Frontend-only scripted conversation flow for the AI symptom assistant.
-//  This mimics the design's happy path (symptom -> confirm -> recommendation)
-//  with local canned responses. The real backend/NLP is wired later; the view
-//  controller only talks to this engine, so swapping it out is isolated here.
+//  Drives the AI symptom-assistant conversation. The question flow is decided
+//  here based on who the user is:
+//    - Name  : asked only in guest mode (for a logged-in user we already have it).
+//    - Age   : asked when we don't have the user's age. The app doesn't store an
+//              age today, so it's always asked for now; when an age source is
+//              added, populate `AIBotUserContext.age` and this question is skipped.
+//    - Symptoms : always asked.
+//
+//  Answers are collected locally. Sending them to the backend (and the real
+//  specialist recommendation) is wired once those endpoints are available; the
+//  closing recommendation below is a temporary placeholder.
 //
 
 import Foundation
 
+/// Snapshot of what we already know about the current user.
+struct AIBotUserContext {
+
+    let isGuest: Bool
+    let name: String?
+    let age: String?
+
+    /// Builds the context from the app's stored session.
+    static func current() -> AIBotUserContext {
+        let patientId = (UserDefaults.standard.object(forKey: "patienId") as? String) ?? ""
+        let isGuest = patientId.trimmingCharacters(in: .whitespaces).isEmpty
+
+        var name: String?
+        if let saved = UserDefaults.standard.object(forKey: "SavedPerson") as? Data,
+           let user = try? JSONDecoder().decode(LoginedUser.self, from: saved) {
+            let full = UserManager.isArabic ? user.COMPLETEPATNAME_AR : user.COMPLETEPATNAME_EN
+            let trimmed = full.trimmingCharacters(in: .whitespaces)
+            name = trimmed.isEmpty ? nil : trimmed
+        }
+
+        // No age is stored in the app yet.
+        return AIBotUserContext(isGuest: isGuest, name: name, age: nil)
+    }
+}
+
 final class AIBotConversationEngine {
 
-    enum State {
-        case greeting
-        case awaitingSymptoms
-        case awaitingConfirmation
-        case done
+    private enum Question {
+        case name
+        case age
+        case symptoms
     }
 
-    private(set) var state: State = .greeting
+    struct Answers {
+        var name: String?
+        var age: String?
+        var symptoms: String?
+    }
 
-    /// Opening bot messages shown when the chat appears.
+    private let context: AIBotUserContext
+    private var queue: [Question] = []
+    private var current: Question?
+    private(set) var answers: Answers
+
+    init(context: AIBotUserContext = .current()) {
+        self.context = context
+        self.answers = Answers(name: context.name, age: context.age, symptoms: nil)
+        buildQueue()
+    }
+
+    private func buildQueue() {
+        var questions: [Question] = []
+        if context.isGuest || (context.name ?? "").isEmpty {
+            questions.append(.name)
+        }
+        if (context.age ?? "").isEmpty {
+            questions.append(.age)
+        }
+        questions.append(.symptoms)
+        queue = questions
+    }
+
+    /// Opening messages plus the first question.
     func start() -> [AIBotMessage] {
-        state = .awaitingSymptoms
-        return [
-            .botText(AIBotStrings.chatGreeting),
-            .botText(AIBotStrings.chatDescribeSymptoms)
-        ]
+        var messages: [AIBotMessage] = [.botText(AIBotStrings.chatOpener)]
+        // Greet a known user by name.
+        if let name = context.name, !context.isGuest {
+            messages.append(.botText(AIBotStrings.chatGreetName(name)))
+        }
+        if let next = dequeueQuestionMessage() {
+            messages.append(next)
+        }
+        return messages
     }
 
-    /// Produces the bot's reply to a user message. Returns an empty array when
-    /// there is nothing more to say in this scripted flow.
+    /// Records the answer to the current question and returns the next step.
     func reply(to message: AIBotMessage) -> [AIBotMessage] {
-        switch state {
-        case .awaitingSymptoms:
-            state = .awaitingConfirmation
-            let heard = heardText(from: message)
-            return [
-                .botText(AIBotStrings.chatHeard(heard)),
-                .botText(AIBotStrings.chatReplyTrueFalse)
-            ]
+        record(answer: text(of: message), for: current)
 
-        case .awaitingConfirmation:
-            state = .done
-            let specialty = AIBotStrings.demoSpecialty
-            return [
-                .botText(AIBotStrings.chatAnalyzing),
-                .botText(AIBotStrings.chatRecommend(specialty)),
-                .botAction(title: AIBotStrings.chatFindBest(specialty), specialty: specialty)
-            ]
+        if let next = dequeueQuestionMessage() {
+            return [next]
+        }
+        return finish()
+    }
 
-        case .greeting, .done:
-            return []
+    // MARK: - Helpers
+
+    private func dequeueQuestionMessage() -> AIBotMessage? {
+        guard !queue.isEmpty else {
+            current = nil
+            return nil
+        }
+        let question = queue.removeFirst()
+        current = question
+        return .botText(prompt(for: question))
+    }
+
+    private func prompt(for question: Question) -> String {
+        switch question {
+        case .name: return AIBotStrings.chatAskName
+        case .age: return AIBotStrings.chatAskAge
+        case .symptoms: return AIBotStrings.chatAskSymptoms
         }
     }
 
-    /// For a voice note we don't have real speech-to-text yet, so fall back to
-    /// the demo transcript. For typed text we echo what the user wrote.
-    private func heardText(from message: AIBotMessage) -> String {
-        switch message.kind {
-        case .text(let value):
-            return value
-        case .voice:
-            return AIBotStrings.demoHeadache
-        case .action:
-            return AIBotStrings.demoHeadache
+    private func record(answer: String, for question: Question?) {
+        guard let question = question else { return }
+        switch question {
+        case .name: answers.name = answer
+        case .age: answers.age = answer
+        case .symptoms: answers.symptoms = answer
         }
+    }
+
+    private func text(of message: AIBotMessage) -> String {
+        switch message.kind {
+        case .text(let value): return value
+        // No speech-to-text yet; a voice note has no transcript.
+        case .voice, .action: return ""
+        }
+    }
+
+    /// Placeholder closing until the analysis endpoint is wired.
+    private func finish() -> [AIBotMessage] {
+        current = nil
+        let specialty = AIBotStrings.demoSpecialty
+        return [
+            .botText(AIBotStrings.chatAnalyzing),
+            .botText(AIBotStrings.chatRecommend(specialty)),
+            .botAction(title: AIBotStrings.chatFindBest(specialty), specialty: specialty)
+        ]
     }
 }
