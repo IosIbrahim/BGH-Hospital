@@ -28,6 +28,7 @@ final class AIBotChatViewController: BaseViewController {
     private let textField = UITextField()
     private let actionButton = UIButton(type: .custom)
     private var inputBottomConstraint: NSLayoutConstraint!
+    private var isKeyboardVisible = false
 
     // MARK: - Lifecycle
 
@@ -47,6 +48,14 @@ final class AIBotChatViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // Keep the input bar resting above the home indicator when no keyboard.
+        if !isKeyboardVisible {
+            inputBottomConstraint.constant = -(view.safeAreaInsets.bottom + 8)
+        }
     }
 
     // MARK: - Build
@@ -118,7 +127,7 @@ final class AIBotChatViewController: BaseViewController {
         inputContainer.addSubview(actionButton)
         field.addSubview(textField)
 
-        inputBottomConstraint = inputContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8)
+        inputBottomConstraint = inputContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8)
 
         NSLayoutConstraint.activate([
             inputContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
@@ -246,14 +255,22 @@ final class AIBotChatViewController: BaseViewController {
     }
 
     @objc private func keyboardWillChange(_ note: Notification) {
-        guard let frame = (note.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        let isHiding = note.name == .UIKeyboardWillHide
-        let bottomInset = view.safeAreaInsets.bottom
-        inputBottomConstraint.constant = isHiding ? -8 : -(frame.height - bottomInset + 8)
-        UIView.animate(withDuration: 0.25) {
+        guard let info = note.userInfo,
+              let endFrame = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        let duration = (info[UIKeyboardAnimationDurationUserInfoKey] as? Double) ?? 0.25
+
+        // How much of the view the keyboard actually covers (in this view's space).
+        let keyboardFrameInView = view.convert(endFrame, from: nil)
+        let overlap = max(0, view.bounds.maxY - keyboardFrameInView.minY)
+        let hiding = note.name == .UIKeyboardWillHide || overlap == 0
+
+        isKeyboardVisible = !hiding
+        inputBottomConstraint.constant = hiding ? -(view.safeAreaInsets.bottom + 8) : -(overlap + 8)
+
+        UIView.animate(withDuration: duration) {
             self.view.layoutIfNeeded()
-            self.scrollToBottom()
         }
+        DispatchQueue.main.async { self.scrollToBottom() }
     }
 }
 
