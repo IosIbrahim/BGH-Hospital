@@ -178,7 +178,7 @@ final class AIBotOnboardingViewController: BaseViewController {
     }
 
     @objc private func didTapStartChat() {
-        // Chat screen is added in a later step.
+        navigationController?.pushViewController(AIBotChatViewController(), animated: true)
     }
 
     // MARK: - Helpers
