@@ -5,7 +5,16 @@
 //  Centralized localized copy for the AI Bot feature.
 //
 
-import Foundation
+import UIKit
+
+/// Colors used across the AI Bot feature, taken from the design.
+enum AIBotTheme {
+    static let headerIndigo = UIColor.fromHex(hex: "#2E3192", alpha: 1)
+    static let teal = UIColor.fromHex(hex: "#29A69A", alpha: 1)
+    static let voiceIndigo = UIColor.fromHex(hex: "#2E3192", alpha: 1)
+    static let titleGray = UIColor.fromHex(hex: "#7C7C93", alpha: 1)
+    static let bodyGray = UIColor.fromHex(hex: "#9A9AAE", alpha: 1)
+}
 
 enum AIBotStrings {
 
