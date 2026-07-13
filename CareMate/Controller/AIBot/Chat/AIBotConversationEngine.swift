@@ -174,7 +174,7 @@ final class AIBotChatCoordinator {
             opener.append(.botText(AIBotStrings.chatGreetName(first)))
         }
         opener.append(askNextQuestion())
-        delegate?.coordinator(self, didAdd: opener)
+        emit(opener, speak: true)
     }
 
     // MARK: - Typed answers
@@ -226,7 +226,7 @@ final class AIBotChatCoordinator {
         } else {
             currentQuestion = nil
         }
-        delegate?.coordinator(self, didAdd: messages)
+        emit(messages, speak: true)
     }
 
     private func finish(with info: ConversationInfo?) {
@@ -248,7 +248,7 @@ final class AIBotChatCoordinator {
             AIBotChoice(title: AIBotStrings.yesNeedDoctor, tag: .findDoctor(true)),
             AIBotChoice(title: AIBotStrings.noSearchMyself, tag: .findDoctor(false))
         ]))
-        delegate?.coordinator(self, didAdd: messages)
+        emit(messages, speak: true)
     }
 
     // MARK: - Recommendation card tap
@@ -260,6 +260,26 @@ final class AIBotChatCoordinator {
     // MARK: - Helpers
 
     private var recommendedSpecialtyCode: String?
+
+    /// Adds messages and, when `speak` is set, plays the joined bot text via TTS
+    /// and appends a playable audio bubble (mirrors the Android voice replies).
+    private func emit(_ messages: [AIBotMessage], speak: Bool = false) {
+        delegate?.coordinator(self, didAdd: messages)
+        guard speak, let key = sessionKey else { return }
+        let text = messages.compactMap { message -> String? in
+            if case .text(let value) = message.kind, message.sender == .bot, !value.isEmpty {
+                return value
+            }
+            return nil
+        }.joined(separator: " ")
+        guard !text.isEmpty else { return }
+        service.textToSpeech(text: text, sessionKey: key) { [weak self] result in
+            guard let self = self, case .success(let url) = result else { return }
+            let duration = AIBotAudioPlayer.durationString(for: url)
+            self.delegate?.coordinator(self, didAdd: [.botAudio(url: url, duration: duration)])
+            AIBotAudioPlayer.shared.play(url: url)
+        }
+    }
 
     private func askNextQuestion() -> AIBotMessage {
         guard !pendingQuestions.isEmpty else {

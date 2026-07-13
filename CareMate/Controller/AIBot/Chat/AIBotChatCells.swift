@@ -126,7 +126,7 @@ final class AIBotTextBubbleCell: UITableViewCell {
     }
 }
 
-// MARK: - Voice note cell (user)
+// MARK: - Audio bubble cell (bot TTS or user voice note)
 
 final class AIBotVoiceCell: UITableViewCell {
 
@@ -136,7 +136,9 @@ final class AIBotVoiceCell: UITableViewCell {
     private let playButton = UIButton(type: .system)
     private let waveform = AIBotWaveformView()
     private let durationLabel = UILabel()
-    private let avatar = makeUserAvatar()
+    private var avatarView = UIView()
+    private var url: URL?
+    private var sideConstraints: [NSLayoutConstraint] = []
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -147,11 +149,11 @@ final class AIBotVoiceCell: UITableViewCell {
         pill.layer.cornerRadius = 26
         pill.translatesAutoresizingMaskIntoConstraints = false
 
-        // play button: white circle with a blue triangle
         playButton.backgroundColor = .white
         playButton.layer.cornerRadius = 18
         playButton.tintColor = AIBotTheme.voiceBubble
         playButton.setImage(AIBotIcon.symbol("play.fill", pointSize: 14, bold: true), for: .normal)
+        playButton.addTarget(self, action: #selector(togglePlay), for: .touchUpInside)
         playButton.translatesAutoresizingMaskIntoConstraints = false
 
         waveform.translatesAutoresizingMaskIntoConstraints = false
@@ -161,7 +163,6 @@ final class AIBotVoiceCell: UITableViewCell {
         durationLabel.translatesAutoresizingMaskIntoConstraints = false
 
         contentView.addSubview(pill)
-        contentView.addSubview(avatar)
         pill.addSubview(playButton)
         pill.addSubview(waveform)
         pill.addSubview(durationLabel)
@@ -170,11 +171,6 @@ final class AIBotVoiceCell: UITableViewCell {
             pill.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
             pill.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
             pill.heightAnchor.constraint(equalToConstant: 52),
-            pill.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: 60),
-
-            avatar.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            avatar.centerYAnchor.constraint(equalTo: pill.centerYAnchor),
-            pill.trailingAnchor.constraint(equalTo: avatar.leadingAnchor, constant: -8),
 
             playButton.leadingAnchor.constraint(equalTo: pill.leadingAnchor, constant: 8),
             playButton.centerYAnchor.constraint(equalTo: pill.centerYAnchor),
@@ -184,7 +180,7 @@ final class AIBotVoiceCell: UITableViewCell {
             waveform.leadingAnchor.constraint(equalTo: playButton.trailingAnchor, constant: 10),
             waveform.centerYAnchor.constraint(equalTo: pill.centerYAnchor),
             waveform.heightAnchor.constraint(equalToConstant: 24),
-            waveform.widthAnchor.constraint(equalToConstant: 150),
+            waveform.widthAnchor.constraint(equalToConstant: 130),
 
             durationLabel.leadingAnchor.constraint(equalTo: waveform.trailingAnchor, constant: 8),
             durationLabel.trailingAnchor.constraint(equalTo: pill.trailingAnchor, constant: -14),
@@ -194,8 +190,50 @@ final class AIBotVoiceCell: UITableViewCell {
 
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 
-    func configure(duration: String) {
+    func configure(url: URL?, duration: String, sender: AIBotSender) {
+        self.url = url
         durationLabel.text = duration
+
+        avatarView.removeFromSuperview()
+        NSLayoutConstraint.deactivate(sideConstraints)
+
+        let avatar: UIView = (sender == .bot) ? makeBotAvatar() : makeUserAvatar()
+        avatar.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(avatar)
+        avatarView = avatar
+
+        if sender == .bot {
+            sideConstraints = [
+                avatar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+                avatar.centerYAnchor.constraint(equalTo: pill.centerYAnchor),
+                pill.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 8),
+                pill.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -50)
+            ]
+        } else {
+            sideConstraints = [
+                avatar.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+                avatar.centerYAnchor.constraint(equalTo: pill.centerYAnchor),
+                pill.trailingAnchor.constraint(equalTo: avatar.leadingAnchor, constant: -8),
+                pill.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: 50)
+            ]
+        }
+        NSLayoutConstraint.activate(sideConstraints)
+        updatePlayIcon()
+    }
+
+    @objc private func togglePlay() {
+        guard let url = url else { return }
+        if AIBotAudioPlayer.shared.currentURL == url && AIBotAudioPlayer.shared.isPlaying {
+            AIBotAudioPlayer.shared.stop()
+        } else {
+            AIBotAudioPlayer.shared.play(url: url) { [weak self] in self?.updatePlayIcon() }
+        }
+        updatePlayIcon()
+    }
+
+    private func updatePlayIcon() {
+        let playing = url != nil && AIBotAudioPlayer.shared.currentURL == url && AIBotAudioPlayer.shared.isPlaying
+        playButton.setImage(AIBotIcon.symbol(playing ? "pause.fill" : "play.fill", pointSize: 14, bold: true), for: .normal)
     }
 }
 

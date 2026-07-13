@@ -340,9 +340,9 @@ extension AIBotChatViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: AIBotTextBubbleCell.reuseID, for: indexPath) as! AIBotTextBubbleCell
             cell.configure(text: text, sender: message.sender)
             return cell
-        case .voice(let duration):
+        case .audio(let url, let duration):
             let cell = tableView.dequeueReusableCell(withIdentifier: AIBotVoiceCell.reuseID, for: indexPath) as! AIBotVoiceCell
-            cell.configure(duration: duration)
+            cell.configure(url: url, duration: duration, sender: message.sender)
             return cell
         case .action(let title, let specialtyCode):
             let cell = tableView.dequeueReusableCell(withIdentifier: AIBotActionCell.reuseID, for: indexPath) as! AIBotActionCell

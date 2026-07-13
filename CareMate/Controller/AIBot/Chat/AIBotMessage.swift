@@ -29,8 +29,8 @@ struct AIBotMessage {
     enum Kind {
         /// Plain text bubble (bot or user).
         case text(String)
-        /// A recorded voice note from the user (duration like "1:07").
-        case voice(duration: String)
+        /// A playable audio bubble — bot TTS reply or a user voice note.
+        case audio(url: URL?, duration: String)
         /// Recommendation card, e.g. "Find Best Neurologist Now".
         case action(title: String, specialtyCode: String?)
         /// One or more choice buttons shown by the bot.
@@ -49,8 +49,12 @@ struct AIBotMessage {
         AIBotMessage(sender: .user, kind: .text(text))
     }
 
-    static func userVoice(duration: String) -> AIBotMessage {
-        AIBotMessage(sender: .user, kind: .voice(duration: duration))
+    static func botAudio(url: URL?, duration: String) -> AIBotMessage {
+        AIBotMessage(sender: .bot, kind: .audio(url: url, duration: duration))
+    }
+
+    static func userAudio(url: URL?, duration: String) -> AIBotMessage {
+        AIBotMessage(sender: .user, kind: .audio(url: url, duration: duration))
     }
 
     static func botAction(title: String, specialtyCode: String?) -> AIBotMessage {
