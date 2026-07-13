@@ -211,7 +211,9 @@ extension BrnachiesViewController: UITableViewDataSource,BranchSessionProtocol {
                 self.navigationController?.pushViewController(doctorsVC, animated: true)
             }
         }else {
-            navigationController?.pushViewController(PhysicalController(), animated: true)
+            let vc = PhysicalController()
+            vc.branch = branches[index]
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -245,7 +247,9 @@ extension BrnachiesViewController: UITableViewDelegate {
             }
             tableView.deselectRow(at: indexPath, animated: true)
         }else {
-            navigationController?.pushViewController(PhysicalController(), animated: true)
+            let vc = PhysicalController()
+            vc.branch = branches[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
         }
  
     }

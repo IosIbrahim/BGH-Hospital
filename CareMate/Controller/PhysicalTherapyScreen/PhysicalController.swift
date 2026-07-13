@@ -50,7 +50,7 @@ class PhysicalController: BaseViewController {
     
      func getSessions() {
          let id = Utilities.sharedInstance.getPatientId()
-         let urlString = "\(Constants.APIProvider.GetPhysicalSessions)bRANCH_ID=\(branch?.id ?? "")&pATIENT_ID=\(id)"
+         let urlString = "\(Constants.APIProvider.GetPhysicalSessions)bRANCH_ID=\(branch?.id ?? "")&pATIENT_ID=\(id)&PHSIO_FILTER=2"
          var request = URLRequest(url: URL(string: urlString)!,timeoutInterval: Double.infinity)
      //    request.addValue("Bearer \()", forHTTPHeaderField: "Authorization")
 
@@ -81,22 +81,26 @@ class PhysicalController: BaseViewController {
         return
       }
         
-      guard let json = String.init(data: data, encoding: .utf8), json.contains("PAT_SERVICES") else {
-//        Utilities.showAlert(messageToDisplay:"No branches found")
-          DispatchQueue.main.async {
-              print("Empty Data")
-          }
-        return
-      }
+//      guard let json = String.init(data: data, encoding: .utf8), json.contains("PAT_SERVICES") else {
+////        Utilities.showAlert(messageToDisplay:"No branches found")
+//          DispatchQueue.main.async {
+//              print("Empty Data")
+//          }
+//        return
+//      }
         
-        print(json)
+   //     print(json)
         
-        let sessions = try? SessionResponseModel(data: data, keyPath: "PAT_SERVICES")
-        self.dataSources = sessions?.services?.rows ?? []
-        DispatchQueue.main.async {
-            self.stkNoData.isHidden = !self.dataSources.isEmpty
-            self.tblSessions.reloadData()
-        }
+             let decoder = JSONDecoder()
+             if let sessions = try? decoder.decode(SessionResponseModel.self, from: data) {
+                 self.dataSources = sessions.services?.rows ?? []
+             }
+             
+//        let sessions = try? SessionResponseModel(data: data, keyPath: "PAT_SERVICES")
+             DispatchQueue.main.async {
+                 self.stkNoData.isHidden = !self.dataSources.isEmpty
+                 self.tblSessions.reloadData()
+             }
       }.resume()
   }
 
