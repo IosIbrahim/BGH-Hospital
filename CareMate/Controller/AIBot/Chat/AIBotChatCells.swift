@@ -262,6 +262,64 @@ final class AIBotActionCell: UITableViewCell {
     @objc private func didTap() { onTap?() }
 }
 
+// MARK: - Choice buttons cell (bot)
+
+final class AIBotChoiceCell: UITableViewCell {
+
+    static let reuseID = "AIBotChoiceCell"
+
+    private let stack = UIStackView()
+    private var options: [AIBotChoice] = []
+    private var onSelect: ((AIBotChoice) -> Void)?
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
+        backgroundColor = .clear
+
+        stack.axis = .vertical
+        stack.spacing = 8
+        stack.alignment = .leading
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(stack)
+
+        NSLayoutConstraint.activate([
+            stack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
+            stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
+            stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 50),
+            stack.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -20)
+        ])
+    }
+
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    func configure(options: [AIBotChoice], onSelect: @escaping (AIBotChoice) -> Void) {
+        self.options = options
+        self.onSelect = onSelect
+        stack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        for (index, option) in options.enumerated() {
+            let button = UIButton(type: .system)
+            button.tag = index
+            button.setTitle("  \(option.title)  ", for: .normal)
+            button.setTitleColor(AIBotTheme.voiceIndigo, for: .normal)
+            button.titleLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
+            button.backgroundColor = .white
+            button.layer.cornerRadius = 22
+            button.layer.borderWidth = 1
+            button.layer.borderColor = AIBotTheme.blue.cgColor
+            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+            button.heightAnchor.constraint(equalToConstant: 44).isActive = true
+            button.addTarget(self, action: #selector(didTap(_:)), for: .touchUpInside)
+            stack.addArrangedSubview(button)
+        }
+    }
+
+    @objc private func didTap(_ sender: UIButton) {
+        guard sender.tag < options.count else { return }
+        onSelect?(options[sender.tag])
+    }
+}
+
 // MARK: - Waveform
 
 /// Simple static voice waveform (white bars) used inside the voice pill.

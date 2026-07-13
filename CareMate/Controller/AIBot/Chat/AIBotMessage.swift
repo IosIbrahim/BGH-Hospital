@@ -12,6 +12,18 @@ enum AIBotSender {
     case user
 }
 
+/// A tappable button shown inside a bot message (language pick, service type,
+/// "find specific doctor?" yes/no, …).
+struct AIBotChoice {
+    enum Tag {
+        case language(String)      // "ar" / "en"
+        case service(bookDoctor: Bool)
+        case findDoctor(Bool)      // yes / no
+    }
+    let title: String
+    let tag: Tag
+}
+
 struct AIBotMessage {
 
     enum Kind {
@@ -19,10 +31,10 @@ struct AIBotMessage {
         case text(String)
         /// A recorded voice note from the user (duration like "1:07").
         case voice(duration: String)
-        /// A tappable suggestion / call-to-action shown by the bot
-        /// (e.g. "Find Best Neurologist Now"). `specialty` is passed through
-        /// so the handler knows what to search for.
-        case action(title: String, specialty: String)
+        /// Recommendation card, e.g. "Find Best Neurologist Now".
+        case action(title: String, specialtyCode: String?)
+        /// One or more choice buttons shown by the bot.
+        case choices(options: [AIBotChoice])
     }
 
     let sender: AIBotSender
@@ -41,7 +53,11 @@ struct AIBotMessage {
         AIBotMessage(sender: .user, kind: .voice(duration: duration))
     }
 
-    static func botAction(title: String, specialty: String) -> AIBotMessage {
-        AIBotMessage(sender: .bot, kind: .action(title: title, specialty: specialty))
+    static func botAction(title: String, specialtyCode: String?) -> AIBotMessage {
+        AIBotMessage(sender: .bot, kind: .action(title: title, specialtyCode: specialtyCode))
+    }
+
+    static func botChoices(_ options: [AIBotChoice]) -> AIBotMessage {
+        AIBotMessage(sender: .bot, kind: .choices(options: options))
     }
 }

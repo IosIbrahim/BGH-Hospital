@@ -2,17 +2,15 @@
 //  AIBotConversationEngine.swift
 //  CareMate
 //
-//  Drives the AI symptom-assistant conversation. The question flow is decided
-//  here based on who the user is:
-//    - Name  : asked only in guest mode (for a logged-in user we already have it).
-//    - Age   : asked when we don't have the user's age. The app doesn't store an
-//              age today, so it's always asked for now; when an age source is
-//              added, populate `AIBotUserContext.age` and this question is skipped.
-//    - Symptoms : always asked.
+//  Coordinates the AI symptom-assistant conversation against AIBotService,
+//  ported from the Android VoiceAiFeature flow:
+//    generate-session -> greeting + language chooser -> set_conversation_language
+//    -> service chooser -> (complaint) name/age/symptoms answered by the user
+//    -> medical_conversation_v2 loop -> diagnosis + recommended specialty card
+//    -> "find specific doctor?" -> doctor search.
 //
-//  Answers are collected locally. Sending them to the backend (and the real
-//  specialist recommendation) is wired once those endpoints are available; the
-//  closing recommendation below is a temporary placeholder.
+//  Voice (record / speech-to-text / TTS) and the full book-doctor sub-flow are
+//  later phases; this coordinator covers the typed complaint conversation.
 //
 
 import Foundation
@@ -24,7 +22,6 @@ struct AIBotUserContext {
     let name: String?
     let age: String?
 
-    /// Builds the context from the app's stored session.
     static func current() -> AIBotUserContext {
         let patientId = (UserDefaults.standard.object(forKey: "patienId") as? String) ?? ""
         let isGuest = patientId.trimmingCharacters(in: .whitespaces).isEmpty
@@ -36,118 +33,241 @@ struct AIBotUserContext {
             let trimmed = full.trimmingCharacters(in: .whitespaces)
             name = trimmed.isEmpty ? nil : trimmed
         }
-
-        // No age is stored in the app yet.
         return AIBotUserContext(isGuest: isGuest, name: name, age: nil)
+    }
+
+    var firstName: String? {
+        guard let name = name else { return nil }
+        return name.components(separatedBy: " ").first ?? name
     }
 }
 
-final class AIBotConversationEngine {
+protocol AIBotChatCoordinatorDelegate: AnyObject {
+    func coordinator(_ coordinator: AIBotChatCoordinator, didAdd messages: [AIBotMessage])
+    func coordinatorDidStartLoading(_ coordinator: AIBotChatCoordinator)
+    func coordinatorDidStopLoading(_ coordinator: AIBotChatCoordinator)
+    /// Whether the typed-input bar should be shown (hidden while choosing buttons).
+    func coordinator(_ coordinator: AIBotChatCoordinator, setInputVisible visible: Bool)
+    func coordinator(_ coordinator: AIBotChatCoordinator, openDoctorSearchForSpecialty code: String?)
+}
+
+final class AIBotChatCoordinator {
+
+    weak var delegate: AIBotChatCoordinatorDelegate?
+
+    private let service = AIBotService.shared
+    private let context = AIBotUserContext.current()
+
+    private enum State {
+        case start
+        case choosingLanguage
+        case choosingService
+        case asking
+        case finished
+    }
 
     private enum Question {
-        case name
-        case age
-        case symptoms
+        case name, age, symptoms
+        var prompt: String {
+            switch self {
+            case .name: return AIBotStrings.chatAskName
+            case .age: return AIBotStrings.chatAskAge
+            case .symptoms: return AIBotStrings.chatAskSymptoms
+            }
+        }
     }
 
-    struct Answers {
-        var name: String?
-        var age: String?
-        var symptoms: String?
+    private var state: State = .start
+    private var isBusy = false
+    private var sessionKey: String?
+    private var lang = UserManager.isArabic ? "ar" : "en"
+    private var isBookDoctor = false
+    private var pendingQuestions: [Question] = []
+    private var currentQuestion: Question?
+
+    // MARK: - Start
+
+    func start() {
+        delegate?.coordinatorDidStartLoading(self)
+        service.generateSession { [weak self] result in
+            guard let self = self else { return }
+            self.delegate?.coordinatorDidStopLoading(self)
+            switch result {
+            case .success(let session):
+                self.sessionKey = session.session_key
+                self.state = .choosingLanguage
+                self.delegate?.coordinator(self, setInputVisible: false)
+                self.delegate?.coordinator(self, didAdd: [
+                    .botText(AIBotStrings.chatIntro),
+                    .botText(AIBotStrings.chooseLanguage),
+                    .botChoices([
+                        AIBotChoice(title: AIBotStrings.arabic, tag: .language("ar")),
+                        AIBotChoice(title: AIBotStrings.english, tag: .language("en"))
+                    ])
+                ])
+            case .failure:
+                self.delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.connectionError)])
+            }
+        }
     }
 
-    private let context: AIBotUserContext
-    private var queue: [Question] = []
-    private var current: Question?
-    private(set) var answers: Answers
+    // MARK: - Choices
 
-    init(context: AIBotUserContext = .current()) {
-        self.context = context
-        self.answers = Answers(name: context.name, age: context.age, symptoms: nil)
-        buildQueue()
+    func handleChoice(_ choice: AIBotChoice) {
+        switch choice.tag {
+        case .language(let lang):
+            selectLanguage(lang)
+        case .service(let bookDoctor):
+            selectService(bookDoctor: bookDoctor)
+        case .findDoctor:
+            // Both paths lead to doctor search for now; the dedicated
+            // book-doctor sub-flow is a later phase.
+            delegate?.coordinator(self, openDoctorSearchForSpecialty: recommendedSpecialtyCode)
+        }
     }
 
-    private func buildQueue() {
-        var questions: [Question] = []
-        if context.isGuest || (context.name ?? "").isEmpty {
-            questions.append(.name)
+    private func selectLanguage(_ lang: String) {
+        guard state == .choosingLanguage, !isBusy, let key = sessionKey else { return }
+        self.lang = lang
+        delegate?.coordinator(self, didAdd: [.userText(lang == "ar" ? AIBotStrings.arabic : AIBotStrings.english)])
+        isBusy = true
+        delegate?.coordinatorDidStartLoading(self)
+        service.setLanguage(lang: lang, sessionKey: key) { [weak self] result in
+            guard let self = self else { return }
+            self.isBusy = false
+            self.delegate?.coordinatorDidStopLoading(self)
+            switch result {
+            case .success:
+                self.state = .choosingService
+                self.delegate?.coordinator(self, didAdd: [
+                    .botText(AIBotStrings.chooseService),
+                    .botChoices([
+                        AIBotChoice(title: AIBotStrings.bookByComplaint, tag: .service(bookDoctor: false)),
+                        AIBotChoice(title: AIBotStrings.bookBySpeciality, tag: .service(bookDoctor: true))
+                    ])
+                ])
+            case .failure:
+                self.delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.connectionError)])
+            }
         }
-        if (context.age ?? "").isEmpty {
-            questions.append(.age)
-        }
-        questions.append(.symptoms)
-        queue = questions
     }
 
-    /// Opening messages plus the first question.
-    func start() -> [AIBotMessage] {
-        var messages: [AIBotMessage] = [.botText(AIBotStrings.chatOpener)]
-        // Greet a known user by their first name only.
-        if let name = context.name, !context.isGuest {
-            let firstName = name.components(separatedBy: " ").first ?? name
-            messages.append(.botText(AIBotStrings.chatGreetName(firstName)))
+    private func selectService(bookDoctor: Bool) {
+        isBookDoctor = bookDoctor
+        delegate?.coordinator(self, didAdd: [
+            .userText(bookDoctor ? AIBotStrings.bookBySpeciality : AIBotStrings.bookByComplaint)
+        ])
+
+        // Build the question queue (name only for guests, age always for now).
+        pendingQuestions = []
+        if context.isGuest || (context.firstName ?? "").isEmpty {
+            pendingQuestions.append(.name)
         }
-        if let next = dequeueQuestionMessage() {
-            messages.append(next)
+        pendingQuestions.append(.age)
+        pendingQuestions.append(.symptoms)
+
+        state = .asking
+        delegate?.coordinator(self, setInputVisible: true)
+
+        var opener: [AIBotMessage] = [.botText(AIBotStrings.letsStart)]
+        if let first = context.firstName, !context.isGuest {
+            opener.append(.botText(AIBotStrings.chatGreetName(first)))
         }
-        return messages
+        opener.append(askNextQuestion())
+        delegate?.coordinator(self, didAdd: opener)
     }
 
-    /// Records the answer to the current question and returns the next step.
-    func reply(to message: AIBotMessage) -> [AIBotMessage] {
-        record(answer: text(of: message), for: current)
+    // MARK: - Typed answers
 
-        if let next = dequeueQuestionMessage() {
-            return [next]
+    func submitAnswer(_ text: String) {
+        guard state == .asking, !isBusy, let key = sessionKey else { return }
+        let answeredQuestion = currentQuestion
+        isBusy = true
+        delegate?.coordinatorDidStartLoading(self)
+        let request = MedicalConversationRequest(
+            question: answeredQuestion?.prompt,
+            user_response: text,
+            session_key: key
+        )
+        service.medicalConversation(request) { [weak self] result in
+            guard let self = self else { return }
+            self.isBusy = false
+            self.delegate?.coordinatorDidStopLoading(self)
+            switch result {
+            case .success(let response):
+                self.handleConversation(response)
+            case .failure:
+                self.delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.connectionError)])
+            }
         }
-        return finish()
+    }
+
+    private func handleConversation(_ response: MedicalConversationResponse) {
+        let content = response.content ?? ""
+        if content == "error" {
+            delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.genericError)])
+            return
+        }
+
+        if response.is_conversation_finished == true {
+            finish(with: response.conversation_info)
+            return
+        }
+
+        var messages: [AIBotMessage] = []
+        // Acknowledgement / dynamic question returned by the backend.
+        if !content.isEmpty {
+            messages.append(.botText(content))
+        }
+        // Move on to the next scripted question if any remain; otherwise the
+        // backend content above is the next prompt.
+        if !pendingQuestions.isEmpty {
+            messages.append(askNextQuestion())
+        } else {
+            currentQuestion = nil
+        }
+        delegate?.coordinator(self, didAdd: messages)
+    }
+
+    private func finish(with info: ConversationInfo?) {
+        state = .finished
+        currentQuestion = nil
+        recommendedSpecialtyCode = info?.recommended_speciality_code
+        delegate?.coordinator(self, setInputVisible: false)
+
+        var messages: [AIBotMessage] = []
+        if let diagnosis = info?.diagnosis, !diagnosis.isEmpty {
+            messages.append(.botText(diagnosis))
+        }
+        let specialty = info?.recommended_speciality ?? AIBotStrings.demoSpecialty
+        messages.append(.botText(AIBotStrings.recommendSpecialty(specialty)))
+        messages.append(.botAction(title: AIBotStrings.findBestNow(specialty),
+                                    specialtyCode: info?.recommended_speciality_code))
+        messages.append(.botText(AIBotStrings.needSpecificDoctor))
+        messages.append(.botChoices([
+            AIBotChoice(title: AIBotStrings.yesNeedDoctor, tag: .findDoctor(true)),
+            AIBotChoice(title: AIBotStrings.noSearchMyself, tag: .findDoctor(false))
+        ]))
+        delegate?.coordinator(self, didAdd: messages)
+    }
+
+    // MARK: - Recommendation card tap
+
+    func openRecommendedDoctorSearch(specialtyCode: String?) {
+        delegate?.coordinator(self, openDoctorSearchForSpecialty: specialtyCode ?? recommendedSpecialtyCode)
     }
 
     // MARK: - Helpers
 
-    private func dequeueQuestionMessage() -> AIBotMessage? {
-        guard !queue.isEmpty else {
-            current = nil
-            return nil
-        }
-        let question = queue.removeFirst()
-        current = question
-        return .botText(prompt(for: question))
-    }
+    private var recommendedSpecialtyCode: String?
 
-    private func prompt(for question: Question) -> String {
-        switch question {
-        case .name: return AIBotStrings.chatAskName
-        case .age: return AIBotStrings.chatAskAge
-        case .symptoms: return AIBotStrings.chatAskSymptoms
+    private func askNextQuestion() -> AIBotMessage {
+        guard !pendingQuestions.isEmpty else {
+            currentQuestion = nil
+            return .botText("")
         }
-    }
-
-    private func record(answer: String, for question: Question?) {
-        guard let question = question else { return }
-        switch question {
-        case .name: answers.name = answer
-        case .age: answers.age = answer
-        case .symptoms: answers.symptoms = answer
-        }
-    }
-
-    private func text(of message: AIBotMessage) -> String {
-        switch message.kind {
-        case .text(let value): return value
-        // No speech-to-text yet; a voice note has no transcript.
-        case .voice, .action: return ""
-        }
-    }
-
-    /// Placeholder closing until the analysis endpoint is wired.
-    private func finish() -> [AIBotMessage] {
-        current = nil
-        let specialty = AIBotStrings.demoSpecialty
-        return [
-            .botText(AIBotStrings.chatAnalyzing),
-            .botText(AIBotStrings.chatRecommend(specialty)),
-            .botAction(title: AIBotStrings.chatFindBest(specialty), specialty: specialty)
-        ]
+        let next = pendingQuestions.removeFirst()
+        currentQuestion = next
+        return .botText(next.prompt)
     }
 }

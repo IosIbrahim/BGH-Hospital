@@ -2,8 +2,9 @@
 //  AIBotChatViewController.swift
 //  CareMate
 //
-//  The "Chat Voice" symptom-assistant conversation screen. UI + scripted
-//  flow only; speech-to-text and the recommendation backend are wired later.
+//  The "Chat Voice" symptom-assistant conversation screen. Drives
+//  AIBotChatCoordinator (session + language + service + medical conversation).
+//  Voice recording / speech-to-text / TTS are a later phase.
 //
 
 import UIKit
@@ -13,9 +14,8 @@ final class AIBotChatViewController: BaseViewController {
 
     // MARK: - State
 
-    private let engine = AIBotConversationEngine()
+    private let coordinator = AIBotChatCoordinator()
     private var messages: [AIBotMessage] = []
-    private let demoVoiceDuration = "1:07"
 
     // MARK: - UI
 
@@ -24,11 +24,13 @@ final class AIBotChatViewController: BaseViewController {
     private let backButton = UIButton(type: .system)
 
     private let tableView = UITableView(frame: .zero, style: .plain)
+    private let loadingView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
 
     private let inputContainer = UIView()
     private let textField = UITextField()
     private let actionButton = UIButton(type: .custom)
     private var inputBottomConstraint: NSLayoutConstraint!
+    private var inputHeightConstraint: NSLayoutConstraint!
     private var isKeyboardVisible = false
 
     // MARK: - Lifecycle
@@ -39,19 +41,20 @@ final class AIBotChatViewController: BaseViewController {
         buildHeader()
         buildInputBar()
         buildTableView()
+        buildLoading()
         registerKeyboardObservers()
         updateActionButton()
 
-        // Kick off the conversation.
-        appendSequentially(engine.start())
+        setInputVisible(false, animated: false)
+        coordinator.delegate = self
+        coordinator.start()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
         // This screen manages the keyboard itself (custom input bar). Turn off
-        // IQKeyboardManager here so it doesn't push the whole view up or add its
-        // toolbar above the keyboard.
+        // IQKeyboardManager so it doesn't push the whole view up or add a toolbar.
         IQKeyboardManager.shared.enable = false
         IQKeyboardManager.shared.enableAutoToolbar = false
     }
@@ -64,7 +67,6 @@ final class AIBotChatViewController: BaseViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        // Keep the input bar resting above the home indicator when no keyboard.
         if !isKeyboardVisible {
             inputBottomConstraint.constant = -(view.safeAreaInsets.bottom + 8)
         }
@@ -140,16 +142,17 @@ final class AIBotChatViewController: BaseViewController {
         field.addSubview(textField)
 
         inputBottomConstraint = inputContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8)
+        inputHeightConstraint = inputContainer.heightAnchor.constraint(equalToConstant: 52)
 
         NSLayoutConstraint.activate([
             inputContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             inputContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             inputBottomConstraint,
-            inputContainer.heightAnchor.constraint(equalToConstant: 52),
+            inputHeightConstraint,
 
             field.leadingAnchor.constraint(equalTo: inputContainer.leadingAnchor),
             field.topAnchor.constraint(equalTo: inputContainer.topAnchor),
-            field.bottomAnchor.constraint(equalTo: inputContainer.bottomAnchor),
+            field.heightAnchor.constraint(equalToConstant: 52),
             field.trailingAnchor.constraint(equalTo: actionButton.leadingAnchor, constant: -10),
 
             textField.leadingAnchor.constraint(equalTo: field.leadingAnchor, constant: 20),
@@ -158,7 +161,7 @@ final class AIBotChatViewController: BaseViewController {
             textField.bottomAnchor.constraint(equalTo: field.bottomAnchor),
 
             actionButton.trailingAnchor.constraint(equalTo: inputContainer.trailingAnchor),
-            actionButton.centerYAnchor.constraint(equalTo: inputContainer.centerYAnchor),
+            actionButton.topAnchor.constraint(equalTo: inputContainer.topAnchor),
             actionButton.widthAnchor.constraint(equalToConstant: 52),
             actionButton.heightAnchor.constraint(equalToConstant: 52)
         ])
@@ -177,6 +180,7 @@ final class AIBotChatViewController: BaseViewController {
         tableView.register(AIBotTextBubbleCell.self, forCellReuseIdentifier: AIBotTextBubbleCell.reuseID)
         tableView.register(AIBotVoiceCell.self, forCellReuseIdentifier: AIBotVoiceCell.reuseID)
         tableView.register(AIBotActionCell.self, forCellReuseIdentifier: AIBotActionCell.reuseID)
+        tableView.register(AIBotChoiceCell.self, forCellReuseIdentifier: AIBotChoiceCell.reuseID)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.insertSubview(tableView, belowSubview: inputContainer)
 
@@ -188,12 +192,22 @@ final class AIBotChatViewController: BaseViewController {
         ])
     }
 
+    private func buildLoading() {
+        loadingView.hidesWhenStopped = true
+        loadingView.color = AIBotTheme.blue
+        loadingView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(loadingView)
+        NSLayoutConstraint.activate([
+            loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingView.bottomAnchor.constraint(equalTo: inputContainer.topAnchor, constant: -14)
+        ])
+    }
+
     // MARK: - Messaging
 
-    /// Appends bot messages one-by-one with a short "typing" delay.
     private func appendSequentially(_ toSend: [AIBotMessage], index: Int = 0) {
         guard index < toSend.count else { return }
-        let delay = index == 0 ? 0.25 : 0.7
+        let delay = index == 0 ? 0.15 : 0.55
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
             guard let self = self else { return }
             self.append(toSend[index])
@@ -213,9 +227,14 @@ final class AIBotChatViewController: BaseViewController {
         tableView.scrollToRow(at: last, at: .bottom, animated: true)
     }
 
-    private func handleUser(_ message: AIBotMessage) {
-        append(message)
-        appendSequentially(engine.reply(to: message))
+    private func setInputVisible(_ visible: Bool, animated: Bool = true) {
+        inputHeightConstraint.constant = visible ? 52 : 0
+        if !visible { textField.resignFirstResponder() }
+        let apply = {
+            self.inputContainer.alpha = visible ? 1 : 0
+            self.view.layoutIfNeeded()
+        }
+        if animated { UIView.animate(withDuration: 0.2, animations: apply) } else { apply() }
     }
 
     // MARK: - Actions
@@ -247,15 +266,10 @@ final class AIBotChatViewController: BaseViewController {
             let text = (textField.text ?? "").trimmingCharacters(in: .whitespaces)
             textField.text = ""
             updateActionButton()
-            handleUser(.userText(text))
-        } else {
-            // No backend yet: simulate a recorded voice note.
-            handleUser(.userVoice(duration: demoVoiceDuration))
+            append(.userText(text))
+            coordinator.submitAnswer(text)
         }
-    }
-
-    private func openFindDoctor(specialty: String) {
-        navigationController?.pushViewController(DoctorsSearchViewController(), animated: true)
+        // Empty state = mic (voice input) — implemented in the voice phase.
     }
 
     // MARK: - Keyboard
@@ -271,7 +285,6 @@ final class AIBotChatViewController: BaseViewController {
               let endFrame = (info[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         let duration = (info[UIKeyboardAnimationDurationUserInfoKey] as? Double) ?? 0.25
 
-        // How much of the view the keyboard actually covers (in this view's space).
         let keyboardFrameInView = view.convert(endFrame, from: nil)
         let overlap = max(0, view.bounds.maxY - keyboardFrameInView.minY)
         let hiding = note.name == .UIKeyboardWillHide || overlap == 0
@@ -283,6 +296,32 @@ final class AIBotChatViewController: BaseViewController {
             self.view.layoutIfNeeded()
         }
         DispatchQueue.main.async { self.scrollToBottom() }
+    }
+}
+
+// MARK: - Coordinator delegate
+
+extension AIBotChatViewController: AIBotChatCoordinatorDelegate {
+
+    func coordinator(_ coordinator: AIBotChatCoordinator, didAdd messages: [AIBotMessage]) {
+        appendSequentially(messages)
+    }
+
+    func coordinatorDidStartLoading(_ coordinator: AIBotChatCoordinator) {
+        loadingView.startAnimating()
+    }
+
+    func coordinatorDidStopLoading(_ coordinator: AIBotChatCoordinator) {
+        loadingView.stopAnimating()
+    }
+
+    func coordinator(_ coordinator: AIBotChatCoordinator, setInputVisible visible: Bool) {
+        setInputVisible(visible)
+    }
+
+    func coordinator(_ coordinator: AIBotChatCoordinator, openDoctorSearchForSpecialty code: String?) {
+        // TODO (book-doctor phase): pass the specialty filter into the search.
+        navigationController?.pushViewController(DoctorsSearchViewController(), animated: true)
     }
 }
 
@@ -305,10 +344,16 @@ extension AIBotChatViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: AIBotVoiceCell.reuseID, for: indexPath) as! AIBotVoiceCell
             cell.configure(duration: duration)
             return cell
-        case .action(let title, let specialty):
+        case .action(let title, let specialtyCode):
             let cell = tableView.dequeueReusableCell(withIdentifier: AIBotActionCell.reuseID, for: indexPath) as! AIBotActionCell
             cell.configure(title: title) { [weak self] in
-                self?.openFindDoctor(specialty: specialty)
+                self?.coordinator.openRecommendedDoctorSearch(specialtyCode: specialtyCode)
+            }
+            return cell
+        case .choices(let options):
+            let cell = tableView.dequeueReusableCell(withIdentifier: AIBotChoiceCell.reuseID, for: indexPath) as! AIBotChoiceCell
+            cell.configure(options: options) { [weak self] choice in
+                self?.coordinator.handleChoice(choice)
             }
             return cell
         }

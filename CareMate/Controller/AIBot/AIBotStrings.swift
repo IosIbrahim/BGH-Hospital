@@ -95,6 +95,69 @@ enum AIBotStrings {
         UserManager.isArabic ? "ابحث عن أفضل \(specialty) الآن" : "Find Best \(specialty) Now"
     }
 
+    // MARK: - Phase A: language / service / find doctor
+
+    static var chatIntro: String {
+        UserManager.isArabic
+            ? "مرحباً! أنا مساعد الأعراض."
+            : "Hello! I'm your Symptom Assistant."
+    }
+
+    static var chooseLanguage: String {
+        UserManager.isArabic ? "اختر اللغة التي تريد التحدث بها" : "Select the language you need to discuss"
+    }
+
+    static var arabic: String { "العربية" }
+    static var english: String { "English" }
+
+    static var chooseService: String {
+        UserManager.isArabic ? "اختر نوع الخدمة" : "Select Service Type"
+    }
+
+    static var bookByComplaint: String {
+        UserManager.isArabic ? "حجز موعد بالشكوى" : "Book by Complaint"
+    }
+
+    static var bookBySpeciality: String {
+        UserManager.isArabic ? "حجز موعد بالتخصص" : "Book by Speciality"
+    }
+
+    static var letsStart: String {
+        UserManager.isArabic ? "حسناً فلنبدأ" : "Ok let's get started"
+    }
+
+    static func recommendSpecialty(_ specialty: String) -> String {
+        UserManager.isArabic
+            ? "بناءً على الأعراض الخاصة بك، أوصي بمراجعة \(specialty)"
+            : "Based on your symptoms, I recommend seeing a \(specialty)"
+    }
+
+    static func findBestNow(_ specialty: String) -> String {
+        UserManager.isArabic ? "اعثر على أفضل \(specialty) الآن" : "Find Best \(specialty) Now"
+    }
+
+    static var needSpecificDoctor: String {
+        UserManager.isArabic ? "هل تريد المساعدة في الحصول على دكتور معين؟" : "Do you need help to get a specific doctor?"
+    }
+
+    static var yesNeedDoctor: String {
+        UserManager.isArabic ? "نعم أحتاج طبيباً محدداً" : "Yes I Need Specific Doctor"
+    }
+
+    static var noSearchMyself: String {
+        UserManager.isArabic ? "لا، سأبحث بنفسي" : "No I will search by self"
+    }
+
+    static var genericError: String {
+        UserManager.isArabic
+            ? "عذراً، لم أتمكن من فهم ردك. يُرجى المحاولة مرة أخرى."
+            : "Sorry, I couldn't understand your reply. Please try again."
+    }
+
+    static var connectionError: String {
+        UserManager.isArabic ? "تعذّر الاتصال بالخادم. حاول مرة أخرى." : "Couldn't reach the server. Please try again."
+    }
+
     // Placeholder used until the analysis endpoint is wired.
     static var demoSpecialty: String {
         UserManager.isArabic ? "طبيب أعصاب" : "Neurologist"
