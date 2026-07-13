@@ -82,9 +82,10 @@ final class AIBotConversationEngine {
     /// Opening messages plus the first question.
     func start() -> [AIBotMessage] {
         var messages: [AIBotMessage] = [.botText(AIBotStrings.chatOpener)]
-        // Greet a known user by name.
+        // Greet a known user by their first name only.
         if let name = context.name, !context.isGuest {
-            messages.append(.botText(AIBotStrings.chatGreetName(name)))
+            let firstName = name.components(separatedBy: " ").first ?? name
+            messages.append(.botText(AIBotStrings.chatGreetName(firstName)))
         }
         if let next = dequeueQuestionMessage() {
             messages.append(next)

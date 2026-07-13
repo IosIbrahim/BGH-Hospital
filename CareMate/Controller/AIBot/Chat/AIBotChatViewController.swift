@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 final class AIBotChatViewController: BaseViewController {
 
@@ -48,6 +49,17 @@ final class AIBotChatViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        // This screen manages the keyboard itself (custom input bar). Turn off
+        // IQKeyboardManager here so it doesn't push the whole view up or add its
+        // toolbar above the keyboard.
+        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enableAutoToolbar = false
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = true
     }
 
     override func viewDidLayoutSubviews() {
