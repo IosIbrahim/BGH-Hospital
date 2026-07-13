@@ -49,6 +49,10 @@ protocol AIBotChatCoordinatorDelegate: AnyObject {
     /// Whether the typed-input bar should be shown (hidden while choosing buttons).
     func coordinator(_ coordinator: AIBotChatCoordinator, setInputVisible visible: Bool)
     func coordinator(_ coordinator: AIBotChatCoordinator, openDoctorSearchForSpecialty code: String?)
+    /// Ask the UI to open the live voice mode for the given recognizer language.
+    func coordinator(_ coordinator: AIBotChatCoordinator, didRequestVoiceModeWithLang lang: String)
+    /// A bot TTS reply finished playing (used to resume listening).
+    func coordinatorDidFinishSpeaking(_ coordinator: AIBotChatCoordinator)
 }
 
 final class AIBotChatCoordinator {
@@ -168,6 +172,7 @@ final class AIBotChatCoordinator {
 
         state = .asking
         delegate?.coordinator(self, setInputVisible: true)
+        delegate?.coordinator(self, didRequestVoiceModeWithLang: lang)
 
         var opener: [AIBotMessage] = [.botText(AIBotStrings.letsStart)]
         if let first = context.firstName, !context.isGuest {
@@ -274,12 +279,25 @@ final class AIBotChatCoordinator {
         }.joined(separator: " ")
         guard !text.isEmpty else { return }
         service.textToSpeech(text: text, sessionKey: key) { [weak self] result in
-            guard let self = self, case .success(let url) = result else { return }
+            guard let self = self else { return }
+            guard case .success(let url) = result else {
+                self.delegate?.coordinatorDidFinishSpeaking(self)
+                return
+            }
             let duration = AIBotAudioPlayer.durationString(for: url)
             self.delegate?.coordinator(self, didAdd: [.botAudio(url: url, duration: duration)])
-            AIBotAudioPlayer.shared.play(url: url)
+            AIBotAudioPlayer.shared.play(url: url) { [weak self] in
+                guard let self = self else { return }
+                self.delegate?.coordinatorDidFinishSpeaking(self)
+            }
         }
     }
+
+    /// True while the coordinator is waiting for the user's answer to a question.
+    var expectsUserAnswer: Bool { state == .asking }
+
+    /// Recognizer language for voice mode ("ar" / "en").
+    var languageCode: String { lang }
 
     private func askNextQuestion() -> AIBotMessage {
         guard !pendingQuestions.isEmpty else {

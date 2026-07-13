@@ -16,6 +16,7 @@ final class AIBotChatViewController: BaseViewController {
 
     private let coordinator = AIBotChatCoordinator()
     private var messages: [AIBotMessage] = []
+    private var voiceMode: AIBotVoiceModeViewController?
 
     // MARK: - UI
 
@@ -268,8 +269,24 @@ final class AIBotChatViewController: BaseViewController {
             updateActionButton()
             append(.userText(text))
             coordinator.submitAnswer(text)
+        } else if coordinator.expectsUserAnswer {
+            // Empty state = mic → open live voice mode.
+            presentVoiceMode(lang: coordinator.languageCode, autoListen: true)
         }
-        // Empty state = mic (voice input) — implemented in the voice phase.
+    }
+
+    private func presentVoiceMode(lang: String, autoListen: Bool) {
+        guard voiceMode == nil else {
+            if autoListen { voiceMode?.startListening() }
+            return
+        }
+        let localeId = (lang == "ar") ? "ar-SA" : "en-US"
+        let vc = AIBotVoiceModeViewController(localeId: localeId)
+        vc.delegate = self
+        voiceMode = vc
+        present(vc, animated: true) {
+            if autoListen { vc.startListening() }
+        }
     }
 
     // MARK: - Keyboard
@@ -321,7 +338,40 @@ extension AIBotChatViewController: AIBotChatCoordinatorDelegate {
 
     func coordinator(_ coordinator: AIBotChatCoordinator, openDoctorSearchForSpecialty code: String?) {
         // TODO (book-doctor phase): pass the specialty filter into the search.
+        voiceMode?.closeMode()
+        voiceMode = nil
         navigationController?.pushViewController(DoctorsSearchViewController(), animated: true)
+    }
+
+    func coordinator(_ coordinator: AIBotChatCoordinator, didRequestVoiceModeWithLang lang: String) {
+        // Bot speaks the opener first; we start listening once it finishes.
+        presentVoiceMode(lang: lang, autoListen: false)
+    }
+
+    func coordinatorDidFinishSpeaking(_ coordinator: AIBotChatCoordinator) {
+        guard let voiceMode = voiceMode else { return }
+        if coordinator.expectsUserAnswer {
+            voiceMode.startListening()
+        } else {
+            voiceMode.closeMode()
+            self.voiceMode = nil
+        }
+    }
+}
+
+// MARK: - Voice mode delegate
+
+extension AIBotChatViewController: AIBotVoiceModeDelegate {
+
+    func voiceMode(_ controller: AIBotVoiceModeViewController, didRecognize text: String) {
+        controller.setSpeaking()
+        append(.userText(text))
+        coordinator.submitAnswer(text)
+    }
+
+    func voiceModeDidClose(_ controller: AIBotVoiceModeViewController) {
+        voiceMode = nil
+        setInputVisible(true)
     }
 }
 

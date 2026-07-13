@@ -158,6 +158,22 @@ enum AIBotStrings {
         UserManager.isArabic ? "تعذّر الاتصال بالخادم. حاول مرة أخرى." : "Couldn't reach the server. Please try again."
     }
 
+    // MARK: - Voice mode
+
+    static var voiceListening: String {
+        UserManager.isArabic ? "🎤 تحدث الآن..." : "🎤 Listening..."
+    }
+
+    static var voiceSpeaking: String {
+        UserManager.isArabic ? "المساعد يتحدث..." : "Assistant is speaking..."
+    }
+
+    static var voicePermissionDenied: String {
+        UserManager.isArabic
+            ? "يرجى السماح بالوصول إلى الميكروفون والتعرف على الكلام."
+            : "Please allow microphone and speech recognition access."
+    }
+
     // Placeholder used until the analysis endpoint is wired.
     static var demoSpecialty: String {
         UserManager.isArabic ? "طبيب أعصاب" : "Neurologist"
