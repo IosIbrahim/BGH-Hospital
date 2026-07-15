@@ -25,6 +25,7 @@ final class AIBotVoiceModeViewController: UIViewController {
     private let pulseView = UIView()
     private let micCircle = UIView()
     private let micImageView = UIImageView()
+    private let robotImageView = UIImageView()
     private let statusLabel = UILabel()
     private let transcriptLabel = UILabel()
     private let closeButton = UIButton(type: .system)
@@ -62,6 +63,7 @@ final class AIBotVoiceModeViewController: UIViewController {
         guard authorized else { return }
         statusLabel.text = AIBotStrings.voiceListening
         transcriptLabel.text = ""
+        showListeningVisuals(true)
         startPulse()
         recognizer.start()
     }
@@ -71,6 +73,7 @@ final class AIBotVoiceModeViewController: UIViewController {
         wantsToListen = false
         recognizer.stop()
         stopPulse()
+        showListeningVisuals(false)
         statusLabel.text = AIBotStrings.voiceSpeaking
     }
 
@@ -100,35 +103,42 @@ final class AIBotVoiceModeViewController: UIViewController {
     // MARK: - UI
 
     private func buildUI() {
-        view.backgroundColor = AIBotTheme.headerIndigo
+        view.backgroundColor = .white
 
         closeButton.setImage(AIBotIcon.symbol("xmark", pointSize: 18, bold: true), for: .normal)
-        closeButton.tintColor = .white
+        closeButton.tintColor = AIBotTheme.headerIndigo
         closeButton.addTarget(self, action: #selector(didTapClose), for: .touchUpInside)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(closeButton)
 
-        pulseView.backgroundColor = UIColor.white.withAlphaComponent(0.18)
+        // Robot shown while the bot is speaking.
+        robotImageView.image = UIImage(named: "aibot_avatar")
+        robotImageView.contentMode = .scaleAspectFit
+        robotImageView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(robotImageView)
+
+        // Blue mic circle + halo shown while listening.
+        pulseView.backgroundColor = AIBotTheme.blue.withAlphaComponent(0.18)
         pulseView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(pulseView)
 
-        micCircle.backgroundColor = .white
+        micCircle.backgroundColor = AIBotTheme.blue
         micCircle.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(micCircle)
 
         micImageView.image = AIBotIcon.symbol("mic.fill", pointSize: 34, bold: true)
-        micImageView.tintColor = AIBotTheme.headerIndigo
+        micImageView.tintColor = .white
         micImageView.contentMode = .scaleAspectFit
         micImageView.translatesAutoresizingMaskIntoConstraints = false
         micCircle.addSubview(micImageView)
 
-        statusLabel.textColor = .white
+        statusLabel.textColor = AIBotTheme.headerIndigo
         statusLabel.font = .systemFont(ofSize: 18, weight: .semibold)
         statusLabel.textAlignment = .center
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(statusLabel)
 
-        transcriptLabel.textColor = UIColor.white.withAlphaComponent(0.9)
+        transcriptLabel.textColor = AIBotTheme.bodyGray
         transcriptLabel.font = .systemFont(ofSize: 16)
         transcriptLabel.textAlignment = .center
         transcriptLabel.numberOfLines = 0
@@ -157,7 +167,12 @@ final class AIBotVoiceModeViewController: UIViewController {
             micImageView.centerXAnchor.constraint(equalTo: micCircle.centerXAnchor),
             micImageView.centerYAnchor.constraint(equalTo: micCircle.centerYAnchor),
 
-            statusLabel.topAnchor.constraint(equalTo: micCircle.bottomAnchor, constant: 40),
+            robotImageView.centerXAnchor.constraint(equalTo: micCircle.centerXAnchor),
+            robotImageView.centerYAnchor.constraint(equalTo: micCircle.centerYAnchor),
+            robotImageView.widthAnchor.constraint(equalToConstant: 150),
+            robotImageView.heightAnchor.constraint(equalToConstant: 150),
+
+            statusLabel.topAnchor.constraint(equalTo: pulseView.bottomAnchor, constant: 40),
             statusLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             statusLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
 
@@ -165,6 +180,13 @@ final class AIBotVoiceModeViewController: UIViewController {
             transcriptLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             transcriptLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32)
         ])
+    }
+
+    private func showListeningVisuals(_ listening: Bool) {
+        micCircle.isHidden = !listening
+        micImageView.isHidden = !listening
+        pulseView.isHidden = !listening
+        robotImageView.isHidden = listening
     }
 
     private func startPulse() {

@@ -24,7 +24,7 @@ enum AIBotIcon {
 // MARK: - Avatars
 
 private func makeBotAvatar() -> UIImageView {
-    let iv = UIImageView(image: UIImage(named: "aibot_icon"))
+    let iv = UIImageView(image: UIImage(named: "aibot_avatar"))
     iv.contentMode = .scaleAspectFit
     iv.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -338,14 +338,12 @@ final class AIBotChoiceCell: UITableViewCell {
         for (index, option) in options.enumerated() {
             let button = UIButton(type: .system)
             button.tag = index
-            button.setTitle("  \(option.title)  ", for: .normal)
-            button.setTitleColor(AIBotTheme.voiceIndigo, for: .normal)
+            button.setTitle(option.title, for: .normal)
+            button.setTitleColor(.white, for: .normal)
             button.titleLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
-            button.backgroundColor = .white
+            button.backgroundColor = AIBotTheme.blue
             button.layer.cornerRadius = 22
-            button.layer.borderWidth = 1
-            button.layer.borderColor = AIBotTheme.blue.cgColor
-            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+            button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 22, bottom: 0, right: 22)
             button.heightAnchor.constraint(equalToConstant: 44).isActive = true
             button.addTarget(self, action: #selector(didTap(_:)), for: .touchUpInside)
             stack.addArrangedSubview(button)
