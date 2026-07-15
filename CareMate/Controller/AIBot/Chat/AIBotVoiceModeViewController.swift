@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol AIBotVoiceModeDelegate: AnyObject {
     func voiceMode(_ controller: AIBotVoiceModeViewController, didRecognize text: String)
@@ -21,6 +22,8 @@ final class AIBotVoiceModeViewController: UIViewController {
     private let recognizer: AIBotSpeechRecognizer
     private var authorized = false
     private var wantsToListen = false
+    private var retryCount = 0
+    private let maxAutoRetries = 6
 
     private let pulseView = UIView()
     private let micCircle = UIView()
@@ -45,6 +48,10 @@ final class AIBotVoiceModeViewController: UIViewController {
         wireRecognizer()
         setSpeaking() // bot speaks first; we start listening when asked to.
 
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(handleInterruption(_:)),
+            name: .AVAudioSessionInterruption, object: nil)
+
         AIBotSpeechRecognizer.requestAuthorization { [weak self] granted in
             guard let self = self else { return }
             self.authorized = granted
@@ -58,7 +65,8 @@ final class AIBotVoiceModeViewController: UIViewController {
 
     // MARK: - Public control
 
-    func startListening() {
+    func startListening(resetRetries: Bool = true) {
+        if resetRetries { retryCount = 0 }
         wantsToListen = true
         guard authorized else { return }
         statusLabel.text = AIBotStrings.voiceListening
@@ -90,15 +98,27 @@ final class AIBotVoiceModeViewController: UIViewController {
         }
         recognizer.onResult = { [weak self] text in
             guard let self = self else { return }
+            self.retryCount = 0
             self.stopPulse()
             self.statusLabel.text = AIBotStrings.voiceSpeaking
             self.delegate?.voiceMode(self, didRecognize: text)
         }
         recognizer.onError = { [weak self] message in
             guard let self = self else { return }
-            self.stopPulse()
-            self.statusLabel.text = AIBotStrings.voiceListening
-            self.transcriptLabel.text = "⚠️ \(message)"
+            self.retryCount += 1
+            // Smart resume: an interruption (no speech, timeout, etc.) shouldn't
+            // end the flow — keep listening for the same question.
+            if self.wantsToListen && self.retryCount <= self.maxAutoRetries {
+                self.transcriptLabel.text = ""
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                    guard let self = self, self.wantsToListen else { return }
+                    self.startListening(resetRetries: false)
+                }
+            } else {
+                self.stopPulse()
+                self.statusLabel.text = AIBotStrings.voiceListening
+                self.transcriptLabel.text = "⚠️ \(message)"
+            }
         }
     }
 
@@ -209,6 +229,19 @@ final class AIBotVoiceModeViewController: UIViewController {
 
     @objc private func didTapMic() {
         if authorized { startListening() }
+    }
+
+    /// Resume listening after a phone call / Siri / other audio interruption.
+    @objc private func handleInterruption(_ note: Notification) {
+        guard let info = note.userInfo,
+              let raw = info[AVAudioSessionInterruptionTypeKey] as? UInt,
+              let type = AVAudioSessionInterruptionType(rawValue: raw) else { return }
+        switch type {
+        case .began:
+            recognizer.stop()
+        case .ended:
+            if wantsToListen { startListening(resetRetries: false) }
+        }
     }
 
     @objc private func didTapClose() {
