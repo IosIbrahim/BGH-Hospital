@@ -203,8 +203,8 @@ final class AIBotChatCoordinator {
             switch result {
             case .success(let response):
                 self.handleConversation(response)
-            case .failure:
-                self.delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.connectionError)])
+            case .failure(let error):
+                self.delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.connectionError + "\n[\(error.debugText)]")])
             }
         }
     }
@@ -226,8 +226,8 @@ final class AIBotChatCoordinator {
                 } else {
                     self.submitAnswer(text)
                 }
-            case .failure:
-                self.delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.connectionError)])
+            case .failure(let error):
+                self.delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.connectionError + "\n[STT: \(error.debugText)]")])
             }
         }
     }

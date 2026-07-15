@@ -85,6 +85,17 @@ enum AIBotServiceError: Error {
     case http(Int)
     case decoding(Error)
     case transport(Error)
+
+    /// Short human-readable reason (used for on-screen debugging).
+    var debugText: String {
+        switch self {
+        case .invalidURL: return "invalid url"
+        case .noData: return "no data"
+        case .http(let code): return "HTTP \(code)"
+        case .decoding: return "bad response format"
+        case .transport(let error): return "network: \(error.localizedDescription)"
+        }
+    }
 }
 
 // MARK: - Service
@@ -241,6 +252,8 @@ final class AIBotService {
                     let decoded = try JSONDecoder().decode(Response.self, from: data)
                     completion(.success(decoded))
                 } catch {
+                    let body = String(data: data, encoding: .utf8) ?? "<binary>"
+                    print("🔴 [AIBot] DECODING FAILED for \(Response.self): \(error)\n   body: \(body)")
                     completion(.failure(.decoding(error)))
                 }
             case .failure(let error):
@@ -251,11 +264,21 @@ final class AIBotService {
 
     private func runRaw(_ request: URLRequest,
                         completion: @escaping (Result<Data, AIBotServiceError>) -> Void) {
+        let path = request.url?.lastPathComponent ?? "?"
+        if let body = request.httpBody, let str = String(data: body, encoding: .utf8) {
+            print("➡️ [AIBot] POST \(path)  body: \(str)")
+        } else {
+            print("➡️ [AIBot] POST \(path)")
+        }
         session.dataTask(with: request) { data, response, error in
+            let status = (response as? HTTPURLResponse)?.statusCode ?? -1
+            let bodyStr = data.flatMap { String(data: $0, encoding: .utf8) } ?? "<\(data?.count ?? 0) bytes>"
+            print("⬅️ [AIBot] \(path)  status \(status)  resp: \(bodyStr.prefix(500))")
             let finish: (Result<Data, AIBotServiceError>) -> Void = { result in
                 DispatchQueue.main.async { completion(result) }
             }
             if let error = error {
+                print("🔴 [AIBot] \(path) transport error: \(error.localizedDescription)")
                 finish(.failure(.transport(error))); return
             }
             if let http = response as? HTTPURLResponse, !(200...299).contains(http.statusCode) {
