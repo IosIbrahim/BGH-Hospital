@@ -164,13 +164,10 @@ final class AIBotChatCoordinator {
             .userText(bookDoctor ? AIBotStrings.bookBySpeciality : AIBotStrings.bookByComplaint)
         ])
 
-        // Build the question queue (name only for guests, age always for now).
-        pendingQuestions = []
-        if context.isGuest || (context.firstName ?? "").isEmpty {
-            pendingQuestions.append(.name)
-        }
-        pendingQuestions.append(.age)
-        pendingQuestions.append(.symptoms)
+        // The backend expects name -> age -> symptoms in order, so we always
+        // include name. For a logged-in user it's auto-answered from the saved
+        // name (see proceedToNextQuestion); guests are asked.
+        pendingQuestions = [.name, .age, .symptoms]
 
         state = .asking
         delegate?.coordinator(self, setInputVisible: true)
@@ -180,19 +177,49 @@ final class AIBotChatCoordinator {
         if let first = context.firstName, !context.isGuest {
             opener.append(.botText(AIBotStrings.chatGreetName(first)))
         }
-        opener.append(askNextQuestion())
         emit(opener, speak: true)
+        proceedToNextQuestion()
+    }
+
+    /// Advances to the next question. The name question is auto-answered from
+    /// the saved profile for logged-in users; everything else is asked.
+    private func proceedToNextQuestion() {
+        guard !pendingQuestions.isEmpty else {
+            currentQuestion = nil
+            return
+        }
+        let next = pendingQuestions.removeFirst()
+        currentQuestion = next
+        if next == .name, let firstName = context.firstName, !context.isGuest {
+            sendAnswerToBackend(firstName) // silent: user isn't asked
+        } else {
+            emit([.botText(next.prompt)], speak: true)
+        }
+    }
+
+    /// Removes bidi control marks the recognizer sometimes prepends (e.g. U+200F).
+    private func clean(_ text: String) -> String {
+        let marks = CharacterSet(charactersIn: "\u{200E}\u{200F}\u{202A}\u{202B}\u{202C}\u{202D}\u{202E}\u{2066}\u{2067}\u{2068}\u{2069}")
+        var result = ""
+        for scalar in text.unicodeScalars where !marks.contains(scalar) {
+            result.unicodeScalars.append(scalar)
+        }
+        return result.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     // MARK: - Typed answers
 
     func submitAnswer(_ text: String) {
-        guard state == .asking, !isBusy, let key = sessionKey else { return }
-        let answeredQuestion = currentQuestion
+        guard state == .asking, !isBusy else { return }
+        sendAnswerToBackend(clean(text))
+    }
+
+    private func sendAnswerToBackend(_ text: String) {
+        guard let key = sessionKey else { return }
         isBusy = true
         delegate?.coordinatorDidStartLoading(self)
         let request = MedicalConversationRequest(
-            question: answeredQuestion?.prompt,
+            question: currentQuestion?.prompt,
             user_response: text,
             session_key: key
         )
@@ -248,19 +275,17 @@ final class AIBotChatCoordinator {
             return
         }
 
-        var messages: [AIBotMessage] = []
         // Acknowledgement / dynamic question returned by the backend.
         if !content.isEmpty {
-            messages.append(.botText(content))
+            emit([.botText(content)], speak: true)
         }
-        // Move on to the next scripted question if any remain; otherwise the
-        // backend content above is the next prompt.
+        // Ask the next scripted question if any remain; otherwise the backend
+        // drives with its own content above.
         if !pendingQuestions.isEmpty {
-            messages.append(askNextQuestion())
+            proceedToNextQuestion()
         } else {
             currentQuestion = nil
         }
-        emit(messages, speak: true)
     }
 
     private func finish(with info: ConversationInfo?) {
@@ -327,14 +352,4 @@ final class AIBotChatCoordinator {
 
     /// Recognizer language for voice mode ("ar" / "en").
     var languageCode: String { lang }
-
-    private func askNextQuestion() -> AIBotMessage {
-        guard !pendingQuestions.isEmpty else {
-            currentQuestion = nil
-            return .botText("")
-        }
-        let next = pendingQuestions.removeFirst()
-        currentQuestion = next
-        return .botText(next.prompt)
-    }
 }
