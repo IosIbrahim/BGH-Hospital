@@ -22,9 +22,12 @@ final class AIBotSpeechRecognizer {
 
     var onPartial: ((String) -> Void)?
     var onResult: ((String) -> Void)?
-    var onError: (() -> Void)?
+    var onError: ((String) -> Void)?
+
+    private let localeId: String
 
     init(localeId: String) {
+        self.localeId = localeId
         recognizer = SFSpeechRecognizer(locale: Locale(identifier: localeId))
     }
 
@@ -40,7 +43,16 @@ final class AIBotSpeechRecognizer {
 
     func start() {
         stop()
-        guard let recognizer = recognizer, recognizer.isAvailable else { onError?(); return }
+        guard let recognizer = recognizer else {
+            print("🔴 [Speech] no recognizer for \(localeId)")
+            onError?("Speech recognition not supported for \(localeId)")
+            return
+        }
+        print("🎙️ [Speech] locale=\(localeId) available=\(recognizer.isAvailable)")
+        guard recognizer.isAvailable else {
+            onError?("Speech recognizer unavailable (check network / language)")
+            return
+        }
 
         do {
             let session = AVAudioSession.sharedInstance()
@@ -48,7 +60,9 @@ final class AIBotSpeechRecognizer {
             try session.setMode(AVAudioSessionModeMeasurement)
             try session.setActive(true, with: .notifyOthersOnDeactivation)
         } catch {
-            onError?(); return
+            print("🔴 [Speech] audio session error: \(error)")
+            onError?("Audio session error")
+            return
         }
 
         let request = SFSpeechAudioBufferRecognitionRequest()
@@ -57,6 +71,7 @@ final class AIBotSpeechRecognizer {
 
         let input = audioEngine.inputNode
         let format = input.outputFormat(forBus: 0)
+        print("🎙️ [Speech] input format sampleRate=\(format.sampleRate) channels=\(format.channelCount)")
         input.installTap(onBus: 0, bufferSize: 1024, format: format) { buffer, _ in
             request.append(buffer)
         }
@@ -64,7 +79,9 @@ final class AIBotSpeechRecognizer {
         do {
             try audioEngine.start()
         } catch {
-            onError?(); return
+            print("🔴 [Speech] engine start error: \(error)")
+            onError?("Couldn't start the microphone")
+            return
         }
 
         lastText = ""
@@ -72,16 +89,25 @@ final class AIBotSpeechRecognizer {
             guard let self = self else { return }
             if let result = result {
                 self.lastText = result.bestTranscription.formattedString
+                print("🎙️ [Speech] partial: \(self.lastText)")
                 self.onPartial?(self.lastText)
+                // Only start the finalize timer once speech has actually begun,
+                // so we don't cut off before the user starts talking.
                 self.resetSilenceTimer()
                 if result.isFinal { self.finish() }
             }
-            if error != nil {
+            if let error = error {
+                print("🔴 [Speech] task error: \(error.localizedDescription)")
+                let text = self.lastText.trimmingCharacters(in: .whitespacesAndNewlines)
                 self.stop()
-                self.onError?()
+                if !text.isEmpty {
+                    self.onResult?(text)
+                } else {
+                    self.onError?("No speech detected. Tap the mic and try again.")
+                }
             }
         }
-        resetSilenceTimer()
+        // NOTE: no silence timer here — it starts only after the first result.
     }
 
     func stop() {

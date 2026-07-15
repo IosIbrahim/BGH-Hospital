@@ -94,9 +94,11 @@ final class AIBotVoiceModeViewController: UIViewController {
             self.statusLabel.text = AIBotStrings.voiceSpeaking
             self.delegate?.voiceMode(self, didRecognize: text)
         }
-        recognizer.onError = { [weak self] in
-            self?.stopPulse()
-            self?.statusLabel.text = AIBotStrings.voiceListening
+        recognizer.onError = { [weak self] message in
+            guard let self = self else { return }
+            self.stopPulse()
+            self.statusLabel.text = AIBotStrings.voiceListening
+            self.transcriptLabel.text = "⚠️ \(message)"
         }
     }
 
@@ -131,6 +133,7 @@ final class AIBotVoiceModeViewController: UIViewController {
         micImageView.contentMode = .scaleAspectFit
         micImageView.translatesAutoresizingMaskIntoConstraints = false
         micCircle.addSubview(micImageView)
+        micCircle.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapMic)))
 
         statusLabel.textColor = AIBotTheme.headerIndigo
         statusLabel.font = .systemFont(ofSize: 18, weight: .semibold)
@@ -202,6 +205,10 @@ final class AIBotVoiceModeViewController: UIViewController {
 
     private func stopPulse() {
         pulseView.layer.removeAnimation(forKey: "pulse")
+    }
+
+    @objc private func didTapMic() {
+        if authorized { startListening() }
     }
 
     @objc private func didTapClose() {
