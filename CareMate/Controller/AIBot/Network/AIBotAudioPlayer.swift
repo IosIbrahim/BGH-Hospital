@@ -23,10 +23,15 @@ final class AIBotAudioPlayer: NSObject, AVAudioPlayerDelegate {
     func play(url: URL, onFinish: (() -> Void)? = nil) {
         stop()
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-            try AVAudioSession.sharedInstance().setActive(true)
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(AVAudioSessionCategoryPlayback)
+            // Reset the mode: the speech recognizer leaves it on .measurement,
+            // which makes playback quiet and can route it to the earpiece.
+            try session.setMode(AVAudioSessionModeDefault)
+            try session.setActive(true)
             let player = try AVAudioPlayer(contentsOf: url)
             player.delegate = self
+            player.volume = 1.0
             self.player = player
             self.onFinish = onFinish
             self.currentURL = url
