@@ -92,6 +92,7 @@ final class AIBotChatCoordinator {
     // MARK: - Start
 
     func start() {
+        AIBotStrings.overrideLang = nil // language chooser uses the app default
         delegate?.coordinatorDidStartLoading(self)
         service.generateSession { [weak self] result in
             guard let self = self else { return }
@@ -133,6 +134,7 @@ final class AIBotChatCoordinator {
     private func selectLanguage(_ lang: String) {
         guard state == .choosingLanguage, !isBusy, let key = sessionKey else { return }
         self.lang = lang
+        AIBotStrings.overrideLang = lang // rest of the chat now follows this language
         delegate?.coordinator(self, didAdd: [.userText(lang == "ar" ? AIBotStrings.arabic : AIBotStrings.english)])
         isBusy = true
         delegate?.coordinatorDidStartLoading(self)

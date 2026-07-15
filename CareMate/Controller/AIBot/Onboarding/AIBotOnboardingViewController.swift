@@ -28,6 +28,7 @@ final class AIBotOnboardingViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        AIBotStrings.overrideLang = nil // follow app language until a chat language is picked
         view.backgroundColor = .white
         buildHeader()
         buildContent()
