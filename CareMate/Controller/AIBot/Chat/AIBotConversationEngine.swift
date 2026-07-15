@@ -124,10 +124,14 @@ final class AIBotChatCoordinator {
             selectLanguage(lang)
         case .service(let bookDoctor):
             selectService(bookDoctor: bookDoctor)
-        case .findDoctor:
-            // Both paths lead to doctor search for now; the dedicated
-            // book-doctor sub-flow is a later phase.
-            delegate?.coordinator(self, openDoctorSearchForSpecialty: recommendedSpecialtyCode)
+        case .findDoctor(let yes):
+            if yes {
+                // Start the book-doctor conversation for the recommended specialty.
+                startBookDoctor(specialtyName: recommendedSpecialtyName,
+                                specialtyCode: recommendedSpecialtyCode)
+            } else {
+                delegate?.coordinator(self, openDoctorSearchForSpecialty: recommendedSpecialtyCode)
+            }
         }
     }
 
@@ -163,15 +167,20 @@ final class AIBotChatCoordinator {
         delegate?.coordinator(self, didAdd: [
             .userText(bookDoctor ? AIBotStrings.bookBySpeciality : AIBotStrings.bookByComplaint)
         ])
-
-        // The backend expects name -> age -> symptoms in order, so we always
-        // include name. For a logged-in user it's auto-answered from the saved
-        // name (see proceedToNextQuestion); guests are asked.
-        pendingQuestions = [.name, .age, .symptoms]
-
         state = .asking
         delegate?.coordinator(self, setInputVisible: true)
         delegate?.coordinator(self, didRequestVoiceModeWithLang: lang)
+
+        if bookDoctor {
+            emit([.botText(AIBotStrings.letsStart)], speak: true)
+            startBookDoctor(specialtyName: nil, specialtyCode: nil)
+            return
+        }
+
+        // Complaint flow: backend expects name -> age -> symptoms in order, so
+        // we always include name. For a logged-in user it's auto-answered from
+        // the saved profile (see proceedToNextQuestion); guests are asked.
+        pendingQuestions = [.name, .age, .symptoms]
 
         var opener: [AIBotMessage] = [.botText(AIBotStrings.letsStart)]
         if let first = context.firstName, !context.isGuest {
@@ -180,6 +189,99 @@ final class AIBotChatCoordinator {
         emit(opener, speak: true)
         proceedToNextQuestion()
     }
+
+    // MARK: - Book doctor flow
+
+    private func startBookDoctor(specialtyName: String?, specialtyCode: String?) {
+        guard let key = sessionKey else { return }
+        isBookDoctor = true
+        state = .asking
+        currentQuestion = nil
+        pendingQuestions = []
+        delegate?.coordinator(self, setInputVisible: true)
+        delegate?.coordinator(self, didRequestVoiceModeWithLang: lang)
+        isBusy = true
+        delegate?.coordinatorDidStartLoading(self)
+        let request = BookDoctorRequest(session_key: key, user_response: nil,
+                                        speciality_name: specialtyName, speciality_code: specialtyCode)
+        service.bookDoctorConversation(request) { [weak self] result in
+            self?.handleBookDoctorResult(result)
+        }
+    }
+
+    private func sendBookDoctorAnswer(_ text: String) {
+        guard let key = sessionKey else { return }
+        isBusy = true
+        delegate?.coordinatorDidStartLoading(self)
+        let request = BookDoctorRequest(session_key: key, user_response: text,
+                                        speciality_name: nil, speciality_code: nil)
+        service.bookDoctorConversation(request) { [weak self] result in
+            self?.handleBookDoctorResult(result)
+        }
+    }
+
+    private func handleBookDoctorResult(_ result: Result<BookDoctorResponse, AIBotServiceError>) {
+        isBusy = false
+        delegate?.coordinatorDidStopLoading(self)
+        switch result {
+        case .success(let response):
+            handleBookDoctor(response)
+        case .failure(let error):
+            delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.connectionError + "\n[\(error.debugText)]")])
+        }
+    }
+
+    private func handleBookDoctor(_ response: BookDoctorResponse) {
+        let content = response.content ?? ""
+        let token = content.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        if token == "error" || token == "خطأ" {
+            delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.genericError)])
+            return
+        }
+        if response.is_conversation_finished == true {
+            finishBooking(response)
+            return
+        }
+        if !content.isEmpty {
+            emit([.botText(content)], speak: true)
+        }
+    }
+
+    private func finishBooking(_ response: BookDoctorResponse) {
+        state = .finished
+        delegate?.coordinator(self, setInputVisible: false)
+
+        let date = (response.date == "-1" || (response.date ?? "").isEmpty) ? AIBotStrings.notSpecified : (response.date ?? AIBotStrings.notSpecified)
+        let type: String
+        switch response.doctor_type {
+        case 0: type = AIBotStrings.consultant
+        case 1: type = AIBotStrings.specialist
+        default: type = AIBotStrings.notSpecified
+        }
+        let gender: String
+        switch response.doctor_gender_preference {
+        case 0: gender = AIBotStrings.male
+        case 1: gender = AIBotStrings.female
+        default: gender = AIBotStrings.notSpecified
+        }
+        let info = AIBotBookingInfo(
+            date: date,
+            doctorType: type,
+            doctorGender: gender,
+            specialtyName: response.specialty_name ?? AIBotStrings.notSpecified,
+            specialtyCode: response.specialty_code
+        )
+        bookingInfo = info
+        emit([.botText(AIBotStrings.bookingClosing)], speak: true)
+        delegate?.coordinator(self, didAdd: [.botBooking(info)])
+    }
+
+    /// Opens the doctor search for the confirmed booking.
+    func confirmBooking() {
+        delegate?.coordinator(self, openDoctorSearchForSpecialty: bookingInfo?.specialtyCode)
+    }
+
+    private var bookingInfo: AIBotBookingInfo?
 
     /// Advances to the next question. The name question is auto-answered from
     /// the saved profile for logged-in users; everything else is asked.
@@ -211,7 +313,12 @@ final class AIBotChatCoordinator {
 
     func submitAnswer(_ text: String) {
         guard state == .asking, !isBusy else { return }
-        sendAnswerToBackend(clean(text))
+        let cleaned = clean(text)
+        if isBookDoctor {
+            sendBookDoctorAnswer(cleaned)
+        } else {
+            sendAnswerToBackend(cleaned)
+        }
     }
 
     private func sendAnswerToBackend(_ text: String) {
@@ -292,6 +399,7 @@ final class AIBotChatCoordinator {
         state = .finished
         currentQuestion = nil
         recommendedSpecialtyCode = info?.recommended_speciality_code
+        recommendedSpecialtyName = info?.recommended_speciality
         delegate?.coordinator(self, setInputVisible: false)
 
         var messages: [AIBotMessage] = []
@@ -319,6 +427,7 @@ final class AIBotChatCoordinator {
     // MARK: - Helpers
 
     private var recommendedSpecialtyCode: String?
+    private var recommendedSpecialtyName: String?
 
     /// Adds messages and, when `speak` is set, plays the joined bot text via TTS
     /// and appends a playable audio bubble (mirrors the Android voice replies).

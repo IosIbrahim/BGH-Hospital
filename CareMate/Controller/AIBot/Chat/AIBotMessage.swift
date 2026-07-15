@@ -24,6 +24,15 @@ struct AIBotChoice {
     let tag: Tag
 }
 
+/// Summary of a booking collected by the book-doctor flow.
+struct AIBotBookingInfo {
+    let date: String
+    let doctorType: String
+    let doctorGender: String
+    let specialtyName: String
+    let specialtyCode: String?
+}
+
 struct AIBotMessage {
 
     enum Kind {
@@ -35,6 +44,8 @@ struct AIBotMessage {
         case action(title: String, specialtyCode: String?)
         /// One or more choice buttons shown by the bot.
         case choices(options: [AIBotChoice])
+        /// Booking summary card with a "Confirm Details" action.
+        case booking(AIBotBookingInfo)
     }
 
     let sender: AIBotSender
@@ -63,5 +74,9 @@ struct AIBotMessage {
 
     static func botChoices(_ options: [AIBotChoice]) -> AIBotMessage {
         AIBotMessage(sender: .bot, kind: .choices(options: options))
+    }
+
+    static func botBooking(_ info: AIBotBookingInfo) -> AIBotMessage {
+        AIBotMessage(sender: .bot, kind: .booking(info))
     }
 }

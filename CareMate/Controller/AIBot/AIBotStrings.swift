@@ -157,6 +157,29 @@ enum AIBotStrings {
         isAr ? "لا، سأبحث بنفسي" : "No I will search by self"
     }
 
+    // MARK: - Book doctor
+
+    static var notSpecified: String {
+        isAr ? "غير محدد" : "Not Specified"
+    }
+
+    static var consultant: String { isAr ? "استشاري" : "Consultant" }
+    static var specialist: String { isAr ? "متخصص" : "Specialist" }
+    static var male: String { isAr ? "ذكر" : "Male" }
+    static var female: String { isAr ? "أنثى" : "Female" }
+
+    static var bookingDate: String { isAr ? "التاريخ" : "Date" }
+    static var bookingDoctorType: String { isAr ? "نوع الطبيب" : "Doctor type" }
+    static var bookingDoctorGender: String { isAr ? "جنس الطبيب" : "Doctor gender" }
+    static var bookingSpecialty: String { isAr ? "التخصص" : "Specialty" }
+    static var confirmDetails: String { isAr ? "تأكيد التفاصيل" : "Confirm Details" }
+
+    static var bookingClosing: String {
+        isAr
+            ? "هذه تفاصيل الحجز التي ذكرناها معاً، أتمنى لك الشفاء العاجل."
+            : "Here are the booking details we agreed on. I wish you a speedy recovery."
+    }
+
     static var genericError: String {
         isAr
             ? "عذراً، لم أتمكن من فهم ردك. يُرجى المحاولة مرة أخرى."

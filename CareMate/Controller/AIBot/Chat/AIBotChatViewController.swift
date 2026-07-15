@@ -243,6 +243,7 @@ final class AIBotChatViewController: BaseViewController {
         tableView.register(AIBotVoiceCell.self, forCellReuseIdentifier: AIBotVoiceCell.reuseID)
         tableView.register(AIBotActionCell.self, forCellReuseIdentifier: AIBotActionCell.reuseID)
         tableView.register(AIBotChoiceCell.self, forCellReuseIdentifier: AIBotChoiceCell.reuseID)
+        tableView.register(AIBotBookingCell.self, forCellReuseIdentifier: AIBotBookingCell.reuseID)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         view.insertSubview(tableView, belowSubview: inputContainer)
 
@@ -523,6 +524,12 @@ extension AIBotChatViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: AIBotChoiceCell.reuseID, for: indexPath) as! AIBotChoiceCell
             cell.configure(options: options) { [weak self] choice in
                 self?.coordinator.handleChoice(choice)
+            }
+            return cell
+        case .booking(let info):
+            let cell = tableView.dequeueReusableCell(withIdentifier: AIBotBookingCell.reuseID, for: indexPath) as! AIBotBookingCell
+            cell.configure(info) { [weak self] in
+                self?.coordinator.confirmBooking()
             }
             return cell
         }

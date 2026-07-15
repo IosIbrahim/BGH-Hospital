@@ -356,6 +356,87 @@ final class AIBotChoiceCell: UITableViewCell {
     }
 }
 
+// MARK: - Booking summary card (bot)
+
+final class AIBotBookingCell: UITableViewCell {
+
+    static let reuseID = "AIBotBookingCell"
+
+    private let card = UIView()
+    private let stack = UIStackView()
+    private let confirmButton = UIButton(type: .system)
+    private var onConfirm: (() -> Void)?
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
+        backgroundColor = .clear
+
+        card.backgroundColor = AIBotTheme.botBubble
+        card.layer.cornerRadius = 16
+        card.translatesAutoresizingMaskIntoConstraints = false
+
+        stack.axis = .vertical
+        stack.spacing = 8
+        stack.alignment = .fill
+        stack.translatesAutoresizingMaskIntoConstraints = false
+
+        confirmButton.setTitle(AIBotStrings.confirmDetails, for: .normal)
+        confirmButton.setTitleColor(.white, for: .normal)
+        confirmButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
+        confirmButton.backgroundColor = AIBotTheme.teal
+        confirmButton.layer.cornerRadius = 20
+        confirmButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        confirmButton.addTarget(self, action: #selector(didTapConfirm), for: .touchUpInside)
+
+        contentView.addSubview(card)
+        card.addSubview(stack)
+
+        NSLayoutConstraint.activate([
+            card.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
+            card.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
+            card.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+            card.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -30),
+            card.widthAnchor.constraint(greaterThanOrEqualToConstant: 240),
+
+            stack.topAnchor.constraint(equalTo: card.topAnchor, constant: 14),
+            stack.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -14),
+            stack.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 16),
+            stack.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -16)
+        ])
+    }
+
+    required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+
+    func configure(_ info: AIBotBookingInfo, onConfirm: @escaping () -> Void) {
+        self.onConfirm = onConfirm
+        stack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        stack.addArrangedSubview(row(AIBotStrings.bookingSpecialty, info.specialtyName))
+        stack.addArrangedSubview(row(AIBotStrings.bookingDate, info.date))
+        stack.addArrangedSubview(row(AIBotStrings.bookingDoctorType, info.doctorType))
+        stack.addArrangedSubview(row(AIBotStrings.bookingDoctorGender, info.doctorGender))
+        stack.addArrangedSubview(confirmButton)
+    }
+
+    private func row(_ title: String, _ value: String) -> UIView {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 14)
+        let attr = NSMutableAttributedString(
+            string: "\(title): ",
+            attributes: [.foregroundColor: AIBotTheme.bodyGray, .font: UIFont.systemFont(ofSize: 14, weight: .semibold)]
+        )
+        attr.append(NSAttributedString(
+            string: value,
+            attributes: [.foregroundColor: AIBotTheme.bubbleText, .font: UIFont.systemFont(ofSize: 14)]
+        ))
+        label.attributedText = attr
+        return label
+    }
+
+    @objc private func didTapConfirm() { onConfirm?() }
+}
+
 // MARK: - Waveform
 
 /// Simple static voice waveform (white bars) used inside the voice pill.
