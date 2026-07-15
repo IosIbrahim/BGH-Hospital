@@ -111,7 +111,7 @@ final class AIBotChatCoordinator {
                     ])
                 ])
             case .failure:
-                self.delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.connectionError)])
+                print("🔴 [AIBot] request failed")
             }
         }
     }
@@ -157,7 +157,7 @@ final class AIBotChatCoordinator {
                     ])
                 ])
             case .failure:
-                self.delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.connectionError)])
+                print("🔴 [AIBot] request failed")
             }
         }
     }
@@ -227,7 +227,7 @@ final class AIBotChatCoordinator {
         case .success(let response):
             handleBookDoctor(response)
         case .failure(let error):
-            delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.connectionError + "\n[\(error.debugText)]")])
+            print("🔴 [AIBot] request failed: \(error.debugText)")
         }
     }
 
@@ -235,7 +235,7 @@ final class AIBotChatCoordinator {
         let content = response.content ?? ""
         let token = content.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         if token == "error" || token == "خطأ" {
-            delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.genericError)])
+            print("🔴 [AIBot] backend returned error / empty response")
             return
         }
         if response.is_conversation_finished == true {
@@ -338,7 +338,7 @@ final class AIBotChatCoordinator {
             case .success(let response):
                 self.handleConversation(response)
             case .failure(let error):
-                self.delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.connectionError + "\n[\(error.debugText)]")])
+                print("🔴 [AIBot] request failed: \(error.debugText)")
             }
         }
     }
@@ -356,12 +356,12 @@ final class AIBotChatCoordinator {
             case .success(let stt):
                 let text = (stt.transcription ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
                 if text.isEmpty {
-                    self.delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.genericError)])
+                    print("🔴 [AIBot] backend returned error / empty response")
                 } else {
                     self.submitAnswer(text)
                 }
             case .failure(let error):
-                self.delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.connectionError + "\n[STT: \(error.debugText)]")])
+                print("🔴 [AIBot] speech-to-text failed: \(error.debugText)")
             }
         }
     }
@@ -373,7 +373,7 @@ final class AIBotChatCoordinator {
         // the raw token, and keep the same question (don't advance).
         let token = content.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         if token == "error" || token == "خطأ" {
-            delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.genericError)])
+            print("🔴 [AIBot] backend returned error / empty response")
             return
         }
 
