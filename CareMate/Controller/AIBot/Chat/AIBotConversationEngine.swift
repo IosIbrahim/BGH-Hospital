@@ -19,26 +19,32 @@ import Foundation
 struct AIBotUserContext {
 
     let isGuest: Bool
-    let name: String?
-    let age: String?
+    let nameAr: String?
+    let nameEn: String?
 
     static func current() -> AIBotUserContext {
         let patientId = (UserDefaults.standard.object(forKey: "patienId") as? String) ?? ""
         let isGuest = patientId.trimmingCharacters(in: .whitespaces).isEmpty
 
-        var name: String?
+        var ar: String?
+        var en: String?
         if let saved = UserDefaults.standard.object(forKey: "SavedPerson") as? Data,
            let user = try? JSONDecoder().decode(LoginedUser.self, from: saved) {
-            let full = UserManager.isArabic ? user.COMPLETEPATNAME_AR : user.COMPLETEPATNAME_EN
-            let trimmed = full.trimmingCharacters(in: .whitespaces)
-            name = trimmed.isEmpty ? nil : trimmed
+            let a = user.COMPLETEPATNAME_AR.trimmingCharacters(in: .whitespaces)
+            let e = user.COMPLETEPATNAME_EN.trimmingCharacters(in: .whitespaces)
+            ar = a.isEmpty ? nil : a
+            en = e.isEmpty ? nil : e
         }
-        return AIBotUserContext(isGuest: isGuest, name: name, age: nil)
+        return AIBotUserContext(isGuest: isGuest, nameAr: ar, nameEn: en)
     }
 
-    var firstName: String? {
-        guard let name = name else { return nil }
-        return name.components(separatedBy: " ").first ?? name
+    var hasName: Bool { nameAr != nil || nameEn != nil }
+
+    /// First name in the given chat language ("ar" / "en").
+    func firstName(lang: String) -> String? {
+        let full = (lang == "ar") ? (nameAr ?? nameEn) : (nameEn ?? nameAr)
+        guard let full = full else { return nil }
+        return full.components(separatedBy: " ").first ?? full
     }
 }
 
@@ -87,6 +93,7 @@ final class AIBotChatCoordinator {
     private var lang = UserManager.isArabic ? "ar" : "en"
     private var isBookDoctor = false
     private var pendingQuestions: [Question] = []
+    private var autoAnsweringName = false
     private var currentQuestion: Question?
 
     // MARK: - Start
@@ -183,7 +190,7 @@ final class AIBotChatCoordinator {
         pendingQuestions = [.name, .age, .symptoms]
 
         var opener: [AIBotMessage] = [.botText(AIBotStrings.letsStart)]
-        if let first = context.firstName, !context.isGuest {
+        if let first = context.firstName(lang: lang), !context.isGuest {
             opener.append(.botText(AIBotStrings.chatGreetName(first)))
         }
         emit(opener, speak: true)
@@ -292,7 +299,8 @@ final class AIBotChatCoordinator {
         }
         let next = pendingQuestions.removeFirst()
         currentQuestion = next
-        if next == .name, let firstName = context.firstName, !context.isGuest {
+        if next == .name, let firstName = context.firstName(lang: lang), !context.isGuest {
+            autoAnsweringName = true
             sendAnswerToBackend(firstName) // silent: user isn't asked
         } else {
             emit([.botText(next.prompt)], speak: true)
@@ -373,9 +381,17 @@ final class AIBotChatCoordinator {
         // the raw token, and keep the same question (don't advance).
         let token = content.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         if token == "error" || token == "خطأ" {
-            print("🔴 [AIBot] backend returned error / empty response")
+            print("🔴 [AIBot] backend returned error / empty response (question=\(currentQuestion.map { "\($0)" } ?? "nil"))")
+            // The name is auto-answered for logged-in users; if the backend
+            // rejects it, don't stall — move on and ask the next question.
+            if autoAnsweringName {
+                autoAnsweringName = false
+                proceedToNextQuestion()
+            }
+            // For user-answered steps we keep the same question so they can retry.
             return
         }
+        autoAnsweringName = false
 
         if response.is_conversation_finished == true {
             finish(with: response.conversation_info)
