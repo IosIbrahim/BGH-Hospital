@@ -207,6 +207,29 @@ final class AIBotChatCoordinator {
         }
     }
 
+    /// Uploads a recorded clip to speech-to-text, then submits the transcript.
+    func submitVoiceRecording(fileURL: URL) {
+        guard state == .asking, !isBusy, let key = sessionKey else { return }
+        isBusy = true
+        delegate?.coordinatorDidStartLoading(self)
+        service.speechToText(fileURL: fileURL, sessionKey: key) { [weak self] result in
+            guard let self = self else { return }
+            self.isBusy = false
+            self.delegate?.coordinatorDidStopLoading(self)
+            switch result {
+            case .success(let stt):
+                let text = (stt.transcription ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+                if text.isEmpty {
+                    self.delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.genericError)])
+                } else {
+                    self.submitAnswer(text)
+                }
+            case .failure:
+                self.delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.connectionError)])
+            }
+        }
+    }
+
     private func handleConversation(_ response: MedicalConversationResponse) {
         let content = response.content ?? ""
         if content == "error" {

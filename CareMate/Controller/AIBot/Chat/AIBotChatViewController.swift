@@ -28,11 +28,22 @@ final class AIBotChatViewController: BaseViewController {
     private let loadingView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
 
     private let inputContainer = UIView()
+    private let fieldView = UIView()
     private let textField = UITextField()
     private let actionButton = UIButton(type: .custom)
     private var inputBottomConstraint: NSLayoutConstraint!
     private var inputHeightConstraint: NSLayoutConstraint!
     private var isKeyboardVisible = false
+
+    // Recording
+    private let recorder = AIBotAudioRecorder()
+    private let recordingBar = UIView()
+    private let recordDot = UIView()
+    private let recordTimerLabel = UILabel()
+    private let cancelRecordButton = UIButton(type: .system)
+    private var isRecording = false
+    private var recordTimer: Timer?
+    private var recordSeconds = 0
 
     // MARK: - Lifecycle
 
@@ -115,7 +126,7 @@ final class AIBotChatViewController: BaseViewController {
         inputContainer.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(inputContainer)
 
-        let field = UIView()
+        let field = fieldView
         field.backgroundColor = .white
         field.layer.cornerRadius = 26
         field.layer.borderWidth = 1
@@ -165,6 +176,56 @@ final class AIBotChatViewController: BaseViewController {
             actionButton.topAnchor.constraint(equalTo: inputContainer.topAnchor),
             actionButton.widthAnchor.constraint(equalToConstant: 52),
             actionButton.heightAnchor.constraint(equalToConstant: 52)
+        ])
+
+        buildRecordingBar()
+    }
+
+    private func buildRecordingBar() {
+        recordingBar.backgroundColor = .white
+        recordingBar.layer.cornerRadius = 26
+        recordingBar.layer.borderWidth = 1
+        recordingBar.layer.borderColor = AIBotTheme.inputBorder.cgColor
+        recordingBar.isHidden = true
+        recordingBar.translatesAutoresizingMaskIntoConstraints = false
+        inputContainer.addSubview(recordingBar)
+
+        cancelRecordButton.setImage(AIBotIcon.symbol("trash.fill", pointSize: 16, bold: false), for: .normal)
+        cancelRecordButton.tintColor = .systemRed
+        cancelRecordButton.addTarget(self, action: #selector(cancelRecording), for: .touchUpInside)
+        cancelRecordButton.translatesAutoresizingMaskIntoConstraints = false
+
+        recordDot.backgroundColor = .systemRed
+        recordDot.layer.cornerRadius = 5
+        recordDot.translatesAutoresizingMaskIntoConstraints = false
+
+        recordTimerLabel.textColor = AIBotTheme.bubbleText
+        recordTimerLabel.font = .systemFont(ofSize: 15, weight: .medium)
+        recordTimerLabel.text = "0:00"
+        recordTimerLabel.translatesAutoresizingMaskIntoConstraints = false
+
+        recordingBar.addSubview(cancelRecordButton)
+        recordingBar.addSubview(recordDot)
+        recordingBar.addSubview(recordTimerLabel)
+
+        NSLayoutConstraint.activate([
+            recordingBar.leadingAnchor.constraint(equalTo: fieldView.leadingAnchor),
+            recordingBar.trailingAnchor.constraint(equalTo: fieldView.trailingAnchor),
+            recordingBar.topAnchor.constraint(equalTo: fieldView.topAnchor),
+            recordingBar.bottomAnchor.constraint(equalTo: fieldView.bottomAnchor),
+
+            cancelRecordButton.leadingAnchor.constraint(equalTo: recordingBar.leadingAnchor, constant: 12),
+            cancelRecordButton.centerYAnchor.constraint(equalTo: recordingBar.centerYAnchor),
+            cancelRecordButton.widthAnchor.constraint(equalToConstant: 32),
+            cancelRecordButton.heightAnchor.constraint(equalToConstant: 32),
+
+            recordDot.leadingAnchor.constraint(equalTo: cancelRecordButton.trailingAnchor, constant: 8),
+            recordDot.centerYAnchor.constraint(equalTo: recordingBar.centerYAnchor),
+            recordDot.widthAnchor.constraint(equalToConstant: 10),
+            recordDot.heightAnchor.constraint(equalToConstant: 10),
+
+            recordTimerLabel.leadingAnchor.constraint(equalTo: recordDot.trailingAnchor, constant: 8),
+            recordTimerLabel.centerYAnchor.constraint(equalTo: recordingBar.centerYAnchor)
         ])
     }
 
@@ -263,16 +324,71 @@ final class AIBotChatViewController: BaseViewController {
     }
 
     @objc private func didTapAction() {
-        if hasText {
+        if isRecording {
+            stopRecordingAndSend()
+        } else if hasText {
             let text = (textField.text ?? "").trimmingCharacters(in: .whitespaces)
             textField.text = ""
             updateActionButton()
             append(.userText(text))
             coordinator.submitAnswer(text)
         } else if coordinator.expectsUserAnswer {
-            // Empty state = mic → open live voice mode.
-            presentVoiceMode(lang: coordinator.languageCode, autoListen: true)
+            // Empty state = mic → record a voice clip (uploaded to speech-to-text).
+            startRecording()
         }
+    }
+
+    // MARK: - Recording
+
+    private func startRecording() {
+        AIBotAudioRecorder.requestPermission { [weak self] granted in
+            guard let self = self, granted else { return }
+            do {
+                try self.recorder.start()
+                self.enterRecordingUI()
+            } catch {
+                self.exitRecordingUI()
+            }
+        }
+    }
+
+    private func stopRecordingAndSend() {
+        let url = recorder.stop()
+        exitRecordingUI()
+        guard let fileURL = url else { return }
+        let duration = AIBotAudioPlayer.durationString(for: fileURL)
+        append(.userAudio(url: fileURL, duration: duration))
+        coordinator.submitVoiceRecording(fileURL: fileURL)
+    }
+
+    @objc private func cancelRecording() {
+        recorder.cancel()
+        exitRecordingUI()
+    }
+
+    private func enterRecordingUI() {
+        isRecording = true
+        recordSeconds = 0
+        recordTimerLabel.text = "0:00"
+        fieldView.isHidden = true
+        recordingBar.isHidden = false
+        actionButton.backgroundColor = AIBotTheme.teal
+        actionButton.setImage(AIBotIcon.symbol("arrow.up", pointSize: 18, bold: true), for: .normal)
+        recordTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            self.recordSeconds += 1
+            self.recordTimerLabel.text = String(format: "%d:%02d", self.recordSeconds / 60, self.recordSeconds % 60)
+            if self.recordSeconds >= 60 { self.stopRecordingAndSend() } // cap like Android
+        }
+    }
+
+    private func exitRecordingUI() {
+        isRecording = false
+        recordTimer?.invalidate()
+        recordTimer = nil
+        fieldView.isHidden = false
+        recordingBar.isHidden = true
+        updateActionButton()
     }
 
     private func presentVoiceMode(lang: String, autoListen: Bool) {
