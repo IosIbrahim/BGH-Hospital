@@ -53,10 +53,6 @@
 	<string>We need you location to easily add you address</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need you location to easily add you address</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>CareMate uses the microphone so you can speak to the AI symptom assistant.</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>CareMate uses speech recognition to turn your spoken symptoms into text.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Tajawal-Bold.ttf</string>
