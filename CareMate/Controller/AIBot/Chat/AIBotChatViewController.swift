@@ -467,7 +467,10 @@ extension AIBotChatViewController: AIBotChatCoordinatorDelegate {
     func coordinatorDidFinishSpeaking(_ coordinator: AIBotChatCoordinator) {
         guard let voiceMode = voiceMode else { return }
         if coordinator.expectsUserAnswer {
-            voiceMode.startListening()
+            // Let the audio session settle after playback before recording.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [weak voiceMode] in
+                voiceMode?.startListening()
+            }
         } else {
             voiceMode.closeMode()
             self.voiceMode = nil

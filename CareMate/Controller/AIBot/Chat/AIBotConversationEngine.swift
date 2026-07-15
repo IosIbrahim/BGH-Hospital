@@ -234,7 +234,11 @@ final class AIBotChatCoordinator {
 
     private func handleConversation(_ response: MedicalConversationResponse) {
         let content = response.content ?? ""
-        if content == "error" {
+        // Backend signals "didn't understand" with an error token ("error" in
+        // English, "خطأ" in Arabic). Show a friendly retry message instead of
+        // the raw token, and keep the same question (don't advance).
+        let token = content.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        if token == "error" || token == "خطأ" {
             delegate?.coordinator(self, didAdd: [.botText(AIBotStrings.genericError)])
             return
         }

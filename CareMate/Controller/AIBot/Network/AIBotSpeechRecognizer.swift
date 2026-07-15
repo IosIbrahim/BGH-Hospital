@@ -56,8 +56,11 @@ final class AIBotSpeechRecognizer {
 
         do {
             let session = AVAudioSession.sharedInstance()
-            try session.setCategory(AVAudioSessionCategoryRecord)
-            try session.setMode(AVAudioSessionModeMeasurement)
+            // playAndRecord + default mode captures mic input reliably and keeps
+            // output on the speaker; .measurement mode could yield no input.
+            try session.setCategory(AVAudioSessionCategoryPlayAndRecord,
+                                    with: [.defaultToSpeaker, .allowBluetooth])
+            try session.setMode(AVAudioSessionModeDefault)
             try session.setActive(true, with: .notifyOthersOnDeactivation)
         } catch {
             print("🔴 [Speech] audio session error: \(error)")
