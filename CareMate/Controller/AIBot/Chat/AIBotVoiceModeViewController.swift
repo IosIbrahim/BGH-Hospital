@@ -22,6 +22,7 @@ final class AIBotVoiceModeViewController: UIViewController {
     private let recognizer: AIBotSpeechRecognizer
     private var authorized = false
     private var wantsToListen = false
+    private(set) var isListening = false
     private var retryCount = 0
     private let maxAutoRetries = 6
 
@@ -69,6 +70,7 @@ final class AIBotVoiceModeViewController: UIViewController {
         if resetRetries { retryCount = 0 }
         wantsToListen = true
         guard authorized else { return }
+        isListening = true
         statusLabel.text = AIBotStrings.voiceListening
         transcriptLabel.text = ""
         showListeningVisuals(true)
@@ -79,6 +81,7 @@ final class AIBotVoiceModeViewController: UIViewController {
     /// Bot is talking — pause listening and reflect it.
     func setSpeaking() {
         wantsToListen = false
+        isListening = false
         recognizer.stop()
         stopPulse()
         showListeningVisuals(false)

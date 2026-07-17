@@ -2,7 +2,9 @@
 //  AIBotAudioPlayer.swift
 //  CareMate
 //
-//  Plays the mp3 returned by text_to_speech_v2 (bot "speaking").
+//  Plays the mp3s returned by text_to_speech_v2 (bot "speaking"). Conversation
+//  replies are queued and played one after another so they never cut each other
+//  off; tapping a bubble plays that clip immediately.
 //
 
 import AVFoundation
@@ -13,43 +15,76 @@ final class AIBotAudioPlayer: NSObject, AVAudioPlayerDelegate {
     private override init() { super.init() }
 
     private var player: AVAudioPlayer?
-    private var onFinish: (() -> Void)?
+    private var queue: [URL] = []
+    private var manualFinish: (() -> Void)?
 
     /// The url currently playing (so cells can reflect play state).
     private(set) var currentURL: URL?
 
-    var isPlaying: Bool { player?.isPlaying ?? false }
+    /// Called when the auto-play queue empties (all replies spoken).
+    var onDrained: (() -> Void)?
+
+    var isPlaying: Bool { (player?.isPlaying ?? false) || !queue.isEmpty }
+
+    // MARK: - Queue (conversation replies)
+
+    /// Adds a reply to the play queue; starts playing if idle.
+    func enqueue(_ url: URL) {
+        queue.append(url)
+        if player == nil { playNext() }
+    }
+
+    private func playNext() {
+        guard !queue.isEmpty else {
+            currentURL = nil
+            onDrained?()
+            return
+        }
+        let url = queue.removeFirst()
+        if !startPlaying(url) { playNext() }
+    }
+
+    // MARK: - Manual (tap a bubble)
 
     func play(url: URL, onFinish: (() -> Void)? = nil) {
-        stop()
-        do {
-            let session = AVAudioSession.sharedInstance()
-            try session.setCategory(AVAudioSessionCategoryPlayback)
-            // Reset the mode: the speech recognizer leaves it on .measurement,
-            // which makes playback quiet and can route it to the earpiece.
-            try session.setMode(AVAudioSessionModeDefault)
-            try session.setActive(true)
-            let player = try AVAudioPlayer(contentsOf: url)
-            player.delegate = self
-            player.volume = 1.0
-            self.player = player
-            self.onFinish = onFinish
-            self.currentURL = url
-            player.play()
-        } catch {
-            self.onFinish = nil
-            self.currentURL = nil
-            onFinish?()
-        }
+        queue.removeAll()
+        manualFinish = onFinish
+        _ = startPlaying(url)
     }
 
     func stop() {
+        queue.removeAll()
+        manualFinish = nil
         player?.stop()
         player = nil
         currentURL = nil
     }
 
-    /// Duration string ("m:ss") for a local audio file, or "0:00" if unknown.
+    // MARK: - Core
+
+    private func startPlaying(_ url: URL) -> Bool {
+        player?.stop()
+        do {
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(AVAudioSessionCategoryPlayback)
+            // Reset the mode: the recognizer leaves it on .measurement which
+            // makes playback quiet / routes it to the earpiece.
+            try session.setMode(AVAudioSessionModeDefault)
+            try session.setActive(true)
+            let newPlayer = try AVAudioPlayer(contentsOf: url)
+            newPlayer.delegate = self
+            newPlayer.volume = 1.0
+            player = newPlayer
+            currentURL = url
+            newPlayer.play()
+            return true
+        } catch {
+            player = nil
+            currentURL = nil
+            return false
+        }
+    }
+
     static func durationString(for url: URL) -> String {
         guard let audio = try? AVAudioPlayer(contentsOf: url) else { return "0:00" }
         let total = Int(audio.duration.rounded())
@@ -57,10 +92,13 @@ final class AIBotAudioPlayer: NSObject, AVAudioPlayerDelegate {
     }
 
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        let finish = onFinish
-        onFinish = nil
-        currentURL = nil
         self.player = nil
-        finish?()
+        currentURL = nil
+        if let finish = manualFinish {
+            manualFinish = nil
+            finish()
+            return
+        }
+        playNext()
     }
 }

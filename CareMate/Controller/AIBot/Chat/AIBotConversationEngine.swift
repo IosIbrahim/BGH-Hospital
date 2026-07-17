@@ -94,12 +94,14 @@ final class AIBotChatCoordinator {
     private var isBookDoctor = false
     private var pendingQuestions: [Question] = []
     private var autoAnsweringName = false
+    private var ttsFetching = 0
     private var currentQuestion: Question?
 
     // MARK: - Start
 
     func start() {
         AIBotStrings.overrideLang = nil // language chooser uses the app default
+        AIBotAudioPlayer.shared.onDrained = { [weak self] in self?.maybeResumeListening() }
         delegate?.coordinatorDidStartLoading(self)
         service.generateSession { [weak self] result in
             guard let self = self else { return }
@@ -445,8 +447,8 @@ final class AIBotChatCoordinator {
     private var recommendedSpecialtyCode: String?
     private var recommendedSpecialtyName: String?
 
-    /// Adds messages and, when `speak` is set, plays the joined bot text via TTS
-    /// and appends a playable audio bubble (mirrors the Android voice replies).
+    /// Adds messages and, when `speak` is set, queues the joined bot text as TTS
+    /// (played one reply after another) and appends a playable audio bubble.
     private func emit(_ messages: [AIBotMessage], speak: Bool = false) {
         delegate?.coordinator(self, didAdd: messages)
         guard speak, let key = sessionKey else { return }
@@ -457,19 +459,24 @@ final class AIBotChatCoordinator {
             return nil
         }.joined(separator: " ")
         guard !text.isEmpty else { return }
+        ttsFetching += 1
         service.textToSpeech(text: text, sessionKey: key) { [weak self] result in
             guard let self = self else { return }
-            guard case .success(let url) = result else {
-                self.delegate?.coordinatorDidFinishSpeaking(self)
-                return
+            self.ttsFetching -= 1
+            if case .success(let url) = result {
+                let duration = AIBotAudioPlayer.durationString(for: url)
+                self.delegate?.coordinator(self, didAdd: [.botAudio(url: url, duration: duration)])
+                AIBotAudioPlayer.shared.enqueue(url)
             }
-            let duration = AIBotAudioPlayer.durationString(for: url)
-            self.delegate?.coordinator(self, didAdd: [.botAudio(url: url, duration: duration)])
-            AIBotAudioPlayer.shared.play(url: url) { [weak self] in
-                guard let self = self else { return }
-                self.delegate?.coordinatorDidFinishSpeaking(self)
-            }
+            self.maybeResumeListening()
         }
+    }
+
+    /// Resume listening only once every reply has finished playing and no more
+    /// speech is on the way (matches the Android speak-then-listen cycle).
+    private func maybeResumeListening() {
+        guard state == .asking, !isBusy, ttsFetching == 0, !AIBotAudioPlayer.shared.isPlaying else { return }
+        delegate?.coordinatorDidFinishSpeaking(self)
     }
 
     /// True while the coordinator is waiting for the user's answer to a question.
