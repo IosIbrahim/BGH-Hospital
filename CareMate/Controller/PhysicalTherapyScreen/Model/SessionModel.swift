@@ -13,6 +13,20 @@ struct SessionResponseModel:Codable {
     }
 }
 
+struct SessionSingleResponseModel:Codable {
+    let services:ServiceSingleSessionModel?
+    enum CodingKeys: String, CodingKey {
+        case services = "PAT_SERVICES"
+    }
+}
+
+struct ServiceSingleSessionModel:Codable{
+    let rows: ServiceSessionRowModel?
+    enum CodingKeys:String, CodingKey {
+        case rows = "PAT_SERVICES_ROW"
+    }
+}
+
 struct ServiceSessionModel:Codable{
     let rows: [ServiceSessionRowModel]?
     enum CodingKeys:String, CodingKey {
@@ -166,13 +180,13 @@ struct SessionRowModel:Codable{
     
     func getRowHieght() -> Int {
         if canSchedule == "1" {
-            return 150
+            return 260
         }else if canReSchedule == "1"{
-            return 150
+            return 280
         }else if waitApprove == "1" {
-            return 120
+            return 250
         }
-        return 150
+        return 240
     }
     
     enum CodingKeys: String, CodingKey {

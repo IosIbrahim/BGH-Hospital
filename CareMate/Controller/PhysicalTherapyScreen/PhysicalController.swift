@@ -49,7 +49,10 @@ class PhysicalController: BaseViewController {
     }
     
      func getSessions() {
-         let id = Utilities.sharedInstance.getPatientId()
+         var id = Utilities.sharedInstance.getPatientId()
+         #if DEBUG
+         id = "200360422"
+         #endif
          let urlString = "\(Constants.APIProvider.GetPhysicalSessions)bRANCH_ID=\(branch?.id ?? "")&pATIENT_ID=\(id)&PHSIO_FILTER=2"
          var request = URLRequest(url: URL(string: urlString)!,timeoutInterval: Double.infinity)
      //    request.addValue("Bearer \()", forHTTPHeaderField: "Authorization")
@@ -96,6 +99,14 @@ class PhysicalController: BaseViewController {
                  self.dataSources = sessions.services?.rows ?? []
              }
              
+             if let sessions = try? decoder.decode(SessionSingleResponseModel.self, from: data) {
+                 if let model = sessions.services?.rows {
+                     self.dataSources.append(model)
+                 }
+             }
+             
+             
+             
 //        let sessions = try? SessionResponseModel(data: data, keyPath: "PAT_SERVICES")
              DispatchQueue.main.async {
                  self.stkNoData.isHidden = !self.dataSources.isEmpty
@@ -125,13 +136,6 @@ extension PhysicalController: UITableViewDataSource,UITableViewDelegate,SessionR
    
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        dataSources[indexPath.row].isSelected = !(dataSources[indexPath.row].isSelected ?? false)
-       if indexPath.row == .zero {
-           filter = .all
-       }else if indexPath.row == 1 {
-           filter = .schedule
-       }else {
-           filter = .reschedule
-       }
        tblSessions.reloadRows(at: [indexPath], with: .automatic)
    }
    
@@ -207,6 +211,14 @@ extension PhysicalController:UICollectionViewDelegate,UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         tabIndex = indexPath.row
+        if indexPath.row == .zero {
+            filter = .all
+        }else if indexPath.row == 1 {
+            filter = .schedule
+        }else {
+            filter = .reschedule
+        }
+        tblSessions.reloadData()
         clcTabs.reloadData()
     }
     

@@ -76,6 +76,11 @@ extension TimeSlots {
         dateFormatter.locale = Locale(identifier: "en")
         dateFormatter.dateFormat = "dd/MM/yyyy"
         let date = dateFormatter.string(from: date.ConvertToDate)
+        var physdate = ""
+        if isPhysical {
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            physdate = dateFormatter.string(from: date.ConvertToDate)
+        }
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
         let nextdate = dateFormatter.string(from: date.ConvertToDate)
 
@@ -83,11 +88,15 @@ extension TimeSlots {
         
         var urlString = Constants.APIProvider.GetDoctorTimeSlots+"Branch_ID=" + branchID + "&DOC_ID=" + docID + "&CLINIC_ID=" + clincID + "&Web_FromDate=" + date
         if isPhysical {
-            urlString = Constants.APIProvider.GetDoctorPhysicalTimeSlots+"bRANCH_ID=" + branchID + "&mODALITY_ID=" + docID 
+            urlString = "\(Constants.APIProvider.GetDoctorPhysicalTimeSlots)bRANCH_ID=\(branchID)&mODALITY_ID=\(docID)&SCHED_DATE_FORMATED=\(nextdate)&SCHED_DATE=\(physdate)"
         }
         print(urlString)
         let url = URL(string: urlString)
-        let parseURl = Constants.APIProvider.GetDoctorTimeSlots + "&" + Constants.getoAuthValue(url: url!, method: "GET")
+        let pars = isPhysical ? Constants.APIProvider.GetDoctorPhysicalTimeSlots:Constants.APIProvider.GetDoctorTimeSlots
+        var parseURl = pars + "&" + Constants.getoAuthValue(url: url!, method: "GET")
+//        if isPhysical {
+//            parseURl = urlString
+//        }
         URLSession.shared.dataTask(with: URL(string: parseURl)!) { data, response, error in
         indicator.sharedInstance.dismiss()
         guard let data = data else {
@@ -99,7 +108,7 @@ extension TimeSlots {
                 
             let json = try JSONSerialization.jsonObject(with: data, options: [])
                 print(json)
-                let d = (json as! [String: Any])
+                let d = (json as? [String: Any]  ?? .init())
                 var avSlots = [TimeSlots]()
                 let slots = try? [TimeSlots](data: data, keyPath: "Root.HOURS_SLOTS.HOURS_SLOTS_ROW")
                 
@@ -115,27 +124,36 @@ extension TimeSlots {
                 {
                     avSlots.append(slotsObj!)
                 }
-                
-                let dd = (d["Root"] as! [String : AnyObject])["next_available_time"] as? String
-                var nextAv = ""
-                
-                if dd != nil
-                {
-                    nextAv = dd!
+                if let dd = (d["Root"] as? [String : AnyObject])?["next_available_time"] as? String {
+                    var nextAv = ""
+                    
+                    if dd.isEmpty == false
+                    {
+                        nextAv = dd
+                    }
+                    else
+                    {
+                        nextAv = nextdate
+                    }
+                    
+                    //   i  want  to  change to  the  # Comment  link  there
+                    //              let slots = try? [SlotsTime](data: data, keyPath: "Root.HOURS_SLOTS.HOURS_SLOTS_ROW.SINGLE_HOUR_SLOTS.SINGLE_HOUR_SLOTS_ROW")
+                    //            //.SINGLE_HOUR_SLOTS_ROW
+                    if  avSlots.count != 0 {
+                        DispatchQueue.main.async {completion(avSlots,nextAv, slotsTime ?? "")}
+                    } else {
+                        DispatchQueue.main.async {completion(nil,"", "")}
+                    }
+                }else {
+                    if let msg = d["Message"] as? String {
+                        DispatchQueue.main.async {completion(nil,msg, msg)}
+                    }else {
+                        DispatchQueue.main.async {completion(nil,"", "")}
+
+                    }
+
                 }
-                else
-                {
-                    nextAv = nextdate
-                }
-                
-                //   i  want  to  change to  the  # Comment  link  there
-                //              let slots = try? [SlotsTime](data: data, keyPath: "Root.HOURS_SLOTS.HOURS_SLOTS_ROW.SINGLE_HOUR_SLOTS.SINGLE_HOUR_SLOTS_ROW")
-                //            //.SINGLE_HOUR_SLOTS_ROW
-                if  avSlots.count != 0 {
-                    DispatchQueue.main.async {completion(avSlots,nextAv, slotsTime ?? "")}
-                } else {
-                    DispatchQueue.main.async {completion(nil,"", "")}
-                }
+               
             }
             catch {
                 print(error.localizedDescription)

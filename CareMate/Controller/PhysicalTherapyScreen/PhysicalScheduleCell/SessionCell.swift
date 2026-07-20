@@ -14,6 +14,7 @@ protocol SessionRowProtocol {
 
 class SessionCell: UITableViewCell {
 
+    @IBOutlet weak var picker: UIView!
     @IBOutlet weak var lblTime: UILabel!
     @IBOutlet weak var btnAction: UIButton!
     @IBOutlet weak var lblFinalStatus: UILabel!
@@ -55,6 +56,11 @@ class SessionCell: UITableViewCell {
         lblDocSession.text = session?.getDoctorName()
         lblDocSessionSpeciality.text = session?.getDoctorSpecial()
         lblStatus.text = session?.getStatusTitle()
+        if session?.canReSchedule == "1" {
+            lblStatus.textColor = .white
+        }else {
+            lblStatus.textColor = .black
+        }
         pickerStatus.backgroundColor = session?.getStatusColor()
         if let date = session?.doneDate {
             lblDate.text = date.components(separatedBy: .whitespaces).first
