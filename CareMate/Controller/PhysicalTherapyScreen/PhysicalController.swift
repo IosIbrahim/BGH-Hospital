@@ -148,7 +148,7 @@ extension PhysicalController: UITableViewDataSource,UITableViewDelegate,SessionR
                 break
             }
         }
-        doctorProfileVC.doctor = Doctor(id: item?.doctorId,
+        doctorProfileVC.doctor = Doctor(id: row.doctorId,
                                         englishName: item?.doctorNameEn,
                                         englishNameAR: item?.doctorNameAr,
                                         gender: nil,
@@ -186,7 +186,7 @@ extension PhysicalController: UITableViewDataSource,UITableViewDelegate,SessionR
         doctorProfileVC.branch = branch
         doctorProfileVC.specialityID = item?.doctorSpecialId
         doctorProfileVC.DocName = item?.getDoctorName()
-        doctorProfileVC.docID = item?.doctorId
+        doctorProfileVC.docID = row.doctorId
         doctorProfileVC.clincID = ""
         doctorProfileVC.clicnName = item?.getHospital()
         doctorProfileVC.isPhysical = true

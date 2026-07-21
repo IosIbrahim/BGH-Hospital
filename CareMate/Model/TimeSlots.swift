@@ -88,7 +88,7 @@ extension TimeSlots {
         
         var urlString = Constants.APIProvider.GetDoctorTimeSlots+"Branch_ID=" + branchID + "&DOC_ID=" + docID + "&CLINIC_ID=" + clincID + "&Web_FromDate=" + date
         if isPhysical {
-            urlString = "\(Constants.APIProvider.GetDoctorPhysicalTimeSlots)bRANCH_ID=\(branchID)&mODALITY_ID=\(docID)&SCHED_DATE_FORMATED=\(nextdate)&SCHED_DATE=\(physdate)"
+            urlString = "\(Constants.APIProvider.GetDoctorPhysicalTimeSlots)bRANCH_ID=\(branchID)&mODALITY_ID=\(docID)&SCHED_DATE_FORMATED=\(physdate)"
         }
         print(urlString)
         let url = URL(string: urlString)
