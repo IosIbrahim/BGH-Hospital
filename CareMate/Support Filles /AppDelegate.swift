@@ -14,6 +14,7 @@ import MOLH
 import IQKeyboardManagerSwift
 import GooglePlaces
 import GoogleMaps
+import MobileRTC
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
@@ -85,22 +86,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
         print(userInfo)
         completionHandler(UIBackgroundFetchResult.newData)
     }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {}
-
-    func applicationWillResignActive(_ application: UIApplication) {}
-
-    func applicationDidEnterBackground(_ application: UIApplication) {}
-
-    func applicationWillEnterForeground(_ application: UIApplication) {}
-
-    func applicationWillTerminate(_ application: UIApplication) {}
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+          // Notify MobileRTC of appWillTerminate call.
+          MobileRTC.shared().appWillTerminate()
+      }
+      func applicationWillResignActive(_ application: UIApplication) {
+          // Notify MobileRTC of appWillResignActive call.
+          MobileRTC.shared().appWillResignActive()
+      }
+      func applicationDidBecomeActive(_ application: UIApplication) {
+          // Notify MobileRTC of appDidBecomeActive call.
+          MobileRTC.shared().appDidBecomeActive()
+      }
+      func applicationDidEnterBackground(_ application: UIApplication) {
+          // Notify MobileRTC of appDidEnterBackgroud call.
+          MobileRTC.shared().appDidEnterBackground()
+      }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         if let refreshedToken = Messaging.messaging().fcmToken {
             print("InstanceID token: \(refreshedToken)")
             UserDefaults.standard.set(refreshedToken, forKey: "pushToken")
         }
+        let tokenString = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        print("Successfully registered with APNs. Device Token: \(tokenString)")
+        UserDefaults.standard.set(tokenString, forKey: "apnPushToken")
     }
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {}

@@ -64,6 +64,14 @@
 		<string>cairo_regular.ttf</string>
 		<string>cairo_black.ttf</string>
 	</array>
+    <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>We will use your Bluetooth to access your Bluetooth headphones.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>For people to see you during meetings, we need access to your camera.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>For people to hear you during meetings, we need access to your microphone.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>For people to share, we need access to your photos</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -126,6 +126,19 @@
 		0F9069082FAA1E4C0021ED5B /* HeaderTabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9069062FAA1E4C0021ED5B /* HeaderTabCell.xib */; };
 		0FD96BBA2EB226F700FE1402 /* BranchNCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD96BB82EB226F700FE1402 /* BranchNCell.swift */; };
 		0FD96BBB2EB226F700FE1402 /* BranchNCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD96BB92EB226F700FE1402 /* BranchNCell.xib */; };
+		0FF38202300F6F6F0002BE49 /* MobileRTCResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0FF381FC300F6F6F0002BE49 /* MobileRTCResources.bundle */; };
+		0FF38205300F70470002BE49 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF38204300F70470002BE49 /* CoreGraphics.framework */; };
+		0FF38207300F70720002BE49 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF38206300F70720002BE49 /* CoreVideo.framework */; };
+		0FF38209300F70870002BE49 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF38208300F70870002BE49 /* CoreMedia.framework */; };
+		0FF3820B300F709D0002BE49 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF3820A300F709D0002BE49 /* libsqlite3.tbd */; };
+		0FF3820F300F70CC0002BE49 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF3820E300F70CC0002BE49 /* VideoToolbox.framework */; };
+		0FF38213300F70FB0002BE49 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF38212300F70FB0002BE49 /* libz.1.2.5.tbd */; };
+		0FF38215300F71190002BE49 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF38214300F71190002BE49 /* ReplayKit.framework */; };
+		0FF38217300F73720002BE49 /* zoomcml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF381FE300F6F6F0002BE49 /* zoomcml.xcframework */; };
+		0FF38218300F73720002BE49 /* zoomcml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF381FE300F6F6F0002BE49 /* zoomcml.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0FF3821A300F73880002BE49 /* MobileRTCScreenShare.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF381FD300F6F6F0002BE49 /* MobileRTCScreenShare.xcframework */; };
+		0FF3821B300F73880002BE49 /* MobileRTCScreenShare.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF381FD300F6F6F0002BE49 /* MobileRTCScreenShare.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0FF3821F300F8E9F0002BE49 /* MobileRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF3821E300F8E9F0002BE49 /* MobileRTC.xcframework */; };
 		360D889D2798307B0075890F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 464F40241FADE07B0098D19D /* Assets.xcassets */; };
 		3611D247216D5DA700FB198C /* RetrieveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3611D246216D5DA700FB198C /* RetrieveViewController.swift */; };
 		36139FB62869CAE1002A7475 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36139FB42869CAE1002A7475 /* SettingsViewController.swift */; };
@@ -493,6 +506,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0FF38219300F73720002BE49 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0FF3821B300F73880002BE49 /* MobileRTCScreenShare.xcframework in Embed Frameworks */,
+				0FF38218300F73720002BE49 /* zoomcml.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		040D53DB26E4DC8D00F9295F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SaveViewController.xib; sourceTree = "<group>"; };
 		040D53DE26E4DC9500F9295F /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/SaveViewController.strings; sourceTree = "<group>"; };
@@ -643,6 +671,17 @@
 		0F9069062FAA1E4C0021ED5B /* HeaderTabCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTabCell.xib; sourceTree = "<group>"; };
 		0FD96BB82EB226F700FE1402 /* BranchNCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchNCell.swift; sourceTree = "<group>"; };
 		0FD96BB92EB226F700FE1402 /* BranchNCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BranchNCell.xib; sourceTree = "<group>"; };
+		0FF381FC300F6F6F0002BE49 /* MobileRTCResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MobileRTCResources.bundle; sourceTree = "<group>"; };
+		0FF381FD300F6F6F0002BE49 /* MobileRTCScreenShare.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BJ4HAAB9B3:Zoom Communications, Inc."; lastKnownFileType = wrapper.xcframework; path = MobileRTCScreenShare.xcframework; sourceTree = "<group>"; };
+		0FF381FE300F6F6F0002BE49 /* zoomcml.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BJ4HAAB9B3:Zoom Communications, Inc."; lastKnownFileType = wrapper.xcframework; path = zoomcml.xcframework; sourceTree = "<group>"; };
+		0FF38204300F70470002BE49 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreGraphics.framework; sourceTree = "<group>"; };
+		0FF38206300F70720002BE49 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreVideo.framework; sourceTree = "<group>"; };
+		0FF38208300F70870002BE49 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreMedia.framework; sourceTree = "<group>"; };
+		0FF3820A300F709D0002BE49 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = libsqlite3.tbd; sourceTree = "<group>"; };
+		0FF3820E300F70CC0002BE49 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VideoToolbox.framework; sourceTree = "<group>"; };
+		0FF38212300F70FB0002BE49 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libz.1.2.5.tbd; sourceTree = DEVELOPER_DIR; };
+		0FF38214300F71190002BE49 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ReplayKit.framework; sourceTree = "<group>"; };
+		0FF3821E300F8E9F0002BE49 /* MobileRTC.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BJ4HAAB9B3:Zoom Communications, Inc."; lastKnownFileType = wrapper.xcframework; path = MobileRTC.xcframework; sourceTree = "<group>"; };
 		3611D246216D5DA700FB198C /* RetrieveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveViewController.swift; sourceTree = "<group>"; };
 		36139FB42869CAE1002A7475 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		36139FB52869CAE1002A7475 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -1036,7 +1075,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FF38215300F71190002BE49 /* ReplayKit.framework in Frameworks */,
+				0FF38209300F70870002BE49 /* CoreMedia.framework in Frameworks */,
+				0FF38207300F70720002BE49 /* CoreVideo.framework in Frameworks */,
+				0FF38205300F70470002BE49 /* CoreGraphics.framework in Frameworks */,
+				0FF3820F300F70CC0002BE49 /* VideoToolbox.framework in Frameworks */,
+				0FF3820B300F709D0002BE49 /* libsqlite3.tbd in Frameworks */,
+				0FF38217300F73720002BE49 /* zoomcml.xcframework in Frameworks */,
+				0FF38213300F70FB0002BE49 /* libz.1.2.5.tbd in Frameworks */,
 				0F5BC6052CC69D3F0085BD7E /* WebKit.framework in Frameworks */,
+				0FF3821F300F8E9F0002BE49 /* MobileRTC.xcframework in Frameworks */,
+				0FF3821A300F73880002BE49 /* MobileRTCScreenShare.xcframework in Frameworks */,
 				3BC7D7958504A4081BF7F49C /* Pods_CareMate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1580,6 +1629,13 @@
 				0FD96BB92EB226F700FE1402 /* BranchNCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		0FF381FA300F6DA60002BE49 /* ZoomCall */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ZoomCall;
 			sourceTree = "<group>";
 		};
 		36139FB32869CABE002A7475 /* SettingGroup */ = {
@@ -2167,6 +2223,7 @@
 		46FECA4F1FB3018B0052F8C2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0FF381FA300F6DA60002BE49 /* ZoomCall */,
 				0F9068FF2FAA1CDA0021ED5B /* PhysicalTherapyScreen */,
 				A2B78D442BB995A100C25E15 /* ForceUpdate */,
 				A2A616752ACD70AF00D1A487 /* Choose365Hospital */,
@@ -2934,6 +2991,17 @@
 			children = (
 				0F5BC6042CC69D3F0085BD7E /* WebKit.framework */,
 				BF34FE18817735E0CF770B71 /* Pods_CareMate.framework */,
+				0FF381FC300F6F6F0002BE49 /* MobileRTCResources.bundle */,
+				0FF381FD300F6F6F0002BE49 /* MobileRTCScreenShare.xcframework */,
+				0FF38204300F70470002BE49 /* CoreGraphics.framework */,
+				0FF38208300F70870002BE49 /* CoreMedia.framework */,
+				0FF3821E300F8E9F0002BE49 /* MobileRTC.xcframework */,
+				0FF38206300F70720002BE49 /* CoreVideo.framework */,
+				0FF3820E300F70CC0002BE49 /* VideoToolbox.framework */,
+				0FF3820A300F709D0002BE49 /* libsqlite3.tbd */,
+				0FF38212300F70FB0002BE49 /* libz.1.2.5.tbd */,
+				0FF38214300F71190002BE49 /* ReplayKit.framework */,
+				0FF381FE300F6F6F0002BE49 /* zoomcml.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2951,6 +3019,7 @@
 				464F40151FADE07B0098D19D /* Resources */,
 				094351FFD9F99DD509AFE450 /* [CP] Embed Pods Frameworks */,
 				45EAADCAE373C00342C808BF /* [CP] Copy Pods Resources */,
+				0FF38219300F73720002BE49 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3150,6 +3219,7 @@
 				A26A3AC02C56E84700BF38F9 /* AccountsViewController.xib in Resources */,
 				364C7B55283912FE00926BD5 /* Tajawal-ExtraBold.ttf in Resources */,
 				A26162AA28BF62D20024CDBD /* HintPopupViewController.xib in Resources */,
+				0FF38202300F6F6F0002BE49 /* MobileRTCResources.bundle in Resources */,
 				04489BB126DCD6210083040A /* PatientHistoryViewController.xib in Resources */,
 				365CE98B2860A3DF00794489 /* daySlotCollectionViewCell.xib in Resources */,
 				0F9069032FAA1D350021ED5B /* PhysicalController.xib in Resources */,
@@ -4083,7 +4153,8 @@
 				MTL_ENABLE_DEBUG_INFO = No;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -4101,11 +4172,22 @@
 				DEVELOPMENT_TEAM = W8QAC6TS8B;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = CareMate/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Al Salam Hos";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.drbakhsh.mobileApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4187,12 +4269,20 @@
 					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/FirebaseAnalytics\"",
 					"-L/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/usr/lib",
 					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement\"",
+					"$(PROJECT_DIR)",
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = CareMate/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Al Salam Hos";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.drbakhsh.mobileApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4215,7 +4305,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CareMateTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = khabeerGroup.CareMateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -4231,7 +4325,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CareMateTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = khabeerGroup.CareMateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -4246,7 +4344,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CareMateUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = khabeerGroup.CareMateUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -4261,7 +4363,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CareMateUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = khabeerGroup.CareMateUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
