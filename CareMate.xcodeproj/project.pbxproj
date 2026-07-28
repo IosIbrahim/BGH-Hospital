@@ -99,6 +99,8 @@
 		04F9533426DA6AAB0071496A /* RXModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9533326DA6AAB0071496A /* RXModel.swift */; };
 		04F9533826DA72F20071496A /* RXOfPatientDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F9533626DA72F20071496A /* RXOfPatientDetails.swift */; };
 		04F9533926DA72F20071496A /* RXOfPatientDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F9533726DA72F20071496A /* RXOfPatientDetails.xib */; };
+		0F08DA02301111CF00E04FE0 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F08DA01301111CF00E04FE0 /* PushKit.framework */; };
+		0F08DA04301113CD00E04FE0 /* VoipTokenLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F08DA03301113CD00E04FE0 /* VoipTokenLogger.swift */; };
 		0F44FDFA2D19583D00F31140 /* OutLabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44FDF82D19583D00F31140 /* OutLabController.swift */; };
 		0F44FDFB2D19583D00F31140 /* OutLabController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F44FDF92D19583D00F31140 /* OutLabController.xib */; };
 		0F44FDFF2D19591600F31140 /* OutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F44FDFD2D19591600F31140 /* OutCell.swift */; };
@@ -124,21 +126,25 @@
 		0F9069032FAA1D350021ED5B /* PhysicalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9069012FAA1D350021ED5B /* PhysicalController.xib */; };
 		0F9069072FAA1E4C0021ED5B /* HeaderTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9069052FAA1E4C0021ED5B /* HeaderTabCell.swift */; };
 		0F9069082FAA1E4C0021ED5B /* HeaderTabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9069062FAA1E4C0021ED5B /* HeaderTabCell.xib */; };
+		0FC00047300F94B1004C3AD5 /* MobileRTCResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0FC00041300F94B1004C3AD5 /* MobileRTCResources.bundle */; };
+		0FC00049300F94D3004C3AD5 /* MobileRTCScreenShare.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00042300F94B1004C3AD5 /* MobileRTCScreenShare.xcframework */; };
+		0FC0004A300F94D3004C3AD5 /* MobileRTCScreenShare.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00042300F94B1004C3AD5 /* MobileRTCScreenShare.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0FC0004B300F94D5004C3AD5 /* MobileRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00040300F94B1004C3AD5 /* MobileRTC.xcframework */; };
+		0FC0004C300F94D5004C3AD5 /* MobileRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00040300F94B1004C3AD5 /* MobileRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0FC0004D300F94D7004C3AD5 /* zoomcml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00043300F94B1004C3AD5 /* zoomcml.xcframework */; };
+		0FC0004E300F94D7004C3AD5 /* zoomcml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00043300F94B1004C3AD5 /* zoomcml.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0FC00050300F94EF004C3AD5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC0004F300F94EF004C3AD5 /* CoreGraphics.framework */; };
+		0FC00052300F9502004C3AD5 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00051300F9502004C3AD5 /* CoreVideo.framework */; };
+		0FC00054300F9516004C3AD5 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00053300F9516004C3AD5 /* CoreMedia.framework */; };
+		0FC00056300F9527004C3AD5 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00055300F9527004C3AD5 /* CoreMedia.framework */; };
+		0FC00058300F954A004C3AD5 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00057300F954A004C3AD5 /* libsqlite3.tbd */; };
+		0FC0005C300F957A004C3AD5 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC0005B300F957A004C3AD5 /* libz.1.2.5.tbd */; };
+		0FC0005E300F958E004C3AD5 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC0005D300F958E004C3AD5 /* VideoToolbox.framework */; };
+		0FC00060300F95A0004C3AD5 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC0005F300F95A0004C3AD5 /* ReplayKit.framework */; };
 		0FD96BBA2EB226F700FE1402 /* BranchNCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD96BB82EB226F700FE1402 /* BranchNCell.swift */; };
 		0FD96BBB2EB226F700FE1402 /* BranchNCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD96BB92EB226F700FE1402 /* BranchNCell.xib */; };
-		0FF38202300F6F6F0002BE49 /* MobileRTCResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0FF381FC300F6F6F0002BE49 /* MobileRTCResources.bundle */; };
-		0FF38205300F70470002BE49 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF38204300F70470002BE49 /* CoreGraphics.framework */; };
-		0FF38207300F70720002BE49 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF38206300F70720002BE49 /* CoreVideo.framework */; };
-		0FF38209300F70870002BE49 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF38208300F70870002BE49 /* CoreMedia.framework */; };
-		0FF3820B300F709D0002BE49 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF3820A300F709D0002BE49 /* libsqlite3.tbd */; };
-		0FF3820F300F70CC0002BE49 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF3820E300F70CC0002BE49 /* VideoToolbox.framework */; };
-		0FF38213300F70FB0002BE49 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF38212300F70FB0002BE49 /* libz.1.2.5.tbd */; };
-		0FF38215300F71190002BE49 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF38214300F71190002BE49 /* ReplayKit.framework */; };
-		0FF38217300F73720002BE49 /* zoomcml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF381FE300F6F6F0002BE49 /* zoomcml.xcframework */; };
-		0FF38218300F73720002BE49 /* zoomcml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF381FE300F6F6F0002BE49 /* zoomcml.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0FF3821A300F73880002BE49 /* MobileRTCScreenShare.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF381FD300F6F6F0002BE49 /* MobileRTCScreenShare.xcframework */; };
-		0FF3821B300F73880002BE49 /* MobileRTCScreenShare.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF381FD300F6F6F0002BE49 /* MobileRTCScreenShare.xcframework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		0FF3821F300F8E9F0002BE49 /* MobileRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF3821E300F8E9F0002BE49 /* MobileRTC.xcframework */; };
+		0FEB5CE930162F2F005CC87E /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEB5CE830162F2F005CC87E /* Observer.swift */; };
+		0FEB5CEB30163979005CC87E /* VoipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEB5CEA30163979005CC87E /* VoipManager.swift */; };
 		360D889D2798307B0075890F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 464F40241FADE07B0098D19D /* Assets.xcassets */; };
 		3611D247216D5DA700FB198C /* RetrieveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3611D246216D5DA700FB198C /* RetrieveViewController.swift */; };
 		36139FB62869CAE1002A7475 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36139FB42869CAE1002A7475 /* SettingsViewController.swift */; };
@@ -513,8 +519,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0FF3821B300F73880002BE49 /* MobileRTCScreenShare.xcframework in Embed Frameworks */,
-				0FF38218300F73720002BE49 /* zoomcml.xcframework in Embed Frameworks */,
+				0FC0004A300F94D3004C3AD5 /* MobileRTCScreenShare.xcframework in Embed Frameworks */,
+				0FC0004E300F94D7004C3AD5 /* zoomcml.xcframework in Embed Frameworks */,
+				0FC0004C300F94D5004C3AD5 /* MobileRTC.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -644,6 +651,8 @@
 		04F9533326DA6AAB0071496A /* RXModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RXModel.swift; path = emplate/RXModel.swift; sourceTree = "<group>"; };
 		04F9533626DA72F20071496A /* RXOfPatientDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RXOfPatientDetails.swift; path = IBSwift/RXOfPatientDetails.swift; sourceTree = "<group>"; };
 		04F9533726DA72F20071496A /* RXOfPatientDetails.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RXOfPatientDetails.xib; path = IBSwift/RXOfPatientDetails.xib; sourceTree = "<group>"; };
+		0F08DA01301111CF00E04FE0 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
+		0F08DA03301113CD00E04FE0 /* VoipTokenLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoipTokenLogger.swift; sourceTree = "<group>"; };
 		0F44FDF82D19583D00F31140 /* OutLabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutLabController.swift; sourceTree = "<group>"; };
 		0F44FDF92D19583D00F31140 /* OutLabController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OutLabController.xib; sourceTree = "<group>"; };
 		0F44FDFD2D19591600F31140 /* OutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutCell.swift; sourceTree = "<group>"; };
@@ -669,19 +678,22 @@
 		0F9069012FAA1D350021ED5B /* PhysicalController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhysicalController.xib; sourceTree = "<group>"; };
 		0F9069052FAA1E4C0021ED5B /* HeaderTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTabCell.swift; sourceTree = "<group>"; };
 		0F9069062FAA1E4C0021ED5B /* HeaderTabCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTabCell.xib; sourceTree = "<group>"; };
+		0FC00040300F94B1004C3AD5 /* MobileRTC.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BJ4HAAB9B3:Zoom Communications, Inc."; lastKnownFileType = wrapper.xcframework; path = MobileRTC.xcframework; sourceTree = "<group>"; };
+		0FC00041300F94B1004C3AD5 /* MobileRTCResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MobileRTCResources.bundle; sourceTree = "<group>"; };
+		0FC00042300F94B1004C3AD5 /* MobileRTCScreenShare.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BJ4HAAB9B3:Zoom Communications, Inc."; lastKnownFileType = wrapper.xcframework; path = MobileRTCScreenShare.xcframework; sourceTree = "<group>"; };
+		0FC00043300F94B1004C3AD5 /* zoomcml.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BJ4HAAB9B3:Zoom Communications, Inc."; lastKnownFileType = wrapper.xcframework; path = zoomcml.xcframework; sourceTree = "<group>"; };
+		0FC0004F300F94EF004C3AD5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		0FC00051300F9502004C3AD5 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
+		0FC00053300F9516004C3AD5 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		0FC00055300F9527004C3AD5 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		0FC00057300F954A004C3AD5 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = libsqlite3.tbd; sourceTree = "<group>"; };
+		0FC0005B300F957A004C3AD5 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libz.1.2.5.tbd; sourceTree = DEVELOPER_DIR; };
+		0FC0005D300F958E004C3AD5 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/VideoToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		0FC0005F300F95A0004C3AD5 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/ReplayKit.framework; sourceTree = DEVELOPER_DIR; };
 		0FD96BB82EB226F700FE1402 /* BranchNCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchNCell.swift; sourceTree = "<group>"; };
 		0FD96BB92EB226F700FE1402 /* BranchNCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BranchNCell.xib; sourceTree = "<group>"; };
-		0FF381FC300F6F6F0002BE49 /* MobileRTCResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MobileRTCResources.bundle; sourceTree = "<group>"; };
-		0FF381FD300F6F6F0002BE49 /* MobileRTCScreenShare.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BJ4HAAB9B3:Zoom Communications, Inc."; lastKnownFileType = wrapper.xcframework; path = MobileRTCScreenShare.xcframework; sourceTree = "<group>"; };
-		0FF381FE300F6F6F0002BE49 /* zoomcml.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BJ4HAAB9B3:Zoom Communications, Inc."; lastKnownFileType = wrapper.xcframework; path = zoomcml.xcframework; sourceTree = "<group>"; };
-		0FF38204300F70470002BE49 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreGraphics.framework; sourceTree = "<group>"; };
-		0FF38206300F70720002BE49 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreVideo.framework; sourceTree = "<group>"; };
-		0FF38208300F70870002BE49 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreMedia.framework; sourceTree = "<group>"; };
-		0FF3820A300F709D0002BE49 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = libsqlite3.tbd; sourceTree = "<group>"; };
-		0FF3820E300F70CC0002BE49 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VideoToolbox.framework; sourceTree = "<group>"; };
-		0FF38212300F70FB0002BE49 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libz.1.2.5.tbd; sourceTree = DEVELOPER_DIR; };
-		0FF38214300F71190002BE49 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ReplayKit.framework; sourceTree = "<group>"; };
-		0FF3821E300F8E9F0002BE49 /* MobileRTC.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BJ4HAAB9B3:Zoom Communications, Inc."; lastKnownFileType = wrapper.xcframework; path = MobileRTC.xcframework; sourceTree = "<group>"; };
+		0FEB5CE830162F2F005CC87E /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
+		0FEB5CEA30163979005CC87E /* VoipManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoipManager.swift; sourceTree = "<group>"; };
 		3611D246216D5DA700FB198C /* RetrieveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveViewController.swift; sourceTree = "<group>"; };
 		36139FB42869CAE1002A7475 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		36139FB52869CAE1002A7475 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -1075,18 +1087,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FF38215300F71190002BE49 /* ReplayKit.framework in Frameworks */,
-				0FF38209300F70870002BE49 /* CoreMedia.framework in Frameworks */,
-				0FF38207300F70720002BE49 /* CoreVideo.framework in Frameworks */,
-				0FF38205300F70470002BE49 /* CoreGraphics.framework in Frameworks */,
-				0FF3820F300F70CC0002BE49 /* VideoToolbox.framework in Frameworks */,
-				0FF3820B300F709D0002BE49 /* libsqlite3.tbd in Frameworks */,
-				0FF38217300F73720002BE49 /* zoomcml.xcframework in Frameworks */,
-				0FF38213300F70FB0002BE49 /* libz.1.2.5.tbd in Frameworks */,
+				0F08DA02301111CF00E04FE0 /* PushKit.framework in Frameworks */,
+				0FC00058300F954A004C3AD5 /* libsqlite3.tbd in Frameworks */,
+				0FC00054300F9516004C3AD5 /* CoreMedia.framework in Frameworks */,
+				0FC00052300F9502004C3AD5 /* CoreVideo.framework in Frameworks */,
+				0FC00050300F94EF004C3AD5 /* CoreGraphics.framework in Frameworks */,
+				0FC00056300F9527004C3AD5 /* CoreMedia.framework in Frameworks */,
 				0F5BC6052CC69D3F0085BD7E /* WebKit.framework in Frameworks */,
-				0FF3821F300F8E9F0002BE49 /* MobileRTC.xcframework in Frameworks */,
-				0FF3821A300F73880002BE49 /* MobileRTCScreenShare.xcframework in Frameworks */,
+				0FC0005C300F957A004C3AD5 /* libz.1.2.5.tbd in Frameworks */,
+				0FC00060300F95A0004C3AD5 /* ReplayKit.framework in Frameworks */,
+				0FC0004B300F94D5004C3AD5 /* MobileRTC.xcframework in Frameworks */,
+				0FC0005E300F958E004C3AD5 /* VideoToolbox.framework in Frameworks */,
+				0FC0004D300F94D7004C3AD5 /* zoomcml.xcframework in Frameworks */,
 				3BC7D7958504A4081BF7F49C /* Pods_CareMate.framework in Frameworks */,
+				0FC00049300F94D3004C3AD5 /* MobileRTCScreenShare.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2335,6 +2349,9 @@
 				AD5438AA21CFD56700C7D500 /* FSCalendar */,
 				3613CFC71FC8AFCE008F38E6 /* Extentions */,
 				464F401A1FADE07B0098D19D /* AppDelegate.swift */,
+				0FEB5CEA30163979005CC87E /* VoipManager.swift */,
+				0F08DA03301113CD00E04FE0 /* VoipTokenLogger.swift */,
+				0FEB5CE830162F2F005CC87E /* Observer.swift */,
 				AD49B1A9221874F000C4CEC7 /* OhhAuth.swift */,
 				5E45FE7926396D4800247C4F /* AppConnectionsHandler.swift */,
 			);
@@ -2989,19 +3006,21 @@
 		F73F932F4C15BC9AF1AB3B84 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0F08DA01301111CF00E04FE0 /* PushKit.framework */,
+				0FC00040300F94B1004C3AD5 /* MobileRTC.xcframework */,
+				0FC00041300F94B1004C3AD5 /* MobileRTCResources.bundle */,
+				0FC00042300F94B1004C3AD5 /* MobileRTCScreenShare.xcframework */,
+				0FC00043300F94B1004C3AD5 /* zoomcml.xcframework */,
+				0FC0004F300F94EF004C3AD5 /* CoreGraphics.framework */,
+				0FC00051300F9502004C3AD5 /* CoreVideo.framework */,
+				0FC00053300F9516004C3AD5 /* CoreMedia.framework */,
+				0FC00055300F9527004C3AD5 /* CoreMedia.framework */,
+				0FC00057300F954A004C3AD5 /* libsqlite3.tbd */,
+				0FC0005B300F957A004C3AD5 /* libz.1.2.5.tbd */,
+				0FC0005D300F958E004C3AD5 /* VideoToolbox.framework */,
+				0FC0005F300F95A0004C3AD5 /* ReplayKit.framework */,
 				0F5BC6042CC69D3F0085BD7E /* WebKit.framework */,
 				BF34FE18817735E0CF770B71 /* Pods_CareMate.framework */,
-				0FF381FC300F6F6F0002BE49 /* MobileRTCResources.bundle */,
-				0FF381FD300F6F6F0002BE49 /* MobileRTCScreenShare.xcframework */,
-				0FF38204300F70470002BE49 /* CoreGraphics.framework */,
-				0FF38208300F70870002BE49 /* CoreMedia.framework */,
-				0FF3821E300F8E9F0002BE49 /* MobileRTC.xcframework */,
-				0FF38206300F70720002BE49 /* CoreVideo.framework */,
-				0FF3820E300F70CC0002BE49 /* VideoToolbox.framework */,
-				0FF3820A300F709D0002BE49 /* libsqlite3.tbd */,
-				0FF38212300F70FB0002BE49 /* libz.1.2.5.tbd */,
-				0FF38214300F71190002BE49 /* ReplayKit.framework */,
-				0FF381FE300F6F6F0002BE49 /* zoomcml.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3219,7 +3238,7 @@
 				A26A3AC02C56E84700BF38F9 /* AccountsViewController.xib in Resources */,
 				364C7B55283912FE00926BD5 /* Tajawal-ExtraBold.ttf in Resources */,
 				A26162AA28BF62D20024CDBD /* HintPopupViewController.xib in Resources */,
-				0FF38202300F6F6F0002BE49 /* MobileRTCResources.bundle in Resources */,
+				0FC00047300F94B1004C3AD5 /* MobileRTCResources.bundle in Resources */,
 				04489BB126DCD6210083040A /* PatientHistoryViewController.xib in Resources */,
 				365CE98B2860A3DF00794489 /* daySlotCollectionViewCell.xib in Resources */,
 				0F9069032FAA1D350021ED5B /* PhysicalController.xib in Resources */,
@@ -3556,6 +3575,7 @@
 				367576352829541B00EDE25B /* FamilyMembers+TableView.swift in Sources */,
 				ADCA434521DA6FCE0099EF7A /* Reachability.swift in Sources */,
 				AD5438F521CFE33C00C7D500 /* extentions.swift in Sources */,
+				0F08DA04301113CD00E04FE0 /* VoipTokenLogger.swift in Sources */,
 				367C09DE279443DD00F1077A /* VisitCellTableViewCell.swift in Sources */,
 				A22B468C291D8A0000B8A5FC /* SaveCompliansViewController.swift in Sources */,
 				362060E7278DBDAE00D87DF9 /* Utils.swift in Sources */,
@@ -3594,6 +3614,7 @@
 				5E494D8D2608A5AA000F3418 /* ConfirmAfterSignUpVC.swift in Sources */,
 				AD5438EB21CFD56800C7D500 /* ESTabBarItemContentView.swift in Sources */,
 				66EF065425C9377B00108201 /* extensions.swift in Sources */,
+				0FEB5CEB30163979005CC87E /* VoipManager.swift in Sources */,
 				AD344CEA21DB9FD100FFB131 /* DrugCell.swift in Sources */,
 				6696161625C82235007681DD /* MedicalReportsVC.swift in Sources */,
 				36AC24402861C4C000874733 /* SlotTimeSlotCollectionViewCell.swift in Sources */,
@@ -3629,6 +3650,7 @@
 				461B46EC1FC1ADE2005013A9 /* ReservationClinicAppiontmentViewController.swift in Sources */,
 				469FC5BA1FC02A9D004FF772 /* Doctor.swift in Sources */,
 				A230AA882C12436000AF9E8B /* ClinicsServiceesReportsTableViewCell.swift in Sources */,
+				0FEB5CE930162F2F005CC87E /* Observer.swift in Sources */,
 				5E52E22626073FA200B9E549 /* forgetPassVC.swift in Sources */,
 				0FD96BBA2EB226F700FE1402 /* BranchNCell.swift in Sources */,
 				AD3652C422538E8100E69D80 /* WebviewController.swift in Sources */,
@@ -4168,7 +4190,7 @@
 				CODE_SIGN_ENTITLEMENTS = CareMate/CareMate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = W8QAC6TS8B;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
@@ -4212,7 +4234,7 @@
 				CODE_SIGN_ENTITLEMENTS = CareMate/CareMate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = W8QAC6TS8B;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;

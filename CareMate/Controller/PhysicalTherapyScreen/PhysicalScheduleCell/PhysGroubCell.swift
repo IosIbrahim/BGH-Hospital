@@ -10,6 +10,7 @@ import UIKit
 
 class PhysGroubCell: UITableViewCell {
 
+    @IBOutlet weak var imgDrop: UIImageView!
     @IBOutlet weak var sessionConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var tblSessions: UITableView!
     @IBOutlet weak var pickerShow: UIView!
@@ -33,6 +34,7 @@ class PhysGroubCell: UITableViewCell {
         tblSessions.dataSource = self
         tblSessions.delegate = self
         tblSessions.register("SessionCell")
+        contentView.layer.cornerRadius = 12
         // Initialization code
     }
 
@@ -60,6 +62,11 @@ class PhysGroubCell: UITableViewCell {
             
               sessionConstraintHeight.constant = CGFloat(count)
             tblSessions.isHidden = false
+            imgDrop.image?.imageRotated(byDegrees: 90)
+            imgDrop.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+        }else {
+            imgDrop.image?.imageRotated(byDegrees: 0)
+            imgDrop.transform = CGAffineTransform(rotationAngle: 0)
         }
         tblSessions.updateConstraints()
         hospitalTitle = session?.getHospital() ?? ""
@@ -93,7 +100,10 @@ extension PhysGroubCell: UITableViewDelegate {
   }
  
  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     delegate?.setlectSession(dataSource[indexPath.row],hospital: hospitalTitle)
+     let model = dataSource[indexPath.row]
+     if !model.isWaitingApporve() {
+         delegate?.setlectSession(dataSource[indexPath.row],hospital: hospitalTitle)
+     }
  }
 
 

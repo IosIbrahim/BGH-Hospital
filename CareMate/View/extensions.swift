@@ -62,6 +62,13 @@ extension UIView
         
     }
     
+    func setPhysShadow() {
+        self.layer.shadowColor = UIColor.fromHex(hex: "#9C949440", alpha: 1).cgColor
+        self.layer.shadowOpacity = 0.25
+        self.layer.shadowOffset = .zero
+        self.layer.shadowRadius = 10
+    }
+    
 }
 
 extension String

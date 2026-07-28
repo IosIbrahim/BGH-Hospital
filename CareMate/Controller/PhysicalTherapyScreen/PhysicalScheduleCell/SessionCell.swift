@@ -14,7 +14,7 @@ protocol SessionRowProtocol {
 
 class SessionCell: UITableViewCell {
 
-    @IBOutlet weak var picker: UIView!
+    @IBOutlet weak var stkDate: UIStackView!
     @IBOutlet weak var lblTime: UILabel!
     @IBOutlet weak var btnAction: UIButton!
     @IBOutlet weak var lblFinalStatus: UILabel!
@@ -72,9 +72,24 @@ class SessionCell: UITableViewCell {
             lblDate.text = ""
             lblTime.text = ""
         }
-        
+        if session?.isWaitingApporve() == true || session?.isCanSchedule() == true {
+            lblDocSession.isHidden = true
+            lblDocSessionSpeciality.isHidden = true
+            stkDate.isHidden = true
+            btnAction.isHidden = true
+            if session?.isCanSchedule() == true {
+                stkBranch.isHidden = true
+            }
+        }else {
+            lblDocSession.isHidden = false
+            lblDocSessionSpeciality.isHidden = false
+            stkDate.isHidden = false
+            btnAction.isHidden = false
+            lblFinalStatus.isHidden = false
+        }
         lblPlace.text = hospital
         lblFinalStatus.text = session?.getStatus()
+        lblFinalStatus.textAlignment = .center
         btnAction.setTitle(session?.getStatusAction(), for: .normal)
         btnAction.isHidden = session?.waitApprove == "1"
     }

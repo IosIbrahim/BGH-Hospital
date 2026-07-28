@@ -193,7 +193,7 @@ struct Constants {
         static var MedicalReportDetails = APIBaseURL + "MedicalRcordController/loadPatReportBySerial?"
         static var prhtermsPDF = IMAGE_BASE + "images/prhterms.pdf"
         static var generatePDF = IMAGE_BASE + "LaboratoryController/generatePdf"
-
+        static let bgRefreshAppId = "BGH.Hospital.mobile.refresh.location"
 
         //01013084123 P@$$w0rd
        }

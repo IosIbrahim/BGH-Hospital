@@ -17,7 +17,8 @@ class HeaderTabCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        picker.setShadowLight()
+    //    picker.setShadowLight()
+        picker.layer.cornerRadius = 12
         // Initialization code
     }
    
@@ -26,7 +27,14 @@ class HeaderTabCell: UICollectionViewCell {
         lblTitle.text = title
         lblTitle.textAlignment = .center
         lblTitle.adjustsFontSizeToFitWidth = true
-        picker.backgroundColor = cellSelected ? UIColor.fromHex(hex: ConstantsData.physical_blue, alpha: 1.0):.white
-        lblTitle.textColor = cellSelected ? .white:UIColor.fromHex(hex: ConstantsData.physical_black, alpha: 1.0)
+        if cellSelected {
+            picker.backgroundColor = UIColor.fromHex(hex: ConstantsData.physical_blue, alpha: 1.0)
+            lblTitle.textColor = .white
+        }else {
+            picker.setPhysShadow()
+            picker.backgroundColor = .white
+            lblTitle.textColor = UIColor.fromHex(hex: ConstantsData.physical_black, alpha: 1.0)
+        }
+       
     }
 }

@@ -127,11 +127,20 @@ extension PhysicalController: UITableViewDataSource,UITableViewDelegate,SessionR
         let cell = tableView.dequeueReusableCell(withIdentifier: "PhysGroubCell", for: indexPath) as! PhysGroubCell
         cell.delegate = self
         cell.drawCell(dataSources[indexPath.row],filter: filter)
+        cell.contentView.setPhysShadow()
+        cell.contentView.layer.cornerRadius = 12
+        cell.layer.masksToBounds = true
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        
+   //     let model = dataSources[indexPath.row]
+    //    if model.isSelected == true {
+            return UITableViewAutomaticDimension
+//        }else {
+//            return 180
+//        }
     }
    
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

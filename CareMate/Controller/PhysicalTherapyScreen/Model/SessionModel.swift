@@ -158,35 +158,42 @@ struct SessionRowModel:Codable{
     
     func getStatusTitle() -> String? {
         if canSchedule == "1" {
-            return UserManager.isArabic ? "مجدولة":"Scheduled"
-        }else if canReSchedule == "1"{
             return UserManager.isArabic ? "تحتاج جدولة":"Need Schedule"
+        }else if canReSchedule == "1"{
+            return UserManager.isArabic ? "مجدولة":"Scheduled"
         }else if waitApprove == "1" {
-            return UserManager.isArabic ? "تم الموافقة":"Approved"
+            return UserManager.isArabic ? "قيد الانتظار":"Pending"
         }
         return UserManager.isArabic ? "تم الموافقة":"Approved"
     }
     
     func getStatusAction() -> String? {
         if canSchedule == "1" {
-            return UserManager.isArabic ? "تعديل":"Edit"
+            return UserManager.isArabic ? "احجز الآن":"Reserve Now"
         }else if canReSchedule == "1"{
-            return UserManager.isArabic ? "اعادة جدولة":"ReSchedule"
+            return UserManager.isArabic ? "تعديل الحجز":"Edit Reservation"
         }else if waitApprove == "1" {
-            return UserManager.isArabic ? "احجز":"Reserve"
+            return UserManager.isArabic ? "":""
         }
         return UserManager.isArabic ? "":""
     }
     
+    func isWaitingApporve() -> Bool {
+      return waitApprove == "1"
+    }
+    
+    func isCanSchedule() -> Bool {
+      return canSchedule == "1"
+    }
     func getRowHieght() -> Int {
         if canSchedule == "1" {
-            return 260
+            return 130
         }else if canReSchedule == "1"{
-            return 280
+            return 270
         }else if waitApprove == "1" {
-            return 250
+            return 120
         }
-        return 240
+        return 270
     }
     
     enum CodingKeys: String, CodingKey {

@@ -74,6 +74,7 @@ class MedicalRecordVC: BaseViewController
     var isLoaded = true
     var branches = [Branch]()
     var selectedBranch: Branch?
+    var observer: Observer? = .init()
     override func viewDidLoad() {
         super.viewDidLoad()
         print("✅ Current lang:", MOLHLanguage.currentAppleLanguage())
@@ -163,6 +164,7 @@ class MedicalRecordVC: BaseViewController
         nc.addObserver(self, selector: #selector(noUserFound), name: Notification.Name("noUserFound"), object: nil)
         nc.addObserver(self, selector: #selector(updatePush), name: Notification.Name("new.push.notifications"), object: nil)
         showNotificationPopUp()
+        checkObserver()
     }
     
     
@@ -176,6 +178,16 @@ class MedicalRecordVC: BaseViewController
     
     @objc func updatePush() {
         getNotificationCount()
+    }
+    
+    func checkObserver() {
+        observer?.when(.startMeeting) { [weak self] notification in
+            
+        }
+        
+        observer?.when(.enfMeeting) { [weak self] notification in
+            
+        }
     }
     
     func showNotificationPopUp() {
