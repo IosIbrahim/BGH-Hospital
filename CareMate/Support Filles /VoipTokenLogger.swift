@@ -8,67 +8,15 @@ import BackgroundTasks
 import MetricKit
 #endif
 
-final class VoipTokenLogger: NSObject, PKPushRegistryDelegate {
+final class VoipTokenLogger:NSObject{
 
     static let shared = VoipTokenLogger()
 
-    private var pushRegistry: PKPushRegistry?
-
-    func start() {
-        let registry = PKPushRegistry(queue: DispatchQueue.main)
-        registry.delegate = self
-        registry.desiredPushTypes = [.voIP]
-        self.pushRegistry = registry
+    func startTask() {
         registerBGRefresherTask()
     }
-
-    func pushRegistry(_ registry: PKPushRegistry,
-                      didUpdate pushCredentials: PKPushCredentials,
-                      for type: PKPushType) {
-
-        guard type == .voIP else { return }
-
-        let token = pushCredentials.token
-            .map { String(format: "%02x", $0) }
-            .joined()
-
-        print("==================================")
-        print("VOIP TOKEN: \(token)")
-        print("==================================")
-        UserDefaults.standard.set(token, forKey: "voipPushToken")
-
-    }
-
-    func pushRegistry(_ registry: PKPushRegistry,
-                      didInvalidatePushTokenFor type: PKPushType) {
-        print("VOIP TOKEN INVALIDATED")
-    }
-
-    func pushRegistry(_ registry: PKPushRegistry,
-                      didReceiveIncomingPushWith payload: PKPushPayload,
-                      for type: PKPushType,
-                      completion: @escaping () -> Void) async {
-
-        print("VOIP PUSH RECEIVED: \(payload.dictionaryPayload)")
-        // Configure the recurring date.
-//        var dateComponents = DateComponents()
-//        dateComponents.calendar = Calendar.current
-//           
-//        // Create the trigger as a repeating event.
-//        let trigger = UNCalendarNotificationTrigger(
-//                 dateMatching: dateComponents, repeats: true)
-//        let uuidString = "New Voip Message"
-//        let request = UNNotificationRequest(identifier: uuidString, content: .init(), trigger: trigger)
-//
-//
-//        // Schedule the request with the system.
-//        let notificationCenter = UNUserNotificationCenter.current()
-//        do {
-//            try await notificationCenter.add(request)
-//        } catch {
-//            // Handle errors that may occur during add.
-//        }
         
+    func sendPush() {
         var localNotification = UILocalNotification()
         localNotification.fireDate = Date(timeIntervalSinceNow: 3)
         localNotification.alertBody = "This is local notification from Swift 2.0"
@@ -80,7 +28,6 @@ final class VoipTokenLogger: NSObject, PKPushRegistryDelegate {
         localNotification.category = "Message"
 
         UIApplication.shared.scheduleLocalNotification(localNotification)
-        completion()
     }
 }
 

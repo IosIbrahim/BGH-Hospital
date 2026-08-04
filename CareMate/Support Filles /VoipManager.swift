@@ -33,7 +33,8 @@ final class VoipManager: NSObject {
     }
 
     private func setupCallKit() {
-        let config = CXProviderConfiguration(localizedName: "PrimeCare")
+   //     var config = CXProviderConfiguration(localizedName: "PrimeCare")
+        let config = CXProviderConfiguration()
         config.supportsVideo = true
         config.maximumCallsPerCallGroup = 1
         config.supportedHandleTypes = [.generic]

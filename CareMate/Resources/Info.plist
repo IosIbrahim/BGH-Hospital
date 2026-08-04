@@ -8,6 +8,8 @@
 	<array>
 		<string>BGH.Hospital.mobile.refresh.location</string>
 	</array>
+	<key>NSContactsUsageDescription</key>
+	<string>requires access to your contacts to help you connect with your family members and healthcare providers.</string>
 	<key>CFBundleDisplayName</key>
 	<string>BHG HOSPITAL</string>
 	<key>CFBundleExecutable</key>

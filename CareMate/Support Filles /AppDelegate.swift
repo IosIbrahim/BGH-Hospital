@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
 
     var window: UIWindow?
     let gcmMessageIDKey = "AIzaSyCvqTMWmMzDZSi7iCKI0hrkT0vjgzuZ56U"
-    var voipRegistry: PKPushRegistry?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -57,25 +56,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             application.registerUserNotificationSettings(settings)
         }
         
-        VoipTokenLogger.shared.start()
+        VoipTokenLogger.shared.startTask()
         VoipManager.shared.start()
         //   configureVoIPPush()
 
         return true
     }
     
-    private func configureVoIPPush() {
-           // Initialize the registry on the main queue
-           voipRegistry = PKPushRegistry(queue: DispatchQueue.main)
-           
-           // Assign the delegate to receive token callbacks
-           voipRegistry?.delegate = self
-           
-           // Request the VoIP push token type
-           voipRegistry?.desiredPushTypes = [.voIP]
-
-       }
-
     func initFirebase(_ application: UIApplication) {
         FirebaseApp.configure()
         if #available(iOS 10.0, *) {
@@ -201,47 +188,3 @@ extension AppDelegate: MOLHResetable {
     }
 }
 
-// MARK: - PKPushRegistryDelegate
-extension AppDelegate: PKPushRegistryDelegate {
-    
-    // This method triggers automatically upon registration and when tokens refresh
-    func pushRegistry(
-        _ registry: PKPushRegistry,
-        didUpdate pushCredentials: PKPushCredentials,
-        for type: PKPushType
-    ) {
-        // Retrieve raw token data
-        let tokenData = pushCredentials.token
-        
-        // Convert the raw Data bytes into a Hex string readable by your backend
-        let voipTokenString = tokenData.map { String(format: "%02x", $0) }.joined()
-        
-        print("VoIP Token String: \(voipTokenString)")
-        UserDefaults.standard.set(voipTokenString, forKey: "voisPushToken")
-
-        // Send this token string to your backend server
-     //   sendTokenToServer(voipTokenString)
-    }
-    
-    func pushRegistry(
-        _ registry: PKPushRegistry,
-        didInvalidatePushTokenFor type: PKPushType
-    ) {
-        print("VoIP Token invalidated by system.")
-        // Inform your backend server to stop using the invalidated token
-    }
-    
-    // Required delegate method for receiving incoming VoIP calls
-    func pushRegistry(
-        _ registry: PKPushRegistry,
-        didReceiveIncomingPushWith payload: PKPushPayload,
-        for type: PKPushType,
-        completion: @escaping () -> Void
-    ) {
-        print("Received VoIP push payload: \(payload.dictionaryPayload)")
-        
-        // CRITICAL: You must report incoming calls to CallKit immediately inside this block!
-        
-        completion()
-    }
-}
