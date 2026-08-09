@@ -105,9 +105,6 @@ extension SpecialityFilter: UICollectionViewDelegate {
 //        collectionView.deselectRow(at: indexPath, animated: true)
         let selectedSpeciality = isSearching ? filterData[indexPath.row] : specialities[indexPath.row]
 //        delegate?.specialityFilter(self, didSelectSpeciality: selectedSpeciality)
-      
-        
-
         let doctorsVC = DoctorsViewController()
         doctorsVC.speciality = UserManager.isArabic ? selectedSpeciality.arabicName : selectedSpeciality.englishName 
         doctorsVC.branchId = selectedBranch?.id

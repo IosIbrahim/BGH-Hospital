@@ -12,12 +12,12 @@ import Alamofire
 import ObjectMapper
 //-------------------------------------------------------------------------------
 struct Slot: Decodable {
-  let id: String
-  let placeID : String
-  let shiftID : String
-  let schedual : String
-  let statuse : String
-  let TIME_SLOT_END : String
+  let id: String?
+  let placeID : String?
+  let shiftID : String?
+  let schedual : String?
+  let statuse : String?
+  let TIME_SLOT_END : String?
 
   enum CodingKeys : String ,CodingKey {
     case id = "ID"
@@ -41,7 +41,7 @@ struct Slot: Decodable {
 }
 //-----------------------------------------------------------------------------//
 struct TimeSlots : Decodable {
-    var id: String = ""
+    var id: String?
     //let slots :String
     var slotsarray: SINGLE_HOUR_SLOTS?
     enum CodingKeys : String ,CodingKey {
@@ -94,9 +94,9 @@ extension TimeSlots {
         let url = URL(string: urlString)
         let pars = isPhysical ? Constants.APIProvider.GetDoctorPhysicalTimeSlots:Constants.APIProvider.GetDoctorTimeSlots
         var parseURl = pars + "&" + Constants.getoAuthValue(url: url!, method: "GET")
-//        if isPhysical {
-//            parseURl = urlString
-//        }
+        if isPhysical {
+            parseURl = urlString
+        }
         URLSession.shared.dataTask(with: URL(string: parseURl)!) { data, response, error in
         indicator.sharedInstance.dismiss()
         guard let data = data else {
@@ -114,7 +114,7 @@ extension TimeSlots {
                 
                 let slotsObj = try? TimeSlots(data: data, keyPath: "Root.HOURS_SLOTS.HOURS_SLOTS_ROW")
                 
-                let slotsTime = ((d["Root"] as? [String : AnyObject])?["HOURS_SLOTS"] as? [String: AnyObject])?["DAY_DATE"] as? String
+                var slotsTime = ((d["Root"] as? [String : AnyObject])?["HOURS_SLOTS"] as? [String: AnyObject])?["DAY_DATE"] as? String
                 
                 if slots != nil
                 {
@@ -140,6 +140,9 @@ extension TimeSlots {
                     //              let slots = try? [SlotsTime](data: data, keyPath: "Root.HOURS_SLOTS.HOURS_SLOTS_ROW.SINGLE_HOUR_SLOTS.SINGLE_HOUR_SLOTS_ROW")
                     //            //.SINGLE_HOUR_SLOTS_ROW
                     if  avSlots.count != 0 {
+                        if isPhysical {
+                            slotsTime = dd
+                        }
                         DispatchQueue.main.async {completion(avSlots,nextAv, slotsTime ?? "")}
                     } else {
                         DispatchQueue.main.async {completion(nil,"", "")}

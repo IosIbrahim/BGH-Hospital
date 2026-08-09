@@ -61,6 +61,8 @@ class SignUpAsGuestVC: BaseViewController {
     var guestIdentityType = ""
     var guestSSN = ""
     var clinicName = ""
+    var session:SessionRowModel?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

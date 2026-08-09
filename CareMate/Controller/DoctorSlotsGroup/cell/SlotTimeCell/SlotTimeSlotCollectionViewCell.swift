@@ -20,7 +20,7 @@ class SlotTimeSlotCollectionViewCell: UICollectionViewCell {
     
     func configCell(slot: Slot)
     {
-        let dateCom = slot.id.convertArabicNumbers().components(separatedBy: .whitespaces)
+        let dateCom = slot.id?.convertArabicNumbers().components(separatedBy: .whitespaces) ?? []
         let date = dateCom.last?.ConvertToDate
         print(date ?? .init())
         if let dat = date?.ToTimeOnlyEn {

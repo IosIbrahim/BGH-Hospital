@@ -117,6 +117,7 @@ class DcotorSlotsViewController: BaseViewController {
                     }
                 }
             }
+            self.loadSlots()
         }
     }
     
@@ -233,7 +234,7 @@ class DcotorSlotsViewController: BaseViewController {
         print(datesInMonthList)
         setupcollectionView()
         reloadTableView()
-        loadSlots()
+       // loadSlots()
     
     }
     func reloadTableView(){
@@ -284,74 +285,12 @@ class DcotorSlotsViewController: BaseViewController {
             if Utilities.sharedInstance.getPatientId() == "" {
     //            Utilities.showLoginAlert(vc: self.navigationController!)
     //            return
-                
-                
-                let vc :   SignUpAsGuestVC = SignUpAsGuestVC()
-                let shiftId = SlotArr[selectedIndexSlot!].shiftID
-                let schedSerial = SlotArr[selectedIndexSlot!].schedual
-                let spec = specialityID!
-                let appoint = makeAppointment()
-                appoint.doctor = doctor!
-                appoint.branch = branch!
-                appoint.slot = SlotArr[selectedIndexSlot!]
-                appoint.shiftID = shiftId
-                appoint.scheduleSerial = schedSerial
-                appoint.specialityID = spec
-                
-                print(SlotArr[selectedIndexSlot!].schedual)
-                appoint.dateDone = SlotArr[selectedIndexSlot!].id
-                appoint.dateDoneEnd = SlotArr[selectedIndexSlot! + Int(serviceObject!.numberSlots ?? "0")! ].TIME_SLOT_END
-                appoint.branchID = branchID!
-                appoint.branch = branch!
-
-                appoint.patientID = Utilities.sharedInstance.getPatientId()
-                vc.SelectedDoctorFromSearch = appoint
-                vc.SelectedDoctorFromSearch?.branch = branch
-                vc.guestName = guestName
-                vc.guestPhone = guestPhone
-                vc.guestPhoneCode = guestPhoneCode
-                vc.isScedule = isScedule
-                vc.guestBithDate = guestBithDate
-                vc.guestGender = guestGender
-                vc.guestIdentityType = guestIdentityType
-                vc.guestSSN = guestSSN
-                vc.clinicName = clicnName ?? ""
-                
-                self.navigationController?.pushViewController(vc, animated: true)
+                gotoGuest()
                 
                 return
                 
             }
-            let shiftId = SlotArr[selectedIndexSlot!].shiftID
-            let schedSerial = SlotArr[selectedIndexSlot!].schedual
-            let spec = specialityID!
-            let appoint = makeAppointment()
-            appoint.doctor = doctor!
-            appoint.branch = branch!
-            appoint.slot = SlotArr[selectedIndexSlot!]
-            appoint.shiftID = shiftId
-            appoint.scheduleSerial = schedSerial
-            appoint.specialityID = spec
-            
-            print(SlotArr[selectedIndexSlot!].schedual)
-            appoint.dateDone = SlotArr[selectedIndexSlot!].id
-            appoint.dateDoneEnd = SlotArr[selectedIndexSlot! + Int(serviceObject?.numberSlots ?? "0")! ].TIME_SLOT_END
-            appoint.branchID = branchID!
-            appoint.branch = branch!
-            appoint.patientID = Utilities.sharedInstance.getPatientId()
-            let vc =  ReservationConfirmVC()
-            vc.speciality = speciality
-            vc.serviceId = serviceObject?.id ?? ""
-            vc.comesFromDoctors = comesFromDoctors
-            vc.SelectedDoctorFromSearch = appoint
-            vc.branch = branch
-            vc.selectedSpeciality = selectedSpeciality
-            vc.specialityID = specialityID ?? ""
-            vc.isPhysical = isPhysical
-            vc.session = session
-            vc.url =    URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor?.DOCTOR_PIC ?? "")")
-            
-            self.navigationController?.pushViewController(vc, animated: true)
+            gotoUser()
         }
         
         else
@@ -361,72 +300,92 @@ class DcotorSlotsViewController: BaseViewController {
                 return
             }
             if Utilities.sharedInstance.getPatientId() == "" {
-                let vc :   SignUpAsGuestVC = SignUpAsGuestVC()
-                let shiftId = SlotArr[selectedIndexSlot!].shiftID
-                let schedSerial = SlotArr[selectedIndexSlot!].schedual
-                let spec = specialityID!
-                let appoint = makeAppointment()
-                appoint.doctor = doctor!
-                appoint.branch = branch!
-                appoint.slot = SlotArr[selectedIndexSlot!]
-                appoint.shiftID = shiftId
-                appoint.scheduleSerial = schedSerial
-                appoint.specialityID = spec
-                
-                print(SlotArr[selectedIndexSlot!].schedual)
-                appoint.dateDone = SlotArr[selectedIndexSlot!].id
-                appoint.dateDoneEnd = SlotArr[selectedIndexSlot!].TIME_SLOT_END
-                appoint.branchID = branchID!
-                appoint.patientID = Utilities.sharedInstance.getPatientId()
-                appoint.branch = branch!
-                vc.SelectedDoctorFromSearch = appoint
-                vc.guestName = guestName
-                vc.guestPhone = guestPhone
-                vc.guestPhoneCode = guestPhoneCode
-                vc.isScedule = isScedule
-                vc.guestBithDate = guestBithDate
-                vc.guestGender = guestGender
-                vc.guestIdentityType = guestIdentityType
-                vc.guestSSN = guestSSN
-                vc.clinicName = clicnName ?? ""
-                self.navigationController?.pushViewController(vc, animated: true)
-                
+                gotoGuest()
                 return
                 
             }
-            
-            let shiftId = SlotArr[selectedIndexSlot!].shiftID
-            let schedSerial = SlotArr[selectedIndexSlot!].schedual
-            let spec = specialityID!
-            let appoint = makeAppointment()
-            appoint.doctor = doctor!
-            appoint.branch = branch!
-            appoint.slot = SlotArr[selectedIndexSlot!]
-            appoint.shiftID = shiftId
-            appoint.scheduleSerial = schedSerial
-            appoint.specialityID = spec
-            
-            print(SlotArr[selectedIndexSlot!].schedual)
-            appoint.dateDone = SlotArr[selectedIndexSlot!].id
-            appoint.dateDoneEnd = SlotArr[selectedIndexSlot! + Int(serviceObject?.numberSlots ?? "0")! ].TIME_SLOT_END
-            appoint.branchID = branchID!
-            appoint.patientID = Utilities.sharedInstance.getPatientId()
-            let vc =  ReservationConfirmVC()
-            vc.serviceId = serviceObject?.id ?? ""
-            vc.speciality = speciality
-            vc.SelectedDoctorFromSearch = appoint
-            vc.gender = doctor?.gender ?? ""
-            vc.branch = branch
-            vc.session = session
-            vc.comesFromDoctors = comesFromDoctors
-            vc.clinicName = doctorSpeciality.text?.components(separatedBy: "-").first ?? ""
-            vc.selectedSpeciality = selectedSpeciality
-            vc.specialityID = specialityID ?? ""
-            vc.isPhysical = isPhysical
-            vc.url =    URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor?.DOCTOR_PIC ?? "")")
-            self.navigationController?.pushViewController(vc, animated: true)
+            gotoUser()
+
         }
        
+    }
+    
+    func gotoGuest() {
+        let vc :   SignUpAsGuestVC = SignUpAsGuestVC()
+        let appoint = makeAppointment()
+        var shiftId = ""
+        var schedSerial = ""
+        let spec = specialityID
+        appoint.doctor = doctor
+        appoint.branch = branch
+        if let index = selectedIndexSlot {
+            appoint.slot = SlotArr[index]
+            appoint.dateDone = SlotArr[index].id ?? ""
+            shiftId = SlotArr[index].shiftID ?? ""
+            schedSerial = SlotArr[index].schedual ?? ""
+            appoint.dateDone = SlotArr[index].id ?? ""
+            appoint.dateDoneEnd = SlotArr[index].TIME_SLOT_END ?? ""
+
+        }
+        appoint.slot = SlotArr[selectedIndexSlot!]
+        appoint.shiftID = shiftId
+        appoint.scheduleSerial = schedSerial
+        appoint.specialityID = spec ?? ""
+        
+        appoint.branchID = branchID!
+        appoint.patientID = Utilities.sharedInstance.getPatientId()
+        appoint.branch = branch!
+        vc.SelectedDoctorFromSearch = appoint
+        vc.guestName = guestName
+        vc.guestPhone = guestPhone
+        vc.guestPhoneCode = guestPhoneCode
+        vc.isScedule = isScedule
+        vc.guestBithDate = guestBithDate
+        vc.guestGender = guestGender
+        vc.guestIdentityType = guestIdentityType
+        vc.guestSSN = guestSSN
+        vc.clinicName = clicnName ?? ""
+        vc.session = session
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func gotoUser() {
+        var shiftId = ""
+        var schedSerial = ""
+        let spec = specialityID
+        let appoint = makeAppointment()
+        appoint.doctor = doctor
+        appoint.branch = branch
+        if let index = selectedIndexSlot {
+            appoint.slot = SlotArr[index]
+            appoint.dateDone = SlotArr[index].id ?? ""
+            shiftId = SlotArr[index].shiftID ?? ""
+            schedSerial = SlotArr[index].schedual ?? ""
+            let number = Int(serviceObject?.numberSlots ?? "0") ?? .zero
+            appoint.dateDoneEnd = SlotArr[index + number].TIME_SLOT_END ?? ""
+
+        }
+        appoint.shiftID = shiftId
+        appoint.scheduleSerial = schedSerial
+        appoint.specialityID = spec ?? ""
+        
+        appoint.branchID = branchID ?? ""
+        appoint.patientID = Utilities.sharedInstance.getPatientId()
+        let vc =  ReservationConfirmVC()
+        vc.serviceId = serviceObject?.id ?? ""
+        vc.speciality = speciality
+        vc.SelectedDoctorFromSearch = appoint
+        vc.gender = doctor?.gender ?? ""
+        vc.branch = branch
+        vc.session = session
+        vc.comesFromDoctors = comesFromDoctors
+        vc.clinicName = doctorSpeciality.text?.components(separatedBy: "-").first ?? ""
+        vc.selectedSpeciality = selectedSpeciality
+        vc.specialityID = specialityID ?? ""
+        vc.isPhysical = isPhysical
+        vc.session = session
+        vc.url =    URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor?.DOCTOR_PIC ?? "")")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func monthPlus(_ sender: Any) {

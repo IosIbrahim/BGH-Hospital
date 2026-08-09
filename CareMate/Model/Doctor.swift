@@ -170,10 +170,11 @@ extension Doctor {
         }
     
         let url = URL(string: urlString)
+        
         let parseURl = Constants.APIProvider.GetDoctors + Constants.getoAuthValue(url: url!, method: "GET")
         print(parseURl)
     
-        URLSession.shared.dataTask(with: URL(string: parseURl)!) { data, response, error in
+        URLSession.shared.dataTask(with: URL(string: isPhysical ?  urlString:parseURl)!) { data, response, error in
             indicator.sharedInstance.dismiss()
 
             guard let data = data else {

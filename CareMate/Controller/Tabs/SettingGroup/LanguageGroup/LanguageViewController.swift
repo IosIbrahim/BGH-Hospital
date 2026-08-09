@@ -31,9 +31,9 @@ class LanguageViewController: BaseViewController {
     @IBAction func arabciClicked(_ sender: Any) {
         guard !UserManager.isArabic else { return }
         UserDefaults.standard.setValue("ar", forKey: "appLang")
+        MOLH.setLanguageTo("ar")
         indicator.sharedInstance.show()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            MOLH.setLanguageTo("ar")
             self.reloadApp()
         }
     }
@@ -41,9 +41,9 @@ class LanguageViewController: BaseViewController {
     @IBAction func englishCliked(_ sender: Any) {
         guard UserManager.isArabic else { return }
         UserDefaults.standard.setValue("en", forKey: "appLang")
+        MOLH.setLanguageTo("en")
         indicator.sharedInstance.show()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            MOLH.setLanguageTo("en")
             self.reloadApp()
         }
     }

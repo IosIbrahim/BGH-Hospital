@@ -111,12 +111,15 @@ class ReservationConfirmVC: BaseViewController {
 
             }
         }
+        if isPhysical {
+            labelPlace.text = doctorLocation.text
+        }
 //        if let clc = clinic {
 //            self.labelPlace.text = clc
 //        }
         dateLbl.text = SelectedDoctorFromSearch!.dateDone.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "", formateString: "yyyy MMMM dd")
         dayText.text = SelectedDoctorFromSearch!.dateDone.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "", formateString: "EEEE")
-        timeLbl.text = SelectedDoctorFromSearch!.slot!.id.ConvertToDate.ToTimeOnly
+        timeLbl.text = SelectedDoctorFromSearch!.slot!.id?.ConvertToDate.ToTimeOnly
         bookNowBtn.text = UserManager.isArabic ? "تأكيد" : "Confirmation"
         labelAppoiment.text = UserManager.isArabic ? "الموعد" : "Appointment"
         labelLocation.text = UserManager.isArabic ? "الفرع" : "Branch"
@@ -152,17 +155,17 @@ class ReservationConfirmVC: BaseViewController {
                     "COMPUTER_NAME":"ios" ,
                     "SERV_TYPE":"1",
                     "DETECT_TYPE":"1",
-                    "CLINIC_ID": SelectedDoctorFromSearch!.doctor!.clinicId! ,
-                    "SHIFT_ID": SelectedDoctorFromSearch!.shiftID,
-                    "SCHED_SERIAL": SelectedDoctorFromSearch!.scheduleSerial,
-                    "DOC_ID": SelectedDoctorFromSearch!.doctor!.id!,
-                    "PATIENT_ID": SelectedDoctorFromSearch!.patientID,
+                    "CLINIC_ID": SelectedDoctorFromSearch?.doctor?.clinicId ?? "" ,
+                    "SHIFT_ID": SelectedDoctorFromSearch?.shiftID ?? "",
+                    "SCHED_SERIAL": SelectedDoctorFromSearch?.scheduleSerial ?? "",
+                    "DOC_ID": SelectedDoctorFromSearch?.doctor?.id ?? "",
+                    "PATIENT_ID": SelectedDoctorFromSearch?.patientID ?? "",
 //                    "GENDER": SelectedDoctorFromSearch!.doctor!.gender != nil ? SelectedDoctorFromSearch!.doctor!.gender! : "M" ,
-                    "SPEC_ID": SelectedDoctorFromSearch!.specialityID,
+                    "SPEC_ID": SelectedDoctorFromSearch?.specialityID ?? "",
                     "buffer_status": isReschedule ? "2" : "1",
-                    "dateDone": SelectedDoctorFromSearch!.dateDone,
-                    "EXPECTEDDONEDATE": SelectedDoctorFromSearch!.dateDone,
-                    "EXPECTED_END_DATE": SelectedDoctorFromSearch!.dateDoneEnd,
+                    "dateDone": SelectedDoctorFromSearch?.dateDone ?? "",
+                    "EXPECTEDDONEDATE": SelectedDoctorFromSearch?.dateDone ?? "",
+                    "EXPECTED_END_DATE": SelectedDoctorFromSearch?.dateDoneEnd ?? "",
                     "SERVICE_ID":serviceId
                     
         ] as [String : String]
@@ -194,35 +197,55 @@ class ReservationConfirmVC: BaseViewController {
 //        let parseUrl = Constants.APIProvider.SubmitAppointment + Constants.getoAuthValue(url: url!, method: "POST",parameters: pars)
         WebserviceMananger.sharedInstance.makeCall(method: .post, url: urlString, parameters: pars, vc: self) { [weak self] (data, error) in
             guard let self = self else { return }
-            let root = (data as? [String:AnyObject])?["Root"] as? [String: AnyObject] ?? [:]
-            if root.keys.contains("OUT_PARMS") { // save success
-                let params = (root["OUT_PARMS"] as? [String: AnyObject])?["OUT_PARMS_ROW"] as? [String : AnyObject]
-                let ser = params?["SER"] as? String ?? ""
-                let location = params?[UserManager.isArabic ? "CLINIC_LOCATION_ADDRESS" : "CLINIC_LOCATION_ADDRESS_EN"] as? String ?? ""
-                let instructions = params?[UserManager.isArabic ? "CLINIC_APPOINT_INSTRUCTIONS" : "CLINIC_APPOINT_INSTRUCTIONS_EN"] as? String ?? ""
-                self.SelectedDoctorFromSearch?.reservationID = ser
-                let vc = ReservationSuccessVC()
-                vc.instructions = instructions
-                vc.delegate = self
-                vc.speciality = self.speciality
-                vc.location = (UserManager.isArabic ? SelectedDoctorFromSearch?.doctor?.clinicNameAR : SelectedDoctorFromSearch?.doctor?.clinicName) ?? location
-                vc.SelectedDoctorFromSearch = self.SelectedDoctorFromSearch!
-                AppPopUpHandler.instance.openVCPop(vc, height: 550)
-            } else {
-                let root2 = root["Root"] as? [String: AnyObject] ?? [:]
-                let messageDic = (root["MESSAGE"] as? [String: AnyObject])?["MESSAGE_ROW"] as? [String: AnyObject] ?? [:]
-                if messageDic["CODE"] as? String ?? "" == "6751" { // Dublicate
-                    let messageRow = (root2["OUT_PARMS"] as? [String: AnyObject])?["OUT_PARMS_ROW"] as? [String : AnyObject]
-                    let dublication = messageRow?["CONFIRM_DOUBLICATION_SER"] as? String ?? ""
-                    let messageDic = (root["MESSAGE"] as? [String: AnyObject])?["MESSAGE_ROW"] as? [String: AnyObject] ?? [:]
-                    OPEN_DUBLICATE_POPUP(container: self, message: UserManager.isArabic ? messageDic["NAME_AR"] as? String ?? "" : messageDic["NAME_EN"] as? String ?? "") { type in
-                        if type == 0 { return }
-                        self.confirmClicked2(changeRequest: type, ser: dublication)
+            if self.isPhysical {
+                if let code = (data as? [String:AnyObject])?["code"] as? Int {
+                    if code == 1 {
+                        self.SelectedDoctorFromSearch?.reservationID = ser
+                        let vc = ReservationSuccessVC()
+                        vc.instructions = ""
+                        vc.delegate = self
+                        vc.speciality = self.speciality
+                        vc.location = self.doctorLocation.text ?? ""
+                        vc.SelectedDoctorFromSearch = self.SelectedDoctorFromSearch
+                        AppPopUpHandler.instance.openVCPop(vc, height: 550)
+                    }else {
+                        let message =  (data as? [String:AnyObject])?["message"] as? String ?? ""
+                        OPEN_HINT_POPUP(container: self, message: message)
                     }
-                } else { // Dublicate visit
-                    OPEN_HINT_POPUP(container: self, message: UserManager.isArabic ? messageDic["NAME_AR"] as? String ?? "" : messageDic["NAME_EN"] as? String ?? "")
+                }
+
+            }else {
+                let root = (data as? [String:AnyObject])?["Root"] as? [String: AnyObject] ?? [:]
+                if root.keys.contains("OUT_PARMS") { // save success
+                    let params = (root["OUT_PARMS"] as? [String: AnyObject])?["OUT_PARMS_ROW"] as? [String : AnyObject]
+                    let ser = params?["SER"] as? String ?? ""
+                    let location = params?[UserManager.isArabic ? "CLINIC_LOCATION_ADDRESS" : "CLINIC_LOCATION_ADDRESS_EN"] as? String ?? ""
+                    let instructions = params?[UserManager.isArabic ? "CLINIC_APPOINT_INSTRUCTIONS" : "CLINIC_APPOINT_INSTRUCTIONS_EN"] as? String ?? ""
+                    self.SelectedDoctorFromSearch?.reservationID = ser
+                    let vc = ReservationSuccessVC()
+                    vc.instructions = instructions
+                    vc.delegate = self
+                    vc.speciality = self.speciality
+                    vc.location = (UserManager.isArabic ? SelectedDoctorFromSearch?.doctor?.clinicNameAR : SelectedDoctorFromSearch?.doctor?.clinicName) ?? location
+                    vc.SelectedDoctorFromSearch = self.SelectedDoctorFromSearch!
+                    AppPopUpHandler.instance.openVCPop(vc, height: 550)
+                } else {
+                    let root2 = root["Root"] as? [String: AnyObject] ?? [:]
+                    let messageDic = (root["MESSAGE"] as? [String: AnyObject])?["MESSAGE_ROW"] as? [String: AnyObject] ?? [:]
+                    if messageDic["CODE"] as? String ?? "" == "6751" { // Dublicate
+                        let messageRow = (root2["OUT_PARMS"] as? [String: AnyObject])?["OUT_PARMS_ROW"] as? [String : AnyObject]
+                        let dublication = messageRow?["CONFIRM_DOUBLICATION_SER"] as? String ?? ""
+                        let messageDic = (root["MESSAGE"] as? [String: AnyObject])?["MESSAGE_ROW"] as? [String: AnyObject] ?? [:]
+                        OPEN_DUBLICATE_POPUP(container: self, message: UserManager.isArabic ? messageDic["NAME_AR"] as? String ?? "" : messageDic["NAME_EN"] as? String ?? "") { type in
+                            if type == 0 { return }
+                            self.confirmClicked2(changeRequest: type, ser: dublication)
+                        }
+                    } else { // Dublicate visit
+                        OPEN_HINT_POPUP(container: self, message: UserManager.isArabic ? messageDic["NAME_AR"] as? String ?? "" : messageDic["NAME_EN"] as? String ?? "")
+                    }
                 }
             }
+
         }
     }
     

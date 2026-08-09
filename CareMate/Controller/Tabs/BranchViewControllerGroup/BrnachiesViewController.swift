@@ -35,7 +35,7 @@ class BrnachiesViewController: BaseViewController {
         tableView.register("BranchCellforBooking")
         
      //   if fromPhysical {
-            initHeader(isNotifcation: false, isLanguage: true, title: UserManager.isArabic ? "اختر الفرع" : "Choose Branch", hideBack: false)
+            initHeader(isNotifcation: false, isLanguage: true, title: UserManager.isArabic ? "اختر الفرع" : "Choose Branch", hideBack: !fromPhysical)
 //        }else {
 //            initHeader(isNotifcation: false, isLanguage: true, title: UserManager.isArabic ? "اختر الفرع" : "Choose Branch", hideBack: false)
 //        }
@@ -144,6 +144,9 @@ class BrnachiesViewController: BaseViewController {
             
         }
         
+        if fromPhysical {
+            nc.post(name: Notification.Name("showBack"), object: nil)
+        }
         //
         //       UIView.appearance().semanticContentAttribute = !UserManager.isArabic ? .forceLeftToRight : .forceRightToLeft
         

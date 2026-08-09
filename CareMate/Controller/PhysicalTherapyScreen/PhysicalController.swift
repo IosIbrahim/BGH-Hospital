@@ -149,58 +149,66 @@ extension PhysicalController: UITableViewDataSource,UITableViewDelegate,SessionR
    }
    
     func setlectSession(_ row:SessionRowModel,hospital:String){
-        let doctorProfileVC = DcotorSlotsViewController()
-        var item:ServiceSessionRowModel?
-        for itm in dataSources {
-            if itm.getHospital() == hospital {
-                item = itm
-                break
-            }
-        }
-        doctorProfileVC.doctor = Doctor(id: row.doctorId,
-                                        englishName: item?.doctorNameEn,
-                                        englishNameAR: item?.doctorNameAr,
-                                        gender: nil,
-                                        doctorCategory: item?.doctorSpecialEn,
-                                        doctorCategoryAR: item?.doctorSpecialAr,
-                                        clinicName: item?.hospitalNameEn,
-                                        clinicNameAR: item?.hospitalNameAr,
-                                        nationality: nil,
-                                        nationalityAR: nil,
-                                        clinicId: nil,
-                                        qualification: item?.doctorSpecialEn,
-                                        qualificationAR: item?.doctorSpecialAr,
-                                        FIRST_SLOT_TIME: "",
-                                        DOCTOR_PIC: "",
-                                        HREMPLOYEELANGUAGE_EN: "",
-                                        HREMPLOYEELANGUAGE_AR: "",
-                                        CLINIC_PHONE_NUMBER: "",
-                                        DOCCATNAME: item?.doctorSpecialEn,
-                                        DOCCATNAMEen: item?.doctorSpecialAr,
-                                        NO_RESERVATION_VIEW_ONLY_TEL: "",
-                                        INFORMAT_ONLY: "",
-                                        CLINIC_LETTER: "",
-                                        CLINIC_LETTER_EN: "",
-                                        DOC_ID: item?.doctorId,
-                                        DOC_NAME_AR: item?.doctorNameAr,
-                                        DOC_NAME_EN: item?.doctorNameEn,
-                                        SPECIAL_SPEC_ID: item?.doctorSpecialId,
-                                        SPECIALITY_AR: item?.doctorSpecialAr,
-                                        SPECIALITY_EN: item?.doctorSpecialEn,
-                                        PAGES_COUNT: nil,
-                                        RNUM: nil,
-                                        DOCTOR_CLINICS: nil,
-                                        GENDERCODE: "", HIDE_SCHEDULE_MOBILE_APP: "", CONTACT_TEL1: "", CONTACT_TEL2: "", CLINIC_LOCATION_AR: "", CLINIC_LOCATION_EN: "", branchAr: "", branchEn: "")
-        doctorProfileVC.branchID = branch?.id ?? ""
-        doctorProfileVC.branch = branch
-        doctorProfileVC.specialityID = item?.doctorSpecialId
-        doctorProfileVC.DocName = item?.getDoctorName()
-        doctorProfileVC.docID = row.doctorId
-        doctorProfileVC.clincID = ""
-        doctorProfileVC.clicnName = item?.getHospital()
-        doctorProfileVC.isPhysical = true
-        doctorProfileVC.session = row
-        self.navigationController?.pushViewController(doctorProfileVC, animated: true)
+        
+        let doctorsVC = DoctorsViewController()
+        doctorsVC.branchId = branch?.id
+        doctorsVC.branch = branch
+        doctorsVC.session = row
+        doctorsVC.isPhysical = true
+        self.navigationController?.pushViewController(doctorsVC, animated: true)
+        
+//        let doctorProfileVC = DcotorSlotsViewController()
+//        var item:ServiceSessionRowModel?
+//        for itm in dataSources {
+//            if itm.getHospital() == hospital {
+//                item = itm
+//                break
+//            }
+//        }
+//        doctorProfileVC.doctor = Doctor(id: row.doctorId,
+//                                        englishName: item?.doctorNameEn,
+//                                        englishNameAR: item?.doctorNameAr,
+//                                        gender: nil,
+//                                        doctorCategory: item?.doctorSpecialEn,
+//                                        doctorCategoryAR: item?.doctorSpecialAr,
+//                                        clinicName: item?.hospitalNameEn,
+//                                        clinicNameAR: item?.hospitalNameAr,
+//                                        nationality: nil,
+//                                        nationalityAR: nil,
+//                                        clinicId: nil,
+//                                        qualification: item?.doctorSpecialEn,
+//                                        qualificationAR: item?.doctorSpecialAr,
+//                                        FIRST_SLOT_TIME: "",
+//                                        DOCTOR_PIC: "",
+//                                        HREMPLOYEELANGUAGE_EN: "",
+//                                        HREMPLOYEELANGUAGE_AR: "",
+//                                        CLINIC_PHONE_NUMBER: "",
+//                                        DOCCATNAME: item?.doctorSpecialEn,
+//                                        DOCCATNAMEen: item?.doctorSpecialAr,
+//                                        NO_RESERVATION_VIEW_ONLY_TEL: "",
+//                                        INFORMAT_ONLY: "",
+//                                        CLINIC_LETTER: "",
+//                                        CLINIC_LETTER_EN: "",
+//                                        DOC_ID: item?.doctorId,
+//                                        DOC_NAME_AR: item?.doctorNameAr,
+//                                        DOC_NAME_EN: item?.doctorNameEn,
+//                                        SPECIAL_SPEC_ID: item?.doctorSpecialId,
+//                                        SPECIALITY_AR: item?.doctorSpecialAr,
+//                                        SPECIALITY_EN: item?.doctorSpecialEn,
+//                                        PAGES_COUNT: nil,
+//                                        RNUM: nil,
+//                                        DOCTOR_CLINICS: nil,
+//                                        GENDERCODE: "", HIDE_SCHEDULE_MOBILE_APP: "", CONTACT_TEL1: "", CONTACT_TEL2: "", CLINIC_LOCATION_AR: "", CLINIC_LOCATION_EN: "", branchAr: "", branchEn: "")
+//        doctorProfileVC.branchID = branch?.id ?? ""
+//        doctorProfileVC.branch = branch
+//        doctorProfileVC.specialityID = item?.doctorSpecialId
+//        doctorProfileVC.DocName = item?.getDoctorName()
+//        doctorProfileVC.docID = row.doctorId
+//        doctorProfileVC.clincID = ""
+//        doctorProfileVC.clicnName = item?.getHospital()
+//        doctorProfileVC.isPhysical = true
+//        doctorProfileVC.session = row
+//        self.navigationController?.pushViewController(doctorProfileVC, animated: true)
     }
 }
 

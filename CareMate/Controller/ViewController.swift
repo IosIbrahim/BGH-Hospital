@@ -299,7 +299,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
 
 //        if UserManager.isArabic
 //        {
-//            imageViewBack.image = #imageLiteral(resourceName: "right-arrow-3")
+//          //  imageViewBack.image = #imageLiteral(resourceName: "right-arrow-3")
 //
 //        }
 //        else
@@ -307,7 +307,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
 //            imageViewBack.image = #imageLiteral(resourceName: "left-arrow")
 //
 //        }
-        imageViewBack.image = #imageLiteral(resourceName: "left-arrow").imageFlippedForRightToLeftLayoutDirection()
+        imageViewBack.image = UIImage(named: "left-arrow")?.imageFlippedForRightToLeftLayoutDirection()
         imageViewBack.contentMode = .scaleAspectFit
         viewBack.addSubview(imageViewBack)
         

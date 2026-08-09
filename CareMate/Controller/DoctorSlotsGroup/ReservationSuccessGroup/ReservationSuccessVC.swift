@@ -98,7 +98,7 @@ class ReservationSuccessVC: UIViewController {
         }else {
             dateLbl.text = selectDate?.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "" , formateString: "dd MMMM yyyy")
             dayTextLabel.text = selectDate?.formateDAte(dateString: SelectedDoctorFromSearch?.dateDone ?? "" , formateString: "EEEE")
-            timeLbl.text = SelectedDoctorFromSearch?.slot?.id.ConvertToDate.ToTimeOnly ?? ""
+            timeLbl.text = SelectedDoctorFromSearch?.slot?.id?.ConvertToDate.ToTimeOnly ?? ""
         }
         
         

@@ -166,13 +166,13 @@ class DoctorProfileVC: UITableViewController, FSCalendarDataSource, FSCalendarDe
                 appoint.doctor = doctor!
                 appoint.branch = branch!
                 appoint.slot = SlotArr[selectedIndex]
-                appoint.shiftID = shiftId
-                appoint.scheduleSerial = schedSerial
-                appoint.specialityID = spec
+                appoint.shiftID = shiftId ?? ""
+                appoint.scheduleSerial = schedSerial ?? ""
+                appoint.specialityID = spec ?? ""
                 
                 print(SlotArr[selectedIndex].schedual)
-                appoint.dateDone = SlotArr[selectedIndex].id
-                appoint.dateDoneEnd = SlotArr[selectedIndex + Int(serviceObject!.numberSlots ?? "0")! ].TIME_SLOT_END
+                appoint.dateDone = SlotArr[selectedIndex].id ?? ""
+                appoint.dateDoneEnd = SlotArr[selectedIndex + Int(serviceObject!.numberSlots ?? "0")! ].TIME_SLOT_END ?? ""
                 appoint.branchID = branchID!
                 appoint.patientID = Utilities.sharedInstance.getPatientId()
                 vc.SelectedDoctorFromSearch = appoint
@@ -204,13 +204,13 @@ class DoctorProfileVC: UITableViewController, FSCalendarDataSource, FSCalendarDe
                 appoint.doctor = doctor!
                 appoint.branch = branch!
                 appoint.slot = SlotArr[selectedIndex]
-                appoint.shiftID = shiftId
-                appoint.scheduleSerial = schedSerial
-                appoint.specialityID = spec
+                appoint.shiftID = shiftId ?? ""
+                appoint.scheduleSerial = schedSerial ?? ""
+                appoint.specialityID = spec 
                 
                 print(SlotArr[selectedIndex].schedual)
-                appoint.dateDone = SlotArr[selectedIndex].id
-                appoint.dateDoneEnd = SlotArr[selectedIndex].TIME_SLOT_END
+                appoint.dateDone = SlotArr[selectedIndex].id ?? ""
+                appoint.dateDoneEnd = SlotArr[selectedIndex].TIME_SLOT_END ?? ""
                 appoint.branchID = branchID!
                 appoint.patientID = Utilities.sharedInstance.getPatientId()
                 vc.SelectedDoctorFromSearch = appoint
@@ -241,13 +241,13 @@ class DoctorProfileVC: UITableViewController, FSCalendarDataSource, FSCalendarDe
                 appoint.doctor = doctor!
                 appoint.branch = branch!
                 appoint.slot = SlotArr[selectedIndex]
-                appoint.shiftID = shiftId
-                appoint.scheduleSerial = schedSerial
+                appoint.shiftID = shiftId ?? ""
+                appoint.scheduleSerial = schedSerial ?? ""
                 appoint.specialityID = spec
                 
                 print(SlotArr[selectedIndex].schedual)
-                appoint.dateDone = SlotArr[selectedIndex].id
-                appoint.dateDoneEnd = SlotArr[selectedIndex + Int(serviceObject?.numberSlots ?? "0")! - 1 ].TIME_SLOT_END
+                appoint.dateDone = SlotArr[selectedIndex].id ?? ""
+                appoint.dateDoneEnd = SlotArr[selectedIndex + Int(serviceObject?.numberSlots ?? "0")! - 1 ].TIME_SLOT_END ?? ""
                 appoint.branchID = branchID!
                 appoint.patientID = Utilities.sharedInstance.getPatientId()
                 let vc = segue.destination as! ReservationConfirmVC
@@ -267,13 +267,13 @@ class DoctorProfileVC: UITableViewController, FSCalendarDataSource, FSCalendarDe
                 appoint.doctor = doctor!
                 appoint.branch = branch!
                 appoint.slot = SlotArr[selectedIndex]
-                appoint.shiftID = shiftId
-                appoint.scheduleSerial = schedSerial
+                appoint.shiftID = shiftId ?? ""
+                appoint.scheduleSerial = schedSerial ?? ""
                 appoint.specialityID = spec
                 
                 print(SlotArr[selectedIndex].schedual)
-                appoint.dateDone = SlotArr[selectedIndex].id
-                appoint.dateDoneEnd = SlotArr[selectedIndex].TIME_SLOT_END
+                appoint.dateDone = SlotArr[selectedIndex].id ?? ""
+                appoint.dateDoneEnd = SlotArr[selectedIndex].TIME_SLOT_END ?? ""
                 appoint.branchID = branchID!
                 appoint.patientID = Utilities.sharedInstance.getPatientId()
                 let vc = segue.destination as! ReservationConfirmVC

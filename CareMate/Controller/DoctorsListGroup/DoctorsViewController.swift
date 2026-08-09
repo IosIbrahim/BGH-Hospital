@@ -35,6 +35,7 @@ class DoctorsViewController: BaseViewController ,UISearchBarDelegate{
     var guestIdentityType = ""
     var guestSSN = ""
     var selectedSpeciality: Speciality?
+    var session:SessionRowModel?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -53,8 +54,8 @@ class DoctorsViewController: BaseViewController ,UISearchBarDelegate{
       searchBar.delegate = self
 
       tableView.keyboardDismissMode = .onDrag
-      guard let specialityId = specialityId, let branchId = branchId else {return}
-      Doctor.getDoctors(withSpecialityId: specialityId, andBranchId: branchId, type: branch?.BRANCH_TYPE ?? "1") { doctors in
+ //     guard let specialityId = specialityId, let branchId = branchId else {return}
+      Doctor.getDoctors(withSpecialityId: specialityId ?? "", andBranchId: branchId ?? "", type: branch?.BRANCH_TYPE ?? "1",isPhysical: isPhysical) { doctors in
         guard let doctors = doctors else {return}
           self.doctors = doctors
           self.fullDoctors = doctors
@@ -188,6 +189,7 @@ extension DoctorsViewController: UITableViewDelegate {
                 doctorProfileVC.speciality = speciality
                 doctorProfileVC.selectedSpeciality = selectedSpeciality
                 doctorProfileVC.isPhysical = isPhysical
+                doctorProfileVC.session = session
                 let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctors[indexPath.row].DOCTOR_PIC ?? "")")
                 doctorProfileVC.url = url
                 self.navigationController?.pushViewController(doctorProfileVC, animated: true)
