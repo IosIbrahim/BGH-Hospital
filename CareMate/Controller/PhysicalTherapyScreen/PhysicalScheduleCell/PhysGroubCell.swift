@@ -10,6 +10,7 @@ import UIKit
 
 class PhysGroubCell: UITableViewCell {
 
+    @IBOutlet weak var pickerContainer: UIView!
     @IBOutlet weak var imgDrop: UIImageView!
     @IBOutlet weak var sessionConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var tblSessions: UITableView!
@@ -34,7 +35,8 @@ class PhysGroubCell: UITableViewCell {
         tblSessions.dataSource = self
         tblSessions.delegate = self
         tblSessions.register("SessionCell")
-        contentView.layer.cornerRadius = 12
+        pickerContainer.setShadowLight()
+        pickerContainer.layer.cornerRadius = 12
         // Initialization code
     }
 
@@ -52,15 +54,20 @@ class PhysGroubCell: UITableViewCell {
         lblShow.text = UserManager.isArabic ? "عرض الجلسات":"Show Sessions"
         sessionConstraintHeight.constant = .zero
         tblSessions.isHidden = true
+        hospitalTitle = session?.getHospital() ?? ""
+        if filter == .all {
+            dataSource = session?.sessions?.rows ?? []
+        }else {
+            dataSource = session?.sessions?.getFiltered(filter) ?? []
+        }
         if session?.isSelected == true {
             lblShow.text = UserManager.isArabic ? "اخفاء الجلسات":"Hide Sessions"
             var count:Int = .zero
           
-            for item in session?.sessions?.rows ?? [] {
+            for item in dataSource {
                 count += item.getRowHieght()
             }
-            
-              sessionConstraintHeight.constant = CGFloat(count)
+            sessionConstraintHeight.constant = CGFloat(count)
             tblSessions.isHidden = false
             imgDrop.image?.imageRotated(byDegrees: 90)
             imgDrop.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
@@ -68,13 +75,8 @@ class PhysGroubCell: UITableViewCell {
             imgDrop.image?.imageRotated(byDegrees: 0)
             imgDrop.transform = CGAffineTransform(rotationAngle: 0)
         }
+       
         tblSessions.updateConstraints()
-        hospitalTitle = session?.getHospital() ?? ""
-        if filter == .all {
-            dataSource = session?.sessions?.rows ?? []
-        }else {
-            dataSource = session?.sessions?.getFiltered(filter) ?? []
-        }
         tblSessions.reloadData()
     }
     

@@ -93,11 +93,17 @@ struct SessionsModel:Codable{
         var filtered = [SessionRowModel]()
         for item in rows ?? [] {
             if filter == .schedule {
-                if item.canSchedule == "1"{
+//                if item.canSchedule == "1"{
+//                    filtered.append(item)
+//                }
+                if item.canReSchedule == "1"{
                     filtered.append(item)
                 }
             }else if filter == .reschedule {
-                if item.canReSchedule == "1"{
+//                if item.canReSchedule == "1"{
+//                    filtered.append(item)
+//                }
+                if item.canSchedule == "1"{
                     filtered.append(item)
                 }
             }

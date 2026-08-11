@@ -43,7 +43,7 @@ class PhysicalController: BaseViewController {
         clcTabs.register("HeaderTabCell")
         let all = UserManager.isArabic ? "الكل":"All"
         let scheduled = UserManager.isArabic ? "مجدولة":"Scheduled"
-        let rescheduled = UserManager.isArabic ? "تجتاج جدولة":"Need Schedule"
+        let rescheduled = UserManager.isArabic ? "تحتاج جدولة":"Need Schedule"
         tabsDataSources = [all,scheduled,rescheduled]
         clcTabs.reloadData()
     }

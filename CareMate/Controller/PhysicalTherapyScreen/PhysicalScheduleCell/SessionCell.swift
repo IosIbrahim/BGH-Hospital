@@ -14,6 +14,7 @@ protocol SessionRowProtocol {
 
 class SessionCell: UITableViewCell {
 
+    @IBOutlet weak var pickerContainer: UIView!
     @IBOutlet weak var stkDate: UIStackView!
     @IBOutlet weak var lblTime: UILabel!
     @IBOutlet weak var btnAction: UIButton!
@@ -41,7 +42,8 @@ class SessionCell: UITableViewCell {
         lblTime.textAlignment = UserManager.isArabic ? .right:.left
         lblPlace.textAlignment = UserManager.isArabic ? .right:.left
         lblFinalStatus.textAlignment = .center
-
+        pickerContainer.setShadowLight()
+        pickerContainer.layer.cornerRadius = 12
         // Initialization code
     }
 
@@ -54,18 +56,22 @@ class SessionCell: UITableViewCell {
     func drawCell(_ session:SessionRowModel?,hospital:String) {
         lblSession.text = session?.getService()
         lblDocSession.text = session?.getDoctorName()
+        lblDocSession.adjustsFontSizeToFitWidth = true
         lblDocSessionSpeciality.text = session?.getDoctorSpecial()
+        lblDocSessionSpeciality.adjustsFontSizeToFitWidth = true
         lblStatus.text = session?.getStatusTitle()
         if session?.canReSchedule == "1" {
             lblStatus.textColor = .white
-        }else {
+        }else if session?.waitApprove == "1" {
+            lblStatus.textColor = .white
+        } else {
             lblStatus.textColor = .black
         }
         pickerStatus.backgroundColor = session?.getStatusColor()
-        if let date = session?.doneDate {
+        if let date = session?.expectedDoneDate {
             lblDate.text = date.components(separatedBy: .whitespaces).first
             lblTime.text = date.components(separatedBy: .whitespaces).last
-        }else if let date = session?.expectedDoneDate {
+        }else if let date = session?.doneDate {
             lblDate.text = date.components(separatedBy: .whitespaces).first
             lblTime.text = date.components(separatedBy: .whitespaces).last
         }else {
