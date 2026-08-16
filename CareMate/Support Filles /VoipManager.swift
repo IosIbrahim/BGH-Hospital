@@ -92,7 +92,7 @@ extension VoipManager: PKPushRegistryDelegate {
         print("VoIP device token: \(token)")
 
         UserDefaults.standard.set(token, forKey: "voipToken")
-        sendTokenToServer(token)
+   //     sendTokenToServer(token)
     }
 
     func pushRegistry(_ registry: PKPushRegistry,

@@ -171,7 +171,7 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
 //                  Utilities.showAlert(messageToDisplay: enter + txfPassword.placeholder!)
 //                  return
 //              }
-        
+        let voip = UserDefaults.standard.object(forKey: "voipToken") as? String ?? ""
         let tokeen = UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""
         urlString = Constants.APIProvider.Login+"detect_text=\(medicalId)&&MOBILEAPP_TYPE=2&MOBILEAPP_KEY=\(tokeen)&detect_type=2"
         print(urlString)
@@ -189,13 +189,13 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
                     if root["OUT_PARMS_ROW"] is [String:AnyObject]
                         
                     {
-                        let OUT_PARMS_ROW = root["OUT_PARMS_ROW"] as!  AnyObject
+                        let OUT_PARMS_ROW = root["OUT_PARMS_ROW"]
                         
-                        let loginStratues =  OUT_PARMS_ROW["LOGIN_STATUS"] as? String
+                        let loginStratues =  OUT_PARMS_ROW?["LOGIN_STATUS"] as? String
                         
                         if loginStratues == "2"
                         {
-                            if let root = ((data as! [String: AnyObject])["Root"] as! [String:AnyObject])["PAT_DATA"] as? [String:AnyObject]
+                            if let root = ((data as? [String: AnyObject])?["Root"] as? [String:AnyObject])?["PAT_DATA"] as? [String:AnyObject]
                             {
                                 
                                 
@@ -203,18 +203,24 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
                                 if root["PAT_DATA_ROW"] is [[String:AnyObject]]
                                 {
                                     
-                                    let appoins = root["PAT_DATA_ROW"] as! [[String: AnyObject]]
-                                    for i in appoins
+                                    let appoins = root["PAT_DATA_ROW"] as? [[String: AnyObject]]
+                                    for i in appoins ?? []
                                     {
                                         print(i)
-                                        listOfOTher.append(listOfTherPatient(JSON: i)!)
+                                        if let obj = listOfTherPatient(JSON: i) {
+                                            listOfOTher.append(obj)
+                                        }
+                                      //  listOfOTher.append(listOfTherPatient(JSON: i))
                                         
                                         
                                     }
                                 }
                                 else if root["PAT_DATA_ROW"] is [String:AnyObject]
                                 {
-                                    listOfOTher.append(listOfTherPatient(JSON:root["PAT_DATA_ROW"] as![String:AnyObject] )!)
+                                    if let obj = listOfTherPatient(JSON:root["PAT_DATA_ROW"] as![String:AnyObject] ) {
+                                        listOfOTher.append(obj)
+                                    }
+                                 //   listOfOTher.append(listOfTherPatient(JSON:root["PAT_DATA_ROW"] as![String:AnyObject] )!)
                                     
                                     
                                 }
@@ -230,19 +236,24 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
                             
                             if let root = ((data as! [String: AnyObject])["Root"] as! [String:AnyObject])["PAT_DATA"] as? [String:AnyObject]
                             {
-                                let OUT_PARMS_ROW = root["PAT_DATA_ROW"] as!  AnyObject
+                                let OUT_PARMS_ROW = root["PAT_DATA_ROW"]
                                 
-                                let loginStratues =  OUT_PARMS_ROW["PATIENTID"] as? String
+                                let loginStratues =  OUT_PARMS_ROW?["PATIENTID"] as? String
                                 
-                                print( OUT_PARMS_ROW["PATIENTID"] as? String ?? "")
-                                currentPatientIDOrigni =    OUT_PARMS_ROW["PATIENTID"] as? String ?? ""
-                                Utilities.sharedInstance.setPatientId(patienId: OUT_PARMS_ROW["PATIENTID"] as? String ?? "")
-                                currentPatientMobile =  OUT_PARMS_ROW["PAT_TEL"] as? String ?? ""
-                                UserDefaults.standard.set(OUT_PARMS_ROW["PATIENTID"] as? String ?? "", forKey: "patientIdWithSpaces")
-                                UserDefaults.standard.set(OUT_PARMS_ROW["PAT_TEL"] as? String ?? "", forKey: "PAT_TEL")
+                                print( OUT_PARMS_ROW?["PATIENTID"] as? String ?? "")
+                                currentPatientIDOrigni = OUT_PARMS_ROW?["PATIENTID"] as? String ?? ""
+                                Utilities.sharedInstance.setPatientId(patienId: OUT_PARMS_ROW?["PATIENTID"] as? String ?? "")
+                                currentPatientMobile =  OUT_PARMS_ROW?["PAT_TEL"] as? String ?? ""
+                                UserDefaults.standard.set(OUT_PARMS_ROW?["PATIENTID"] as? String ?? "", forKey: "patientIdWithSpaces")
+                                UserDefaults.standard.set(OUT_PARMS_ROW?["PAT_TEL"] as? String ?? "", forKey: "PAT_TEL")
                                 UserDefaults.standard.set(true, forKey: "loginOrNO")
                                 
-                                let user1 =     LoginedUser(COMPLETEPATNAME_AR: OUT_PARMS_ROW["COMPLETEPATNAME_AR"] as? String ?? "" , COMPLETEPATNAME_EN: OUT_PARMS_ROW["COMPLETEPATNAME_EN"] as? String ?? "", PAT_TEL: OUT_PARMS_ROW["PAT_TEL"] as? String ?? "", PAT_EMAIL: OUT_PARMS_ROW["PAT_EMAIL"] as? String ?? "", PATIENTID: OUT_PARMS_ROW["PATIENTID"] as? String ?? "")
+                                let user1 =     LoginedUser(
+                                    COMPLETEPATNAME_AR: OUT_PARMS_ROW?["COMPLETEPATNAME_AR"] as? String ?? "" ,
+                                    COMPLETEPATNAME_EN: OUT_PARMS_ROW?["COMPLETEPATNAME_EN"] as? String ?? "",
+                                    PAT_TEL: OUT_PARMS_ROW?["PAT_TEL"] as? String ?? "",
+                                    PAT_EMAIL: OUT_PARMS_ROW?["PAT_EMAIL"] as? String ?? "",
+                                    PATIENTID: OUT_PARMS_ROW?["PATIENTID"] as? String ?? "")
                                 let encoder = JSONEncoder()
                                 if let encoded = try? encoder.encode(user1) {
                                     let defaults = UserDefaults.standard
