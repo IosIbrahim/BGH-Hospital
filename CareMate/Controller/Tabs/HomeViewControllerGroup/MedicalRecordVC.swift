@@ -163,8 +163,30 @@ class MedicalRecordVC: BaseViewController
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(noUserFound), name: Notification.Name("noUserFound"), object: nil)
         nc.addObserver(self, selector: #selector(updatePush), name: Notification.Name("new.push.notifications"), object: nil)
+        setupAIBotButton()
         showNotificationPopUp()
         checkObserver()
+    }
+
+    /// Adds the AI bot entry point to the home header, just left of the notification bell.
+    private func setupAIBotButton() {
+        guard let container = viewNotifications.superview else { return }
+        let botButton = UIButton(type: .custom)
+        botButton.translatesAutoresizingMaskIntoConstraints = false
+        botButton.setImage(UIImage(named: "aibot_icon"), for: .normal)
+        botButton.imageView?.contentMode = .scaleAspectFit
+        botButton.addTarget(self, action: #selector(openAIBot), for: .touchUpInside)
+        container.addSubview(botButton)
+        NSLayoutConstraint.activate([
+            botButton.widthAnchor.constraint(equalToConstant: 34),
+            botButton.heightAnchor.constraint(equalToConstant: 34),
+            botButton.centerYAnchor.constraint(equalTo: viewNotifications.centerYAnchor),
+            botButton.trailingAnchor.constraint(equalTo: viewNotifications.leadingAnchor, constant: -10)
+        ])
+    }
+
+    @objc func openAIBot() {
+        navigationController?.pushViewController(AIBotOnboardingViewController(), animated: true)
     }
     
     

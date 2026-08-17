@@ -1,0 +1,4 @@
+# Reference-only Android code from colleague — not part of the iOS app
+android/
+android\ /
+.DS_Store

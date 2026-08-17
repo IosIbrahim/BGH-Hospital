@@ -492,6 +492,17 @@
 		ADCA434D21DA7FFE0099EF7A /* AppointmentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA434C21DA7FFD0099EF7A /* AppointmentDTO.swift */; };
 		ADCA434F21DA96E50099EF7A /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA434E21DA96E50099EF7A /* SettingsVC.swift */; };
 		ADCA435121DA9A3C0099EF7A /* MedicalRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA435021DA9A3C0099EF7A /* MedicalRecordVC.swift */; };
+		0FA1B07000000000000000C2 /* AIBotStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000C1 /* AIBotStrings.swift */; };
+		0FA1B07000000000000000B2 /* AIBotOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000B1 /* AIBotOnboardingViewController.swift */; };
+		0FA1B07000000000000000D2 /* AIBotMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D1 /* AIBotMessage.swift */; };
+		0FA1B07000000000000000D4 /* AIBotConversationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D3 /* AIBotConversationEngine.swift */; };
+		0FA1B07000000000000000D6 /* AIBotChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D5 /* AIBotChatViewController.swift */; };
+		0FA1B07000000000000000D8 /* AIBotChatCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D7 /* AIBotChatCells.swift */; };
+		0FA1B07000000000000000E2 /* AIBotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000E1 /* AIBotService.swift */; };
+		0FA1B07000000000000000E4 /* AIBotAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000E3 /* AIBotAudioPlayer.swift */; };
+		0FA1B07000000000000000E6 /* AIBotSpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000E5 /* AIBotSpeechRecognizer.swift */; };
+		0FA1B07000000000000000E8 /* AIBotAudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000E7 /* AIBotAudioRecorder.swift */; };
+		0FA1B07000000000000000DA /* AIBotVoiceModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D9 /* AIBotVoiceModeViewController.swift */; };
 		ADEC748322257AC600BACEAD /* EnterCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEC748222257AC600BACEAD /* EnterCodeController.swift */; };
 /* End PBXBuildFile section */
 
@@ -1077,6 +1088,17 @@
 		ADCA434C21DA7FFD0099EF7A /* AppointmentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentDTO.swift; sourceTree = "<group>"; };
 		ADCA434E21DA96E50099EF7A /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		ADCA435021DA9A3C0099EF7A /* MedicalRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalRecordVC.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000C1 /* AIBotStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotStrings.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000B1 /* AIBotOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotOnboardingViewController.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000D1 /* AIBotMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotMessage.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000D3 /* AIBotConversationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotConversationEngine.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000D5 /* AIBotChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotChatViewController.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000D7 /* AIBotChatCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotChatCells.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000E1 /* AIBotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotService.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000E3 /* AIBotAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotAudioPlayer.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000E5 /* AIBotSpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotSpeechRecognizer.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000E7 /* AIBotAudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotAudioRecorder.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000D9 /* AIBotVoiceModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotVoiceModeViewController.swift; sourceTree = "<group>"; };
 		ADEC748222257AC600BACEAD /* EnterCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeController.swift; sourceTree = "<group>"; };
 		AF548E59CD35D8AE4C800CAF /* Pods-CareMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareMate.release.xcconfig"; path = "Target Support Files/Pods-CareMate/Pods-CareMate.release.xcconfig"; sourceTree = "<group>"; };
 		BF34FE18817735E0CF770B71 /* Pods_CareMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CareMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1605,6 +1627,48 @@
 				0F9069012FAA1D350021ED5B /* PhysicalController.xib */,
 			);
 			path = PhysicalTherapyScreen;
+			sourceTree = "<group>";
+		};
+		0FA1B07000000000000000A0 /* AIBot */ = {
+			isa = PBXGroup;
+			children = (
+				0FA1B07000000000000000C1 /* AIBotStrings.swift */,
+				0FA1B07000000000000000B0 /* Onboarding */,
+				0FA1B07000000000000000D0 /* Chat */,
+				0FA1B07000000000000000E0 /* Network */,
+			);
+			path = AIBot;
+			sourceTree = "<group>";
+		};
+		0FA1B07000000000000000E0 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0FA1B07000000000000000E1 /* AIBotService.swift */,
+				0FA1B07000000000000000E3 /* AIBotAudioPlayer.swift */,
+				0FA1B07000000000000000E5 /* AIBotSpeechRecognizer.swift */,
+				0FA1B07000000000000000E7 /* AIBotAudioRecorder.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0FA1B07000000000000000B0 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				0FA1B07000000000000000B1 /* AIBotOnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		0FA1B07000000000000000D0 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				0FA1B07000000000000000D1 /* AIBotMessage.swift */,
+				0FA1B07000000000000000D3 /* AIBotConversationEngine.swift */,
+				0FA1B07000000000000000D5 /* AIBotChatViewController.swift */,
+				0FA1B07000000000000000D7 /* AIBotChatCells.swift */,
+				0FA1B07000000000000000D9 /* AIBotVoiceModeViewController.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		0F9069042FAA1E150021ED5B /* TabCell */ = {
@@ -2238,6 +2302,7 @@
 			isa = PBXGroup;
 			children = (
 				0FF381FA300F6DA60002BE49 /* ZoomCall */,
+				0FA1B07000000000000000A0 /* AIBot */,
 				0F9068FF2FAA1CDA0021ED5B /* PhysicalTherapyScreen */,
 				A2B78D442BB995A100C25E15 /* ForceUpdate */,
 				A2A616752ACD70AF00D1A487 /* Choose365Hospital */,
@@ -3025,9 +3090,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
 		464F40161FADE07B0098D19D /* CareMate */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 464F40421FADE07B0098D19D /* Build configuration list for PBXNativeTarget "CareMate" */;
@@ -3085,9 +3147,6 @@
 			productReference = 464F40391FADE07B0098D19D /* CareMateUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
 		464F400F1FADE07B0098D19D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
@@ -3136,9 +3195,6 @@
 				464F40381FADE07B0098D19D /* CareMateUITests */,
 			);
 		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
 		464F40151FADE07B0098D19D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3330,9 +3386,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
 		094351FFD9F99DD509AFE450 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3485,9 +3538,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
 		464F40131FADE07B0098D19D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3775,6 +3825,17 @@
 				AD5438F021CFD56800C7D500 /* ESTabBarItemContainer.swift in Sources */,
 				AD344CEE21DBAE7000FFB131 /* LabRadDTO.swift in Sources */,
 				ADCA435121DA9A3C0099EF7A /* MedicalRecordVC.swift in Sources */,
+				0FA1B07000000000000000C2 /* AIBotStrings.swift in Sources */,
+				0FA1B07000000000000000B2 /* AIBotOnboardingViewController.swift in Sources */,
+				0FA1B07000000000000000D2 /* AIBotMessage.swift in Sources */,
+				0FA1B07000000000000000D4 /* AIBotConversationEngine.swift in Sources */,
+				0FA1B07000000000000000D6 /* AIBotChatViewController.swift in Sources */,
+				0FA1B07000000000000000D8 /* AIBotChatCells.swift in Sources */,
+				0FA1B07000000000000000E2 /* AIBotService.swift in Sources */,
+				0FA1B07000000000000000E4 /* AIBotAudioPlayer.swift in Sources */,
+				0FA1B07000000000000000E6 /* AIBotSpeechRecognizer.swift in Sources */,
+				0FA1B07000000000000000E8 /* AIBotAudioRecorder.swift in Sources */,
+				0FA1B07000000000000000DA /* AIBotVoiceModeViewController.swift in Sources */,
 				5E470A3B2664F29E0002910B /* termsAndConditionVC.swift in Sources */,
 				0440DF0E26F0C4EB00832B42 /* HospitalViewsHomeViewController.swift in Sources */,
 				461B46EA1FC18DBC005013A9 /* RegisterViewController.swift in Sources */,
@@ -4398,9 +4459,6 @@
 			};
 			name = Release;
 		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
 		464F40121FADE07B0098D19D /* Build configuration list for PBXProject "CareMate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -4437,7 +4495,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-/* End XCConfigurationList section */
 	};
 	rootObject = 464F400F1FADE07B0098D19D /* Project object */;
 }

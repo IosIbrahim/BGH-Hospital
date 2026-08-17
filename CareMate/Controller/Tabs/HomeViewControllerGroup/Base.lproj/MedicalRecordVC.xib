@@ -86,7 +86,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lhs-7h-xec">
-                    <rect key="frame" x="30" y="104" width="272" height="56"/>
+                    <rect key="frame" x="30" y="104" width="265" height="56"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileHome" translatesAutoresizingMaskIntoConstraints="NO" id="Es0-BF-suo">
                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -107,13 +107,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="saDHFSANFNSAINIASIDFBIAHFDIOAShfaslkfndklsandfknasklndklas" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxk-75-0vb">
-                            <rect key="frame" x="60" y="24" width="207" height="32"/>
+                            <rect key="frame" x="60" y="24" width="200" height="32"/>
                             <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="16"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d93-S9-6dT">
-                            <rect key="frame" x="272" y="24" width="0.0" height="16"/>
+                            <rect key="frame" x="265" y="24" width="0.0" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" id="Efr-am-GlD"/>
                             </constraints>
@@ -1132,7 +1132,7 @@
             <constraints>
                 <constraint firstItem="7dH-Qk-NbL" firstAttribute="top" secondItem="Lhs-7h-xec" secondAttribute="bottom" constant="30" id="1B1-SE-LjD"/>
                 <constraint firstItem="Oxx-VR-vcM" firstAttribute="top" secondItem="X9e-CW-PfL" secondAttribute="bottom" id="7ft-ZL-Yiu"/>
-                <constraint firstItem="Oxx-VR-vcM" firstAttribute="leading" secondItem="Lhs-7h-xec" secondAttribute="trailing" constant="15" id="9sP-Yr-jH7"/>
+                <constraint firstItem="Oxx-VR-vcM" firstAttribute="leading" secondItem="Lhs-7h-xec" secondAttribute="trailing" constant="22" id="9sP-Yr-jH7"/>
                 <constraint firstItem="X9e-CW-PfL" firstAttribute="trailing" secondItem="Oxx-VR-vcM" secondAttribute="trailing" constant="15" id="DIj-mC-pcd"/>
                 <constraint firstItem="Lhs-7h-xec" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="Edn-kl-45d"/>
                 <constraint firstItem="Oxx-VR-vcM" firstAttribute="centerY" secondItem="Lhs-7h-xec" secondAttribute="centerY" id="LZg-fX-1t8"/>

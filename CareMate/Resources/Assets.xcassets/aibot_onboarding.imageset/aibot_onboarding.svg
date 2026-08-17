@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="270" viewBox="0 0 320 270" fill="none">
+  <!-- soft background -->
+  <circle cx="178" cy="120" r="98" fill="#ECEDFB"/>
+  <circle cx="70" cy="60" r="8" fill="#DADCF6"/>
+  <circle cx="286" cy="70" r="6" fill="#DADCF6"/>
+  <circle cx="60" cy="190" r="5" fill="#DADCF6"/>
+  <path d="M262 150c8 0 8 12 0 12" stroke="#C9CBF0" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- left chat bubble -->
+  <g>
+    <rect x="34" y="70" width="72" height="44" rx="14" fill="#FFFFFF" stroke="#29A69A" stroke-width="2.5"/>
+    <path d="M50 112l-2 14 16-12z" fill="#FFFFFF" stroke="#29A69A" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="54" cy="92" r="4" fill="#B9BBD6"/>
+    <circle cx="70" cy="92" r="4" fill="#B9BBD6"/>
+    <circle cx="86" cy="92" r="4" fill="#B9BBD6"/>
+  </g>
+
+  <!-- right chat bubble -->
+  <g>
+    <rect x="236" y="96" width="58" height="38" rx="12" fill="#2E3192"/>
+    <path d="M280 132l3 12-15-9z" fill="#2E3192"/>
+    <rect x="248" y="108" width="34" height="4" rx="2" fill="#8F92D6"/>
+    <rect x="248" y="118" width="22" height="4" rx="2" fill="#8F92D6"/>
+  </g>
+
+  <!-- phone / robot card -->
+  <rect x="118" y="40" width="120" height="168" rx="22" fill="#FFFFFF" stroke="#29A69A" stroke-width="3"/>
+  <rect x="118" y="40" width="120" height="40" rx="22" fill="#29A69A"/>
+  <rect x="118" y="66" width="120" height="14" fill="#29A69A"/>
+  <circle cx="178" cy="60" r="4" fill="#FFFFFF" opacity="0.7"/>
+
+  <!-- robot head -->
+  <g>
+    <circle cx="178" cy="90" r="3" fill="#2E3192"/>
+    <rect x="176.5" y="92" width="3" height="8" fill="#2E3192"/>
+    <rect x="150" y="100" width="56" height="46" rx="14" fill="#2E3192"/>
+    <rect x="143" y="112" width="8" height="20" rx="4" fill="#2E3192"/>
+    <rect x="205" y="112" width="8" height="20" rx="4" fill="#2E3192"/>
+    <circle cx="167" cy="120" r="5.5" fill="#FFFFFF"/>
+    <circle cx="189" cy="120" r="5.5" fill="#FFFFFF"/>
+    <circle cx="167" cy="120" r="2.4" fill="#29A69A"/>
+    <circle cx="189" cy="120" r="2.4" fill="#29A69A"/>
+    <rect x="165" y="132" width="26" height="5" rx="2.5" fill="#7FD1C9"/>
+  </g>
+
+  <!-- voice waveform -->
+  <g fill="#29A69A">
+    <rect x="140" y="170" width="4" height="12" rx="2"/>
+    <rect x="150" y="164" width="4" height="24" rx="2"/>
+    <rect x="160" y="156" width="4" height="40" rx="2"/>
+    <rect x="170" y="168" width="4" height="16" rx="2"/>
+    <rect x="180" y="158" width="4" height="36" rx="2"/>
+    <rect x="190" y="150" width="4" height="52" rx="2" fill="#2E3192"/>
+    <rect x="200" y="162" width="4" height="28" rx="2"/>
+    <rect x="210" y="168" width="4" height="16" rx="2"/>
+  </g>
+
+  <!-- person -->
+  <g>
+    <circle cx="66" cy="150" r="15" fill="#2E3192"/>
+    <path d="M40 210c0-18 12-30 26-30s26 12 26 30z" fill="#3A3EAE"/>
+    <rect x="82" y="150" width="10" height="34" rx="5" fill="#3A3EAE" transform="rotate(38 87 167)"/>
+    <circle cx="106" cy="150" r="6" fill="#F2B69B"/>
+  </g>
+
+  <!-- microphone accent -->
+  <g>
+    <rect x="150" y="222" width="20" height="30" rx="10" fill="#29A69A"/>
+    <path d="M144 244a16 16 0 0 0 32 0" stroke="#29A69A" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <rect x="158" y="252" width="4" height="10" rx="2" fill="#29A69A"/>
+  </g>
+</svg>

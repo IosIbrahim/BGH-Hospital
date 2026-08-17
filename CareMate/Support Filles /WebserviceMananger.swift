@@ -101,7 +101,7 @@ class WebserviceMananger: NSObject {
                             }
                         }
                     case .failure(let error):
-                        completionHandler(nil, nil)
+                        completionHandler(nil, error.localizedDescription)
                       
                     }
             }
