@@ -14,7 +14,7 @@ import MOLH
 import IQKeyboardManagerSwift
 import GooglePlaces
 import GoogleMaps
-import MobileRTC
+//import MobileRTC
 import PushKit
 
 @main
@@ -95,19 +95,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     
     func applicationWillTerminate(_ application: UIApplication) {
           // Notify MobileRTC of appWillTerminate call.
-          MobileRTC.shared().appWillTerminate()
+       //   MobileRTC.shared().appWillTerminate()
       }
       func applicationWillResignActive(_ application: UIApplication) {
           // Notify MobileRTC of appWillResignActive call.
-          MobileRTC.shared().appWillResignActive()
+      //    MobileRTC.shared().appWillResignActive()
       }
       func applicationDidBecomeActive(_ application: UIApplication) {
           // Notify MobileRTC of appDidBecomeActive call.
-          MobileRTC.shared().appDidBecomeActive()
+      //    MobileRTC.shared().appDidBecomeActive()
       }
       func applicationDidEnterBackground(_ application: UIApplication) {
           // Notify MobileRTC of appDidEnterBackgroud call.
-          MobileRTC.shared().appDidEnterBackground()
+     //     MobileRTC.shared().appDidEnterBackground()
       }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

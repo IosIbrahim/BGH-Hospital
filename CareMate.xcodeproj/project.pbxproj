@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -108,6 +108,9 @@
 		0F5BC6052CC69D3F0085BD7E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F5BC6042CC69D3F0085BD7E /* WebKit.framework */; };
 		0F6E2A052DAA6711001DAF40 /* InOutPopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E2A032DAA6711001DAF40 /* InOutPopController.swift */; };
 		0F6E2A062DAA6711001DAF40 /* InOutPopController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6E2A042DAA6711001DAF40 /* InOutPopController.xib */; };
+		0F714322303D9AD1006E4A87 /* MedicalRecordVCEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F714321303D9ACB006E4A87 /* MedicalRecordVCEX.swift */; };
+		0F714327303DA38E006E4A87 /* UIToolkitVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F714326303DA38E006E4A87 /* UIToolkitVC.xib */; };
+		0F714328303DA38E006E4A87 /* UIToolkitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F714325303DA38E006E4A87 /* UIToolkitVC.swift */; };
 		0F7DD7E92E8E8B2B00B5CE73 /* BHGLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F7DD7E82E8E8B2B00B5CE73 /* BHGLoginController.xib */; };
 		0F7DD7EA2E8E8B2B00B5CE73 /* BHGLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7DD7E72E8E8B2B00B5CE73 /* BHGLoginController.swift */; };
 		0F7DD7F02E8EA9C000B5CE73 /* BHGRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F7DD7EF2E8EA9C000B5CE73 /* BHGRegisterController.xib */; };
@@ -126,13 +129,17 @@
 		0F9069032FAA1D350021ED5B /* PhysicalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9069012FAA1D350021ED5B /* PhysicalController.xib */; };
 		0F9069072FAA1E4C0021ED5B /* HeaderTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9069052FAA1E4C0021ED5B /* HeaderTabCell.swift */; };
 		0F9069082FAA1E4C0021ED5B /* HeaderTabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9069062FAA1E4C0021ED5B /* HeaderTabCell.xib */; };
-		0FC00047300F94B1004C3AD5 /* MobileRTCResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0FC00041300F94B1004C3AD5 /* MobileRTCResources.bundle */; };
-		0FC00049300F94D3004C3AD5 /* MobileRTCScreenShare.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00042300F94B1004C3AD5 /* MobileRTCScreenShare.xcframework */; };
-		0FC0004A300F94D3004C3AD5 /* MobileRTCScreenShare.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00042300F94B1004C3AD5 /* MobileRTCScreenShare.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0FC0004B300F94D5004C3AD5 /* MobileRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00040300F94B1004C3AD5 /* MobileRTC.xcframework */; };
-		0FC0004C300F94D5004C3AD5 /* MobileRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00040300F94B1004C3AD5 /* MobileRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0FC0004D300F94D7004C3AD5 /* zoomcml.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00043300F94B1004C3AD5 /* zoomcml.xcframework */; };
-		0FC0004E300F94D7004C3AD5 /* zoomcml.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00043300F94B1004C3AD5 /* zoomcml.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0FA1B07000000000000000B2 /* AIBotOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000B1 /* AIBotOnboardingViewController.swift */; };
+		0FA1B07000000000000000C2 /* AIBotStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000C1 /* AIBotStrings.swift */; };
+		0FA1B07000000000000000D2 /* AIBotMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D1 /* AIBotMessage.swift */; };
+		0FA1B07000000000000000D4 /* AIBotConversationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D3 /* AIBotConversationEngine.swift */; };
+		0FA1B07000000000000000D6 /* AIBotChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D5 /* AIBotChatViewController.swift */; };
+		0FA1B07000000000000000D8 /* AIBotChatCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D7 /* AIBotChatCells.swift */; };
+		0FA1B07000000000000000DA /* AIBotVoiceModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D9 /* AIBotVoiceModeViewController.swift */; };
+		0FA1B07000000000000000E2 /* AIBotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000E1 /* AIBotService.swift */; };
+		0FA1B07000000000000000E4 /* AIBotAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000E3 /* AIBotAudioPlayer.swift */; };
+		0FA1B07000000000000000E6 /* AIBotSpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000E5 /* AIBotSpeechRecognizer.swift */; };
+		0FA1B07000000000000000E8 /* AIBotAudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000E7 /* AIBotAudioRecorder.swift */; };
 		0FC00050300F94EF004C3AD5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC0004F300F94EF004C3AD5 /* CoreGraphics.framework */; };
 		0FC00052300F9502004C3AD5 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00051300F9502004C3AD5 /* CoreVideo.framework */; };
 		0FC00054300F9516004C3AD5 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC00053300F9516004C3AD5 /* CoreMedia.framework */; };
@@ -492,17 +499,6 @@
 		ADCA434D21DA7FFE0099EF7A /* AppointmentDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA434C21DA7FFD0099EF7A /* AppointmentDTO.swift */; };
 		ADCA434F21DA96E50099EF7A /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA434E21DA96E50099EF7A /* SettingsVC.swift */; };
 		ADCA435121DA9A3C0099EF7A /* MedicalRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCA435021DA9A3C0099EF7A /* MedicalRecordVC.swift */; };
-		0FA1B07000000000000000C2 /* AIBotStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000C1 /* AIBotStrings.swift */; };
-		0FA1B07000000000000000B2 /* AIBotOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000B1 /* AIBotOnboardingViewController.swift */; };
-		0FA1B07000000000000000D2 /* AIBotMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D1 /* AIBotMessage.swift */; };
-		0FA1B07000000000000000D4 /* AIBotConversationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D3 /* AIBotConversationEngine.swift */; };
-		0FA1B07000000000000000D6 /* AIBotChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D5 /* AIBotChatViewController.swift */; };
-		0FA1B07000000000000000D8 /* AIBotChatCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D7 /* AIBotChatCells.swift */; };
-		0FA1B07000000000000000E2 /* AIBotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000E1 /* AIBotService.swift */; };
-		0FA1B07000000000000000E4 /* AIBotAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000E3 /* AIBotAudioPlayer.swift */; };
-		0FA1B07000000000000000E6 /* AIBotSpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000E5 /* AIBotSpeechRecognizer.swift */; };
-		0FA1B07000000000000000E8 /* AIBotAudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000E7 /* AIBotAudioRecorder.swift */; };
-		0FA1B07000000000000000DA /* AIBotVoiceModeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D9 /* AIBotVoiceModeViewController.swift */; };
 		ADEC748322257AC600BACEAD /* EnterCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEC748222257AC600BACEAD /* EnterCodeController.swift */; };
 /* End PBXBuildFile section */
 
@@ -530,9 +526,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0FC0004A300F94D3004C3AD5 /* MobileRTCScreenShare.xcframework in Embed Frameworks */,
-				0FC0004E300F94D7004C3AD5 /* zoomcml.xcframework in Embed Frameworks */,
-				0FC0004C300F94D5004C3AD5 /* MobileRTC.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -671,6 +664,9 @@
 		0F5BC6042CC69D3F0085BD7E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		0F6E2A032DAA6711001DAF40 /* InOutPopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOutPopController.swift; sourceTree = "<group>"; };
 		0F6E2A042DAA6711001DAF40 /* InOutPopController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InOutPopController.xib; sourceTree = "<group>"; };
+		0F714321303D9ACB006E4A87 /* MedicalRecordVCEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalRecordVCEX.swift; sourceTree = "<group>"; };
+		0F714325303DA38E006E4A87 /* UIToolkitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToolkitVC.swift; sourceTree = "<group>"; };
+		0F714326303DA38E006E4A87 /* UIToolkitVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIToolkitVC.xib; sourceTree = "<group>"; };
 		0F7DD7E72E8E8B2B00B5CE73 /* BHGLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BHGLoginController.swift; sourceTree = "<group>"; };
 		0F7DD7E82E8E8B2B00B5CE73 /* BHGLoginController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BHGLoginController.xib; sourceTree = "<group>"; };
 		0F7DD7EE2E8EA9C000B5CE73 /* BHGRegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BHGRegisterController.swift; sourceTree = "<group>"; };
@@ -689,10 +685,17 @@
 		0F9069012FAA1D350021ED5B /* PhysicalController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhysicalController.xib; sourceTree = "<group>"; };
 		0F9069052FAA1E4C0021ED5B /* HeaderTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTabCell.swift; sourceTree = "<group>"; };
 		0F9069062FAA1E4C0021ED5B /* HeaderTabCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTabCell.xib; sourceTree = "<group>"; };
-		0FC00040300F94B1004C3AD5 /* MobileRTC.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BJ4HAAB9B3:Zoom Communications, Inc."; lastKnownFileType = wrapper.xcframework; path = MobileRTC.xcframework; sourceTree = "<group>"; };
-		0FC00041300F94B1004C3AD5 /* MobileRTCResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MobileRTCResources.bundle; sourceTree = "<group>"; };
-		0FC00042300F94B1004C3AD5 /* MobileRTCScreenShare.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BJ4HAAB9B3:Zoom Communications, Inc."; lastKnownFileType = wrapper.xcframework; path = MobileRTCScreenShare.xcframework; sourceTree = "<group>"; };
-		0FC00043300F94B1004C3AD5 /* zoomcml.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:BJ4HAAB9B3:Zoom Communications, Inc."; lastKnownFileType = wrapper.xcframework; path = zoomcml.xcframework; sourceTree = "<group>"; };
+		0FA1B07000000000000000B1 /* AIBotOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotOnboardingViewController.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000C1 /* AIBotStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotStrings.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000D1 /* AIBotMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotMessage.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000D3 /* AIBotConversationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotConversationEngine.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000D5 /* AIBotChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotChatViewController.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000D7 /* AIBotChatCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotChatCells.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000D9 /* AIBotVoiceModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotVoiceModeViewController.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000E1 /* AIBotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotService.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000E3 /* AIBotAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotAudioPlayer.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000E5 /* AIBotSpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotSpeechRecognizer.swift; sourceTree = "<group>"; };
+		0FA1B07000000000000000E7 /* AIBotAudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotAudioRecorder.swift; sourceTree = "<group>"; };
 		0FC0004F300F94EF004C3AD5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		0FC00051300F9502004C3AD5 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
 		0FC00053300F9516004C3AD5 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
@@ -1088,17 +1091,6 @@
 		ADCA434C21DA7FFD0099EF7A /* AppointmentDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentDTO.swift; sourceTree = "<group>"; };
 		ADCA434E21DA96E50099EF7A /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		ADCA435021DA9A3C0099EF7A /* MedicalRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalRecordVC.swift; sourceTree = "<group>"; };
-		0FA1B07000000000000000C1 /* AIBotStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotStrings.swift; sourceTree = "<group>"; };
-		0FA1B07000000000000000B1 /* AIBotOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotOnboardingViewController.swift; sourceTree = "<group>"; };
-		0FA1B07000000000000000D1 /* AIBotMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotMessage.swift; sourceTree = "<group>"; };
-		0FA1B07000000000000000D3 /* AIBotConversationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotConversationEngine.swift; sourceTree = "<group>"; };
-		0FA1B07000000000000000D5 /* AIBotChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotChatViewController.swift; sourceTree = "<group>"; };
-		0FA1B07000000000000000D7 /* AIBotChatCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotChatCells.swift; sourceTree = "<group>"; };
-		0FA1B07000000000000000E1 /* AIBotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotService.swift; sourceTree = "<group>"; };
-		0FA1B07000000000000000E3 /* AIBotAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotAudioPlayer.swift; sourceTree = "<group>"; };
-		0FA1B07000000000000000E5 /* AIBotSpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotSpeechRecognizer.swift; sourceTree = "<group>"; };
-		0FA1B07000000000000000E7 /* AIBotAudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotAudioRecorder.swift; sourceTree = "<group>"; };
-		0FA1B07000000000000000D9 /* AIBotVoiceModeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotVoiceModeViewController.swift; sourceTree = "<group>"; };
 		ADEC748222257AC600BACEAD /* EnterCodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterCodeController.swift; sourceTree = "<group>"; };
 		AF548E59CD35D8AE4C800CAF /* Pods-CareMate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareMate.release.xcconfig"; path = "Target Support Files/Pods-CareMate/Pods-CareMate.release.xcconfig"; sourceTree = "<group>"; };
 		BF34FE18817735E0CF770B71 /* Pods_CareMate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CareMate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1118,11 +1110,8 @@
 				0F5BC6052CC69D3F0085BD7E /* WebKit.framework in Frameworks */,
 				0FC0005C300F957A004C3AD5 /* libz.1.2.5.tbd in Frameworks */,
 				0FC00060300F95A0004C3AD5 /* ReplayKit.framework in Frameworks */,
-				0FC0004B300F94D5004C3AD5 /* MobileRTC.xcframework in Frameworks */,
 				0FC0005E300F958E004C3AD5 /* VideoToolbox.framework in Frameworks */,
-				0FC0004D300F94D7004C3AD5 /* zoomcml.xcframework in Frameworks */,
 				3BC7D7958504A4081BF7F49C /* Pods_CareMate.framework in Frameworks */,
-				0FC00049300F94D3004C3AD5 /* MobileRTCScreenShare.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1629,6 +1618,26 @@
 			path = PhysicalTherapyScreen;
 			sourceTree = "<group>";
 		};
+		0F9069042FAA1E150021ED5B /* TabCell */ = {
+			isa = PBXGroup;
+			children = (
+				0F9069052FAA1E4C0021ED5B /* HeaderTabCell.swift */,
+				0F9069062FAA1E4C0021ED5B /* HeaderTabCell.xib */,
+			);
+			path = TabCell;
+			sourceTree = "<group>";
+		};
+		0F9069092FAA1E530021ED5B /* PhysicalScheduleCell */ = {
+			isa = PBXGroup;
+			children = (
+				0F8676BA2FC2E96100C65030 /* PhysGroubCell.swift */,
+				0F8676BB2FC2E96100C65030 /* PhysGroubCell.xib */,
+				0F8676BE2FC2EE3400C65030 /* SessionCell.swift */,
+				0F8676BF2FC2EE3400C65030 /* SessionCell.xib */,
+			);
+			path = PhysicalScheduleCell;
+			sourceTree = "<group>";
+		};
 		0FA1B07000000000000000A0 /* AIBot */ = {
 			isa = PBXGroup;
 			children = (
@@ -1638,17 +1647,6 @@
 				0FA1B07000000000000000E0 /* Network */,
 			);
 			path = AIBot;
-			sourceTree = "<group>";
-		};
-		0FA1B07000000000000000E0 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				0FA1B07000000000000000E1 /* AIBotService.swift */,
-				0FA1B07000000000000000E3 /* AIBotAudioPlayer.swift */,
-				0FA1B07000000000000000E5 /* AIBotSpeechRecognizer.swift */,
-				0FA1B07000000000000000E7 /* AIBotAudioRecorder.swift */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		0FA1B07000000000000000B0 /* Onboarding */ = {
@@ -1671,24 +1669,15 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
-		0F9069042FAA1E150021ED5B /* TabCell */ = {
+		0FA1B07000000000000000E0 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				0F9069052FAA1E4C0021ED5B /* HeaderTabCell.swift */,
-				0F9069062FAA1E4C0021ED5B /* HeaderTabCell.xib */,
+				0FA1B07000000000000000E1 /* AIBotService.swift */,
+				0FA1B07000000000000000E3 /* AIBotAudioPlayer.swift */,
+				0FA1B07000000000000000E5 /* AIBotSpeechRecognizer.swift */,
+				0FA1B07000000000000000E7 /* AIBotAudioRecorder.swift */,
 			);
-			path = TabCell;
-			sourceTree = "<group>";
-		};
-		0F9069092FAA1E530021ED5B /* PhysicalScheduleCell */ = {
-			isa = PBXGroup;
-			children = (
-				0F8676BA2FC2E96100C65030 /* PhysGroubCell.swift */,
-				0F8676BB2FC2E96100C65030 /* PhysGroubCell.xib */,
-				0F8676BE2FC2EE3400C65030 /* SessionCell.swift */,
-				0F8676BF2FC2EE3400C65030 /* SessionCell.xib */,
-			);
-			path = PhysicalScheduleCell;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		0FD96BB22EB2222300FE1402 /* StaticBranches */ = {
@@ -1712,6 +1701,8 @@
 		0FF381FA300F6DA60002BE49 /* ZoomCall */ = {
 			isa = PBXGroup;
 			children = (
+				0F714325303DA38E006E4A87 /* UIToolkitVC.swift */,
+				0F714326303DA38E006E4A87 /* UIToolkitVC.xib */,
 			);
 			path = ZoomCall;
 			sourceTree = "<group>";
@@ -2156,6 +2147,7 @@
 				A2C8508628E04437006397A0 /* Ambulance */,
 				A252ACC528D88376006613E3 /* Survey */,
 				ADCA435021DA9A3C0099EF7A /* MedicalRecordVC.swift */,
+				0F714321303D9ACB006E4A87 /* MedicalRecordVCEX.swift */,
 				365F3EEC28350CC1004280EC /* MedicalRecordVC.xib */,
 			);
 			path = HomeViewControllerGroup;
@@ -3072,10 +3064,6 @@
 			isa = PBXGroup;
 			children = (
 				0F08DA01301111CF00E04FE0 /* PushKit.framework */,
-				0FC00040300F94B1004C3AD5 /* MobileRTC.xcframework */,
-				0FC00041300F94B1004C3AD5 /* MobileRTCResources.bundle */,
-				0FC00042300F94B1004C3AD5 /* MobileRTCScreenShare.xcframework */,
-				0FC00043300F94B1004C3AD5 /* zoomcml.xcframework */,
 				0FC0004F300F94EF004C3AD5 /* CoreGraphics.framework */,
 				0FC00051300F9502004C3AD5 /* CoreVideo.framework */,
 				0FC00053300F9516004C3AD5 /* CoreMedia.framework */,
@@ -3090,6 +3078,9 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
 		464F40161FADE07B0098D19D /* CareMate */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 464F40421FADE07B0098D19D /* Build configuration list for PBXNativeTarget "CareMate" */;
@@ -3147,6 +3138,9 @@
 			productReference = 464F40391FADE07B0098D19D /* CareMateUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
 		464F400F1FADE07B0098D19D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
@@ -3195,6 +3189,9 @@
 				464F40381FADE07B0098D19D /* CareMateUITests */,
 			);
 		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
 		464F40151FADE07B0098D19D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3294,7 +3291,6 @@
 				A26A3AC02C56E84700BF38F9 /* AccountsViewController.xib in Resources */,
 				364C7B55283912FE00926BD5 /* Tajawal-ExtraBold.ttf in Resources */,
 				A26162AA28BF62D20024CDBD /* HintPopupViewController.xib in Resources */,
-				0FC00047300F94B1004C3AD5 /* MobileRTCResources.bundle in Resources */,
 				04489BB126DCD6210083040A /* PatientHistoryViewController.xib in Resources */,
 				365CE98B2860A3DF00794489 /* daySlotCollectionViewCell.xib in Resources */,
 				0F9069032FAA1D350021ED5B /* PhysicalController.xib in Resources */,
@@ -3353,6 +3349,7 @@
 				0481F81326E8AED000B39820 /* MedicationsViewViewController.xib in Resources */,
 				A2059CED291661CE00BCF021 /* ContactDoctorPopupViewController.xib in Resources */,
 				5E6AF54C26550173002DBEA2 /* PaymentPopupViewController.xib in Resources */,
+				0F714327303DA38E006E4A87 /* UIToolkitVC.xib in Resources */,
 				04F5849726CD054C0027D098 /* invoiceCell.xib in Resources */,
 				A230AA972C12553100AF9E8B /* ClinicsServicesReportsVisitsTableViewCell.xib in Resources */,
 				5E3956B5265566DC00A9F6C2 /* cairo_semibold.ttf in Resources */,
@@ -3386,6 +3383,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
 		094351FFD9F99DD509AFE450 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3440,6 +3440,10 @@
 				"${BUILT_PRODUCTS_DIR}/libPhoneNumber-iOS/libPhoneNumber_iOS.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ZoomVSDKUIToolkitiOS/CptShare/CptShare.framework/CptShare",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ZoomVSDKUIToolkitiOS/ZoomVideoSDK/ZoomVideoSDK.framework/ZoomVideoSDK",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ZoomVSDKUIToolkitiOS/ZoomVideoSDKUIToolkit/ZoomVideoSDKUIToolkit.framework/ZoomVideoSDKUIToolkit",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ZoomVSDKUIToolkitiOS/zoomcml/zoomcml.framework/zoomcml",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -3490,6 +3494,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libPhoneNumber_iOS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CptShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZoomVideoSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZoomVideoSDKUIToolkit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/zoomcml.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3538,6 +3546,9 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
 		464F40131FADE07B0098D19D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3711,6 +3722,7 @@
 				047AB4CA26DA7A9D00D532D8 /* RxOfPatientDetailsExtentsions.swift in Sources */,
 				4618B29A1FCEE59F00D5C6F3 /* Identy.swift in Sources */,
 				A252ACCD28D8868F006613E3 /* AllServeyTableViewCell.swift in Sources */,
+				0F714328303DA38E006E4A87 /* UIToolkitVC.swift in Sources */,
 				369168FD278B009500B16693 /* LitsOfPatientLogedBySameMobileNumberViewController.swift in Sources */,
 				AD6442D921E3995F007457B2 /* AboutViewController.swift in Sources */,
 				A2DC88A42918FA0800DE7393 /* JTSAnimatedGIFUtility.m in Sources */,
@@ -3823,6 +3835,7 @@
 				A2DC88A22918FA0800DE7393 /* JTSImageInfo.m in Sources */,
 				AD5438F321CFE1E500C7D500 /* DoctorProfileVC.swift in Sources */,
 				AD5438F021CFD56800C7D500 /* ESTabBarItemContainer.swift in Sources */,
+				0F714322303D9AD1006E4A87 /* MedicalRecordVCEX.swift in Sources */,
 				AD344CEE21DBAE7000FFB131 /* LabRadDTO.swift in Sources */,
 				ADCA435121DA9A3C0099EF7A /* MedicalRecordVC.swift in Sources */,
 				0FA1B07000000000000000C2 /* AIBotStrings.swift in Sources */,
@@ -4236,8 +4249,7 @@
 				MTL_ENABLE_DEBUG_INFO = No;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -4263,10 +4275,7 @@
 				INFOPLIST_FILE = CareMate/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Al Salam Hos";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -4358,10 +4367,7 @@
 				INFOPLIST_FILE = CareMate/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Al Salam Hos";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -4388,11 +4394,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CareMateTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = khabeerGroup.CareMateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -4408,11 +4410,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CareMateTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = khabeerGroup.CareMateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -4427,11 +4425,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CareMateUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = khabeerGroup.CareMateUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -4446,11 +4440,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CareMateUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = khabeerGroup.CareMateUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -4459,6 +4449,9 @@
 			};
 			name = Release;
 		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
 		464F40121FADE07B0098D19D /* Build configuration list for PBXProject "CareMate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -4495,6 +4488,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+/* End XCConfigurationList section */
 	};
 	rootObject = 464F400F1FADE07B0098D19D /* Project object */;
 }

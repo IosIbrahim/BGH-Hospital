@@ -223,6 +223,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/libPhoneNumber-iOS/libPhoneNumber_iOS.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ZoomVSDKUIToolkitiOS/CptShare/CptShare.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ZoomVSDKUIToolkitiOS/ZoomVideoSDK/ZoomVideoSDK.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ZoomVSDKUIToolkitiOS/ZoomVideoSDKUIToolkit/ZoomVideoSDKUIToolkit.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ZoomVSDKUIToolkitiOS/zoomcml/zoomcml.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
@@ -272,6 +276,10 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/libPhoneNumber-iOS/libPhoneNumber_iOS.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/pop/pop.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ZoomVSDKUIToolkitiOS/CptShare/CptShare.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ZoomVSDKUIToolkitiOS/ZoomVideoSDK/ZoomVideoSDK.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ZoomVSDKUIToolkitiOS/ZoomVideoSDKUIToolkit/ZoomVideoSDKUIToolkit.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/ZoomVSDKUIToolkitiOS/zoomcml/zoomcml.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

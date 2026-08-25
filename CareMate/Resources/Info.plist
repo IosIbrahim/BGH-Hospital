@@ -48,7 +48,7 @@
 		<true/>
 	</dict>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>We will use your Bluetooth to access your Bluetooth headphones.</string>
+	<string>need your Bluetooth to access your Bluetooth headphones.</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>We need access to your calendar to add reservations into it.</string>
 	<key>NSCameraUsageDescription</key>
@@ -56,17 +56,17 @@
 	<key>NSFaceIDUsageDescription</key>
 	<string>to make sure the employee uses his account not any one</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>We need you location to easily add you address</string>
+	<string>need you location to easily add you address</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need you location to easily add you address</string>
+	<string>need you location to easily add you address</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need you location to easily add you address</string>
-	<key>NSMicrophoneUsageDescription</key>	
-	<string>CareMate uses the microphone so you can speak to the AI symptom assistant.</string>
+	<string>need you location to easily add you address</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>need the microphone so you can speak to the AI symptom assistant.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>CareMate uses speech recognition to turn your spoken symptoms into text.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>For people to share, we need access to your photos</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>For people to share, we need access to your photos</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Tajawal-Bold.ttf</string>

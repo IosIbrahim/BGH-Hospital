@@ -195,6 +195,10 @@ PODS:
   - SwiftyCodeView/Core (0.3.6)
   - SwiftyJSON (4.1.0)
   - TPPDF (2.3.5)
+  - ZoomVSDKUIToolkitiOS/CptShare (2.1.13)
+  - ZoomVSDKUIToolkitiOS/zoomcml (2.1.13)
+  - ZoomVSDKUIToolkitiOS/ZoomVideoSDK (2.1.13)
+  - ZoomVSDKUIToolkitiOS/ZoomVideoSDKUIToolkit (2.1.13)
 
 DEPENDENCIES:
   - Alamofire
@@ -235,6 +239,10 @@ DEPENDENCIES:
   - SwiftyCodeView
   - SwiftyJSON
   - TPPDF
+  - ZoomVSDKUIToolkitiOS/CptShare
+  - ZoomVSDKUIToolkitiOS/zoomcml
+  - ZoomVSDKUIToolkitiOS/ZoomVideoSDK
+  - ZoomVSDKUIToolkitiOS/ZoomVideoSDKUIToolkit
 
 SPEC REPOS:
   trunk:
@@ -290,6 +298,7 @@ SPEC REPOS:
     - SwiftyCodeView
     - SwiftyJSON
     - TPPDF
+    - ZoomVSDKUIToolkitiOS
 
 EXTERNAL SOURCES:
   SCLAlertView:
@@ -354,7 +363,8 @@ SPEC CHECKSUMS:
   SwiftyCodeView: 0252e3520749a3fda1a9b141873401f8e6c570ad
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   TPPDF: dd128b2ed179216e055a871b528e61d5e572da56
+  ZoomVSDKUIToolkitiOS: 0baef0477c23dd95e6b1ab7339c5d552d348b663
 
-PODFILE CHECKSUM: a6a82437bde93ec8eb937e3452af2a15b83b3ca0
+PODFILE CHECKSUM: 04c5ff9e26000b7d30123a3d11fed8ce797c374d
 
 COCOAPODS: 1.16.2

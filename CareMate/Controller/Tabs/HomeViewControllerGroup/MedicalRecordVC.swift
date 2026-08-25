@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import SCLAlertView
 import MOLH
+import ZoomVideoSDK
 
 class MedicalRecordVC: BaseViewController
 {
@@ -202,15 +203,7 @@ class MedicalRecordVC: BaseViewController
         getNotificationCount()
     }
     
-    func checkObserver() {
-        observer?.when(.startMeeting) { [weak self] notification in
-            
-        }
-        
-        observer?.when(.enfMeeting) { [weak self] notification in
-            
-        }
-    }
+  
     
     func showNotificationPopUp() {
         if let dic = UserDefaults.standard.object(forKey: "remoteNotif") as? [String:Any] {
@@ -405,7 +398,7 @@ class MedicalRecordVC: BaseViewController
         LabelInvocies.text = UserManager.isArabic ? "عائلتي"  :"My Family"
 
         LabelrequestReport.text = UserManager.isArabic ? "طلب تقرير طبي" : "Medical Report Request"
-
+        joinSession()
 //        user name
         let defaults = UserDefaults.standard
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {

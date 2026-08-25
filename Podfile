@@ -56,11 +56,15 @@ target 'CareMate' do
   pod 'TPPDF'
 #  pod 'JLActivityIndicator', '~> 2.1'
   pod 'CRRefresh', '~> 1.1.3'
+  pod 'ZoomVSDKUIToolkitiOS/ZoomVideoSDK'
+  pod 'ZoomVSDKUIToolkitiOS/ZoomVideoSDKUIToolkit'
+  pod 'ZoomVSDKUIToolkitiOS/CptShare'
+  pod 'ZoomVSDKUIToolkitiOS/zoomcml'
 end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
     end
   end
 end

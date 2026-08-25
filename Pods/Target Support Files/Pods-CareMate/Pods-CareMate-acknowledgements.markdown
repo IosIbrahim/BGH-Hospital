@@ -3429,6 +3429,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
+## ZoomVSDKUIToolkitiOS
+
+
+Use of this SDK is subject to our [License and Terms of Use](https://explore.zoom.us/docs/en-us/video-sdk-terms.html);
+
+
+
 ## libPhoneNumber-iOS
 
                                  Apache License
