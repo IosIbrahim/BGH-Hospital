@@ -26,35 +26,42 @@ extension MedicalRecordVC {
     }
     
     func joinSession() {
-        joinNewSession()
-//        let param = ZoomVideoSDKInitParams()
-//    //    param.appGroupId = VoipManager.shared.token
-//        param.domain = "zoom.us"
-//        param.enableLog = true
-//        let sessionContext = ZoomVideoSDKSessionContext.init()
-//        sessionContext.userName = VoipManager.shared.sessionName
-//        sessionContext.sessionName = VoipManager.shared.sessionName
-//        sessionContext.token = VoipManager.shared.token
-//        
-//        ZoomVideoSDK.shareInstance()?.initialize(param)
-//        ZoomVideoSDK.shareInstance()?.delegate = self
-//        
-//        let vc = UIToolkitVC(sessionContext: sessionContext, initParams: param)
-//    //    vc.delegate = self
-//  //      vc.modalPresentationStyle = .fullScreen
-//        present(vc, animated: true)
+        setUpZoomMetting()
     }
     
-    func joinNewSession() {
-        let sessionContext = ZoomVideoSDKSessionContext()
-        sessionContext.token = VoipManager.shared.token
-        sessionContext.sessionName = VoipManager.shared.sessionName
-        sessionContext.userName = "Ibrahim Sabry"
-        if ZoomVideoSDK.shareInstance()?.joinSession(sessionContext) == nil {
-            print("Join session failed")
-        //    showError(message: "Failed to join session")
-            return
+    func setUpZoomMetting()  {
+        let initZoomParams = ZoomVideoSDKInitParams()
+            debugPrint("call View Didload")
+            initZoomParams.domain = "https://zoom.us"
+            initZoomParams.enableLog = true
+            let sdkInitReturnStatus =
+            ZoomVideoSDK.shareInstance()?.initialize(initZoomParams)
+
+            switch sdkInitReturnStatus {
+            case .Errors_Success:
+                debugPrint(" *** SDK initialized successfully")
+                ZoomVideoSDK.shareInstance()?.delegate = self
+                assignTokenAndDetailForJoinSession()
+
+            default:
+                if let error = sdkInitReturnStatus {
+                    debugPrint("*** SDK failed to initialize: \(error)")
+                }
+            }
         }
+    
+    func  assignTokenAndDetailForJoinSession () {
+
+            let sessionContext = ZoomVideoSDKSessionContext()
+            sessionContext.token = VoipManager.shared.token
+            sessionContext.sessionName = VoipManager.shared.sessionName
+            sessionContext.userName = "Ibrahim Sabry"
+            if let session = ZoomVideoSDK.shareInstance()?.joinSession(sessionContext) {
+                debugPrint("Session joined successfully.")
+             //   startPreview()
+            } else {
+                debugPrint("joinSession: failed.")
+            }
     }
     
     private func showError(message: String) {
@@ -72,7 +79,7 @@ extension MedicalRecordVC {
 
 extension MedicalRecordVC: ZoomVideoSDKDelegate {
     func onError(_ ErrorType: ZoomVideoSDKError, detail details: Int) {
-        print("Zoom Details ",details)
+        print("Zoom Details ",ErrorType)
         switch ErrorType {
             case .Errors_Success:
               // Your ZoomVideoSDK operation was successful.
@@ -80,7 +87,7 @@ extension MedicalRecordVC: ZoomVideoSDKDelegate {
               default:
               // Your ZoomVideoSDK operation raised an error.
               // Refer to error code documentation.
-              print("Zoom Error \(ErrorType) \(details)")
+            print("Zoom Error \(ErrorType) \(details)")
               return
         }
     }

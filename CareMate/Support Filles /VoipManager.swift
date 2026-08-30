@@ -17,8 +17,8 @@ final class VoipManager: NSObject {
     private var currentCallUUID: UUID?
     private var currentCallData: [String: Any] = [:]
     private var videoSession: ZoomVideoSDKSession?
-    var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfa2V5IjoiNFdXYjFIQjMwQmk0bmhEYUpXdXpOWTNud3lpbHdBSW1oV2FkIiwidHBjIjoiY29uc3VsdC0xNDcwMDE4Iiwicm9sZV90eXBlIjoxLCJ1c2VyX2lkZW50aXR5IjoiZG9jdG9yLUtIQUJFRVIiLCJ2ZXJzaW9uIjoxLCJpYXQiOjE3ODc2NDgwMjAsImV4cCI6MTc4NzY1MTYyMH0.e8aDUQW4LWuGoKc177J-7eMuGubN3VMPNY-WhdKPr6o"
-    var sessionName = "consult-1470018"
+    var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfa2V5IjoiNFdXYjFIQjMwQmk0bmhEYUpXdXpOWTNud3lpbHdBSW1oV2FkIiwidHBjIjoiY29uc3VsdC0xNDY5NTI2Iiwicm9sZV90eXBlIjowLCJ1c2VyX2lkZW50aXR5IjoicGF0aWVudC1LSEFCRUVSIiwidmVyc2lvbiI6MSwiaWF0IjoxNzg4MDkzMDgxLCJleHAiOjE3ODgwOTY2ODF9.iLyYOpIuIGhVN8mo372myFbCIr-0mX8VG3Ntn5YYeow"
+    var sessionName = "consult-1469526"
     // MARK: - Setup
     func start() {
         setupCallKit()
