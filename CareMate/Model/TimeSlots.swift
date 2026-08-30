@@ -97,8 +97,17 @@ extension TimeSlots {
         if isPhysical {
             parseURl = urlString
         }
-        URLSession.shared.dataTask(with: URL(string: parseURl)!) { data, response, error in
+        var req = URLRequest(url: URL(string: parseURl)!)
+        if let token = UserDefaults.standard.string(forKey: "ACCESS_TOKEN"){
+            req.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+        URLSession.shared.dataTask(with: req) { data, response, error in
         indicator.sharedInstance.dismiss()
+            if error?._code == 401 {
+                let nc = NotificationCenter.default
+                nc.post(name: Notification.Name("session.ended"), object: nil)
+                return
+            }
         guard let data = data else {
             DispatchQueue.main.async {completion(nil,"", "")}
         return

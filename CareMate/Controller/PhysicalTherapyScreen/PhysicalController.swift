@@ -56,7 +56,9 @@ class PhysicalController: BaseViewController {
          let urlString = "\(Constants.APIProvider.GetPhysicalSessions)bRANCH_ID=\(branch?.id ?? "")&pATIENT_ID=\(id)&PHSIO_FILTER=2"
          var request = URLRequest(url: URL(string: urlString)!,timeoutInterval: Double.infinity)
      //    request.addValue("Bearer \()", forHTTPHeaderField: "Authorization")
-
+         if let token = UserDefaults.standard.string(forKey: "ACCESS_TOKEN"){
+             request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+         }
          request.httpMethod = "GET"
          indicator.sharedInstance.show()
 //    let url = URL(string: urlString)
@@ -65,7 +67,11 @@ class PhysicalController: BaseViewController {
          URLSession.shared.dataTask(with: request) { data, response, error in
              indicator.sharedInstance.dismiss()
              if error != nil {//Has error for request
-                 if error?._code == -1001 {
+                 if error?._code == 401 {
+                     let nc = NotificationCenter.default
+                     nc.post(name: Notification.Name("session.ended"), object: nil)
+                     return
+                 }else if error?._code == -1001 {
                      //Domain=NSURLErrorDomain Code=-1001 "The request timed out."
             DispatchQueue.main.async {
                   print(error?.localizedDescription ?? "")

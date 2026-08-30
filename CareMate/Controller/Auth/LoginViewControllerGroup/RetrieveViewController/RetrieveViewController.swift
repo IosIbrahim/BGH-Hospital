@@ -144,10 +144,13 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
         WebserviceMananger.sharedInstance.makeCall(method: .post, url: parseUrl, parameters: pars, vc: self) { (data, error) in
             let root = (data as! [String:AnyObject])
             print(root)
-            print(root["Code"])
+            print(root["Code"] as? Int ?? .zero)
             print(type(of: root["Code"]))
             let Code = root["Code"] as? Int
-            if Code == 200 {
+            if Code == 401 {
+                let nc = NotificationCenter.default
+                nc.post(name: Notification.Name("session.ended"), object: nil)
+            }else if Code == 200 {
                 let vc:verifcationAddOtherVC = verifcationAddOtherVC(PatientId: self.patientID, patientIdArray: nil,vcType:.fromRetrive)
                 vc.mobileNumber = self.phoneNumber
                 vc.PATIENT_ID = self.patientID
@@ -253,13 +256,20 @@ class RetrieveViewController: BaseViewController, resendCodeDelgate {
         
         var request = URLRequest(url: URL(string: Constants.APIProvider.VERIFYPATIENTID)!,timeoutInterval: Double.infinity)
         request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        
+        if let token = UserDefaults.standard.string(forKey: "ACCESS_TOKEN"){
+            request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
         request.httpMethod = "POST"
         request.httpBody = postData
         indicator.sharedInstance.show()
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 indicator.sharedInstance.dismiss()
+            }
+            if error?._code == 401 {
+                let nc = NotificationCenter.default
+                nc.post(name: Notification.Name("session.ended"), object: nil)
+                return
             }
             guard let data = data else {
                 print(String(describing: error))

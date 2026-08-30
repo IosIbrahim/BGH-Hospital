@@ -26,22 +26,45 @@ extension MedicalRecordVC {
     }
     
     func joinSession() {
-        let param = ZoomVideoSDKInitParams()
-        param.appGroupId = VoipManager.shared.token
-        param.domain = "zoom.us"
-        param.enableLog = true
-        let sessionContext = ZoomVideoSDKSessionContext.init()
-        sessionContext.userName = VoipManager.shared.sessionName
-        sessionContext.sessionName = VoipManager.shared.sessionName
+        joinNewSession()
+//        let param = ZoomVideoSDKInitParams()
+//    //    param.appGroupId = VoipManager.shared.token
+//        param.domain = "zoom.us"
+//        param.enableLog = true
+//        let sessionContext = ZoomVideoSDKSessionContext.init()
+//        sessionContext.userName = VoipManager.shared.sessionName
+//        sessionContext.sessionName = VoipManager.shared.sessionName
+//        sessionContext.token = VoipManager.shared.token
+//        
+//        ZoomVideoSDK.shareInstance()?.initialize(param)
+//        ZoomVideoSDK.shareInstance()?.delegate = self
+//        
+//        let vc = UIToolkitVC(sessionContext: sessionContext, initParams: param)
+//    //    vc.delegate = self
+//  //      vc.modalPresentationStyle = .fullScreen
+//        present(vc, animated: true)
+    }
+    
+    func joinNewSession() {
+        let sessionContext = ZoomVideoSDKSessionContext()
         sessionContext.token = VoipManager.shared.token
-        
-        ZoomVideoSDK.shareInstance()?.initialize(param)
-        ZoomVideoSDK.shareInstance()?.delegate = self
-        
-        let vc = UIToolkitVC(sessionContext: sessionContext, initParams: param)
-    //    vc.delegate = self
-  //      vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+        sessionContext.sessionName = VoipManager.shared.sessionName
+        sessionContext.userName = "Ibrahim Sabry"
+        if ZoomVideoSDK.shareInstance()?.joinSession(sessionContext) == nil {
+            print("Join session failed")
+        //    showError(message: "Failed to join session")
+            return
+        }
+    }
+    
+    private func showError(message: String) {
+        Task { @MainActor in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+             //   self.dismiss(animated: true)
+            })
+            present(alert, animated: true)
+        }
     }
     
 }

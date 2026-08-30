@@ -241,6 +241,11 @@ class BHGRegisterController: BaseViewController {
             DispatchQueue.main.async() {
                 indicator.sharedInstance.dismiss()
             }
+            if error?._code == 401 {
+                let nc = NotificationCenter.default
+                nc.post(name: Notification.Name("session.ended"), object: nil)
+                return
+            }
           guard let data = data else {
             print(String(describing: error))
             return

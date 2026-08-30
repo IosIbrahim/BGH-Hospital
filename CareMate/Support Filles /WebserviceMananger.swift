@@ -28,9 +28,13 @@ class WebserviceMananger: NSObject {
         if showIndicator {
             indicator.sharedInstance.show()
         }
+        var headers: HTTPHeaders?
+        if let token = UserDefaults.standard.string(forKey: "ACCESS_TOKEN") {
+            headers = getHTTpHeader(["Authorization":"Bearer \(token)"])
+        }
 //        if Reachability.isConnectedToNetwork() {
           var parss = parameters
-            AF.request(safeUrl, method: method, parameters: parss, encoding: JSONEncoding.default, headers: nil) .responseJSON
+            AF.request(safeUrl, method: method, parameters: parss, encoding: JSONEncoding.default, headers: headers) .responseJSON
                 { response in
                     if showIndicator {
                         indicator.sharedInstance.dismiss()
@@ -48,6 +52,10 @@ class WebserviceMananger: NSObject {
                     {
 
                         Utilities.showAlert(vc, messageToDisplay: UserManager.isArabic ? "لا يمكن الإتصال بالخادم في الوقت الحالي" : "The server cannot be contacted at this time")
+                        return
+                    }else if response.response!.statusCode == 401 {
+                        let nc = NotificationCenter.default
+                        nc.post(name: Notification.Name("session.ended"), object: nil)
                         return
                     }
                     
@@ -161,14 +169,23 @@ class WebserviceMananger: NSObject {
 //        }
     }
     
+
+    
     func makeCall(method: Alamofire.HTTPMethod, urlString : String, parameters: [String: Any]? , vc:UIViewController , headers :[String:String] , completionHandler : @escaping (AnyObject?,String?) -> ()) -> Void
     {
 //        indicator.sharedInstance.show(vc)
 //        if Reachability.isConnectedToNetwork() {
 
             print(urlString)
-        let new = getHTTpHeader(headers)
-            AF.request(urlString, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: new).responseJSON
+        var new = getHTTpHeader(headers)
+        if let token = UserDefaults.standard.string(forKey: "ACCESS_TOKEN") {
+            if new != nil {
+                new?.update(name: "Authorization", value: "Bearer \(token)")
+            }else {
+                new = getHTTpHeader(["Authorization":"Bearer \(token)"])
+            }
+        }
+        AF.request(urlString, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: new).responseJSON
                 { response in
                     
                     switch response.result {
@@ -229,8 +246,14 @@ class WebserviceMananger: NSObject {
     {
 //        indicator.sharedInstance.show(vc)
 //        if Reachability.isConnectedToNetwork() {
-        let new = getHTTpHeader(headers)
-            
+        var new = getHTTpHeader(headers)
+        if let token = UserDefaults.standard.string(forKey: "ACCESS_TOKEN") {
+            if new != nil {
+                new?.update(name: "Authorization", value: "Bearer \(token)")
+            }else {
+                new = getHTTpHeader(["Authorization":"Bearer \(token)"])
+            }
+        }
         AF.request(urlString, method: method, parameters: [:], encoding: parameters , headers: new ).responseJSON
                 { response in
                     //                   response.resultc

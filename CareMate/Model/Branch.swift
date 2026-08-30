@@ -68,10 +68,18 @@ extension Branch {
 //    let url = URL(string: urlString)
 //    let parseUrl = urlString + "?" + Constants.getoAuthValue(url: url!, method: "GET")
     print(urlString)
-    URLSession.shared.dataTask(with: URL(string: urlString)!) { data, response, error in
+        var req = URLRequest(url: URL(string: urlString)!)
+        if let token = UserDefaults.standard.string(forKey: "ACCESS_TOKEN"){
+            req.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+    URLSession.shared.dataTask(with: req) { data, response, error in
         indicator.sharedInstance.dismiss()
         if error != nil {//Has error for request
-          if error?._code == -1001 {
+            if error?._code == 401 {
+                let nc = NotificationCenter.default
+                nc.post(name: Notification.Name("session.ended"), object: nil)
+                return
+            }else if error?._code == -1001 {
            //Domain=NSURLErrorDomain Code=-1001 "The request timed out."
             DispatchQueue.main.async {completion(nil, nil)}
             return
@@ -164,10 +172,18 @@ extension Branch {
     let url = URL(string: urlString)
     let parseUrl = urlString + "?" + Constants.getoAuthValue(url: url!, method: "GET")
     print(url)
-    URLSession.shared.dataTask(with: URL(string: parseUrl)!) { data, response, error in
+    var req = URLRequest(url: URL(string: urlString)!)
+    if let token = UserDefaults.standard.string(forKey: "ACCESS_TOKEN"){
+        req.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+    }
+    URLSession.shared.dataTask(with: req) { data, response, error in
         indicator.sharedInstance.dismiss()
         if error != nil {//Has error for request
-          if error?._code == -1001 {
+            if error?._code == 401 {
+                let nc = NotificationCenter.default
+                nc.post(name: Notification.Name("session.ended"), object: nil)
+                return
+            }else if error?._code == -1001 {
            //Domain=NSURLErrorDomain Code=-1001 "The request timed out."
             DispatchQueue.main.async {completion(nil, nil)}
             return

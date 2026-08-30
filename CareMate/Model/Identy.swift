@@ -28,7 +28,16 @@ extension Identy {
         let urlString = Constants.APIProvider.GetOnlineAppointment
         let url = URL(string: urlString)
         let parseURl = urlString + "?" + Constants.getoAuthValue(url: url!, method: "GET")
-        URLSession.shared.dataTask(with: URL(string: parseURl)!) { data, response, error in            indicator.sharedInstance.dismiss()
+        var req = URLRequest(url: URL(string: parseURl)!)
+        if let token = UserDefaults.standard.string(forKey: "ACCESS_TOKEN"){
+            req.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+        URLSession.shared.dataTask(with: req) { data, response, error in            indicator.sharedInstance.dismiss()
+            if error?._code == 401 {
+                let nc = NotificationCenter.default
+                nc.post(name: Notification.Name("session.ended"), object: nil)
+                return
+            }
             guard let data = data else {
                 DispatchQueue.main.async {completion(nil)}
                 return

@@ -173,12 +173,20 @@ extension Doctor {
         
         let parseURl = Constants.APIProvider.GetDoctors + Constants.getoAuthValue(url: url!, method: "GET")
         print(parseURl)
-    
-        URLSession.shared.dataTask(with: URL(string: isPhysical ?  urlString:parseURl)!) { data, response, error in
+        var req = URLRequest(url: URL(string: isPhysical ?  urlString:parseURl)!)
+        if let token = UserDefaults.standard.string(forKey: "ACCESS_TOKEN"){
+            req.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+        URLSession.shared.dataTask(with: req) { data, response, error in
             indicator.sharedInstance.dismiss()
 
             guard let data = data else {
 //        Utilities.showAlert(messageToDisplay:"Couldn't connect to server")
+                if error?._code == 401 {
+                    let nc = NotificationCenter.default
+                    nc.post(name: Notification.Name("session.ended"), object: nil)
+                    return
+                }
                 DispatchQueue.main.async {completion(nil)}
                 return
         }
@@ -209,7 +217,16 @@ extension Doctor {
     static func getSearchDoctors(url: String, completion: @escaping (([Doctor]?) -> Void)) {
         let url = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         print(url)
-        URLSession.shared.dataTask(with: URL(string: url)!) { data, response, error in
+        var req = URLRequest(url: URL(string: url)!)
+        if let token = UserDefaults.standard.string(forKey: "ACCESS_TOKEN"){
+            req.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+        URLSession.shared.dataTask(with:req) { data, response, error in
+            if error?._code == 401 {
+                let nc = NotificationCenter.default
+                nc.post(name: Notification.Name("session.ended"), object: nil)
+                return
+            }
             guard let data = data else {
                 DispatchQueue.main.async {completion(nil)}
                 return

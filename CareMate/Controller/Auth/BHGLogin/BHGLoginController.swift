@@ -173,10 +173,16 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
 //              }
         let voip = UserDefaults.standard.object(forKey: "voipToken") as? String ?? ""
         let tokeen = UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""
-        urlString = Constants.APIProvider.Login+"detect_text=\(medicalId)&&MOBILEAPP_TYPE=2&MOBILEAPP_KEY=\(tokeen)&detect_type=2"
+        let pars = ["detect_text": medicalId,
+                    "MOBILEAPP_TYPE":"2",
+                    "detect_type":"2",
+                    "MOBILEAPP_KEY":tokeen]
+
+//        urlString = Constants.APIProvider.Login+"detect_text=\(medicalId)&&MOBILEAPP_TYPE=2&MOBILEAPP_KEY=\(tokeen)&detect_type=2"
+        urlString = Constants.APIProvider.Login
         print(urlString)
         indicator.sharedInstance.show()
-        WebserviceMananger.sharedInstance.makeCall(method: .get, url: urlString, parameters: nil, vc: self) { (data, error) in
+        WebserviceMananger.sharedInstance.makeCall(method: .post, url: urlString, parameters: pars, vc: self) { (data, error) in
             var listOfOTher = [listOfTherPatient]()
             indicator.sharedInstance.dismiss()
             
@@ -315,11 +321,22 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
           let tokeen = UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""
       //  let patientId = Utilities.sharedInstance.getPatientId()
         let patientId = medicalId
-
-          urlString = Constants.APIProvider.Login+"detect_text=\(patientId)&PASSWORD=\(password)&MOBILEAPP_TYPE=2&MOBILEAPP_KEY=\(tokeen)&detect_type=5"
+        var pars = ["detect_text": patientId,
+                    "PASSWORD":password,
+                    "MOBILEAPP_TYPE":"2",
+                    "detect_type":"5",
+                    "MOBILEAPP_KEY":tokeen]
+       //   urlString = Constants.APIProvider.Login+"detect_text=\(patientId)&PASSWORD=\(password)&MOBILEAPP_TYPE=2&MOBILEAPP_KEY=\(tokeen)&detect_type=5"
+        urlString = Constants.APIProvider.Login
         let id = txfID.text!
         if code == "6850" {
-            urlString = Constants.APIProvider.Login+"detect_text=\(id)&PASSWORD=\(password)&MOBILEAPP_TYPE=2&MOBILEAPP_KEY=\(tokeen)&detect_type=2"
+          //  urlString = Constants.APIProvider.Login+"detect_text=\(id)&PASSWORD=\(password)&MOBILEAPP_TYPE=2&MOBILEAPP_KEY=\(tokeen)&detect_type=2"
+            urlString = Constants.APIProvider.Login
+             pars = ["detect_text": id,
+                        "PASSWORD":password,
+                        "MOBILEAPP_TYPE":"2",
+                        "detect_type":"5",
+                        "MOBILEAPP_KEY":tokeen]
         }
         UserDefaults.standard.set(patientId, forKey: "patientId")
           print(urlString)
@@ -328,7 +345,7 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
           let url = URL(string: urlString.addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed)!)
           let parseUrl = Constants.APIProvider.Login + Constants.getoAuthValue(url: url!, method: "GET")
           print(parseUrl)
-          WebserviceMananger.sharedInstance.makeCall(method: .get, url: urlString, parameters: nil, vc: self) { (data, error) in
+          WebserviceMananger.sharedInstance.makeCall(method: .post, url: urlString, parameters: pars, vc: self) { (data, error) in
               var listOfOTher = [listOfTherPatient]()
               indicator.sharedInstance.dismiss()
               
@@ -337,6 +354,8 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
                       if root["OUT_PARMS_ROW"] is [String:AnyObject] {
                           let OUT_PARMS_ROW = root["OUT_PARMS_ROW"] as  AnyObject
                           let loginStratues =  OUT_PARMS_ROW["LOGIN_STATUS"] as? String
+                          let ACCESS_TOKEN = OUT_PARMS_ROW["ACCESS_TOKEN"] as? String ?? ""
+                          UserDefaults.standard.set(ACCESS_TOKEN, forKey: "ACCESS_TOKEN")
                           if loginStratues == "2" {
                               if let root = ((data as! [String: AnyObject])["Root"] as! [String:AnyObject])["PAT_DATA"] as? [String:AnyObject] {
                                   let patImage = ((root["PAT_DATA_ROW"] as? [String: Any])?["PAT_PIC"] as? [String: Any])?["BLOB_PATH"] as? String ?? ""
