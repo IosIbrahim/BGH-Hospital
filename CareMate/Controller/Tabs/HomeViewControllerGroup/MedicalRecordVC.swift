@@ -424,7 +424,6 @@ class MedicalRecordVC: BaseViewController
         LabelInvocies.text = UserManager.isArabic ? "عائلتي"  :"My Family"
 
         LabelrequestReport.text = UserManager.isArabic ? "طلب تقرير طبي" : "Medical Report Request"
-        joinSession()
 //        user name
         let defaults = UserDefaults.standard
         if let savedPerson = defaults.object(forKey: "SavedPerson") as? Data {

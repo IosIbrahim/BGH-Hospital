@@ -5,6 +5,8 @@ import AVFoundation
 //import MobileRTC
 import PushKit
 import ZoomVideoSDK
+import MOLH
+
 
 final class VoipManager: NSObject {
 
@@ -16,6 +18,7 @@ final class VoipManager: NSObject {
 
     private var currentCallUUID: UUID?
     private var currentCallData: [String: Any] = [:]
+    private var callModel:VoipCallModel = .init()
     private var videoSession: ZoomVideoSDKSession?
     var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfa2V5IjoiNFdXYjFIQjMwQmk0bmhEYUpXdXpOWTNud3lpbHdBSW1oV2FkIiwidHBjIjoiY29uc3VsdC0xNDY5NTI2Iiwicm9sZV90eXBlIjowLCJ1c2VyX2lkZW50aXR5IjoicGF0aWVudC1LSEFCRUVSIiwidmVyc2lvbiI6MSwiaWF0IjoxNzg4MDkzMDgxLCJleHAiOjE3ODgwOTY2ODF9.iLyYOpIuIGhVN8mo372myFbCIr-0mX8VG3Ntn5YYeow"
     var sessionName = "consult-1469526"
@@ -69,25 +72,78 @@ extension VoipManager: PKPushRegistryDelegate {
                       completion: @escaping () -> Void) {
 
         let data = payload.dictionaryPayload
-        let doctorName = data["doctorName"] as? String ?? "Doctor"
-        let speciality = data["speciality"] as? String ?? ""
+        
+        let session_Name = data["ZOOM_SESSION_NAME"] as? String ?? ""
+        self.sessionName = session_Name
+        let sessionToken = data["ZOOM_SESSION_TOKEN"] as? String ?? ""
+        self.token = sessionToken
+        let EMP_NAME_EN = data["EMP_NAME_EN"] as? String ?? ""
+        let EMP_NAME_AR = data["EMP_NAME_AR"] as? String ?? ""
+        
+        let SERIAL = data["SERIAL"] as? String ?? ""
+        let HOSP_NAME_AR = data["HOSP_NAME_AR"] as? String ?? ""
+        let HOSP_NAME_EN = data["HOSP_NAME_EN"] as? String ?? ""
+        let SPECIALITY_NAME_AR = data["SPECIALITY_NAME_AR"] as? String ?? ""
+        let SPECIALITY_NAME_EN = data["SPECIALITY_NAME_EN"] as? String ?? ""
+        
+        let CLINIC_NAME_AR = data["CLINIC_NAME_AR"] as? String ?? ""
+        let CLINIC_NAME_EN = data["CLINIC_NAME_EN"] as? String ?? ""
+        let SERVICE_NAME_AR = data["SERVICE_NAME_AR"] as? String ?? ""
+        let SERVICE_NAME_EN = data["SERVICE_NAME_EN"] as? String ?? ""
+        let EXPECTEDDONEDATE = data["EXPECTEDDONEDATE"] as? String ?? ""
+        callModel.sessionName = sessionName
+        callModel.sessionToken = sessionToken
+        callModel.empNameAr = EMP_NAME_AR
+        callModel.empNameEn = EMP_NAME_EN
+        callModel.serial = SERIAL
+        
+        callModel.hospNameAr = HOSP_NAME_AR
+        callModel.hospNameEn = HOSP_NAME_EN
+        callModel.specialityNameAr = SPECIALITY_NAME_AR
+        callModel.specialityNameEn = SPECIALITY_NAME_EN
+        
+        callModel.clinicNameAr = CLINIC_NAME_AR
+        callModel.clinicNameEn = CLINIC_NAME_EN
+        callModel.serviceNameAr = SERVICE_NAME_AR
+        callModel.serviceNameEn = SERVICE_NAME_EN
+        
+        callModel.expectedDoneDate = EXPECTEDDONEDATE
+      
         currentCallData = [
-            "doctorId": data["doctorId"] as? String ?? "",
-            "doctorName": doctorName,
-            "speciality": speciality,
-            "zoomMeetingNumber": data["zoomMeetingNumber"] as? String ?? "",
-            "zoomMeetingPassword": data["zoomMeetingPassword"] as? String ?? "",
-            "zoomJoinUrl": data["zoomJoinUrl"] as? String ?? ""
+            "sessionName": sessionName,
+            "sessionToken": sessionToken,
+            "EMP_NAME_EN": EMP_NAME_EN,
+            "EMP_NAME_AR": EMP_NAME_AR,
+            "SERIAL": SERIAL,
+            "HOSP_NAME_AR": HOSP_NAME_AR,
+            "HOSP_NAME_EN":HOSP_NAME_EN,
+            "SPECIALITY_NAME_AR":SPECIALITY_NAME_AR,
+            "SPECIALITY_NAME_EN":SPECIALITY_NAME_EN,
+            "CLINIC_NAME_AR":CLINIC_NAME_AR,
+            "CLINIC_NAME_EN":CLINIC_NAME_EN,
+            "SERVICE_NAME_AR":SERVICE_NAME_AR,
+            "SERVICE_NAME_EN":SERVICE_NAME_EN,
+            "EXPECTEDDONEDATE":EXPECTEDDONEDATE
         ]
         let uuid = UUID()
         currentCallUUID = uuid
-        let update = CXCallUpdate()
-        update.remoteHandle = CXHandle(type: .generic, value: doctorName)
-        update.localizedCallerName = speciality.isEmpty ? doctorName : "\(doctorName) - \(speciality)"
-        update.hasVideo = true
-        provider?.reportNewIncomingCall(with: uuid, update: update) { _ in
-            completion()
+        let doctorName = MOLHLanguage.isArabic() ?  EMP_NAME_AR:EMP_NAME_EN
+        let speciality = MOLHLanguage.isArabic() ?  SPECIALITY_NAME_AR:SPECIALITY_NAME_EN
+        let status = UIApplication.shared.applicationState
+        if status == .inactive || status == .background {
+            let update = CXCallUpdate()
+            update.remoteHandle = CXHandle(type: .generic, value: doctorName)
+            update.localizedCallerName = speciality.isEmpty ? doctorName : "\(doctorName) - \(speciality)"
+            update.hasVideo = true
+            provider?.reportNewIncomingCall(with: uuid, update: update) { _ in
+                completion()
+            }
+        }else {
+            Observer.fire(observer: .startMeeting, with: callModel)
         }
+       
+        
+       
     }
 }
 
@@ -140,7 +196,21 @@ extension VoipManager: ZoomVideoSDKDelegate {
           return
         }
     }
-    
-    
+}
 
+struct VoipCallModel:Codable {
+    var sessionName:String = ""
+    var sessionToken:String = ""
+    var empNameAr:String = ""
+    var empNameEn:String = ""
+    var serial:String = ""
+    var hospNameAr:String = ""
+    var hospNameEn:String = ""
+    var specialityNameAr:String = ""
+    var specialityNameEn:String = ""
+    var clinicNameAr:String = ""
+    var clinicNameEn:String = ""
+    var serviceNameAr:String = ""
+    var serviceNameEn:String = ""
+    var expectedDoneDate:String = ""
 }

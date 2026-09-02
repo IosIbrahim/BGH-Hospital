@@ -17,41 +17,40 @@ extension MedicalRecordVC {
     
     func checkObserver() {
         observer?.when(.startMeeting) { [weak self] notification in
-            self?.joinSession()
+            guard let self = self else {  return }
+            let model = notification.object as? VoipCallModel ?? .init()
+            let vc = UIToolkitVC()
+            vc.callModel = model
+            self.present(vc, animated: true)
+            
         }
         
         observer?.when(.enfMeeting) { [weak self] notification in
-            
+            guard let self = self else {  return }
+            let model = notification.object as? VoipCallModel ?? .init()
+            print(model)
         }
     }
     
-    func joinSession() {
-        setUpZoomMetting()
-    }
-    
-    func setUpZoomMetting()  {
+    func setUpZoomMetting(_ model:VoipCallModel)  {
         let initZoomParams = ZoomVideoSDKInitParams()
-            debugPrint("call View Didload")
-            initZoomParams.domain = "https://zoom.us"
-            initZoomParams.enableLog = true
-            let sdkInitReturnStatus =
-            ZoomVideoSDK.shareInstance()?.initialize(initZoomParams)
-
-            switch sdkInitReturnStatus {
+        debugPrint("call View Didload")
+        initZoomParams.domain = "https://zoom.us"
+        initZoomParams.enableLog = true
+        let sdkInitReturnStatus = ZoomVideoSDK.shareInstance()?.initialize(initZoomParams)
+        switch sdkInitReturnStatus {
             case .Errors_Success:
                 debugPrint(" *** SDK initialized successfully")
                 ZoomVideoSDK.shareInstance()?.delegate = self
-                assignTokenAndDetailForJoinSession()
-
+                assignTokenAndDetailForJoinSession(model)
             default:
                 if let error = sdkInitReturnStatus {
                     debugPrint("*** SDK failed to initialize: \(error)")
                 }
-            }
         }
+    }
     
-    func  assignTokenAndDetailForJoinSession () {
-
+    func  assignTokenAndDetailForJoinSession (_ model:VoipCallModel) {
             let sessionContext = ZoomVideoSDKSessionContext()
             sessionContext.token = VoipManager.shared.token
             sessionContext.sessionName = VoipManager.shared.sessionName
