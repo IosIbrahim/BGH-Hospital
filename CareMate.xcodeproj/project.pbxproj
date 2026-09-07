@@ -129,6 +129,8 @@
 		0F9069032FAA1D350021ED5B /* PhysicalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9069012FAA1D350021ED5B /* PhysicalController.xib */; };
 		0F9069072FAA1E4C0021ED5B /* HeaderTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9069052FAA1E4C0021ED5B /* HeaderTabCell.swift */; };
 		0F9069082FAA1E4C0021ED5B /* HeaderTabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F9069062FAA1E4C0021ED5B /* HeaderTabCell.xib */; };
+		0F93A2B0304DAADB00765893 /* ZoomUserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F93A2AF304DAADB00765893 /* ZoomUserCell.xib */; };
+		0F93A2B1304DAADB00765893 /* ZoomUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F93A2AE304DAADB00765893 /* ZoomUserCell.swift */; };
 		0FA1B07000000000000000B2 /* AIBotOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000B1 /* AIBotOnboardingViewController.swift */; };
 		0FA1B07000000000000000C2 /* AIBotStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000C1 /* AIBotStrings.swift */; };
 		0FA1B07000000000000000D2 /* AIBotMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA1B07000000000000000D1 /* AIBotMessage.swift */; };
@@ -685,6 +687,8 @@
 		0F9069012FAA1D350021ED5B /* PhysicalController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhysicalController.xib; sourceTree = "<group>"; };
 		0F9069052FAA1E4C0021ED5B /* HeaderTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTabCell.swift; sourceTree = "<group>"; };
 		0F9069062FAA1E4C0021ED5B /* HeaderTabCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTabCell.xib; sourceTree = "<group>"; };
+		0F93A2AE304DAADB00765893 /* ZoomUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomUserCell.swift; sourceTree = "<group>"; };
+		0F93A2AF304DAADB00765893 /* ZoomUserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZoomUserCell.xib; sourceTree = "<group>"; };
 		0FA1B07000000000000000B1 /* AIBotOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotOnboardingViewController.swift; sourceTree = "<group>"; };
 		0FA1B07000000000000000C1 /* AIBotStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotStrings.swift; sourceTree = "<group>"; };
 		0FA1B07000000000000000D1 /* AIBotMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIBotMessage.swift; sourceTree = "<group>"; };
@@ -1638,6 +1642,15 @@
 			path = PhysicalScheduleCell;
 			sourceTree = "<group>";
 		};
+		0F93A2AD304DAAB400765893 /* UserCell */ = {
+			isa = PBXGroup;
+			children = (
+				0F93A2AE304DAADB00765893 /* ZoomUserCell.swift */,
+				0F93A2AF304DAADB00765893 /* ZoomUserCell.xib */,
+			);
+			path = UserCell;
+			sourceTree = "<group>";
+		};
 		0FA1B07000000000000000A0 /* AIBot */ = {
 			isa = PBXGroup;
 			children = (
@@ -1701,6 +1714,7 @@
 		0FF381FA300F6DA60002BE49 /* ZoomCall */ = {
 			isa = PBXGroup;
 			children = (
+				0F93A2AD304DAAB400765893 /* UserCell */,
 				0F714325303DA38E006E4A87 /* UIToolkitVC.swift */,
 				0F714326303DA38E006E4A87 /* UIToolkitVC.xib */,
 			);
@@ -3276,6 +3290,7 @@
 				365CE9862860883B00794489 /* DcotorSlotsViewController.xib in Resources */,
 				5E67A34E260B77B80003B746 /* HelpTextViewController.xib in Resources */,
 				04C367FC26E38928007FB242 /* SickLeavePrintViewController.xib in Resources */,
+				0F93A2B0304DAADB00765893 /* ZoomUserCell.xib in Resources */,
 				5E470A442664F6F40002910B /* signUpErroePopUp.xib in Resources */,
 				A2C8508B28E04498006397A0 /* AmbulanceHistoryViewController.xib in Resources */,
 				5E3956B6265566DC00A9F6C2 /* cairo_regular.ttf in Resources */,
@@ -3597,6 +3612,7 @@
 				A2B10DB42BD197AA00A13820 /* GuideAndSupportViewController.swift in Sources */,
 				A2059CE629165F4300BCF021 /* ListPopupTableViewCell2.swift in Sources */,
 				04489BC226DCE6D90083040A /* DiagnosisViewController.swift in Sources */,
+				0F93A2B1304DAADB00765893 /* ZoomUserCell.swift in Sources */,
 				ADCA433D21DA64670099EF7A /* makeAppointment.swift in Sources */,
 				3695552D2863449500499C2D /* DoseReminderCalenderCollectionViewCell.swift in Sources */,
 				36CA7DBB279C3B190016389A /* CompleteLoginWithPasswordViewController.swift in Sources */,

@@ -12,7 +12,13 @@ import ZoomVideoSDK
 
 class UIToolkitVC: UIViewController {
     
+    @IBOutlet weak var clcUsers: UICollectionView!
+    @IBOutlet weak var btnMice: UIButton!
+    @IBOutlet weak var btnCamera: UIButton!
+    @IBOutlet weak var btnCameraMode: UIButton!
     @IBOutlet weak var pickerCamera: UIView!
+    @IBOutlet weak var pickerUsers: UIView!
+    
     var session:ZoomVideoSDKSession?
     var callModel = VoipCallModel()
     @Published var remoteUsers: [ZoomVideoSDKUser] = []
@@ -27,6 +33,7 @@ class UIToolkitVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpZoomMetting(callModel)
+        clcUsers.register("ZoomUserCell")
         // Do any additional setup after loading the view.
     }
     
@@ -72,7 +79,30 @@ class UIToolkitVC: UIViewController {
         }
     }
     
+    @IBAction func changeCamera(_ sender: Any) {
+        ZoomVideoSDK.shareInstance()?.getVideoHelper()?.switchCamera()
+    }
+    
+    @IBAction func cameraOnTap(_ sender: Any) {
+        toggleVideo()
+    }
 
+    @IBAction func miceOnTap(_ sender: Any) {
+        toggleAudio()
+    }
+}
+
+
+extension UIToolkitVC {
+   
+    @MainActor func updateLocalVideo() {
+        guard let myUserVideoCanvas = ZoomVideoSDK.shareInstance()?.getSession()?.getMySelf()?.getVideoCanvas(), let myVideoIsOn = myUserVideoCanvas.videoStatus()?.on else { return }
+        if myVideoIsOn {
+            myUserVideoCanvas.subscribe(with: pickerCamera, aspectMode: .panAndScan, andResolution: ._Auto)
+        } else {
+            myUserVideoCanvas.unSubscribe(with: pickerCamera)
+        }
+    }
 }
 
 extension UIToolkitVC: ZoomVideoSDKDelegate {
@@ -104,6 +134,12 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                     remoteUsers.append(user)
                 }
             }
+            self.updateLocalVideo()
+            clcUsers.isHidden = remoteUsers.isEmpty
+            DispatchQueue.main.async {
+                self.clcUsers.reloadData()
+            }
+          //  self.attachRemoteUserVideo(index: <#T##Int#>)
         }
     }
 
@@ -117,6 +153,11 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                     }
                 }
             }
+        }
+        self.updateLocalVideo()
+        clcUsers.isHidden = remoteUsers.isEmpty
+        DispatchQueue.main.async {
+            self.clcUsers.reloadData()
         }
     }
 
@@ -148,6 +189,7 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                     remoteUsers[remoteUserIndex] = user
                 }
             }
+            
         }
     }
 
@@ -169,13 +211,16 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                         let error = videoHelper.stopVideo()
                         print("Stop error: \(error.rawValue)")
                     }
+                    self.btnCamera.setImage(UIImage(named:"photo-camera-interface-symbol-for-button"), for: .normal)
                 }
             } else {
                 Task(priority: .background) {
                     await MainActor.run {
                         let error = videoHelper.startVideo()
                         print("Start error: \(error.rawValue)")
+                        
                     }
+                    self.btnCamera.setImage(UIImage(named: "icons8-no-camera-52"), for: .normal)
                 }
             }
         }
@@ -195,6 +240,7 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                     await MainActor.run {
                         audioHelper.startAudio()
                         audioOn = true
+                        self.btnMice.setImage(UIImage(named:"microphone-black-shape"), for: .normal)
                     }
                 }
             } else {
@@ -205,6 +251,7 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                             let error = audioHelper.unmuteAudio(myUser)
                             print("Unmute error: \(error.rawValue)")
                             audioOn = true
+                            self.btnMice.setImage(UIImage(named:"pmicrophone-black-shape"), for: .normal)
                         }
                     }
                 } else {
@@ -213,6 +260,7 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                             let error = audioHelper.muteAudio(myUser)
                             print("Mute error: \(error.rawValue)")
                             audioOn = false
+                            self.btnMice.setImage(UIImage(named: "mute-microphone"), for: .normal)
                         }
                     }
                 }
@@ -226,6 +274,36 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
     
      
 }
+
+extension UIToolkitVC:UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return remoteUsers.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ZoomUserCell", for: indexPath) as! ZoomUserCell
+        cell.drawCell(remoteUsers[indexPath.row])
+        cell.contentView.setPhysShadow()
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let screenSize = UIScreen.main.bounds
+            var screenWidth = screenSize.width
+            screenWidth = screenWidth - 30
+            let cellSize = screenWidth / 2
+            var size = CGSize.zero
+            size.width = cellSize
+            size.height =  120
+            return size
+    }
+}
+
 
 
 func isArabic() -> Bool {
