@@ -189,27 +189,23 @@ class MedicalRecordVC: BaseViewController
     }
     
     @objc func sessionEnded() {
-     //   var urlString = Constants.APIProvider.logout
-      //  let params = ["PATIENT_ID": Utilities.sharedInstance.getPatientId(),
-      //                "MOBILEAPP_KEY": UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""] as [String : Any]
-      //  urlString = urlString.replacingOccurrences(of: " ", with: "")
         let nc = NotificationCenter.default
-      //  WebserviceMananger.sharedInstance.makeCall(method: .post, url: urlString, parameters: params, vc: self) { (data, error) in
-        let token = UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""
-        let lang = UserDefaults.standard.object(forKey: "appLang") as? String ?? ""
+        let token = UserDefaults.standard.string(forKey: "pushToken") ?? ""
+        let lang = UserDefaults.standard.string(forKey: "appLang") ?? ""
+        let voipToken = UserDefaults.standard.string(forKey: "voipToken") ?? ""
+        
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
         Utilities.sharedInstance.setPatientId(patienId: "")
         currentPatientIDOrigni = ""
+        
         UserDefaults.standard.set(token, forKey: "pushToken")
         UserDefaults.standard.set(lang, forKey: "appLang")
+        UserDefaults.standard.set(voipToken, forKey: "voipToken")
+
         self.navigationController?.dismiss(animated: true)
         nc.removeObserver(self)
-
-      //  Utilities.showAlert(self, messageToDisplay: UserManager.isArabic ? "انتهت الجلسة" : "Session Ended")
-
-   //     }
     }
 
     @objc func openAIBot() {

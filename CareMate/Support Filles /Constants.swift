@@ -65,10 +65,15 @@ struct Constants {
 //        static var IMAGE_BASE = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi"   // live
 //        static var IMAGE_BASE2 = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApi" // live
         
-        static var APIBaseURL = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApitest/api/"    // test
-        static var IMAGE_BASE = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApitest"   // test
-        static var IMAGE_BASE2 = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApitest" // test
+//        static var APIBaseURL = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApitest/api/"    // test
+//        static var IMAGE_BASE = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApitest"   // test
+//        static var IMAGE_BASE2 = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApitest" // test
        
+        
+        static var APIBaseURL = "http://41.33.82.156:29804/MobileApi/api/"    // comp
+        static var IMAGE_BASE = "http://41.33.82.156:29804/MobileApi"   // comp
+        static var IMAGE_BASE2 = "http://41.33.82.156:29804/MobileApi" // comp
+        
         static var SIHORPriceCare = "Primecaresihtest"
         static var Register = APIBaseURL+"register"
         static var Login = APIBaseURL+"patient_login?"

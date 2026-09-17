@@ -44,6 +44,6 @@ extension Notification.Name {
     static var becomeActive: Self { .init("become.active")}
     static var inBackground: Self { .init("in.background")}
     static var startMeeting: Self { .init("start.meeting")}
-    static var enfMeeting: Self { .init("end.meeting")}
+    static var endMeeting: Self { .init("end.meeting")}
 
 }

@@ -6,6 +6,7 @@ import AVFoundation
 import PushKit
 import ZoomVideoSDK
 import MOLH
+import AVFoundation
 
 
 final class VoipManager: NSObject {
@@ -130,12 +131,20 @@ extension VoipManager: PKPushRegistryDelegate {
         let doctorName = MOLHLanguage.isArabic() ?  EMP_NAME_AR:EMP_NAME_EN
         let speciality = MOLHLanguage.isArabic() ?  SPECIALITY_NAME_AR:SPECIALITY_NAME_EN
         let status = UIApplication.shared.applicationState
-        if status == .inactive || status == .background {
+        if status == .inactive || status == .background  {
             let update = CXCallUpdate()
             update.remoteHandle = CXHandle(type: .generic, value: doctorName)
             update.localizedCallerName = speciality.isEmpty ? doctorName : "\(doctorName) - \(speciality)"
             update.hasVideo = true
+            update.supportsDTMF = true
+            update.supportsHolding = true
+            update.supportsGrouping = true
             provider?.reportNewIncomingCall(with: uuid, update: update) { _ in
+//                do {
+//                    try AVAudioSession.sharedInstance().setActive(true)
+//                } catch {
+//                    print("Failed to set audio session category: \(error.localizedDescription)")
+//                }
                 completion()
             }
         }else {
@@ -150,33 +159,60 @@ extension VoipManager: PKPushRegistryDelegate {
 // MARK: - CXProviderDelegate
 
 extension VoipManager: CXProviderDelegate {
-
+    
     func providerDidReset(_ provider: CXProvider) {
         currentCallUUID = nil
         currentCallData = [:]
     }
-
-    func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
-        Observer.fire(observer: .startMeeting, with: currentCallData)
-      //  MobileRTC.shared()
+    
+    //  func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
+    //        Observer.fire(observer: .startMeeting, with: currentCallData)
+    //      //  MobileRTC.shared()
+    //        action.fulfill()
+    //    }
+    func provider(
+        _ provider: CXProvider,
+        perform action: CXAnswerCallAction
+    ) {
+        Observer.fire(observer: .startMeeting, with: callModel)
         action.fulfill()
+
+//        let status = UIApplication.shared.applicationState
+//        if status == .inactive || status == .background {
+//            do {
+//                try AVAudioSession.sharedInstance().setActive(true)
+//            } catch {
+//                print("Failed to set audio session category: \(error.localizedDescription)")
+//                action.fail()
+//            }
+//        }
     }
 
     func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
 
-        Observer.fire(observer: .enfMeeting)
+        Observer.fire(observer: .endMeeting,with: self.callModel)
         currentCallUUID = nil
         action.fulfill()
     }
 
     func provider(_ provider: CXProvider, didActivate audioSession: AVAudioSession) {
-        
+//        if #available(iOS 26.0, *) {
+//            if audioSession.isOutputMuted {
+//                try? audioSession.setActive(true)
+//            }
+//        } else {
+//            // Fallback on earlier versions
+//            
+//        }
     }
-
+    
+    
     func endCurrentCall() {
         guard let uuid = currentCallUUID else { return }
         let action = CXEndCallAction(call: uuid)
-        callController.request(CXTransaction(action: action)) { _ in }
+        callController.request(CXTransaction(action: action)) { _ in
+            Observer.fire(observer: .startMeeting, with: self.callModel)
+        }
     }
     
  

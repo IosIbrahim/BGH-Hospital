@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,36 +18,54 @@
                 <rect key="frame" x="0.0" y="0.0" width="272" height="240"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Lb5-YO-wzB">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWq-Uz-Pjl">
                         <rect key="frame" x="5" y="5" width="262" height="230"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eSx-PD-5dz">
-                                <rect key="frame" x="0.0" y="0.0" width="262" height="204"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVa-Zp-GFj">
-                                <rect key="frame" x="0.0" y="212" width="262" height="18"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Lb5-YO-wzB">
+                                <rect key="frame" x="0.0" y="5" width="262" height="220"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eSx-PD-5dz">
+                                        <rect key="frame" x="0.0" y="0.0" width="262" height="68"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVa-Zp-GFj">
+                                        <rect key="frame" x="0.0" y="76" width="262" height="144"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                    </stackView>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Lb5-YO-wzB" firstAttribute="leading" secondItem="LWq-Uz-Pjl" secondAttribute="leading" id="4bZ-uk-kAB"/>
+                            <constraint firstAttribute="trailing" secondItem="Lb5-YO-wzB" secondAttribute="trailing" id="QVO-c7-0xA"/>
+                            <constraint firstItem="Lb5-YO-wzB" firstAttribute="top" secondItem="LWq-Uz-Pjl" secondAttribute="top" constant="5" id="nsw-9Y-Tzm"/>
+                            <constraint firstAttribute="bottom" secondItem="Lb5-YO-wzB" secondAttribute="bottom" constant="5" id="tBG-c9-2YF"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Lb5-YO-wzB" secondAttribute="trailing" constant="5" id="Nag-TO-0MS"/>
-                <constraint firstItem="Lb5-YO-wzB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="cqh-3h-afB"/>
-                <constraint firstAttribute="bottom" secondItem="Lb5-YO-wzB" secondAttribute="bottom" constant="5" id="hah-RG-vA5"/>
-                <constraint firstItem="Lb5-YO-wzB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="qAe-aY-QXv"/>
+                <constraint firstItem="LWq-Uz-Pjl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="6dr-zo-849"/>
+                <constraint firstAttribute="bottom" secondItem="LWq-Uz-Pjl" secondAttribute="bottom" constant="5" id="921-Zm-X02"/>
+                <constraint firstItem="LWq-Uz-Pjl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="AVf-nF-dzS"/>
+                <constraint firstAttribute="trailing" secondItem="LWq-Uz-Pjl" secondAttribute="trailing" constant="5" id="KnH-Do-haw"/>
             </constraints>
             <size key="customSize" width="272" height="240"/>
             <connections>
                 <outlet property="imgUser" destination="eSx-PD-5dz" id="95p-Zk-CQ2"/>
                 <outlet property="lblUser" destination="uVa-Zp-GFj" id="LAS-DB-3AW"/>
+                <outlet property="picker" destination="LWq-Uz-Pjl" id="4F0-md-5f6"/>
             </connections>
             <point key="canvasLocation" x="308.39694656488547" y="149.29577464788733"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

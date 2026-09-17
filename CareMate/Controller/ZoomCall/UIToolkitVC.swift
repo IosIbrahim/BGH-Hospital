@@ -12,6 +12,7 @@ import ZoomVideoSDK
 
 class UIToolkitVC: UIViewController {
     
+    @IBOutlet weak var pickerAction: UIView!
     @IBOutlet weak var clcUsers: UICollectionView!
     @IBOutlet weak var btnMice: UIButton!
     @IBOutlet weak var btnCamera: UIButton!
@@ -21,6 +22,8 @@ class UIToolkitVC: UIViewController {
     
     var session:ZoomVideoSDKSession?
     var callModel = VoipCallModel()
+    var observer: Observer? = .init()
+
     @Published var remoteUsers: [ZoomVideoSDKUser] = []
     @Published var shouldJoin = false
     @Published var joinSessionFailed: Bool = false
@@ -34,6 +37,9 @@ class UIToolkitVC: UIViewController {
         super.viewDidLoad()
         setUpZoomMetting(callModel)
         clcUsers.register("ZoomUserCell")
+        pickerAction.setPhysShadow()
+        pickerAction.layer.cornerRadius = 12
+        checkObserver()
         // Do any additional setup after loading the view.
     }
     
@@ -63,6 +69,7 @@ class UIToolkitVC: UIViewController {
         if let session = ZoomVideoSDK.shareInstance()?.joinSession(sessionContext) {
             self.session = session
             debugPrint("Session joined successfully.")
+            self.updateLocalVideo()
              //   startPreview()
         } else {
             debugPrint("joinSession: failed.")
@@ -78,6 +85,17 @@ class UIToolkitVC: UIViewController {
             present(alert, animated: true)
         }
     }
+    
+    func checkObserver() {
+        observer?.when(.endMeeting) { [weak self] notification in
+            guard let self = self else {  return }
+            let model = notification.object as? VoipCallModel ?? .init()
+            print(model)
+            self.session = nil
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+
     
     @IBAction func changeCamera(_ sender: Any) {
         ZoomVideoSDK.shareInstance()?.getVideoHelper()?.switchCamera()
@@ -134,7 +152,10 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                     remoteUsers.append(user)
                 }
             }
-            self.updateLocalVideo()
+         //   self.updateLocalVideo()
+            if self.remoteUsers.isEmpty {
+                self.remoteUsers.append(myself)
+            }
             clcUsers.isHidden = remoteUsers.isEmpty
             DispatchQueue.main.async {
                 self.clcUsers.reloadData()
@@ -154,7 +175,7 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                 }
             }
         }
-        self.updateLocalVideo()
+    //    self.updateLocalVideo()
         clcUsers.isHidden = remoteUsers.isEmpty
         DispatchQueue.main.async {
             self.clcUsers.reloadData()
@@ -299,7 +320,7 @@ extension UIToolkitVC:UICollectionViewDelegate,UICollectionViewDataSource,UIColl
             let cellSize = screenWidth / 2
             var size = CGSize.zero
             size.width = cellSize
-            size.height =  120
+            size.height =  150
             return size
     }
 }

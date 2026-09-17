@@ -171,11 +171,12 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
 //                  Utilities.showAlert(messageToDisplay: enter + txfPassword.placeholder!)
 //                  return
 //              }
-        let voip = UserDefaults.standard.object(forKey: "voipToken") as? String ?? ""
-        let tokeen = UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""
+        let voip = UserDefaults.standard.string(forKey: "voipToken") ?? ""
+        let tokeen = UserDefaults.standard.string(forKey: "pushToken")  ?? ""
         let pars = ["detect_text": medicalId,
                     "MOBILEAPP_TYPE":"2",
                     "detect_type":"2",
+                    "IOS_APNS_KEY":voip,
                     "MOBILEAPP_KEY":tokeen]
 
 //        urlString = Constants.APIProvider.Login+"detect_text=\(medicalId)&&MOBILEAPP_TYPE=2&MOBILEAPP_KEY=\(tokeen)&detect_type=2"
@@ -318,13 +319,16 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
               Utilities.showAlert(messageToDisplay: enter + txfPassword.placeholder!)
                     return
                 }
-          let tokeen = UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""
+        let tokeen = UserDefaults.standard.string(forKey: "pushToken") ?? ""
+        let voipToken = UserDefaults.standard.string(forKey: "voipToken") ?? ""
+
       //  let patientId = Utilities.sharedInstance.getPatientId()
         let patientId = medicalId
         var pars = ["detect_text": patientId,
                     "PASSWORD":password,
                     "MOBILEAPP_TYPE":"2",
                     "detect_type":"5",
+                    "IOS_APNS_KEY":voipToken,
                     "MOBILEAPP_KEY":tokeen]
        //   urlString = Constants.APIProvider.Login+"detect_text=\(patientId)&PASSWORD=\(password)&MOBILEAPP_TYPE=2&MOBILEAPP_KEY=\(tokeen)&detect_type=5"
         urlString = Constants.APIProvider.Login
@@ -336,6 +340,7 @@ class BHGLoginController: BaseViewController, clinicOrEmergency {
                         "PASSWORD":password,
                         "MOBILEAPP_TYPE":"2",
                         "detect_type":"5",
+                        "IOS_APNS_KEY":voipToken,
                         "MOBILEAPP_KEY":tokeen]
         }
         UserDefaults.standard.set(patientId, forKey: "patientId")

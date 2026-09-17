@@ -135,14 +135,14 @@ class SplashViewController: UIViewController{
                     let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0"
                     print("Server version: \(serverForceUpdateVersion)")
                     print("Current version: \(currentVersion)")
-                    if currentVersion.compare(serverForceUpdateVersion, options: .numeric) == .orderedAscending {
-                        self.navigationController?.pushViewController(ForceUpdateViewController(), animated: true)
-                        return
-                    }else {
+//                    if currentVersion.compare(serverForceUpdateVersion, options: .numeric) == .orderedAscending {
+//                        self.navigationController?.pushViewController(ForceUpdateViewController(), animated: true)
+//                        return
+//                    }else {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                             self.gotoScreen()
                         }
-                    }
+          //          }
                 }
                 
             }

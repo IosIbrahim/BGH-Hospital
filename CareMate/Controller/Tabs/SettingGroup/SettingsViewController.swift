@@ -84,8 +84,10 @@ class SettingsViewController: BaseViewController {
                 urlString = urlString.replacingOccurrences(of: " ", with: "")
                 WebserviceMananger.sharedInstance.makeCall(method: .post, url: urlString, parameters: params, vc: self) { (data, error) in
 //                    if error == nil {
-                    let token = UserDefaults.standard.object(forKey: "pushToken") as? String ?? ""
-                    let lang = UserDefaults.standard.object(forKey: "appLang") as? String ?? ""
+                    let token = UserDefaults.standard.string(forKey: "pushToken")  ?? ""
+                    let lang = UserDefaults.standard.string(forKey: "appLang") ?? ""
+                    let voipToken = UserDefaults.standard.string(forKey: "voipToken") ?? ""
+                    
                     let domain = Bundle.main.bundleIdentifier!
                     UserDefaults.standard.removePersistentDomain(forName: domain)
                     UserDefaults.standard.synchronize()
@@ -93,6 +95,8 @@ class SettingsViewController: BaseViewController {
                     currentPatientIDOrigni = ""
                     UserDefaults.standard.set(token, forKey: "pushToken")
                     UserDefaults.standard.set(lang, forKey: "appLang")
+                    UserDefaults.standard.set(voipToken, forKey: "voipToken")
+
                     self.navigationController?.dismiss(animated: true)
 
 //                    UserManager.language = lang
