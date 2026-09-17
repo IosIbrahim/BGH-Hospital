@@ -386,6 +386,11 @@ class MedicalRecordVC: BaseViewController
      //   self.dismiss(animated: true, completion: nil)
     }
 //
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presentPendingCallIfNeeded()
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         if isLoaded {
             getNotificationCount()

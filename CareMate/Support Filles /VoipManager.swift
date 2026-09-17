@@ -20,6 +20,7 @@ final class VoipManager: NSObject {
     private var currentCallUUID: UUID?
     private var currentCallData: [String: Any] = [:]
     private var callModel:VoipCallModel = .init()
+    private(set) var pendingCall: VoipCallModel?
     private var videoSession: ZoomVideoSDKSession?
     var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfa2V5IjoiNFdXYjFIQjMwQmk0bmhEYUpXdXpOWTNud3lpbHdBSW1oV2FkIiwidHBjIjoiY29uc3VsdC0xNDY5NTI2Iiwicm9sZV90eXBlIjowLCJ1c2VyX2lkZW50aXR5IjoicGF0aWVudC1LSEFCRUVSIiwidmVyc2lvbiI6MSwiaWF0IjoxNzg4MDkzMDgxLCJleHAiOjE3ODgwOTY2ODF9.iLyYOpIuIGhVN8mo372myFbCIr-0mX8VG3Ntn5YYeow"
     var sessionName = "consult-1469526"
@@ -130,29 +131,28 @@ extension VoipManager: PKPushRegistryDelegate {
         currentCallUUID = uuid
         let doctorName = MOLHLanguage.isArabic() ?  EMP_NAME_AR:EMP_NAME_EN
         let speciality = MOLHLanguage.isArabic() ?  SPECIALITY_NAME_AR:SPECIALITY_NAME_EN
-        let status = UIApplication.shared.applicationState
-        if status == .inactive || status == .background  {
-            let update = CXCallUpdate()
-            update.remoteHandle = CXHandle(type: .generic, value: doctorName)
-            update.localizedCallerName = speciality.isEmpty ? doctorName : "\(doctorName) - \(speciality)"
-            update.hasVideo = true
-            update.supportsDTMF = true
-            update.supportsHolding = true
-            update.supportsGrouping = true
-            provider?.reportNewIncomingCall(with: uuid, update: update) { _ in
-//                do {
-//                    try AVAudioSession.sharedInstance().setActive(true)
-//                } catch {
-//                    print("Failed to set audio session category: \(error.localizedDescription)")
-//                }
-                completion()
-            }
-        }else {
-            Observer.fire(observer: .startMeeting, with: callModel)
+        // iOS 13+ requires every VoIP push to be reported to CallKit, whatever the app state.
+        // Skipping it makes iOS kill the app and eventually stop delivering VoIP pushes
+        // when the app is closed.
+        let update = CXCallUpdate()
+        update.remoteHandle = CXHandle(type: .generic, value: doctorName)
+        update.localizedCallerName = speciality.isEmpty ? doctorName : "\(doctorName) - \(speciality)"
+        update.hasVideo = true
+        update.supportsDTMF = true
+        update.supportsHolding = true
+        update.supportsGrouping = true
+
+        guard let provider = provider else {
+            completion()
+            return
         }
-       
-        
-       
+        provider.reportNewIncomingCall(with: uuid, update: update) { [weak self] error in
+            if let error = error {
+                print("reportNewIncomingCall failed: \(error.localizedDescription)")
+                self?.currentCallUUID = nil
+            }
+            completion()
+        }
     }
 }
 
@@ -174,8 +174,11 @@ extension VoipManager: CXProviderDelegate {
         _ provider: CXProvider,
         perform action: CXAnswerCallAction
     ) {
-        Observer.fire(observer: .startMeeting, with: callModel)
+        // Keep the answered call until the UI can show it; after a cold launch
+        // nothing is observing .startMeeting yet.
+        pendingCall = callModel
         action.fulfill()
+        Observer.fire(observer: .startMeeting, with: callModel)
 
 //        let status = UIApplication.shared.applicationState
 //        if status == .inactive || status == .background {
@@ -192,6 +195,7 @@ extension VoipManager: CXProviderDelegate {
 
         Observer.fire(observer: .endMeeting,with: self.callModel)
         currentCallUUID = nil
+        pendingCall = nil
         action.fulfill()
     }
 
@@ -210,9 +214,14 @@ extension VoipManager: CXProviderDelegate {
     func endCurrentCall() {
         guard let uuid = currentCallUUID else { return }
         let action = CXEndCallAction(call: uuid)
-        callController.request(CXTransaction(action: action)) { _ in
-            Observer.fire(observer: .startMeeting, with: self.callModel)
-        }
+        // provider(_:perform: CXEndCallAction) fires .endMeeting.
+        callController.request(CXTransaction(action: action)) { _ in }
+    }
+
+    /// Returns the call answered from CallKit that hasn't been shown yet, and clears it.
+    func consumePendingCall() -> VoipCallModel? {
+        defer { pendingCall = nil }
+        return pendingCall
     }
     
  
