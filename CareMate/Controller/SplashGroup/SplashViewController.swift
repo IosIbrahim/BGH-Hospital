@@ -21,6 +21,7 @@ extension Array {
 }
 
 var rootNavigation = UINavigationController()
+var comesFromVoip = false
 
 class SplashViewController: UIViewController{
     private var isInit = false

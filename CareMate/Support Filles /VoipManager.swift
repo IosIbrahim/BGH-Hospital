@@ -139,12 +139,8 @@ extension VoipManager: PKPushRegistryDelegate {
             update.supportsDTMF = true
             update.supportsHolding = true
             update.supportsGrouping = true
+            comesFromVoip = true
             provider?.reportNewIncomingCall(with: uuid, update: update) { _ in
-//                do {
-//                    try AVAudioSession.sharedInstance().setActive(true)
-//                } catch {
-//                    print("Failed to set audio session category: \(error.localizedDescription)")
-//                }
                 completion()
             }
         }else {
@@ -165,28 +161,28 @@ extension VoipManager: CXProviderDelegate {
         currentCallData = [:]
     }
     
-    //  func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
-    //        Observer.fire(observer: .startMeeting, with: currentCallData)
-    //      //  MobileRTC.shared()
-    //        action.fulfill()
-    //    }
-    func provider(
-        _ provider: CXProvider,
-        perform action: CXAnswerCallAction
-    ) {
-        Observer.fire(observer: .startMeeting, with: callModel)
-        action.fulfill()
-
-//        let status = UIApplication.shared.applicationState
-//        if status == .inactive || status == .background {
-//            do {
-//                try AVAudioSession.sharedInstance().setActive(true)
-//            } catch {
-//                print("Failed to set audio session category: \(error.localizedDescription)")
-//                action.fail()
-//            }
-//        }
-    }
+      func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
+            Observer.fire(observer: .startMeeting, with: currentCallData)
+          //  MobileRTC.shared()
+            action.fulfill()
+        }
+//    func provider(
+//        _ provider: CXProvider,
+//        perform action: CXAnswerCallAction
+//    ) {
+//        Observer.fire(observer: .startMeeting, with: callModel)
+//        action.fulfill()
+//
+////        let status = UIApplication.shared.applicationState
+////        if status == .inactive || status == .background {
+////            do {
+////                try AVAudioSession.sharedInstance().setActive(true)
+////            } catch {
+////                print("Failed to set audio session category: \(error.localizedDescription)")
+////                action.fail()
+////            }
+////        }
+//    }
 
     func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
 
@@ -196,14 +192,19 @@ extension VoipManager: CXProviderDelegate {
     }
 
     func provider(_ provider: CXProvider, didActivate audioSession: AVAudioSession) {
-//        if #available(iOS 26.0, *) {
-//            if audioSession.isOutputMuted {
-//                try? audioSession.setActive(true)
-//            }
-//        } else {
-//            // Fallback on earlier versions
-//            
-//        }
+        if #available(iOS 26.0, *) {
+            if audioSession.isOutputMuted {
+                try? audioSession.setActive(true)
+            }
+        } else {
+            // Fallback on earlier versions
+            do {
+                try audioSession.setActive(true)
+            } catch {
+                print("Failed to set audio session category: \(error.localizedDescription)")
+            }
+            
+        }
     }
     
     
