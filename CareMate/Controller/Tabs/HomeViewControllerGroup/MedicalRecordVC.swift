@@ -75,7 +75,6 @@ class MedicalRecordVC: BaseViewController
     var isLoaded = true
     var branches = [Branch]()
     var selectedBranch: Branch?
-    var observer: Observer? = .init()
     override func viewDidLoad() {
         super.viewDidLoad()
         print("✅ Current lang:", MOLHLanguage.currentAppleLanguage())
@@ -168,7 +167,6 @@ class MedicalRecordVC: BaseViewController
 
         setupAIBotButton()
         showNotificationPopUp()
-        checkObserver()
     }
 
     /// Adds the AI bot entry point to the home header, just left of the notification bell.
@@ -386,11 +384,6 @@ class MedicalRecordVC: BaseViewController
      //   self.dismiss(animated: true, completion: nil)
     }
 //
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        presentPendingCallIfNeeded()
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         if isLoaded {
             getNotificationCount()

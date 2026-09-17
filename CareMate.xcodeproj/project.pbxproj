@@ -108,7 +108,6 @@
 		0F5BC6052CC69D3F0085BD7E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F5BC6042CC69D3F0085BD7E /* WebKit.framework */; };
 		0F6E2A052DAA6711001DAF40 /* InOutPopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6E2A032DAA6711001DAF40 /* InOutPopController.swift */; };
 		0F6E2A062DAA6711001DAF40 /* InOutPopController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F6E2A042DAA6711001DAF40 /* InOutPopController.xib */; };
-		0F714322303D9AD1006E4A87 /* MedicalRecordVCEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F714321303D9ACB006E4A87 /* MedicalRecordVCEX.swift */; };
 		0F714327303DA38E006E4A87 /* UIToolkitVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F714326303DA38E006E4A87 /* UIToolkitVC.xib */; };
 		0F714328303DA38E006E4A87 /* UIToolkitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F714325303DA38E006E4A87 /* UIToolkitVC.swift */; };
 		0F7DD7E92E8E8B2B00B5CE73 /* BHGLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F7DD7E82E8E8B2B00B5CE73 /* BHGLoginController.xib */; };
@@ -666,7 +665,6 @@
 		0F5BC6042CC69D3F0085BD7E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		0F6E2A032DAA6711001DAF40 /* InOutPopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InOutPopController.swift; sourceTree = "<group>"; };
 		0F6E2A042DAA6711001DAF40 /* InOutPopController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InOutPopController.xib; sourceTree = "<group>"; };
-		0F714321303D9ACB006E4A87 /* MedicalRecordVCEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalRecordVCEX.swift; sourceTree = "<group>"; };
 		0F714325303DA38E006E4A87 /* UIToolkitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIToolkitVC.swift; sourceTree = "<group>"; };
 		0F714326303DA38E006E4A87 /* UIToolkitVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UIToolkitVC.xib; sourceTree = "<group>"; };
 		0F7DD7E72E8E8B2B00B5CE73 /* BHGLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BHGLoginController.swift; sourceTree = "<group>"; };
@@ -2161,7 +2159,6 @@
 				A2C8508628E04437006397A0 /* Ambulance */,
 				A252ACC528D88376006613E3 /* Survey */,
 				ADCA435021DA9A3C0099EF7A /* MedicalRecordVC.swift */,
-				0F714321303D9ACB006E4A87 /* MedicalRecordVCEX.swift */,
 				365F3EEC28350CC1004280EC /* MedicalRecordVC.xib */,
 			);
 			path = HomeViewControllerGroup;
@@ -3851,7 +3848,6 @@
 				A2DC88A22918FA0800DE7393 /* JTSImageInfo.m in Sources */,
 				AD5438F321CFE1E500C7D500 /* DoctorProfileVC.swift in Sources */,
 				AD5438F021CFD56800C7D500 /* ESTabBarItemContainer.swift in Sources */,
-				0F714322303D9AD1006E4A87 /* MedicalRecordVCEX.swift in Sources */,
 				AD344CEE21DBAE7000FFB131 /* LabRadDTO.swift in Sources */,
 				ADCA435121DA9A3C0099EF7A /* MedicalRecordVC.swift in Sources */,
 				0FA1B07000000000000000C2 /* AIBotStrings.swift in Sources */,

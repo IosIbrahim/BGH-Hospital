@@ -24,6 +24,7 @@ var rootNavigation = UINavigationController()
 
 class SplashViewController: UIViewController{
     private var isInit = false
+    private var authenticateWhenActive = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,12 @@ class SplashViewController: UIViewController{
                 self.setNavigation(NotifcationsViewController())
 
             }
+        }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationDidBecomeActive, object: nil, queue: nil) { [weak self] _ in
+            guard let self = self, self.authenticateWhenActive else { return }
+            self.authenticateWhenActive = false
+            self.authenticateUser()
         }
         
         extraLongFactorials(n: 25)
@@ -180,6 +187,12 @@ class SplashViewController: UIViewController{
         var error: NSError?
         
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            // Face ID can't be shown while the app isn't active (e.g. launched in the background by a
+            // VoIP push); asking then fails and sends a logged-in patient to the login screen.
+            guard UIApplication.shared.applicationState == .active else {
+                authenticateWhenActive = true
+                return
+            }
             let reason = "We need to unlock your data."
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
                 DispatchQueue.main.async {

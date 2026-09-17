@@ -32,6 +32,7 @@ class UIToolkitVC: UIViewController {
     @Published var leftSession: Bool = false
     @Published var videoOn: Bool = false
     @Published var audioOn: Bool = false
+    private var didLeaveSession = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,14 @@ class UIToolkitVC: UIViewController {
         pickerAction.layer.cornerRadius = 12
         checkObserver()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        // Swiped away or closed because the call ended: leave Zoom, end the CallKit call and remove the window.
+        guard isBeingDismissed else { return }
+        leaveSession()
+        VoipManager.shared.callScreenDidClose(callModel)
     }
     
     func setUpZoomMetting(_ model:VoipCallModel)  {
@@ -63,8 +72,8 @@ class UIToolkitVC: UIViewController {
     
     func  assignTokenAndDetailForJoinSession (_ model:VoipCallModel) {
         let sessionContext = ZoomVideoSDKSessionContext()
-        sessionContext.token = VoipManager.shared.token
-        sessionContext.sessionName = VoipManager.shared.sessionName
+        sessionContext.token = model.sessionToken
+        sessionContext.sessionName = model.sessionName
         sessionContext.userName = isArabic() ? model.empNameAr:model.empNameEn
         if let session = ZoomVideoSDK.shareInstance()?.joinSession(sessionContext) {
             self.session = session
@@ -88,12 +97,20 @@ class UIToolkitVC: UIViewController {
     
     func checkObserver() {
         observer?.when(.endMeeting) { [weak self] notification in
-            guard let self = self else {  return }
-            let model = notification.object as? VoipCallModel ?? .init()
-            print(model)
-            self.session = nil
-            self.dismiss(animated: true, completion: nil)
+            // Only close for this call; declining another incoming call must not end this one.
+            guard let self = self,
+                  let endedCall = notification.object as? VoipCallModel,
+                  endedCall.callUUID == self.callModel.callUUID else { return }
+            self.closeCallScreen()
         }
+    }
+
+    private func closeCallScreen() {
+        guard presentingViewController != nil, !isBeingDismissed else { return }
+        // Leave now rather than after the dismiss animation, so a call answered meanwhile isn't affected.
+        leaveSession()
+        session = nil
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
 
     
@@ -216,6 +233,13 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
 
     func onSessionLeave() {
         leftSession = true
+        // A previous call's session can report leaving after this screen became the SDK delegate; ignore it.
+        guard inSession else { return }
+        inSession = false
+        // The session is over (e.g. the doctor ended it): close the screen, which also ends the CallKit call.
+        DispatchQueue.main.async {
+            self.closeCallScreen()
+        }
     }
 
     // Local user - toggle video on/off
@@ -290,7 +314,10 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
     }
 
     func leaveSession() {
-        ZoomVideoSDK.shareInstance()?.leaveSession(true)
+        guard !didLeaveSession else { return }
+        didLeaveSession = true
+        // false: leave without ending the session for the doctor.
+        ZoomVideoSDK.shareInstance()?.leaveSession(false)
     }
     
      

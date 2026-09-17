@@ -17,13 +17,13 @@ final class VoipManager: NSObject {
     private var provider: CXProvider?
     private let callController = CXCallController()
 
-    private var currentCallUUID: UUID?
-    private var currentCallData: [String: Any] = [:]
-    private var callModel:VoipCallModel = .init()
-    private(set) var pendingCall: VoipCallModel?
+    /// Calls reported to CallKit that haven't ended, keyed by CallKit UUID.
+    private var calls: [UUID: VoipCallModel] = [:]
+    /// Call screens, each in its own window above the app, keyed by call UUID.
+    private var callWindows: [UUID: UIWindow] = [:]
+    /// Answered call whose screen waits for CallKit to activate the audio session.
+    private var callAwaitingAudio: UUID?
     private var videoSession: ZoomVideoSDKSession?
-    var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfa2V5IjoiNFdXYjFIQjMwQmk0bmhEYUpXdXpOWTNud3lpbHdBSW1oV2FkIiwidHBjIjoiY29uc3VsdC0xNDY5NTI2Iiwicm9sZV90eXBlIjowLCJ1c2VyX2lkZW50aXR5IjoicGF0aWVudC1LSEFCRUVSIiwidmVyc2lvbiI6MSwiaWF0IjoxNzg4MDkzMDgxLCJleHAiOjE3ODgwOTY2ODF9.iLyYOpIuIGhVN8mo372myFbCIr-0mX8VG3Ntn5YYeow"
-    var sessionName = "consult-1469526"
     // MARK: - Setup
     func start() {
         setupCallKit()
@@ -74,82 +74,49 @@ extension VoipManager: PKPushRegistryDelegate {
                       completion: @escaping () -> Void) {
 
         let data = payload.dictionaryPayload
-        
-        let session_Name = data["ZOOM_SESSION_NAME"] as? String ?? ""
-        self.sessionName = session_Name
-        let sessionToken = data["ZOOM_SESSION_TOKEN"] as? String ?? ""
-        self.token = sessionToken
-        let EMP_NAME_EN = data["EMP_NAME_EN"] as? String ?? ""
-        let EMP_NAME_AR = data["EMP_NAME_AR"] as? String ?? ""
-        
-        let SERIAL = data["SERIAL"] as? String ?? ""
-        let HOSP_NAME_AR = data["HOSP_NAME_AR"] as? String ?? ""
-        let HOSP_NAME_EN = data["HOSP_NAME_EN"] as? String ?? ""
-        let SPECIALITY_NAME_AR = data["SPECIALITY_NAME_AR"] as? String ?? ""
-        let SPECIALITY_NAME_EN = data["SPECIALITY_NAME_EN"] as? String ?? ""
-        
-        let CLINIC_NAME_AR = data["CLINIC_NAME_AR"] as? String ?? ""
-        let CLINIC_NAME_EN = data["CLINIC_NAME_EN"] as? String ?? ""
-        let SERVICE_NAME_AR = data["SERVICE_NAME_AR"] as? String ?? ""
-        let SERVICE_NAME_EN = data["SERVICE_NAME_EN"] as? String ?? ""
-        let EXPECTEDDONEDATE = data["EXPECTEDDONEDATE"] as? String ?? ""
-        callModel.sessionName = sessionName
-        callModel.sessionToken = sessionToken
-        callModel.empNameAr = EMP_NAME_AR
-        callModel.empNameEn = EMP_NAME_EN
-        callModel.serial = SERIAL
-        
-        callModel.hospNameAr = HOSP_NAME_AR
-        callModel.hospNameEn = HOSP_NAME_EN
-        callModel.specialityNameAr = SPECIALITY_NAME_AR
-        callModel.specialityNameEn = SPECIALITY_NAME_EN
-        
-        callModel.clinicNameAr = CLINIC_NAME_AR
-        callModel.clinicNameEn = CLINIC_NAME_EN
-        callModel.serviceNameAr = SERVICE_NAME_AR
-        callModel.serviceNameEn = SERVICE_NAME_EN
-        
-        callModel.expectedDoneDate = EXPECTEDDONEDATE
-      
-        currentCallData = [
-            "sessionName": sessionName,
-            "sessionToken": sessionToken,
-            "EMP_NAME_EN": EMP_NAME_EN,
-            "EMP_NAME_AR": EMP_NAME_AR,
-            "SERIAL": SERIAL,
-            "HOSP_NAME_AR": HOSP_NAME_AR,
-            "HOSP_NAME_EN":HOSP_NAME_EN,
-            "SPECIALITY_NAME_AR":SPECIALITY_NAME_AR,
-            "SPECIALITY_NAME_EN":SPECIALITY_NAME_EN,
-            "CLINIC_NAME_AR":CLINIC_NAME_AR,
-            "CLINIC_NAME_EN":CLINIC_NAME_EN,
-            "SERVICE_NAME_AR":SERVICE_NAME_AR,
-            "SERVICE_NAME_EN":SERVICE_NAME_EN,
-            "EXPECTEDDONEDATE":EXPECTEDDONEDATE
-        ]
         let uuid = UUID()
-        currentCallUUID = uuid
-        let doctorName = MOLHLanguage.isArabic() ?  EMP_NAME_AR:EMP_NAME_EN
-        let speciality = MOLHLanguage.isArabic() ?  SPECIALITY_NAME_AR:SPECIALITY_NAME_EN
+
+        var call = VoipCallModel()
+        call.callUUID = uuid
+        call.sessionName = data["ZOOM_SESSION_NAME"] as? String ?? ""
+        call.sessionToken = data["ZOOM_SESSION_TOKEN"] as? String ?? ""
+        call.empNameEn = data["EMP_NAME_EN"] as? String ?? ""
+        call.empNameAr = data["EMP_NAME_AR"] as? String ?? ""
+        call.serial = data["SERIAL"] as? String ?? ""
+        call.hospNameAr = data["HOSP_NAME_AR"] as? String ?? ""
+        call.hospNameEn = data["HOSP_NAME_EN"] as? String ?? ""
+        call.specialityNameAr = data["SPECIALITY_NAME_AR"] as? String ?? ""
+        call.specialityNameEn = data["SPECIALITY_NAME_EN"] as? String ?? ""
+        call.clinicNameAr = data["CLINIC_NAME_AR"] as? String ?? ""
+        call.clinicNameEn = data["CLINIC_NAME_EN"] as? String ?? ""
+        call.serviceNameAr = data["SERVICE_NAME_AR"] as? String ?? ""
+        call.serviceNameEn = data["SERVICE_NAME_EN"] as? String ?? ""
+        call.expectedDoneDate = data["EXPECTEDDONEDATE"] as? String ?? ""
+
+        let update = CXCallUpdate()
+        update.remoteHandle = CXHandle(type: .generic, value: call.doctorName)
+        update.localizedCallerName = call.callerName
+        update.hasVideo = true
+        // The provider delegate doesn't handle DTMF, hold or group actions, so don't offer them.
+        update.supportsDTMF = false
+        update.supportsHolding = false
+        update.supportsGrouping = false
+
         // iOS 13+ requires every VoIP push to be reported to CallKit, whatever the app state.
         // Skipping it makes iOS kill the app and eventually stop delivering VoIP pushes
         // when the app is closed.
-        let update = CXCallUpdate()
-        update.remoteHandle = CXHandle(type: .generic, value: doctorName)
-        update.localizedCallerName = speciality.isEmpty ? doctorName : "\(doctorName) - \(speciality)"
-        update.hasVideo = true
-        update.supportsDTMF = true
-        update.supportsHolding = true
-        update.supportsGrouping = true
-
         guard let provider = provider else {
             completion()
             return
         }
-        provider.reportNewIncomingCall(with: uuid, update: update) { [weak self] error in
+        calls[uuid] = call
+        provider.reportNewIncomingCall(with: uuid, update: update) { error in
             if let error = error {
                 print("reportNewIncomingCall failed: \(error.localizedDescription)")
-                self?.currentCallUUID = nil
+                DispatchQueue.main.async {
+                    self.calls[uuid] = nil
+                    self.offerCallInApp(call, rejectedWith: error)
+                }
             }
             completion()
         }
@@ -159,72 +126,136 @@ extension VoipManager: PKPushRegistryDelegate {
 // MARK: - CXProviderDelegate
 
 extension VoipManager: CXProviderDelegate {
-    
-    func providerDidReset(_ provider: CXProvider) {
-        currentCallUUID = nil
-        currentCallData = [:]
-    }
-    
-    //  func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
-    //        Observer.fire(observer: .startMeeting, with: currentCallData)
-    //      //  MobileRTC.shared()
-    //        action.fulfill()
-    //    }
-    func provider(
-        _ provider: CXProvider,
-        perform action: CXAnswerCallAction
-    ) {
-        // Keep the answered call until the UI can show it; after a cold launch
-        // nothing is observing .startMeeting yet.
-        pendingCall = callModel
-        action.fulfill()
-        Observer.fire(observer: .startMeeting, with: callModel)
 
-//        let status = UIApplication.shared.applicationState
-//        if status == .inactive || status == .background {
-//            do {
-//                try AVAudioSession.sharedInstance().setActive(true)
-//            } catch {
-//                print("Failed to set audio session category: \(error.localizedDescription)")
-//                action.fail()
-//            }
-//        }
+    func providerDidReset(_ provider: CXProvider) {
+        // CallKit has ended every call; close their screens too.
+        let endedCalls = Array(calls.values)
+        calls.removeAll()
+        callAwaitingAudio = nil
+        endedCalls.forEach { Observer.fire(observer: .endMeeting, with: $0) }
+    }
+
+    func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
+        guard calls[action.callUUID] != nil else {
+            action.fail()
+            return
+        }
+        // Set up audio for a video call; CallKit activates the session once the answer is fulfilled.
+        do {
+            let session = AVAudioSession.sharedInstance()
+            try session.setCategory(AVAudioSessionCategoryPlayAndRecord,
+                                    with: [.defaultToSpeaker, .allowBluetooth])
+            try session.setMode(AVAudioSessionModeVideoChat)
+        } catch {
+            print("Failed to configure call audio session: \(error.localizedDescription)")
+        }
+
+        // Open the call screen, which starts Zoom, only after CallKit activates the audio session,
+        // so Zoom doesn't set up audio underneath CallKit. Fall back after 2 s if activation never comes.
+        let uuid = action.callUUID
+        callAwaitingAudio = uuid
+        action.fulfill()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.showCallScreenIfAwaitingAudio(uuid)
+        }
     }
 
     func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
-
-        Observer.fire(observer: .endMeeting,with: self.callModel)
-        currentCallUUID = nil
-        pendingCall = nil
+        let uuid = action.callUUID
+        if callAwaitingAudio == uuid {
+            callAwaitingAudio = nil
+        }
+        if let call = calls.removeValue(forKey: uuid) {
+            Observer.fire(observer: .endMeeting, with: call)
+        }
         action.fulfill()
     }
 
     func provider(_ provider: CXProvider, didActivate audioSession: AVAudioSession) {
-//        if #available(iOS 26.0, *) {
-//            if audioSession.isOutputMuted {
-//                try? audioSession.setActive(true)
-//            }
-//        } else {
-//            // Fallback on earlier versions
-//            
-//        }
+        if let uuid = callAwaitingAudio {
+            showCallScreenIfAwaitingAudio(uuid)
+        }
     }
-    
-    
-    func endCurrentCall() {
-        guard let uuid = currentCallUUID else { return }
-        let action = CXEndCallAction(call: uuid)
-        // provider(_:perform: CXEndCallAction) fires .endMeeting.
-        callController.request(CXTransaction(action: action)) { _ in }
+}
+
+// MARK: - Call screen
+
+extension VoipManager {
+
+    /// Called by the call screen when it closes: ends the CallKit call if it's still active
+    /// and removes the call's window.
+    func callScreenDidClose(_ call: VoipCallModel) {
+        guard let uuid = call.callUUID else { return }
+        if calls[uuid] != nil {
+            let action = CXEndCallAction(call: uuid)
+            callController.request(CXTransaction(action: action)) { error in
+                if let error = error {
+                    print("Failed to end call: \(error.localizedDescription)")
+                    DispatchQueue.main.async { self.calls[uuid] = nil }
+                }
+            }
+        }
+        hideCallWindow(for: uuid)
     }
 
-    /// Returns the call answered from CallKit that hasn't been shown yet, and clears it.
-    func consumePendingCall() -> VoipCallModel? {
-        defer { pendingCall = nil }
-        return pendingCall
+    private func showCallScreenIfAwaitingAudio(_ uuid: UUID) {
+        guard callAwaitingAudio == uuid, let call = calls[uuid] else { return }
+        callAwaitingAudio = nil
+        showCallScreen(for: call)
     }
-    
- 
+
+    private func showCallScreen(for call: VoipCallModel) {
+        let screen = UIToolkitVC()
+        screen.callModel = call
+        showInCallWindow(screen, for: call)
+    }
+
+    /// CallKit refused the call (e.g. Focus / Do Not Disturb). If the patient is using the app, ask
+    /// in-app instead of silently missing the doctor's call, but respect blocked callers.
+    private func offerCallInApp(_ call: VoipCallModel, rejectedWith error: Error) {
+        guard UIApplication.shared.applicationState == .active,
+              let uuid = call.callUUID else { return }
+        if let callError = error as? CXErrorCodeIncomingCallError, callError.code == .filteredByBlockList {
+            return
+        }
+        let arabic = MOLHLanguage.isArabic()
+        let alert = UIAlertController(title: call.callerName,
+                                      message: arabic ? "مكالمة فيديو واردة" : "Incoming video call",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: arabic ? "رفض" : "Decline", style: .cancel) { _ in
+            self.hideCallWindow(for: uuid)
+        })
+        alert.addAction(UIAlertAction(title: arabic ? "رد" : "Answer", style: .default) { _ in
+            self.hideCallWindow(for: uuid)
+            self.showCallScreen(for: call)
+        })
+        showInCallWindow(alert, for: call)
+    }
+
+    /// Shows `viewController` in its own window above the app, so the call appears whatever the app
+    /// is showing (splash, login or home), including right after a cold launch.
+    private func showInCallWindow(_ viewController: UIViewController, for call: VoipCallModel) {
+        guard let uuid = call.callUUID, callWindows[uuid] == nil else { return }
+        let root = UIViewController()
+        root.view.backgroundColor = .clear
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        // Above the app's own windows, e.g. HUDs and form sheet popups.
+        window.windowLevel = UIWindowLevelAlert
+        window.rootViewController = root
+        window.makeKeyAndVisible()
+        callWindows[uuid] = window
+        // Present on the next run loop, once the root view is in the window.
+        DispatchQueue.main.async {
+            root.present(viewController, animated: true, completion: nil)
+        }
+    }
+
+    private func hideCallWindow(for uuid: UUID) {
+        guard let window = callWindows.removeValue(forKey: uuid) else { return }
+        window.isHidden = true
+        let nextKeyWindow = callWindows.values.first ?? (UIApplication.shared.delegate as? AppDelegate)?.window
+        nextKeyWindow?.makeKey()
+    }
 }
 
 extension VoipManager: ZoomVideoSDKDelegate {
@@ -244,6 +275,7 @@ extension VoipManager: ZoomVideoSDKDelegate {
 }
 
 struct VoipCallModel:Codable {
+    var callUUID: UUID?
     var sessionName:String = ""
     var sessionToken:String = ""
     var empNameAr:String = ""
@@ -258,4 +290,16 @@ struct VoipCallModel:Codable {
     var serviceNameAr:String = ""
     var serviceNameEn:String = ""
     var expectedDoneDate:String = ""
+}
+
+extension VoipCallModel {
+    var doctorName: String {
+        return MOLHLanguage.isArabic() ? empNameAr : empNameEn
+    }
+
+    /// Doctor name with speciality, as shown on the incoming call.
+    var callerName: String {
+        let speciality = MOLHLanguage.isArabic() ? specialityNameAr : specialityNameEn
+        return speciality.isEmpty ? doctorName : "\(doctorName) - \(speciality)"
+    }
 }
