@@ -170,9 +170,9 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                 }
             }
          //   self.updateLocalVideo()
-            if self.remoteUsers.isEmpty {
+        //    if self.remoteUsers.isEmpty {
                 self.remoteUsers.append(myself)
-            }
+           // }
             clcUsers.isHidden = remoteUsers.isEmpty
             DispatchQueue.main.async {
                 self.clcUsers.reloadData()
@@ -296,7 +296,7 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                             let error = audioHelper.unmuteAudio(myUser)
                             print("Unmute error: \(error.rawValue)")
                             audioOn = true
-                            self.btnMice.setImage(UIImage(named:"pmicrophone-black-shape"), for: .normal)
+                            self.btnMice.setImage(UIImage(named:"microphone-black-shape"), for: .normal)
                         }
                     }
                 } else {
