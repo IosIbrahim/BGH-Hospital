@@ -63,6 +63,7 @@ class SignUpAsGuestVC: BaseViewController {
     var clinicName = ""
     var session:SessionRowModel?
 
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

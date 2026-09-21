@@ -167,8 +167,7 @@ struct Constants {
         static var MyAppointment = APIBaseURL+"getPatientOnlineAppointment?"
         static var doctorProfiledata = APIBaseURL+"PersonalController/loadEmplyeeBiography?"
         static var OutpatientControllersearchOpCallCenter = APIBaseURL+"OutpatientController/searchOpCallCenter?"
-
-  
+        static var checkOnlineCons = APIBaseURL + "check_pat_followup_video_call?"
         
         static var CrmControllerCOMPLAINTSSAVE = APIBaseURL+"CrmController/COMPLAINTSSAVE"
         static var update_patientprofile = APIBaseURL+"update_patientprofile"

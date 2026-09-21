@@ -41,6 +41,7 @@ class ReservationConfirmVC: BaseViewController {
     var comesFromDoctors:Bool = false
     var isPhysical:Bool = false
     var session:SessionRowModel?
+    var acceptOnline = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,7 +170,6 @@ class ReservationConfirmVC: BaseViewController {
                     "SERVICE_ID":serviceId
                     
         ] as [String : String]
-        print(pars)
         if isReschedule {
             pars.updateValue(reservationID, forKey: "SER")
         }
@@ -193,6 +193,11 @@ class ReservationConfirmVC: BaseViewController {
             ]
             
         }
+        if acceptOnline {
+            pars.updateValue("\(6)", forKey: "SOURCE_TYPE")
+        }
+        print(pars)
+
 //        let url = URL(string: urlString)
 //        let parseUrl = Constants.APIProvider.SubmitAppointment + Constants.getoAuthValue(url: url!, method: "POST",parameters: pars)
         WebserviceMananger.sharedInstance.makeCall(method: .post, url: urlString, parameters: pars, vc: self) { [weak self] (data, error) in

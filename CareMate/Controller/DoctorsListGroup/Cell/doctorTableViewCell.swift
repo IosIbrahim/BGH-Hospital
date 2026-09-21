@@ -10,6 +10,8 @@ import UIKit
 
 class doctorTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lblOnline: UILabel!
+    @IBOutlet weak var pickerOnline: UIView!
     @IBOutlet weak var nationalityLabel: UILabel!
     @IBOutlet weak var firstTime: UILabel!
 
@@ -37,8 +39,10 @@ class doctorTableViewCell: UITableViewCell {
         mainView.makeShadow(color: .black, alpha: 0.14, radius: 4)
 
         firstTime.text = UserManager.isArabic ? " اقرب موعد" :  "First Available Time"
+        lblOnline.text = "Accepts Online Consultations"
         if UserManager.isArabic {
             labelContacts.text = "اضغط لعرض ارقام التواصل مع العيادة"
+            lblOnline.text = "يقبل الاستشارة عن بعد"
         }
     }
     
@@ -50,10 +54,12 @@ class doctorTableViewCell: UITableViewCell {
 //                                                          doctor.FIRST_SLOT_TIME, formateString: "HH:mm a")
         firstAvaiableDayHourMin.text = doctor.FIRST_SLOT_TIME?.ConvertToDate.ToTimeOnly
 
-      self.nationalityLabel.text = UserManager.isArabic ? doctor.HREMPLOYEELANGUAGE_AR : doctor.HREMPLOYEELANGUAGE_EN
+      self.nationalityLabel.text = UserManager.isArabic ? doctor.nationalityAR : doctor.nationality
       self.doctorNameLabel.text = UserManager.isArabic ? doctor.englishNameAR : doctor.englishName
       self.clinicNameLanel.text = UserManager.isArabic ? doctor.clinicNameAR :doctor.clinicName
       self.specialityLabel.text = UserManager.isArabic ? doctor.doctorCategoryAR :doctor.doctorCategory
+      pickerOnline.isHidden = !doctor.acceptOnlineConsultation()
+        
   //    self.doctorQualificationLabel.text = UserManager.isArabic ? doctor.qualificationAR : doctor.qualification
   //    self.doctorImageView.image = doctor.gender == "M" ? #imageLiteral(resourceName: "doctor") : #imageLiteral(resourceName: "doctor_woman")
       

@@ -53,6 +53,7 @@ struct Doctor: Decodable {
     var CLINIC_LOCATION_EN: String?
     var branchAr:String?
     var branchEn:String?
+    var videoOnline:String?
     
     func getDocName()-> String? {
         UserManager.isArabic ? DOCCATNAME:DOCCATNAMEen
@@ -70,11 +71,15 @@ struct Doctor: Decodable {
         UserManager.isArabic ? clinicNameAR:clinicName
     }
     
+    func acceptOnlineConsultation() -> Bool {
+        videoOnline == "1"
+    }
     
     enum CodingKeys: String, CodingKey {
         case CLINIC_LOCATION_AR = "CLINIC_LOCATION_AR"
         case CLINIC_LOCATION_EN = "CLINIC_LOCATION_EN"
         case DOC_ID = "DOC_ID"
+        case videoOnline = "VIDEO_CALL_AVAILABILITY"
         case DOC_NAME_AR = "DOC_NAME_AR"
         case DOC_NAME_EN = "DOC_NAME_EN"
         case SPECIAL_SPEC_ID = "SPECIAL_SPEC_ID"
@@ -93,7 +98,7 @@ struct Doctor: Decodable {
         case clinicName = "PLACE_EN_NAME"
         case clinicNameAR = "PLACE_AR_NAME"
         case nationality = "NAT_NAME_EN"
-        case nationalityAR = "NAT_NAME_AR"
+        case nationalityAR = "NAT_NAME"
         case clinicId = "PLACE_ID1"
         case qualification = "EMP_QUALIFICATION_DESC_EN"
         case qualificationAR = "EMP_QUALIFICATION_DESC_AR"

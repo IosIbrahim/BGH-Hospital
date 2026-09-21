@@ -11,6 +11,11 @@ import MZFormSheetController
 
 class DcotorSlotsViewController: BaseViewController {
     
+    @IBOutlet weak var lblConditions: UILabel!
+    @IBOutlet weak var lblTerms: UILabel!
+    @IBOutlet weak var imgAccept: UIImageView!
+    @IBOutlet weak var pickerAccept: UIView!
+    @IBOutlet weak var pickerConditions: UIView!
     @IBOutlet weak var viewSpec: RoundUIView!
     @IBOutlet weak var constraintColleectionviewSlot: NSLayoutConstraint!
     @IBOutlet weak var mainView: UIView!
@@ -78,6 +83,7 @@ class DcotorSlotsViewController: BaseViewController {
     var comesFromDoctors = false
     var isPhysical:Bool = false
     var session:SessionRowModel?
+    var acceptOnline = false
     
     let monthsEn = ["January","February","March","April","May","June","July","August","September","October","November","December"]
   //  let monthsAr = ["يناير","فبراير","مارس","ابريل","مايو","يونيه","يوليو","اغسطس","سبتمبر","اكتوبر","نوفمبر","ديسمبر"]
@@ -179,14 +185,63 @@ class DcotorSlotsViewController: BaseViewController {
         viewInfo.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openInfo)))
         viewScedule.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openSchedule)))
         openSchedule()
+        lblTerms.text = "I would like to book this follow-up as a remote consultation; I agree to "
+       var terms =  "Terms & Conditions"
         if UserManager.isArabic {
             labelAboutDoctorTITLE.text = "عن الطبيب:"
             labelSecializedInTitle.text = "متخصص في:"
             chosseTimeText.text = "اختار الوقت"
             bookAppoiment.text = "احجز الآن"
             uilabelSpkenLanText.text = "اللغات:"
+            terms =  "الشروط والاحكام"
+            lblTerms.text = "ارغب في حجز هذه المتابعة كاستشارة عن بعد ،اوافق علي"
+            
+        }
+        
+        let attributedText = NSMutableAttributedString(string: terms)
+
+        // Find the range of the specific substring you want to underline
+        let rangeToUnderline = (terms as NSString).range(of: terms)
+
+        // Apply the underline attribute to that range only
+        attributedText.addAttribute(
+            .underlineStyle,
+            value: NSUnderlineStyle.styleThick.rawValue,
+            range: rangeToUnderline
+        )
+
+        lblConditions.attributedText = attributedText
+        
+        let gestureviewagreegation = UITapGestureRecognizer(target: self, action:  #selector(self.agreegationCliked))
+        lblConditions.addGestureRecognizer(gestureviewagreegation)
+        
+        let gestureRemberMe = UITapGestureRecognizer(target: self, action:  #selector(self.acceptTerms))
+        pickerAccept.addGestureRecognizer(gestureRemberMe)
+    }
+    
+    @objc func agreegationCliked(sender : UITapGestureRecognizer) {
+        let vc = termsAndConditionVC()
+        vc.typePrivacyPolicy = false
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func acceptTerms(sender : UITapGestureRecognizer) {
+        if acceptOnline == false {
+            acceptOnline =  true
+            imgAccept.image = UIImage(named: "dignosisSelected.png")
+        } else {
+            acceptOnline =  false
+            imgAccept.image = UIImage(named: "additinakDataDiagnosisSeleected.png")
         }
     }
+
+    func getAttributedString(string: String) -> AttributedString {
+            var attributedString = AttributedString(string)
+            attributedString.font = .body.bold()
+            attributedString.underlineStyle = .single
+            return attributedString
+    }
+
     
     @objc func openInfo() {
         viewInfo.setBorder(color: .blue, radius: 8, borderWidth: 1)
@@ -384,6 +439,7 @@ class DcotorSlotsViewController: BaseViewController {
         vc.specialityID = specialityID ?? ""
         vc.isPhysical = isPhysical
         vc.session = session
+        vc.acceptOnline = acceptOnline
         vc.url =    URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor?.DOCTOR_PIC ?? "")")
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -428,7 +484,7 @@ class DcotorSlotsViewController: BaseViewController {
     func loadSlots(){
         self.ReservArr.removeAll()
         TimeSlots.getSlotsTimes(branchID: branchID ?? "", clincID: clincID ?? "", docID: docID ?? "",date:selecteDate,isPhysical: isPhysical){ [self] slots,avDate, slotsTime in
-          
+            self.checkOnline()
             if selecteDate == slotsTime {
                 self.ReservArr = slots ?? []
                 for i in self.ReservArr
@@ -488,8 +544,32 @@ class DcotorSlotsViewController: BaseViewController {
              }
             
         }
-
+    
+    func checkOnline() {
+        let dateFormatterYYYMMDD = DateFormatter()
+        dateFormatterYYYMMDD.dateFormat = "dd/MM/yyyy"
+        dateFormatterYYYMMDD.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatterYYYMMDD.locale = .current
+        let dayInYYYMMDDDateInCell = dateFormatterYYYMMDD.string(from: Date())
+        let parseUrl = "\(Constants.APIProvider.checkOnlineCons)BRANCH_ID=\(branchID ?? "")&DOC_ID=\(doctor?.id ?? "")&CLINIC_ID=\(doctor?.clinicId  ?? "")&PATIENT_ID=\(Utilities.sharedInstance.getPatientId())&DATE_FROM_FORMATED=\(dayInYYYMMDDDateInCell)"
+        WebserviceMananger.sharedInstance.makeCall(method: .get, url: parseUrl, parameters: nil, vc: self) { (data, error) in
+            if error == nil {
+                if let model = ((data as? [String: AnyObject])?["Root"] as? [String:AnyObject])?["OUT_PARMS"] as? [String: AnyObject] {
+                    let inner = model["OUT_PARMS_ROW"] as? [String: AnyObject]
+                    let follow = inner?["PATIENT_HAS_FOLLOWUP"] as? String
+                    if follow == "1" {
+                        self.pickerConditions.isHidden = false
+                    }else {
+                        self.pickerConditions.isHidden = true
+                    }
+                }else {
+                    self.pickerConditions.isHidden = true
+                }
+            }
+        }
     }
+
+}
     
 
 
