@@ -149,6 +149,8 @@
 		0FC0005C300F957A004C3AD5 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC0005B300F957A004C3AD5 /* libz.1.2.5.tbd */; };
 		0FC0005E300F958E004C3AD5 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC0005D300F958E004C3AD5 /* VideoToolbox.framework */; };
 		0FC00060300F95A0004C3AD5 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC0005F300F95A0004C3AD5 /* ReplayKit.framework */; };
+		0FD8AAD630626EF400EF0B35 /* DoctorFilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD8AAD530626EF400EF0B35 /* DoctorFilterCell.xib */; };
+		0FD8AAD730626EF400EF0B35 /* DoctorFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD8AAD430626EF400EF0B35 /* DoctorFilterCell.swift */; };
 		0FD96BBA2EB226F700FE1402 /* BranchNCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD96BB82EB226F700FE1402 /* BranchNCell.swift */; };
 		0FD96BBB2EB226F700FE1402 /* BranchNCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD96BB92EB226F700FE1402 /* BranchNCell.xib */; };
 		0FEB5CE930162F2F005CC87E /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEB5CE830162F2F005CC87E /* Observer.swift */; };
@@ -706,6 +708,8 @@
 		0FC0005B300F957A004C3AD5 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libz.1.2.5.tbd; sourceTree = DEVELOPER_DIR; };
 		0FC0005D300F958E004C3AD5 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/VideoToolbox.framework; sourceTree = DEVELOPER_DIR; };
 		0FC0005F300F95A0004C3AD5 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/ReplayKit.framework; sourceTree = DEVELOPER_DIR; };
+		0FD8AAD430626EF400EF0B35 /* DoctorFilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorFilterCell.swift; sourceTree = "<group>"; };
+		0FD8AAD530626EF400EF0B35 /* DoctorFilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoctorFilterCell.xib; sourceTree = "<group>"; };
 		0FD96BB82EB226F700FE1402 /* BranchNCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchNCell.swift; sourceTree = "<group>"; };
 		0FD96BB92EB226F700FE1402 /* BranchNCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BranchNCell.xib; sourceTree = "<group>"; };
 		0FEB5CE830162F2F005CC87E /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
@@ -1691,6 +1695,15 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		0FD8AAD330626ED300EF0B35 /* FilterCell */ = {
+			isa = PBXGroup;
+			children = (
+				0FD8AAD430626EF400EF0B35 /* DoctorFilterCell.swift */,
+				0FD8AAD530626EF400EF0B35 /* DoctorFilterCell.xib */,
+			);
+			path = FilterCell;
+			sourceTree = "<group>";
+		};
 		0FD96BB22EB2222300FE1402 /* StaticBranches */ = {
 			isa = PBXGroup;
 			children = (
@@ -1798,6 +1811,7 @@
 		364C7B472839061700926BD5 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				0FD8AAD330626ED300EF0B35 /* FilterCell */,
 				A22B468E291D8AC600B8A5FC /* doctorTableViewCell.swift */,
 				A22B468F291D8AC600B8A5FC /* doctorTableViewCell.xib */,
 			);
@@ -3305,6 +3319,7 @@
 				A26162AA28BF62D20024CDBD /* HintPopupViewController.xib in Resources */,
 				04489BB126DCD6210083040A /* PatientHistoryViewController.xib in Resources */,
 				365CE98B2860A3DF00794489 /* daySlotCollectionViewCell.xib in Resources */,
+				0FD8AAD630626EF400EF0B35 /* DoctorFilterCell.xib in Resources */,
 				0F9069032FAA1D350021ED5B /* PhysicalController.xib in Resources */,
 				363AD619283CD72A008197E5 /* LabsTableViewCell.xib in Resources */,
 				04F5849D26CD25800027D098 /* PatientProfileViewController.xib in Resources */,
@@ -3877,6 +3892,7 @@
 				0F9069072FAA1E4C0021ED5B /* HeaderTabCell.swift in Sources */,
 				A2DC88A32918FA0800DE7393 /* UIApplication+JTSImageViewController.m in Sources */,
 				6602913D238E6FF900467786 /* MedicationOnPatientViewControoler.swift in Sources */,
+				0FD8AAD730626EF400EF0B35 /* DoctorFilterCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

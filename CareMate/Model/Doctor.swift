@@ -54,6 +54,9 @@ struct Doctor: Decodable {
     var branchAr:String?
     var branchEn:String?
     var videoOnline:String?
+    var specialAr:String?
+    var specialEn:String?
+    
     
     func getDocName()-> String? {
         UserManager.isArabic ? DOCCATNAME:DOCCATNAMEen
@@ -89,12 +92,14 @@ struct Doctor: Decodable {
         case RNUM = "RNUM"
         case DOCTOR_CLINICS = "DOCTOR_CLINICS"
         case id = "EMP_ID"
+        case specialEn = "SPECIALITY_NAME_EN"
+        case specialAr = "SPECIALITY_NAME_AR"
         case INFORMAT_ONLY = "MOBILEAPP_RESERV_INFORMAT_ONLY"
         case englishName = "EMP_NAME_EN"
         case englishNameAR = "EMP_NAME_AR"
         case gender = "EMP_GENDUR"
         case doctorCategory = "DOC_CATEGORY_EN"
-        case doctorCategoryAR = "DOC_CATEGORY_ARخ"
+        case doctorCategoryAR = "DOC_CATEGORY_AR"
         case clinicName = "PLACE_EN_NAME"
         case clinicNameAR = "PLACE_AR_NAME"
         case nationality = "NAT_NAME_EN"

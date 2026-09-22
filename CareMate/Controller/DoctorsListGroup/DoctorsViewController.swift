@@ -10,18 +10,20 @@ import UIKit
 import DZNEmptyDataSet
 class DoctorsViewController: BaseViewController ,UISearchBarDelegate{
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var clcFilter: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
 
-  var branchId: String?
+    var branchId: String?
     var branch: Branch?
-  var specialityId: String?
+    var specialityId: String?
     var SpecType = ""
     var doctors = [Doctor]()
     var fullDoctors = [Doctor]()
     var delegate :gotToDoctorProfileFromDermenology?
     var isPhysical:Bool = false
     var indexRowDermenology = 0
-    
+    var dataSource = [DoctorFilter]()
+    var filterIndex:Int = .zero
     var serviceOb:Service?
     
     var speciality = ""
@@ -52,14 +54,15 @@ class DoctorsViewController: BaseViewController ,UISearchBarDelegate{
       self.tableView.emptyDataSetSource = self
       self.tableView.emptyDataSetDelegate = self
       searchBar.delegate = self
-
+      clcFilter.register("DoctorFilterCell")
       tableView.keyboardDismissMode = .onDrag
  //     guard let specialityId = specialityId, let branchId = branchId else {return}
       Doctor.getDoctors(withSpecialityId: specialityId ?? "", andBranchId: branchId ?? "", type: branch?.BRANCH_TYPE ?? "1",isPhysical: isPhysical) { doctors in
         guard let doctors = doctors else {return}
           self.doctors = doctors
           self.fullDoctors = doctors
-        self.tableView.reloadData()
+          self.tableView.reloadData()
+          self.fillFilter()
       }
 
       self.title = UserManager.isArabic ? "الأطباء" : "Doctors"
@@ -68,14 +71,14 @@ class DoctorsViewController: BaseViewController ,UISearchBarDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        UIView.appearance().semanticContentAttribute = !UserManager.isArabic ? .forceLeftToRight : .forceRightToLeft
-        
-        
     }
    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.title = ""
     }
+    
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.trimmed == "" {
             self.doctors = self.fullDoctors
@@ -86,13 +89,14 @@ class DoctorsViewController: BaseViewController ,UISearchBarDelegate{
         }
         self.tableView.reloadData()
     }
+    
   @IBAction func backPressed(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
   }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "profile"
         {
-            
             if  SpecType == "4" {
                 let doctorProfileVC = segue.destination as! DoctorProfileVC
                 let doctor = sender as! Doctor
@@ -133,9 +137,9 @@ extension DoctorsViewController: UITableViewDataSource {
     return doctors.count
 
   }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 140
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 220
+    }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "doctorTableViewCell", for: indexPath) as! doctorTableViewCell
@@ -208,6 +212,84 @@ extension DoctorsViewController: UITableViewDelegate {
     }
   
 }
+
+extension DoctorsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func fillFilter() {
+        let all = DoctorFilter(id: 1, title: UserManager.isArabic ? "الكل":"All")
+        dataSource.append(all)
+        let online = DoctorFilter(id: 2, title: UserManager.isArabic ? "استشارة عن بعد":"Online Consultations")
+        dataSource.append(online)
+        for (i,doc) in doctors.enumerated() {
+            let nat = UserManager.isArabic ?  doc.nationalityAR : doc.nationality
+            var found = false
+            for itm in dataSource {
+                if itm.title == nat {
+                    found = true
+                    break
+                }
+            }
+            if !found {
+                let item  = DoctorFilter(id: i + 3, title: nat ?? "" )
+                dataSource.append(item)
+            }
+            
+        }
+        clcFilter.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var size = CGSize(width: collectionView.frame.width / 4, height: 50)
+        let model = dataSource[indexPath.row]
+        if model.id == 2 {
+             size = CGSize(width: collectionView.frame.width / 3, height: 50)
+        }
+        return size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dataSource.count
+
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "DoctorFilterCell", for: indexPath) as! DoctorFilterCell
+        cell.drawCell(dataSource[indexPath.row], isSelect: filterIndex == indexPath.row)
+        return cell
+    }
+    
+
+}
+
+extension DoctorsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        filterIndex = indexPath.row
+        let model = dataSource[indexPath.row]
+        clcFilter.reloadData()
+        var items = [Doctor]()
+        for doc in doctors {
+            if indexPath.row == .zero {
+                doctors = fullDoctors
+                break
+            }else if indexPath.row == 1 {
+                if doc.acceptOnlineConsultation() {
+                    items.append(doc)
+                }
+            }else {
+                let nat = UserManager.isArabic ?  doc.nationalityAR : doc.nationality
+                if nat == model.title {
+                    items.append(doc)
+                }
+            }
+        }
+        if items.isEmpty == false {
+            doctors = items
+        }
+        tableView.reloadData()
+    }
+ 
+}
+
 extension DoctorsViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     // ===============================================
     // ==== DZNEmptyDataSet Delegate & Datasource ====
