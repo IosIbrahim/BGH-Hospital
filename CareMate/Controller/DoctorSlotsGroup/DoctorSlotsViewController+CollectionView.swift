@@ -55,17 +55,21 @@ extension DcotorSlotsViewController:UICollectionViewDelegate,UICollectionViewDat
             
             
             if dayInYYYMMDDDateInCell == dayInYYYMMDDCuurentDate{
-                cell.mainView.backgroundColor = UIColor.fromHex(hex: "#003B71", alpha: 1.0)
+                cell.mainView.backgroundColor = UIColor.fromHex(hex: "#003B71", alpha: 0.5)
                 cell.labelDayText.textColor = .white
+                cell.labelDaynumber.textColor = .white
+
             }
             else{
                 if indexPath.row == selecteIndexPAth{
                     cell.mainView.backgroundColor = UIColor.fromHex(hex: "#003B71", alpha: 1.0)
                     cell.labelDayText.textColor = .white
+                    cell.labelDaynumber.textColor = .white
                 }
                 else{
                     cell.mainView.backgroundColor = .white
                     cell.labelDayText.textColor = UIColor.fromHex(hex: "#1B2A3A", alpha: 1.0)
+                    cell.labelDaynumber.textColor = UIColor.fromHex(hex: "#1B2A3A", alpha: 1.0)
                 }
             }
             cell.labelDaynumber.textAlignment = .center
