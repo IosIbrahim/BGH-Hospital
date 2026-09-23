@@ -14,8 +14,8 @@ class SlotTimeSlotCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        mainView.makeShadow(color: .black, alpha: 0.14, radius: 4)
-
+     //   mainView.makeShadow(color: UIColor.fromHex(hex: "#DDE4EC", alpha: 1.0), alpha: 0.2, radius: 8)
+        mainView.setBorder(color: UIColor.fromHex(hex: "#DDE4EC", alpha: 1.0), radius: 12, borderWidth: 1)
     }
     
     func configCell(slot: Slot)
@@ -32,6 +32,7 @@ class SlotTimeSlotCollectionViewCell: UICollectionViewCell {
         }else {
             self.labelDayText.text = dateCom.last?.convertArabicNumbers()
         }
+        labelDayText.textColor = UIColor.fromHex(hex: "#1B2A3A", alpha: 1.0)
        //   self.labelDayText.text = slot.id.ConvertToDate.ToTimeOnlyEn
     }
 

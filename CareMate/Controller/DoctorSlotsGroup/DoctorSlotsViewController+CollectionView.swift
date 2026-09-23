@@ -55,19 +55,20 @@ extension DcotorSlotsViewController:UICollectionViewDelegate,UICollectionViewDat
             
             
             if dayInYYYMMDDDateInCell == dayInYYYMMDDCuurentDate{
-                    cell.mainView.backgroundColor = #colorLiteral(red: 0, green: 0.231372549, blue: 0.4431372549, alpha: 1)
-                    cell.labelDayText.textColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+                cell.mainView.backgroundColor = UIColor.fromHex(hex: "#003B71", alpha: 1.0)
+                cell.labelDayText.textColor = .white
             }
             else{
                 if indexPath.row == selecteIndexPAth{
-                    cell.mainView.backgroundColor = #colorLiteral(red: 0, green: 0.7239288688, blue: 0.8250393271, alpha: 1)
-                    cell.labelDayText.textColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+                    cell.mainView.backgroundColor = UIColor.fromHex(hex: "#003B71", alpha: 1.0)
+                    cell.labelDayText.textColor = .white
                 }
                 else{
-                    cell.mainView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                    cell.labelDayText.textColor = #colorLiteral(red: 0.4872305393, green: 0.4918760657, blue: 0.5142763853, alpha: 1)
+                    cell.mainView.backgroundColor = .white
+                    cell.labelDayText.textColor = UIColor.fromHex(hex: "#1B2A3A", alpha: 1.0)
                 }
             }
+            cell.labelDaynumber.textAlignment = .center
         
             return cell
         }
@@ -75,13 +76,13 @@ extension DcotorSlotsViewController:UICollectionViewDelegate,UICollectionViewDat
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SlotTimeSlotCollectionViewCell", for: indexPath) as! SlotTimeSlotCollectionViewCell
             cell.configCell(slot: SlotArr[indexPath.row])
             if indexPath.row == selectedIndexSlot{
-                cell.mainView.backgroundColor = #colorLiteral(red: 0, green: 0.7239288688, blue: 0.8250393271, alpha: 1)
-                cell.labelDayText.textColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
+                cell.mainView.backgroundColor = UIColor.fromHex(hex: "#00ABC8", alpha: 1.0)
+                cell.labelDayText.textColor = .white
 
             }
             else{
-                cell.mainView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                cell.labelDayText.textColor = #colorLiteral(red: 0.4872305393, green: 0.4918760657, blue: 0.5142763853, alpha: 1)
+                cell.mainView.backgroundColor = .white
+                cell.labelDayText.textColor = UIColor.fromHex(hex: "#1B2A3A", alpha: 1.0)
             }
             return cell
 
@@ -110,20 +111,18 @@ extension DcotorSlotsViewController:UICollectionViewDelegate,UICollectionViewDat
             var size = CGSize.zero
             let screenSize = UIScreen.main.bounds
             var screenWidth = screenSize.width
-            screenWidth = screenWidth - 50
-            let cellSize = screenWidth / 6
+            let cellSize = screenWidth * 0.20
             size.width = cellSize
-            size.height =  65
+            size.height =  90
             return size
         }
         else{
             let screenSize = UIScreen.main.bounds
             var screenWidth = screenSize.width
-            screenWidth = screenWidth - 100
-            let cellSize = screenWidth / 4
+            let cellSize = screenWidth * 0.21
             var size = CGSize.zero
             size.width = cellSize
-            size.height =  46
+            size.height =  65
             return size
         }
       

@@ -11,7 +11,15 @@ import MZFormSheetController
 
 class DcotorSlotsViewController: BaseViewController {
     
-    @IBOutlet weak var lblConditions: UILabel!
+    @IBOutlet weak var lblAppointment: UILabel!
+    @IBOutlet weak var lblNat: UILabel!
+    @IBOutlet weak var lblOnline: UILabel!
+    @IBOutlet weak var pickerOnline: UIView!
+    @IBOutlet weak var lblHospital: UILabel!
+    @IBOutlet weak var pickerHospital: UIView!
+    @IBOutlet weak var lblVisitType: UILabel!
+    @IBOutlet weak var pickerAction: UIView!
+    @IBOutlet weak var pickerVisitType: UIView!
     @IBOutlet weak var lblTerms: UILabel!
     @IBOutlet weak var imgAccept: UIImageView!
     @IBOutlet weak var pickerAccept: UIView!
@@ -129,8 +137,16 @@ class DcotorSlotsViewController: BaseViewController {
     
     func setupView(){
         initHeader(isNotifcation: true, isLanguage: true, title: UserManager.isArabic ? "تأكيد الحجز" : "Book Appointment", hideBack: false)
-        mainView.makeShadow(color: .black, alpha: 0.14, radius: 4)
-        viewSpec.makeShadow(color: .black, alpha: 0.14, radius: 4)
+        let color = UIColor.fromHex(hex: "#003B701A", alpha: 1.0)
+        mainView.makeShadow(color:color , alpha: 0.14, radius: 12)
+        viewSpec.makeShadow(color: color, alpha: 0.14, radius: 12)
+        pickerAction.makeShadow(color: color, alpha: 0.14, radius: 12)
+        pickerVisitType.makeShadow(color: color, alpha: 0.14, radius: 12)
+        mainView.Rounded(corner: 12)
+        viewSpec.Rounded(corner: 12)
+        pickerAction.Rounded(corner: 12)
+        pickerVisitType.Rounded(corner: 12)
+
         setMonth(value: valueMonth)
         plusBtn.setTitle("", for: .normal)
         imageViweNext.image = UIImage.init(named: "IconRightDate")!.imageFlippedForRightToLeftLayoutDirection()
@@ -139,14 +155,6 @@ class DcotorSlotsViewController: BaseViewController {
         setupcollectionView()
         doctorName.text = UserManager.isArabic ? doctor?.englishNameAR :doctor?.englishName
         doctorName.textAlignment = .center
-//        if doctor?.qualificationAR == nil {
-//            self.doctorSpeciality.text = UserManager.isArabic ? "\(doctor?.clinicNameAR ?? "") - \(doctor?.DOCCATNAME ?? "")" : "\(doctor?.clinicName ?? "") - \(doctor?.doctorCategory ?? "")"
-//        } else {
-//            self.doctorSpeciality.text = UserManager.isArabic ? doctor?.qualificationAR ?? "" : doctor?.qualification ?? ""
-//        }
-//        if let cat = doctor?.doctorCategory {
-//            self.doctorSpeciality.text = UserManager.isArabic ? "\(doctor?.clinicNameAR ?? "") - \(doctor?.DOCCATNAME ?? "")" : "\(doctor?.clinicName ?? "") - \(cat)"
-//        }else {
         if comesFromDoctors {
             doctorSpeciality.text = "\(doctor?.getDocName() ?? "") - \(doctor?.getClinic() ?? "")"
         }else if doctor?.DOCTOR_CLINICS?.DOCTOR_CLINICS_ROW?.count ?? .zero > 1 {
@@ -182,11 +190,23 @@ class DcotorSlotsViewController: BaseViewController {
         viewInfo.makeShadow(color: .black, alpha: 0.14, radius: 4)
         viewScedule.makeShadow(color: .black, alpha: 0.14, radius: 4)
         viewAbout.makeShadow(color: .black, alpha: 0.14, radius: 4)
+        
         viewInfo.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openInfo)))
         viewScedule.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openSchedule)))
         openSchedule()
-        lblTerms.text = "I would like to book this follow-up as a remote consultation; I agree to "
+        var condition = "I would like to book this follow-up as a remote consultation; I agree to Terms & Conditions"
        var terms =  "Terms & Conditions"
+        lblVisitType.text = "Visit Type"
+        lblHospital.text = "In Hospital"
+        lblOnline.text = "Online Consultation"
+        lblAppointment.text = "Follow-up appointment"
+        lblNat.text = doctor?.nationality
+        lblVisitType.textAlignment = .left
+        lblTerms.textAlignment = .left
+        lblNat.textAlignment = .left
+        lblAppointment.textAlignment = .left
+        lblHospital.textAlignment = .left
+        lblOnline.textAlignment = .left
         if UserManager.isArabic {
             labelAboutDoctorTITLE.text = "عن الطبيب:"
             labelSecializedInTitle.text = "متخصص في:"
@@ -194,26 +214,31 @@ class DcotorSlotsViewController: BaseViewController {
             bookAppoiment.text = "احجز الآن"
             uilabelSpkenLanText.text = "اللغات:"
             terms =  "الشروط والاحكام"
-            lblTerms.text = "ارغب في حجز هذه المتابعة كاستشارة عن بعد ،اوافق علي"
-            
+            condition =  "ارغب في حجز هذه المتابعة كاستشارة عن بعد ،اوافق علي الشروط والاحكام"
+            lblVisitType.text = "نوع الزيارة"
+            lblHospital.text = "الحضور في المستشفي"
+            lblOnline.text = "استشارة عن بعد"
+            lblAppointment.text = "موعد متابعة"
+            lblNat.text = doctor?.nationalityAR
+            lblVisitType.textAlignment = .right
+            lblTerms.textAlignment = .right
+            lblNat.textAlignment = .right
+            lblAppointment.textAlignment = .right
+            lblHospital.textAlignment = .right
+            lblOnline.textAlignment = .right
         }
-        
-        let attributedText = NSMutableAttributedString(string: terms)
-
-        // Find the range of the specific substring you want to underline
-        let rangeToUnderline = (terms as NSString).range(of: terms)
-
-        // Apply the underline attribute to that range only
-        attributedText.addAttribute(
-            .underlineStyle,
-            value: NSUnderlineStyle.styleThick.rawValue,
-            range: rangeToUnderline
-        )
-
-        lblConditions.attributedText = attributedText
-        
+        lblAppointment.adjustsFontSizeToFitWidth = true
+        lblHospital.adjustsFontSizeToFitWidth = true
+        lblOnline.adjustsFontSizeToFitWidth = true
+        let mainString = condition
+        let attributedString = NSMutableAttributedString(string: mainString)
+           
+           // Apply different colors to specific substrings
+        attributedString.setColor(forText: terms, withColor: UIColor.fromHex(hex: "#00ABC8", alpha: 1.0))
+           
+        lblTerms.attributedText = attributedString
         let gestureviewagreegation = UITapGestureRecognizer(target: self, action:  #selector(self.agreegationCliked))
-        lblConditions.addGestureRecognizer(gestureviewagreegation)
+        lblTerms.addGestureRecognizer(gestureviewagreegation)
         
         let gestureRemberMe = UITapGestureRecognizer(target: self, action:  #selector(self.acceptTerms))
         pickerAccept.addGestureRecognizer(gestureRemberMe)
@@ -244,19 +269,30 @@ class DcotorSlotsViewController: BaseViewController {
 
     
     @objc func openInfo() {
-        viewInfo.setBorder(color: .blue, radius: 8, borderWidth: 1)
-        viewScedule.setBorder(color: .clear, radius: 8, borderWidth: 0)
+        viewInfo.setBorder(color: UIColor.fromHex(hex: "#DDE4EC", alpha: 1.0), radius: 12, borderWidth: 1)
+   //     viewScedule.setBorder(color: .clear, radius: 8, borderWidth: 0)
         viewSceduleDetails.isHidden = true
-        viewInfoDetails.isHidden = false
-        viewBook.isHidden = true
+        pickerVisitType.isHidden = true
+        pickerAction.isHidden = true
+        UIView.transition(with: viewInfoDetails, duration: 0.4,
+                          options: .transitionCrossDissolve,
+                          animations: {
+                         self.viewInfoDetails.isHidden = false
+                      })
     }
     
     @objc func openSchedule() {
-        viewInfo.setBorder(color: .clear, radius: 8, borderWidth: 0)
-        viewScedule.setBorder(color: .blue, radius: 8, borderWidth: 1)
-        viewSceduleDetails.isHidden = false
+        viewInfo.setBorder(color: UIColor.fromHex(hex: "#DDE4EC", alpha: 1.0), radius: 12, borderWidth: 1)
+    //    viewScedule.setBorder(color: .blue, radius: 8, borderWidth: 1)
         viewInfoDetails.isHidden = true
-        viewBook.isHidden = false
+        pickerAction.isHidden = false
+        pickerVisitType.isHidden = false
+        
+        UIView.transition(with: viewSceduleDetails, duration: 0.4,
+                          options: .transitionCrossDissolve,
+                          animations: {
+                         self.viewSceduleDetails.isHidden = false
+                      })
     }
     
     func setMonth(value:Int){
@@ -596,4 +632,14 @@ extension Date {
    var dayBefore: Date {
       return Calendar.current.date(byAdding: .day, value: -1, to: Date())!
    }
+}
+
+
+extension NSMutableAttributedString {
+    func setColor(forText stringToFind: String, withColor color: UIColor) {
+        let range = self.mutableString.range(of: stringToFind, options: .caseInsensitive)
+        if range.location != NSNotFound {
+            self.addAttribute(.foregroundColor, value: color, range: range)
+        }
+    }
 }
