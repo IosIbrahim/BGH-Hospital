@@ -11,6 +11,7 @@ import MZFormSheetController
 
 class DcotorSlotsViewController: BaseViewController {
     
+    @IBOutlet weak var lblVisitHint: UILabel!
     @IBOutlet weak var lblAppointment: UILabel!
     @IBOutlet weak var lblNat: UILabel!
     @IBOutlet weak var lblOnline: UILabel!
@@ -200,6 +201,8 @@ class DcotorSlotsViewController: BaseViewController {
         lblHospital.text = "In Hospital"
         lblOnline.text = "Online Consultation"
         lblAppointment.text = "Follow-up appointment"
+        lblVisitHint.text = "This is a follow-up appointment and can be conducted remotely.\nPlease agree to the terms and conditions below to book your consultation."
+        lblVisitHint.textAlignment = .left
         lblNat.text = doctor?.nationality
         lblVisitType.textAlignment = .left
         lblTerms.textAlignment = .left
@@ -219,6 +222,7 @@ class DcotorSlotsViewController: BaseViewController {
             lblHospital.text = "الحضور في المستشفي"
             lblOnline.text = "استشارة عن بعد"
             lblAppointment.text = "موعد متابعة"
+            lblVisitHint.text = "هذا الموعد متابعة لزيارتك السابقة ويمكن إجراؤه عن بُعد.\nيرجى الموافقة على الشروط والأحكام أدناه لحجز الاستشارة عن بُعد."
             lblNat.text = doctor?.nationalityAR
             lblVisitType.textAlignment = .right
             lblTerms.textAlignment = .right
@@ -226,6 +230,7 @@ class DcotorSlotsViewController: BaseViewController {
             lblAppointment.textAlignment = .right
             lblHospital.textAlignment = .right
             lblOnline.textAlignment = .right
+            lblVisitHint.textAlignment = .right
         }
         lblAppointment.adjustsFontSizeToFitWidth = true
         lblHospital.adjustsFontSizeToFitWidth = true
@@ -531,12 +536,12 @@ class DcotorSlotsViewController: BaseViewController {
                 self.collectioViewSlotTimes.delegate = self
                 self.collectioViewSlotTimes.dataSource = self
                 self.collectioViewSlotTimes.reloadData()
-                let numbersOfRows =  Double(SlotArr.count) / 5.0
+                let numbersOfRows =  Double(SlotArr.count) / 4.0
                 print( numbersOfRows)
                 print( numbersOfRows.rounded())
                 
                 
-                var slotheight = ceil(numbersOfRows) * 51
+                var slotheight = ceil(numbersOfRows) * 65
                 if numbersOfRows == 1{
                     
                     slotheight = 150
@@ -547,7 +552,7 @@ class DcotorSlotsViewController: BaseViewController {
                 }
                 
                 
-                constraintColleectionviewSlot.constant = CGFloat(slotheight)
+                constraintColleectionviewSlot.constant = CGFloat(slotheight + 30)
                 let messageAr = "الدكتور الذي تم اختياره ليس له جدول مواعيد في هذا اليوم اذا كنت ترغب في حجز موعد في الاوقات الغير متاحة على التطبيق يرجى التواصل معنا عبر "
                 let messageEN = "The selected doctor does not have a schedule on the selected date.In case you which to take an appointment for unavailable dates please call"
                 print(messageAr,messageEN)

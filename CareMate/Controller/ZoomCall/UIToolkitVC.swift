@@ -12,6 +12,11 @@ import ZoomVideoSDK
 
 class UIToolkitVC: UIViewController {
     
+    @IBOutlet weak var btnSpeakers: UIButton!
+    @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var imgMe: UIImageView!
+    @IBOutlet weak var lblDoc: UILabel!
+    @IBOutlet weak var imgDoctor: UIImageView!
     @IBOutlet weak var pickerAction: UIView!
     @IBOutlet weak var clcUsers: UICollectionView!
     @IBOutlet weak var btnMice: UIButton!
@@ -33,6 +38,7 @@ class UIToolkitVC: UIViewController {
     @Published var videoOn: Bool = false
     @Published var audioOn: Bool = false
     private var didLeaveSession = false
+    private var isSpeaker:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +47,8 @@ class UIToolkitVC: UIViewController {
         pickerAction.setPhysShadow()
         pickerAction.layer.cornerRadius = 12
         checkObserver()
+        lblDoc.text = callModel.doctorName
+        lblDoc.textAlignment = UserManager.isArabic ? .right:.left
         // Do any additional setup after loading the view.
     }
     
@@ -125,6 +133,44 @@ class UIToolkitVC: UIViewController {
     @IBAction func miceOnTap(_ sender: Any) {
         toggleAudio()
     }
+    
+    @IBAction func cancelOnTap(_ sender: Any) {
+        session = nil
+        dismiss(animated: true)
+    }
+    
+    
+    @IBAction func speakerOnTap(_ sender: Any) {
+        setSessionPlayAndRecord()
+    }
+
+    func setSessionPlayAndRecord() {
+        if isSpeaker {
+            do {
+                let session = AVAudioSession.sharedInstance()
+                try session.setActive(true)
+                try session.overrideOutputAudioPort(.none)
+                btnSpeakers.setImage(UIImage(named: "btn-speaker-off"), for: .normal)
+                isSpeaker = false
+            } catch {
+                print("Failed to force speaker output: \(error)")
+            }
+
+        }else {
+            do {
+                let session = AVAudioSession.sharedInstance()
+                try session.setActive(true)
+                try session.overrideOutputAudioPort(.speaker)
+                btnSpeakers.setImage(UIImage(named: "btn-speaker"), for: .normal)
+                isSpeaker = true
+            } catch {
+                print("Failed to force speaker output: \(error)")
+            }
+
+        }
+    }
+
+    
 }
 
 
@@ -169,11 +215,34 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                     remoteUsers.append(user)
                 }
             }
+            if let user = users?.first {
+                let isVideoOn = user.getVideoCanvas()?.videoStatus()?.on
+                if isVideoOn == true {
+                    // Get the user's videoCanvas.
+                    if let usersVideoCanvas = user.getVideoCanvas() {
+                        // Set the video aspect.
+                        let videoAspect = ZoomVideoSDKVideoAspect.panAndScan
+                        // Subscribe the user's videoCanvas to render their video stream.
+                        usersVideoCanvas.subscribe(with: imgDoctor, aspectMode: videoAspect, andResolution: ._Auto)
+                    }
+                }
+            }
          //   self.updateLocalVideo()
         //    if self.remoteUsers.isEmpty {
-                self.remoteUsers.append(myself)
-           // }
-            clcUsers.isHidden = remoteUsers.isEmpty
+               // self.remoteUsers.append(myself)
+            
+            let isVideoOn = myself.getVideoCanvas()?.videoStatus()?.on
+            if isVideoOn == true {
+                // Get the user's videoCanvas.
+                if let usersVideoCanvas = myself.getVideoCanvas() {
+                    // Set the video aspect.
+                    let videoAspect = ZoomVideoSDKVideoAspect.panAndScan
+                    // Subscribe the user's videoCanvas to render their video stream.
+                    usersVideoCanvas.subscribe(with: imgMe, aspectMode: videoAspect, andResolution: ._Auto)
+                }
+            }
+          
+         //   clcUsers.isHidden = remoteUsers.isEmpty
             DispatchQueue.main.async {
                 self.clcUsers.reloadData()
             }
@@ -256,7 +325,7 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                         let error = videoHelper.stopVideo()
                         print("Stop error: \(error.rawValue)")
                     }
-                    self.btnCamera.setImage(UIImage(named:"photo-camera-interface-symbol-for-button"), for: .normal)
+                    self.btnCamera.setImage(UIImage(named:"btn-video"), for: .normal)
                 }
             } else {
                 Task(priority: .background) {
@@ -265,7 +334,7 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                         print("Start error: \(error.rawValue)")
                         
                     }
-                    self.btnCamera.setImage(UIImage(named: "icons8-no-camera-52"), for: .normal)
+                    self.btnCamera.setImage(UIImage(named: "btn-video-off"), for: .normal)
                 }
             }
         }
@@ -285,7 +354,7 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                     await MainActor.run {
                         audioHelper.startAudio()
                         audioOn = true
-                        self.btnMice.setImage(UIImage(named:"microphone-black-shape"), for: .normal)
+                        self.btnMice.setImage(UIImage(named:"btn-microphone"), for: .normal)
                     }
                 }
             } else {
@@ -296,7 +365,7 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                             let error = audioHelper.unmuteAudio(myUser)
                             print("Unmute error: \(error.rawValue)")
                             audioOn = true
-                            self.btnMice.setImage(UIImage(named:"microphone-black-shape"), for: .normal)
+                            self.btnMice.setImage(UIImage(named:"btn-microphone"), for: .normal)
                         }
                     }
                 } else {
@@ -305,7 +374,7 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                             let error = audioHelper.muteAudio(myUser)
                             print("Mute error: \(error.rawValue)")
                             audioOn = false
-                            self.btnMice.setImage(UIImage(named: "mute-microphone"), for: .normal)
+                            self.btnMice.setImage(UIImage(named: "btn-microphone-off"), for: .normal)
                         }
                     }
                 }
