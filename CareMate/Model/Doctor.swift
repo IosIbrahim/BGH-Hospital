@@ -43,6 +43,7 @@ struct Doctor: Decodable {
     var SPECIALITY_AR: String?
     var SPECIALITY_EN: String?
     var PAGES_COUNT: String?
+    var flagPictute:String?
     var RNUM: String?
     var DOCTOR_CLINICS: DoctorClinicParent?
     var GENDERCODE: String?
@@ -85,6 +86,7 @@ struct Doctor: Decodable {
         case videoOnline = "VIDEO_CALL_AVAILABILITY"
         case DOC_NAME_AR = "DOC_NAME_AR"
         case DOC_NAME_EN = "DOC_NAME_EN"
+        case flagPicture = "PIC_PATH"
         case SPECIAL_SPEC_ID = "SPECIAL_SPEC_ID"
         case SPECIALITY_AR = "SPECIALITY_AR"
         case SPECIALITY_EN = "SPECIALITY_EN"

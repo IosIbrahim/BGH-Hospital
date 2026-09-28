@@ -11,6 +11,7 @@ import MZFormSheetController
 
 class DcotorSlotsViewController: BaseViewController {
     
+    @IBOutlet weak var imgCountry: UIImageView!
     @IBOutlet weak var lblVisitHint: UILabel!
     @IBOutlet weak var lblAppointment: UILabel!
     @IBOutlet weak var lblNat: UILabel!
@@ -101,6 +102,8 @@ class DcotorSlotsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        pickerConditions.isHidden = !acceptOnline
+        changeAcceptIcon()
         setupView()
         getData()
     }
@@ -108,6 +111,11 @@ class DcotorSlotsViewController: BaseViewController {
     func getData() {
         
         let parseUrl = "\(Constants.APIProvider.doctorProfiledata)branch=\(branchID ?? "")&emp_id=\(doctor?.id ?? "")"
+        var flag = doctor?.flagPictute ?? ""
+        if flag.contains(".jpg") == false {
+            flag = "\(flag).jpg"
+        }
+    self.imgCountry.kf.setImage(with: URL(string: flag), placeholder: UIImage(named: "ic-countryF") , options: nil, completionHandler: nil)
         indicator.sharedInstance.show()
         WebserviceMananger.sharedInstance.makeCall(method: .get, url: parseUrl, parameters: nil, vc: self) { (data, error) in
             if error == nil {
@@ -249,18 +257,25 @@ class DcotorSlotsViewController: BaseViewController {
         pickerAccept.addGestureRecognizer(gestureRemberMe)
     }
     
-    @objc func agreegationCliked(sender : UITapGestureRecognizer) {
+    @objc func agreegationCliked() {
         let vc = termsAndConditionVC()
         vc.typePrivacyPolicy = false
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func acceptTerms(sender : UITapGestureRecognizer) {
+    @objc func acceptTerms() {
         if acceptOnline == false {
             acceptOnline =  true
-            imgAccept.image = UIImage(named: "dignosisSelected.png")
         } else {
             acceptOnline =  false
+        }
+        changeAcceptIcon()
+    }
+    
+    func changeAcceptIcon() {
+        if acceptOnline == false {
+            imgAccept.image = UIImage(named: "dignosisSelected.png")
+        } else {
             imgAccept.image = UIImage(named: "additinakDataDiagnosisSeleected.png")
         }
     }

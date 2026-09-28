@@ -10,6 +10,7 @@ import UIKit
 
 class doctorTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var imgCountry: UIImageView!
     @IBOutlet weak var pickerReserve: UIView!
     @IBOutlet weak var lblReserve: UILabel!
     @IBOutlet weak var lblOnline: UILabel!
@@ -36,7 +37,7 @@ class doctorTableViewCell: UITableViewCell {
         clinicNameLanel.textAlignment = UserManager.isArabic ? .right : .left
       //  mainView.makeShadow(color: .black, alpha: 0.14, radius: 4)
         mainView.makeShadow(color: UIColor.fromHex(hex: "#1F2E3D14", alpha: 1.0), alpha: 0.1, radius: 12)
-        firstTime.text = UserManager.isArabic ? " اقرب موعد" :  "First Available Time"
+        firstTime.text = UserManager.isArabic ? " اقرب موعد" :  "First Time"
         lblOnline.text = "Accepts Online Consultations"
         lblReserve.text = "Reserve Appointment"
         if UserManager.isArabic {
@@ -82,6 +83,11 @@ class doctorTableViewCell: UITableViewCell {
       pickerOnline.isHidden = !doctor.acceptOnlineConsultation()
         let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor.DOCTOR_PIC ?? "")")
         print(url?.absoluteString ?? "")
+        var flag = doctor.flagPictute ?? ""
+        if flag.contains(".jpg") == false {
+            flag = "\(flag).jpg"
+        }
+    self.imgCountry.kf.setImage(with: URL(string: flag), placeholder: UIImage(named: "ic-countryF") , options: nil, completionHandler: nil)
       self.doctorImageView.kf.setImage(with: url, placeholder: doctor.gender == "M" ? UIImage(named: "RectangleMan") : UIImage(named: "RectangleGirl") , options: nil, completionHandler: nil)
         if doctor.NO_RESERVATION_VIEW_ONLY_TEL ?? "" == "1" || doctor.HIDE_SCHEDULE_MOBILE_APP ?? "" == "1" {
             viewTime.isHidden = true

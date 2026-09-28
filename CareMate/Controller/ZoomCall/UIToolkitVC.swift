@@ -223,7 +223,7 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                         // Set the video aspect.
                         let videoAspect = ZoomVideoSDKVideoAspect.panAndScan
                         // Subscribe the user's videoCanvas to render their video stream.
-                        usersVideoCanvas.subscribe(with: imgDoctor, aspectMode: videoAspect, andResolution: ._Auto)
+                        usersVideoCanvas.subscribe(with: imgDoctor, aspectMode: videoAspect, andResolution: ._360)
                     }
                 }
             }
@@ -238,7 +238,7 @@ extension UIToolkitVC: ZoomVideoSDKDelegate {
                     // Set the video aspect.
                     let videoAspect = ZoomVideoSDKVideoAspect.panAndScan
                     // Subscribe the user's videoCanvas to render their video stream.
-                    usersVideoCanvas.subscribe(with: imgMe, aspectMode: videoAspect, andResolution: ._Auto)
+                    usersVideoCanvas.subscribe(with: imgMe, aspectMode: videoAspect, andResolution: ._360)
                 }
             }
           

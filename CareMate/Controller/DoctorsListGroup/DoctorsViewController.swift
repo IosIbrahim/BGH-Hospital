@@ -194,6 +194,7 @@ extension DoctorsViewController: UITableViewDelegate {
                 doctorProfileVC.selectedSpeciality = selectedSpeciality
                 doctorProfileVC.isPhysical = isPhysical
                 doctorProfileVC.session = session
+                doctorProfileVC.acceptOnline = self.doctors[indexPath.row].acceptOnlineConsultation()
                 let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctors[indexPath.row].DOCTOR_PIC ?? "")")
                 doctorProfileVC.url = url
                 self.navigationController?.pushViewController(doctorProfileVC, animated: true)
