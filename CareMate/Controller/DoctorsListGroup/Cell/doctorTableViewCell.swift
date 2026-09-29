@@ -83,7 +83,7 @@ class doctorTableViewCell: UITableViewCell {
       pickerOnline.isHidden = !doctor.acceptOnlineConsultation()
         let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(doctor.DOCTOR_PIC ?? "")")
         print(url?.absoluteString ?? "")
-        var flag = doctor.flagPictute ?? ""
+        var flag = doctor.flagPicture ?? ""
         if flag.contains(".jpg") == false {
             flag = "\(flag).jpg"
         }

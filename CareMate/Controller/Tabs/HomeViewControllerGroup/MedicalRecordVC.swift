@@ -216,6 +216,7 @@ class MedicalRecordVC: BaseViewController
     }
     
     @IBAction func openNotif(_ sender: Any) {
+       // present(UIToolkitVC(), animated: true)
         navigationController?.pushViewController(NotifcationsViewController(), animated: true)
     }
     

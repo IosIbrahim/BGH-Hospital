@@ -111,7 +111,7 @@ class DcotorSlotsViewController: BaseViewController {
     func getData() {
         
         let parseUrl = "\(Constants.APIProvider.doctorProfiledata)branch=\(branchID ?? "")&emp_id=\(doctor?.id ?? "")"
-        var flag = doctor?.flagPictute ?? ""
+        var flag = doctor?.flagPicture ?? ""
         if flag.contains(".jpg") == false {
             flag = "\(flag).jpg"
         }

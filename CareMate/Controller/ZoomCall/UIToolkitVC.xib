@@ -35,13 +35,13 @@
                     <rect key="frame" x="15" y="133" width="363" height="641"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0Gx-mT-1FS">
-                            <rect key="frame" x="0.0" y="0.0" width="363" height="576"/>
+                            <rect key="frame" x="0.0" y="0.0" width="363" height="561"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WE2-WX-BMz">
-                                    <rect key="frame" x="0.0" y="0.0" width="363" height="576"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="363" height="561"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8fj-3M-WTB">
-                                            <rect key="frame" x="0.0" y="197.33333333333331" width="363" height="181.33333333333331"/>
+                                            <rect key="frame" x="0.0" y="189.66666666666669" width="363" height="181.66666666666669"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="8fj-3M-WTB" secondAttribute="height" multiplier="2:1" id="zVT-6w-ptB"/>
                                             </constraints>
@@ -72,23 +72,24 @@
                             </subviews>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lsj-Sx-Y6m">
-                            <rect key="frame" x="0.0" y="586" width="363" height="55"/>
+                            <rect key="frame" x="0.0" y="571" width="363" height="70"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ufd-e8-ZhG">
-                                    <rect key="frame" x="29" y="5" width="305" height="45"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ufd-e8-ZhG">
+                                    <rect key="frame" x="24.666666666666657" y="12" width="112" height="46"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nAp-ku-595">
-                                            <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="45" id="ZjQ-Zc-VvZ"/>
-                                                <constraint firstAttribute="width" constant="45" id="rEW-3L-vZ4"/>
+                                                <constraint firstAttribute="height" constant="46" id="ZjQ-Zc-VvZ"/>
+                                                <constraint firstAttribute="width" constant="46" id="rEW-3L-vZ4"/>
                                             </constraints>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" image="btn-camera"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" image="ic-camera-sw"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
-                                                    <real key="value" value="23"/>
+                                                    <real key="value" value="22"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="hrBorderWidth">
                                                     <real key="value" value="1"/>
@@ -102,14 +103,14 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Id-k5-GuI">
-                                            <rect key="frame" x="65" y="0.0" width="45" height="45"/>
+                                            <rect key="frame" x="66" y="0.0" width="46" height="46"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" image="btn-video"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
-                                                    <real key="value" value="22"/>
+                                                    <real key="value" value="23"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="hrBorderWidth">
                                                     <real key="value" value="1"/>
@@ -122,34 +123,60 @@
                                                 <action selector="cameraOnTap:" destination="-1" eventType="touchUpInside" id="FEP-pn-Yor"/>
                                             </connections>
                                         </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="2Id-k5-GuI" firstAttribute="height" secondItem="nAp-ku-595" secondAttribute="height" id="QsL-vI-vqc"/>
+                                        <constraint firstItem="2Id-k5-GuI" firstAttribute="width" secondItem="nAp-ku-595" secondAttribute="width" id="ncz-tX-Q6A"/>
+                                    </constraints>
+                                </stackView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blj-vj-MG3">
+                                    <rect key="frame" x="151.66666666666666" y="5" width="60" height="60"/>
+                                    <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggb-MP-BUu">
-                                            <rect key="frame" x="130" y="0.0" width="45" height="45"/>
+                                            <rect key="frame" x="12" y="12" width="36" height="36"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" image="appoimentCancelIcon"/>
+                                            <state key="normal" image="ic-cancel-call"/>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
-                                                    <real key="value" value="22"/>
-                                                </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="hrBorderColor">
-                                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="hrBorderWidth">
-                                                    <real key="value" value="1"/>
+                                                    <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="cancelOnTap:" destination="-1" eventType="touchUpInside" id="VPs-KD-O62"/>
                                             </connections>
                                         </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Ggb-MP-BUu" secondAttribute="trailing" constant="12" id="1Ox-vV-cax"/>
+                                        <constraint firstAttribute="width" constant="60" id="48g-EL-D8t"/>
+                                        <constraint firstAttribute="bottom" secondItem="Ggb-MP-BUu" secondAttribute="bottom" constant="12" id="4hE-yW-9UI"/>
+                                        <constraint firstItem="Ggb-MP-BUu" firstAttribute="top" secondItem="blj-vj-MG3" secondAttribute="top" constant="12" id="IlH-BY-an9"/>
+                                        <constraint firstAttribute="height" constant="60" id="Pkw-WS-4e3"/>
+                                        <constraint firstItem="Ggb-MP-BUu" firstAttribute="leading" secondItem="blj-vj-MG3" secondAttribute="leading" constant="12" id="cyu-q2-DCe"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
+                                            <real key="value" value="30"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="dQv-5P-cyr">
+                                    <rect key="frame" x="226.66666666666663" y="12" width="107" height="46"/>
+                                    <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="828-Zw-Z5C">
-                                            <rect key="frame" x="195" y="0.0" width="45" height="45"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="46" id="Ddp-w7-0dQ"/>
+                                                <constraint firstAttribute="height" constant="46" id="ba4-xu-IMk"/>
+                                            </constraints>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" image="btn-microphone"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
-                                                    <real key="value" value="22"/>
+                                                    <real key="value" value="23"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
@@ -157,13 +184,13 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Thc-pE-7KJ">
-                                            <rect key="frame" x="260" y="0.0" width="45" height="45"/>
+                                            <rect key="frame" x="61.000000000000028" y="0.0" width="46" height="46"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" image="btn-speaker"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
-                                                    <real key="value" value="22"/>
+                                                    <real key="value" value="23"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
@@ -175,10 +202,14 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="Ufd-e8-ZhG" firstAttribute="centerY" secondItem="Lsj-Sx-Y6m" secondAttribute="centerY" id="IXz-o5-77U"/>
-                                <constraint firstItem="Ufd-e8-ZhG" firstAttribute="centerX" secondItem="Lsj-Sx-Y6m" secondAttribute="centerX" id="Wl7-kU-da1"/>
-                                <constraint firstAttribute="bottom" secondItem="Ufd-e8-ZhG" secondAttribute="bottom" constant="5" id="qRv-d4-6bJ"/>
-                                <constraint firstItem="Ufd-e8-ZhG" firstAttribute="top" secondItem="Lsj-Sx-Y6m" secondAttribute="top" constant="5" id="yzm-hs-X5U"/>
+                                <constraint firstItem="Ufd-e8-ZhG" firstAttribute="centerY" secondItem="blj-vj-MG3" secondAttribute="centerY" id="8ia-m0-kQy"/>
+                                <constraint firstItem="blj-vj-MG3" firstAttribute="centerY" secondItem="Lsj-Sx-Y6m" secondAttribute="centerY" id="DJJ-cz-Vz1"/>
+                                <constraint firstItem="dQv-5P-cyr" firstAttribute="centerY" secondItem="blj-vj-MG3" secondAttribute="centerY" id="LnN-GF-bwn"/>
+                                <constraint firstItem="blj-vj-MG3" firstAttribute="top" secondItem="Lsj-Sx-Y6m" secondAttribute="top" constant="5" id="YlT-Ff-sf4"/>
+                                <constraint firstAttribute="bottom" secondItem="blj-vj-MG3" secondAttribute="bottom" constant="5" id="c9O-sX-gAs"/>
+                                <constraint firstItem="dQv-5P-cyr" firstAttribute="leading" secondItem="blj-vj-MG3" secondAttribute="trailing" constant="15" id="oRF-R7-k4D"/>
+                                <constraint firstItem="blj-vj-MG3" firstAttribute="leading" secondItem="Ufd-e8-ZhG" secondAttribute="trailing" constant="15" id="s5N-Yr-3Fu"/>
+                                <constraint firstItem="blj-vj-MG3" firstAttribute="centerX" secondItem="Lsj-Sx-Y6m" secondAttribute="centerX" id="sIO-5k-ZtY"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -226,11 +257,11 @@
         </view>
     </objects>
     <resources>
-        <image name="appoimentCancelIcon" width="10.333333015441895" height="10.333333015441895"/>
-        <image name="btn-camera" width="40" height="40"/>
         <image name="btn-microphone" width="40" height="40"/>
         <image name="btn-speaker" width="40" height="40"/>
         <image name="btn-video" width="40" height="40"/>
+        <image name="ic-camera-sw" width="32" height="32"/>
+        <image name="ic-cancel-call" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -43,7 +43,7 @@ struct Doctor: Decodable {
     var SPECIALITY_AR: String?
     var SPECIALITY_EN: String?
     var PAGES_COUNT: String?
-    var flagPictute:String?
+    var flagPicture:String?
     var RNUM: String?
     var DOCTOR_CLINICS: DoctorClinicParent?
     var GENDERCODE: String?
