@@ -27,7 +27,7 @@ class DcotorSlotsViewController: BaseViewController {
     @IBOutlet weak var pickerAccept: UIView!
     @IBOutlet weak var pickerConditions: UIView!
     @IBOutlet weak var viewSpec: RoundUIView!
-    @IBOutlet weak var constraintColleectionviewSlot: NSLayoutConstraint!
+    @IBOutlet weak var clcSlotCons: NSLayoutConstraint!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var plusBtn: UIButton!
     @IBOutlet weak var minsBtn: UIButton!
@@ -191,7 +191,7 @@ class DcotorSlotsViewController: BaseViewController {
                 }
             }
       //  }
-      
+        doctorSpeciality.textAlignment = .center
         uilabelSpkenLan.text =  UserManager.isArabic ? doctor?.HREMPLOYEELANGUAGE_AR: doctor?.HREMPLOYEELANGUAGE_AR
         viewBook.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(bookCliked)))
         self.uiimageAvatar.kf.setImage(with: self.url, placeholder: doctor?.gender == "M" ? UIImage(named: "RectangleMan") : UIImage(named: "DoctorIconRX") , options: nil, completionHandler: nil)
@@ -203,7 +203,7 @@ class DcotorSlotsViewController: BaseViewController {
         viewInfo.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openInfo)))
         viewScedule.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openSchedule)))
         openSchedule()
-        var condition = "I would like to book this follow-up as a remote consultation; I agree to Terms & Conditions"
+        var condition = "I agree to the Terms & Conditions of the remote consultation service"
        var terms =  "Terms & Conditions"
         lblVisitType.text = "Visit Type"
         lblHospital.text = "In Hospital"
@@ -225,7 +225,7 @@ class DcotorSlotsViewController: BaseViewController {
             bookAppoiment.text = "احجز الآن"
             uilabelSpkenLanText.text = "اللغات:"
             terms =  "الشروط والاحكام"
-            condition =  "ارغب في حجز هذه المتابعة كاستشارة عن بعد ،اوافق علي الشروط والاحكام"
+            condition =  "اوافق علي الشروط والاحكام الخاصة بخدمة الاستشارة عن بعد"
             lblVisitType.text = "نوع الزيارة"
             lblHospital.text = "الحضور في المستشفي"
             lblOnline.text = "استشارة عن بعد"
@@ -551,23 +551,25 @@ class DcotorSlotsViewController: BaseViewController {
                 self.collectioViewSlotTimes.delegate = self
                 self.collectioViewSlotTimes.dataSource = self
                 self.collectioViewSlotTimes.reloadData()
-                let numbersOfRows =  Double(SlotArr.count) / 4.0
-                print( numbersOfRows)
-                print( numbersOfRows.rounded())
+                var numbersOfRows =  Int(SlotArr.count) / 4
+                let mod =  SlotArr.count % 4
+//                print( numbersOfRows)
+//                print( numbersOfRows.rounded())
+//                
+//                
+//                var slotheight = ceil(numbersOfRows) * 65
+//                if numbersOfRows == 1{
+//                    
+//                    slotheight = 150
+//                }
+//                else{
+//                    slotheight += 200
+//                    
+//                }
+                numbersOfRows += mod
                 
-                
-                var slotheight = ceil(numbersOfRows) * 65
-                if numbersOfRows == 1{
-                    
-                    slotheight = 150
-                }
-                else{
-                    slotheight += 200
-                    
-                }
-                
-                
-                constraintColleectionviewSlot.constant = CGFloat(slotheight + 30)
+                clcSlotCons.constant = CGFloat(numbersOfRows * 65)
+                collectioViewSlotTimes.updateConstraints()
                 let messageAr = "الدكتور الذي تم اختياره ليس له جدول مواعيد في هذا اليوم اذا كنت ترغب في حجز موعد في الاوقات الغير متاحة على التطبيق يرجى التواصل معنا عبر "
                 let messageEN = "The selected doctor does not have a schedule on the selected date.In case you which to take an appointment for unavailable dates please call"
                 print(messageAr,messageEN)

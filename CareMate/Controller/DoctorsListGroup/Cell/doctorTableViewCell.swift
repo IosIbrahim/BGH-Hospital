@@ -46,8 +46,7 @@ class doctorTableViewCell: UITableViewCell {
             lblReserve.text = "احجز موعد"
         }
         lblReserve.textAlignment = .center
-        lblReserve.adjustsFontSizeToFitWidth = true
-        firstTime.adjustsFontSizeToFitWidth = true
+       // firstTime.adjustsFontSizeToFitWidth = true
         doctorImageView.Rounded(corner: 40)
 
     }

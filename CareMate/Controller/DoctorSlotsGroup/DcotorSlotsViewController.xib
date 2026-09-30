@@ -24,10 +24,10 @@
             <connections>
                 <outlet property="bookAppoiment" destination="9fk-pf-fh0" id="JTb-hs-xLP"/>
                 <outlet property="chosseTimeText" destination="NKW-MK-Ltm" id="K8M-uj-Toq"/>
+                <outlet property="clcSlotCons" destination="rzG-A7-1Dy" id="uTR-K3-zTP"/>
                 <outlet property="collectioViewSlotDays" destination="J1F-xW-pdG" id="6my-Ri-U76"/>
                 <outlet property="collectioViewSlotTimes" destination="oKg-dM-4U7" id="0Hu-3D-1rZ"/>
                 <outlet property="constraintCollectionDaysOfMonth" destination="JR5-MY-skq" id="wuW-wT-gSc"/>
-                <outlet property="constraintColleectionviewSlot" destination="orW-0B-scs" id="D3A-qB-75I"/>
                 <outlet property="doctorName" destination="gUK-De-F36" id="RfS-so-xKa"/>
                 <outlet property="doctorSpeciality" destination="dUe-Gz-7WJ" id="Zag-gw-eqt"/>
                 <outlet property="imageViewPrev" destination="CtA-Wc-77p" id="koS-i8-YtV"/>
@@ -82,46 +82,46 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="1146.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c73-mh-ovU">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="1147"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="1184"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Itr-B4-FCq">
-                                            <rect key="frame" x="20" y="55" width="374" height="1082"/>
+                                            <rect key="frame" x="20" y="55" width="374" height="1119"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uBJ-Tj-9x4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="226.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="229"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="ffs-Xv-DXG">
-                                                            <rect key="frame" x="10" y="50" width="354" height="166.5"/>
+                                                            <rect key="frame" x="10" y="50" width="354" height="169"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUK-De-F36">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="354" height="15"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="354" height="74.5"/>
                                                                     <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="15"/>
                                                                     <color key="textColor" red="0.0" green="0.23137254901960785" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="doctor" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUe-Gz-7WJ">
-                                                                    <rect key="frame" x="0.0" y="22" width="354" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="81.5" width="354" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.51372549019607838" green="0.59215686274509804" blue="0.58039215686274503" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oXm-BJ-H3m">
-                                                                    <rect key="frame" x="0.0" y="49.5" width="354" height="50"/>
+                                                                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oXm-BJ-H3m">
+                                                                    <rect key="frame" x="0.0" y="105.5" width="354" height="10"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p1a-Wx-2L4">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="173" height="50"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="173" height="10"/>
                                                                             <subviews>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="elf-W0-gQ6">
-                                                                                    <rect key="frame" x="5" y="5" width="163" height="40"/>
+                                                                                    <rect key="frame" x="5" y="5" width="163" height="0.0"/>
                                                                                     <subviews>
                                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-countryF" translatesAutoresizingMaskIntoConstraints="NO" id="bZz-YJ-tmK">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="40"/>
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="0.0"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="25" id="Z50-QK-0jK"/>
                                                                                             </constraints>
                                                                                         </imageView>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Egypt" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuq-d7-ZJt">
-                                                                                            <rect key="frame" x="30" y="0.0" width="133" height="40"/>
+                                                                                            <rect key="frame" x="30" y="0.0" width="133" height="0.0"/>
                                                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                                             <color key="textColor" red="0.1058823529" green="0.1647058824" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                             <nil key="highlightedColor"/>
@@ -143,16 +143,16 @@
                                                                             </userDefinedRuntimeAttributes>
                                                                         </view>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSy-wv-zoW">
-                                                                            <rect key="frame" x="181" y="0.0" width="173" height="50"/>
+                                                                            <rect key="frame" x="181" y="0.0" width="173" height="10"/>
                                                                             <subviews>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="0iK-Tr-kfP">
-                                                                                    <rect key="frame" x="5" y="5" width="163" height="40"/>
+                                                                                    <rect key="frame" x="5" y="5" width="163" height="0.0"/>
                                                                                     <subviews>
                                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-stethoscope" translatesAutoresizingMaskIntoConstraints="NO" id="TAU-PL-dGr">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="15" height="40"/>
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="15" height="0.0"/>
                                                                                         </imageView>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="موعد متابعة" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgX-cE-UoA">
-                                                                                            <rect key="frame" x="20" y="0.0" width="143" height="40"/>
+                                                                                            <rect key="frame" x="20" y="0.0" width="143" height="0.0"/>
                                                                                             <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="14"/>
                                                                                             <color key="textColor" red="0.0" green="0.23137254900000001" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                             <nil key="highlightedColor"/>
@@ -182,7 +182,7 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kxc-3R-8Co">
-                                                                    <rect key="frame" x="0.0" y="106.5" width="354" height="60"/>
+                                                                    <rect key="frame" x="0.0" y="109" width="354" height="60"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4Cy-oM-dPW">
                                                                             <rect key="frame" x="117" y="5" width="120" height="50"/>
@@ -258,19 +258,27 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7In-Lp-XcY">
-                                                    <rect key="frame" x="0.0" y="242.5" width="374" height="148"/>
+                                                    <rect key="frame" x="0.0" y="245" width="374" height="210"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1EV-eP-6kb">
-                                                            <rect key="frame" x="10" y="15" width="354" height="118"/>
+                                                            <rect key="frame" x="10" y="15" width="354" height="180"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WU5-6c-fBU">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="354" height="118"/>
-                                                                    <string key="text">This is a follow-up appointment and can be conducted remotely.
+                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qEB-Ju-diu">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="354" height="180"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ic-onlineCons" translatesAutoresizingMaskIntoConstraints="NO" id="iRy-IO-w7I">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="16" height="180"/>
+                                                                        </imageView>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WU5-6c-fBU">
+                                                                            <rect key="frame" x="24" y="0.0" width="330" height="180"/>
+                                                                            <string key="text">This is a follow-up appointment and can be conducted remotely.
 Please agree to the terms and conditions below to book your consultation.</string>
-                                                                    <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="15"/>
-                                                                    <color key="textColor" red="0.0" green="0.23137254900000001" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
+                                                                            <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="15"/>
+                                                                            <color key="textColor" red="0.0" green="0.23137254900000001" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
                                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJK-Sv-K6E">
                                                                     <rect key="frame" x="0.0" y="0.0" width="354" height="0.0"/>
                                                                     <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="15"/>
@@ -365,7 +373,7 @@ Please agree to the terms and conditions below to book your consultation.</strin
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="udz-tL-K65">
-                                                    <rect key="frame" x="0.0" y="406.5" width="374" height="318"/>
+                                                    <rect key="frame" x="0.0" y="471" width="374" height="290.5"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MqM-oJ-COz">
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -427,7 +435,7 @@ Please agree to the terms and conditions below to book your consultation.</strin
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NID-Rh-p2B">
-                                                            <rect key="frame" x="0.0" y="70" width="374" height="100"/>
+                                                            <rect key="frame" x="0.0" y="55" width="374" height="100"/>
                                                             <subviews>
                                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="J1F-xW-pdG">
                                                                     <rect key="frame" x="5" y="0.0" width="364" height="100"/>
@@ -438,6 +446,10 @@ Please agree to the terms and conditions below to book your consultation.</strin
                                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                     </collectionViewFlowLayout>
+                                                                    <connections>
+                                                                        <outlet property="dataSource" destination="-1" id="Pki-nL-QqT"/>
+                                                                        <outlet property="delegate" destination="-1" id="KbQ-Ha-VP1"/>
+                                                                    </connections>
                                                                 </collectionView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -450,47 +462,62 @@ Please agree to the terms and conditions below to book your consultation.</strin
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZkP-Hd-hrV">
-                                                            <rect key="frame" x="0.0" y="190" width="374" height="128"/>
+                                                            <rect key="frame" x="0.0" y="160" width="374" height="130.5"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SlotsICon" translatesAutoresizingMaskIntoConstraints="NO" id="6Fu-oa-I0k">
-                                                                    <rect key="frame" x="10" y="20" width="18" height="18"/>
-                                                                </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKW-MK-Ltm">
-                                                                    <rect key="frame" x="48" y="19" width="100.5" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" red="0.10588235294117647" green="0.16470588235294117" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="oKg-dM-4U7">
-                                                                    <rect key="frame" x="5" y="49.5" width="364" height="73.5"/>
-                                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="yUy-FL-XlU">
-                                                                        <size key="itemSize" width="128" height="128"/>
-                                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                                    </collectionViewFlowLayout>
-                                                                </collectionView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3EQ-0c-bdN">
+                                                                    <rect key="frame" x="10" y="5" width="354" height="120.5"/>
+                                                                    <subviews>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="J3z-lk-qkB">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="354" height="20.5"/>
+                                                                            <subviews>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SlotsICon" translatesAutoresizingMaskIntoConstraints="NO" id="6Fu-oa-I0k">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="20.5"/>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="width" constant="25" id="uYT-xo-6fQ"/>
+                                                                                    </constraints>
+                                                                                </imageView>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKW-MK-Ltm">
+                                                                                    <rect key="frame" x="33" y="0.0" width="321" height="20.5"/>
+                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <color key="textColor" red="0.10588235294117647" green="0.16470588235294117" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                    <nil key="highlightedColor"/>
+                                                                                </label>
+                                                                            </subviews>
+                                                                        </stackView>
+                                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="oKg-dM-4U7">
+                                                                            <rect key="frame" x="0.0" y="25.5" width="354" height="95"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="95" id="rzG-A7-1Dy"/>
+                                                                            </constraints>
+                                                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="yUy-FL-XlU">
+                                                                                <size key="itemSize" width="128" height="128"/>
+                                                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                            </collectionViewFlowLayout>
+                                                                            <connections>
+                                                                                <outlet property="dataSource" destination="-1" id="Prz-Sx-V68"/>
+                                                                                <outlet property="delegate" destination="-1" id="dT2-R6-D2C"/>
+                                                                            </connections>
+                                                                        </collectionView>
+                                                                    </subviews>
+                                                                </stackView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstItem="NKW-MK-Ltm" firstAttribute="centerY" secondItem="6Fu-oa-I0k" secondAttribute="centerY" id="5Z1-Ly-AQM"/>
-                                                                <constraint firstItem="oKg-dM-4U7" firstAttribute="top" secondItem="NKW-MK-Ltm" secondAttribute="bottom" constant="10" id="9ri-Yq-aeD"/>
-                                                                <constraint firstItem="oKg-dM-4U7" firstAttribute="leading" secondItem="ZkP-Hd-hrV" secondAttribute="leading" constant="5" id="CUE-jh-SWm"/>
-                                                                <constraint firstItem="6Fu-oa-I0k" firstAttribute="leading" secondItem="ZkP-Hd-hrV" secondAttribute="leading" constant="10" id="G6m-N4-yuH"/>
-                                                                <constraint firstItem="NKW-MK-Ltm" firstAttribute="leading" secondItem="6Fu-oa-I0k" secondAttribute="trailing" constant="20" id="g1f-e7-irX"/>
-                                                                <constraint firstAttribute="bottom" secondItem="oKg-dM-4U7" secondAttribute="bottom" constant="5" id="iN3-VV-96L"/>
-                                                                <constraint firstAttribute="height" constant="128" id="orW-0B-scs"/>
-                                                                <constraint firstAttribute="trailing" secondItem="oKg-dM-4U7" secondAttribute="trailing" constant="5" id="rXI-vO-yct"/>
-                                                                <constraint firstItem="6Fu-oa-I0k" firstAttribute="top" secondItem="ZkP-Hd-hrV" secondAttribute="top" constant="20" id="sng-5R-dfX"/>
+                                                                <constraint firstAttribute="trailing" secondItem="3EQ-0c-bdN" secondAttribute="trailing" constant="10" id="cRd-Nl-cRF"/>
+                                                                <constraint firstAttribute="bottom" secondItem="3EQ-0c-bdN" secondAttribute="bottom" constant="5" id="ft2-rw-kS8"/>
+                                                                <constraint firstItem="3EQ-0c-bdN" firstAttribute="top" secondItem="ZkP-Hd-hrV" secondAttribute="top" constant="5" id="yha-FX-MbL"/>
+                                                                <constraint firstItem="3EQ-0c-bdN" firstAttribute="leading" secondItem="ZkP-Hd-hrV" secondAttribute="leading" constant="10" id="z8Q-Qf-Wpq"/>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="NID-Rh-p2B" firstAttribute="top" secondItem="MqM-oJ-COz" secondAttribute="bottom" constant="20" id="2jB-N4-DyN"/>
+                                                        <constraint firstItem="NID-Rh-p2B" firstAttribute="top" secondItem="MqM-oJ-COz" secondAttribute="bottom" constant="5" id="2jB-N4-DyN"/>
                                                         <constraint firstAttribute="trailing" secondItem="NID-Rh-p2B" secondAttribute="trailing" id="55m-oW-aXn"/>
-                                                        <constraint firstItem="ZkP-Hd-hrV" firstAttribute="top" secondItem="NID-Rh-p2B" secondAttribute="bottom" constant="20" id="85A-oO-IGp"/>
+                                                        <constraint firstItem="ZkP-Hd-hrV" firstAttribute="top" secondItem="NID-Rh-p2B" secondAttribute="bottom" constant="5" id="85A-oO-IGp"/>
                                                         <constraint firstAttribute="trailing" secondItem="MqM-oJ-COz" secondAttribute="trailing" id="C9Q-7x-TQe"/>
                                                         <constraint firstItem="ZkP-Hd-hrV" firstAttribute="leading" secondItem="udz-tL-K65" secondAttribute="leading" id="LX1-Mw-nOC"/>
                                                         <constraint firstItem="NID-Rh-p2B" firstAttribute="leading" secondItem="udz-tL-K65" secondAttribute="leading" id="Pyq-Vu-HgJ"/>
@@ -501,16 +528,16 @@ Please agree to the terms and conditions below to book your consultation.</strin
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GWZ-Zg-OcZ">
-                                                    <rect key="frame" x="0.0" y="740.5" width="374" height="341.5"/>
+                                                    <rect key="frame" x="0.0" y="777.5" width="374" height="341.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6O9-i6-eRU">
-                                                            <rect key="frame" x="20" y="0.0" width="334" height="321.5"/>
+                                                            <rect key="frame" x="15" y="0.0" width="344" height="326.5"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="at8-bB-lCK">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="60"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="344" height="60"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhc-pD-rSo">
-                                                                            <rect key="frame" x="8" y="8" width="318" height="44"/>
+                                                                            <rect key="frame" x="8" y="8" width="328" height="44"/>
                                                                             <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="14"/>
                                                                             <color key="textColor" red="0.0" green="0.23137254901960785" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -533,7 +560,7 @@ Please agree to the terms and conditions below to book your consultation.</strin
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAn-1f-THf">
-                                                                    <rect key="frame" x="0.0" y="70" width="334" height="64"/>
+                                                                    <rect key="frame" x="0.0" y="70" width="344" height="64"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="languages:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9je-4E-nkj">
                                                                             <rect key="frame" x="36" y="39" width="66" height="14"/>
@@ -555,7 +582,7 @@ Please agree to the terms and conditions below to book your consultation.</strin
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixc-yH-FXq">
-                                                                            <rect key="frame" x="36" y="11" width="290" height="14"/>
+                                                                            <rect key="frame" x="36" y="11" width="300" height="14"/>
                                                                             <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="14"/>
                                                                             <color key="textColor" red="0.0" green="0.23137254901960785" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -590,29 +617,29 @@ Please agree to the terms and conditions below to book your consultation.</strin
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VwT-li-3jD">
-                                                                    <rect key="frame" x="0.0" y="144" width="334" height="177.5"/>
+                                                                    <rect key="frame" x="0.0" y="144" width="344" height="182.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About doctor:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iH-mG-lzf">
-                                                                            <rect key="frame" x="8" y="20" width="85" height="94.5"/>
+                                                                            <rect key="frame" x="8" y="20" width="85" height="99.5"/>
                                                                             <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="14"/>
                                                                             <color key="textColor" red="0.0" green="0.23137254901960785" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziU-Af-cJY">
-                                                                            <rect key="frame" x="8" y="154.5" width="306" height="13"/>
+                                                                            <rect key="frame" x="8" y="159.5" width="316" height="13"/>
                                                                             <fontDescription key="fontDescription" name="Tajawal-Regular" family="Tajawal" pointSize="13"/>
                                                                             <color key="textColor" red="0.0" green="0.23137254901960785" blue="0.44313725490196076" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BHG-DocPice" translatesAutoresizingMaskIntoConstraints="NO" id="S2G-fI-alZ">
-                                                                            <rect key="frame" x="294" y="57.5" width="20" height="20"/>
+                                                                            <rect key="frame" x="304" y="60" width="20" height="20"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="20" id="5a8-qP-ukj"/>
                                                                                 <constraint firstAttribute="height" constant="20" id="rOP-6V-1tb"/>
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specialized in:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQf-gE-t59">
-                                                                            <rect key="frame" x="8" y="134.5" width="82" height="0.0"/>
+                                                                            <rect key="frame" x="8" y="139.5" width="82" height="0.0"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" id="Y6N-eE-0r7"/>
                                                                             </constraints>
@@ -646,9 +673,9 @@ Please agree to the terms and conditions below to book your consultation.</strin
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="6O9-i6-eRU" firstAttribute="top" secondItem="GWZ-Zg-OcZ" secondAttribute="top" id="ISm-yJ-etI"/>
-                                                        <constraint firstAttribute="trailing" secondItem="6O9-i6-eRU" secondAttribute="trailing" constant="20" id="Wg0-sP-peC"/>
-                                                        <constraint firstItem="6O9-i6-eRU" firstAttribute="leading" secondItem="GWZ-Zg-OcZ" secondAttribute="leading" constant="20" id="ffS-KH-rWW"/>
-                                                        <constraint firstAttribute="bottom" secondItem="6O9-i6-eRU" secondAttribute="bottom" constant="20" id="lz8-Jk-mBJ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6O9-i6-eRU" secondAttribute="trailing" constant="15" id="Wg0-sP-peC"/>
+                                                        <constraint firstItem="6O9-i6-eRU" firstAttribute="leading" secondItem="GWZ-Zg-OcZ" secondAttribute="leading" constant="15" id="ffS-KH-rWW"/>
+                                                        <constraint firstAttribute="bottom" secondItem="6O9-i6-eRU" secondAttribute="bottom" constant="15" id="lz8-Jk-mBJ"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -662,7 +689,7 @@ Please agree to the terms and conditions below to book your consultation.</strin
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
-                                                    <real key="value" value="45"/>
+                                                    <real key="value" value="15"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="hrBorderWidth">
                                                     <real key="value" value="1"/>

@@ -12,15 +12,8 @@ extension DcotorSlotsViewController:UICollectionViewDelegate,UICollectionViewDat
     
     
     func setupcollectionView(){
-        let nib = UINib(nibName: "daySlotCollectionViewCell", bundle: nil)
-        collectioViewSlotDays?.register(nib, forCellWithReuseIdentifier: "daySlotCollectionViewCell")
-        collectioViewSlotDays.delegate = self
-        collectioViewSlotDays.dataSource = self
-        
-        let nib1 = UINib(nibName: "SlotTimeSlotCollectionViewCell", bundle: nil)
-        collectioViewSlotTimes?.register(nib1, forCellWithReuseIdentifier: "SlotTimeSlotCollectionViewCell")
-        collectioViewSlotTimes.delegate = self
-        collectioViewSlotTimes.dataSource = self
+        collectioViewSlotDays.register("daySlotCollectionViewCell")
+        collectioViewSlotTimes.register("SlotTimeSlotCollectionViewCell")
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -114,20 +107,23 @@ extension DcotorSlotsViewController:UICollectionViewDelegate,UICollectionViewDat
         if collectionView == collectioViewSlotDays{
             var size = CGSize.zero
             let screenSize = UIScreen.main.bounds
-            var screenWidth = screenSize.width
-            let cellSize = screenWidth * 0.20
+            let screenWidth = screenSize.width
+            let cellSize = screenWidth / 5
             size.width = cellSize
             size.height =  90
             return size
+          //  return CGSize(width: 70, height: 90)
         }
         else{
             let screenSize = UIScreen.main.bounds
-            var screenWidth = screenSize.width
-            let cellSize = screenWidth * 0.21
-            var size = CGSize.zero
-            size.width = cellSize
-            size.height =  65
+            let screenWidth = screenSize.width
+            let cellSize = screenWidth / 5
+            let size = CGSize(width: cellSize, height: 65)
+//            size.width = cellSize
+//            size.height =  65
             return size
+         //   return CGSize(width: 85, height: 65)
+
         }
       
     }
