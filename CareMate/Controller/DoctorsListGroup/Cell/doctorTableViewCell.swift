@@ -39,14 +39,14 @@ class doctorTableViewCell: UITableViewCell {
         mainView.makeShadow(color: UIColor.fromHex(hex: "#1F2E3D14", alpha: 1.0), alpha: 0.1, radius: 12)
         firstTime.text = UserManager.isArabic ? " اقرب موعد" :  "First Time"
         lblOnline.text = "Accepts Online Consultations"
-        lblReserve.text = "Reserve Appointment"
+        lblReserve.text = "Book"
         if UserManager.isArabic {
         //    labelContacts.text = "اضغط لعرض ارقام التواصل مع العيادة"
             lblOnline.text = "يقبل الاستشارة عن بعد"
-            lblReserve.text = "احجز موعد"
+            lblReserve.text = "حجز"
         }
         lblReserve.textAlignment = .center
-       // firstTime.adjustsFontSizeToFitWidth = true
+       // lblOnline.adjustsFontSizeToFitWidth = true
         doctorImageView.Rounded(corner: 40)
 
     }
@@ -58,7 +58,8 @@ class doctorTableViewCell: UITableViewCell {
         firstAvaiableDayHourMin.text = doctor.FIRST_SLOT_TIME?.ConvertToDate.ToTimeOnly
         firstAvaiableDayHourMin.adjustsFontSizeToFitWidth = true
 
-      self.nationalityLabel.text = UserManager.isArabic ? doctor.nationalityAR : doctor.nationality
+      nationalityLabel.text = UserManager.isArabic ? doctor.nationalityAR : doctor.nationality
+        nationalityLabel.text = nationalityLabel.text?.components(separatedBy: .whitespaces).first
       self.doctorNameLabel.text = UserManager.isArabic ? doctor.englishNameAR : doctor.englishName
         let place  = UserManager.isArabic ? doctor.CLINIC_LOCATION_AR:doctor.CLINIC_LOCATION_EN
         if let loc = place {
@@ -95,5 +96,19 @@ class doctorTableViewCell: UITableViewCell {
             viewTime.isHidden = false
           //  labelContacts.isHidden = true
         }
+    }
+}
+
+
+// Source - https://stackoverflow.com/a/39067610
+// Posted by fpg1503, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-10-01, License - CC BY-SA 4.0
+
+extension String {
+    func removingLeadingSpaces() -> String {
+        guard let index = firstIndex(where: { !CharacterSet(charactersIn: String($0)).isSubset(of: .whitespaces) }) else {
+            return self
+        }
+        return String(self[index...])
     }
 }

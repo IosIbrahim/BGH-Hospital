@@ -273,7 +273,7 @@ class DcotorSlotsViewController: BaseViewController {
     }
     
     func changeAcceptIcon() {
-        if acceptOnline == false {
+        if acceptOnline {
             imgAccept.image = UIImage(named: "dignosisSelected.png")
         } else {
             imgAccept.image = UIImage(named: "additinakDataDiagnosisSeleected.png")
