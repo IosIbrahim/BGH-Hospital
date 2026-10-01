@@ -26,7 +26,10 @@ class ReservationConfirmVC: BaseViewController {
     @IBOutlet weak var labelAppoiment: UILabel!
     @IBOutlet weak var labelLocation: UILabel!
     @IBOutlet weak var labelPlace: UILabel!
-    
+    @IBOutlet weak var pickerRemote: UIView!
+    @IBOutlet weak var lblRemote: UILabel!
+
+
     var SelectedDoctorFromSearch : makeAppointment?
     var loginUseeer:LoginedUser?
     var patPatinet = ""
@@ -125,6 +128,10 @@ class ReservationConfirmVC: BaseViewController {
         labelAppoiment.text = UserManager.isArabic ? "الموعد" : "Appointment"
         labelLocation.text = UserManager.isArabic ? "الفرع" : "Branch"
         labelPlaceTitle.text = UserManager.isArabic ? "الموقع" : "Location"
+        lblRemote.text = UserManager.isArabic ? "استشارة عن بعد" : "Remote consultation"
+        lblRemote.textAlignment = UserManager.isArabic ? .right:.left
+        pickerRemote.Rounded(corner: 15)
+        pickerRemote.isHidden = !acceptOnline
         let defaults = UserDefaults.standard
         let url = URL(string: "\(Constants.APIProvider.IMAGE_BASE)/\(SelectedDoctorFromSearch?.doctor?.DOCTOR_PIC ?? "")")
         print("http://172.25.26.140/mobileApi/\(SelectedDoctorFromSearch?.doctor?.DOCTOR_PIC ?? "")")

@@ -69,7 +69,8 @@ struct Constants {
         static var IMAGE_BASE = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApitest"   // test
         static var IMAGE_BASE2 = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApitest" // test
        
-        
+        static var Online_Terms = "https://pr-h1services04.sherafia.bhg.com.sa/MobileApitest/Telemedicine%20Consultation%20Terms.html" // test
+
 //        static var APIBaseURL = "http://41.33.82.156:29804/MobileApi/api/"    // comp
 //        static var IMAGE_BASE = "http://41.33.82.156:29804/MobileApi"   // comp
 //        static var IMAGE_BASE2 = "http://41.33.82.156:29804/MobileApi" // comp

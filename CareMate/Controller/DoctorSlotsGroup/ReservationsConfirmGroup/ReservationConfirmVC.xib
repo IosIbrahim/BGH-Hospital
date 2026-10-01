@@ -34,6 +34,8 @@
                 <outlet property="labelLocation" destination="Tw8-DM-xkl" id="AHD-Zc-Mh1"/>
                 <outlet property="labelPlace" destination="ldr-uf-Blk" id="cdm-uI-lZs"/>
                 <outlet property="labelPlaceTitle" destination="rZv-87-doN" id="PvI-fg-iJF"/>
+                <outlet property="lblRemote" destination="1c2-ty-ohn" id="cya-b1-L1g"/>
+                <outlet property="pickerRemote" destination="l3X-zq-CZX" id="cVm-47-Vac"/>
                 <outlet property="pmTextLabel" destination="yoj-dy-LwS" id="MPk-Pq-oSf"/>
                 <outlet property="timeLbl" destination="0te-Re-S7v" id="04y-am-5OK"/>
                 <outlet property="view" destination="iN0-l3-epB" id="0Kn-Xk-4E1"/>
@@ -259,7 +261,7 @@
                             </constraints>
                         </stackView>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="yDU-8T-ayk" firstAttribute="top" secondItem="da9-Tm-PrJ" secondAttribute="top" id="BEX-Jo-KBI"/>
                         <constraint firstAttribute="bottom" secondItem="yDU-8T-ayk" secondAttribute="bottom" id="Ea4-WF-NdN"/>
@@ -275,6 +277,37 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="hrBorderColor">
                             <color key="value" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l3X-zq-CZX">
+                    <rect key="frame" x="20" y="672.5" width="374" height="36"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YWN-bc-Z9H">
+                            <rect key="frame" x="10" y="10" width="354" height="16"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ic-onlineCons" translatesAutoresizingMaskIntoConstraints="NO" id="AUw-a3-Gq2">
+                                    <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" text="Remote Consultation" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1c2-ty-ohn">
+                                    <rect key="frame" x="24" y="0.0" width="330" height="16"/>
+                                    <fontDescription key="fontDescription" name="Tajawal-Bold" family="Tajawal" pointSize="15"/>
+                                    <color key="textColor" red="0.0" green="0.23137254900000001" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.13725490200000001" green="0.69019607839999997" blue="0.62745098040000002" alpha="0.10380958405551527" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="YWN-bc-Z9H" secondAttribute="bottom" constant="10" id="TC7-tm-2nv"/>
+                        <constraint firstAttribute="trailing" secondItem="YWN-bc-Z9H" secondAttribute="trailing" constant="10" id="h3l-bw-z4y"/>
+                        <constraint firstItem="YWN-bc-Z9H" firstAttribute="top" secondItem="l3X-zq-CZX" secondAttribute="top" constant="10" id="hxD-ZJ-BLj"/>
+                        <constraint firstItem="YWN-bc-Z9H" firstAttribute="leading" secondItem="l3X-zq-CZX" secondAttribute="leading" constant="10" id="uus-83-TQP"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="hrCornerRadius">
+                            <real key="value" value="15"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
@@ -305,11 +338,14 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="EWf-Pd-gBv" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="100" id="8z5-Px-1pR"/>
+                <constraint firstItem="l3X-zq-CZX" firstAttribute="leading" secondItem="da9-Tm-PrJ" secondAttribute="leading" id="Ckn-bD-1xQ"/>
+                <constraint firstItem="l3X-zq-CZX" firstAttribute="top" secondItem="da9-Tm-PrJ" secondAttribute="bottom" constant="10" id="Jty-Z3-Mwh"/>
                 <constraint firstItem="3XG-PF-b5h" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="MUj-vz-gz5"/>
                 <constraint firstItem="TL9-pK-Z5P" firstAttribute="top" secondItem="EWf-Pd-gBv" secondAttribute="bottom" constant="20" id="NhY-27-79o"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="3XG-PF-b5h" secondAttribute="bottom" constant="20" id="P5X-jk-LoR"/>
                 <constraint firstItem="da9-Tm-PrJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="STe-1o-Gbi"/>
                 <constraint firstItem="EWf-Pd-gBv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="UUn-7c-8Ih"/>
+                <constraint firstItem="l3X-zq-CZX" firstAttribute="trailing" secondItem="da9-Tm-PrJ" secondAttribute="trailing" id="YCH-wW-bcS"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="EWf-Pd-gBv" secondAttribute="trailing" constant="20" id="cOI-hI-eNl"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3XG-PF-b5h" secondAttribute="trailing" constant="20" id="iEP-7X-2aK"/>
                 <constraint firstItem="TL9-pK-Z5P" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="m80-47-llR"/>
@@ -323,6 +359,7 @@
         <image name="AppoimentComfirmIcon" width="47" height="52"/>
         <image name="BHG-DiagnosisCell" width="55" height="55.5"/>
         <image name="BHG-DocPice" width="39" height="45"/>
+        <image name="Ic-onlineCons" width="16" height="16"/>
         <image name="LocationConfirmIcon" width="47" height="52"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

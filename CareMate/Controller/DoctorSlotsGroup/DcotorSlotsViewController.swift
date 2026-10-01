@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 import MZFormSheetController
 
 class DcotorSlotsViewController: BaseViewController {
@@ -102,7 +103,7 @@ class DcotorSlotsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pickerConditions.isHidden = !acceptOnline
+        pickerConditions.isHidden = true
         changeAcceptIcon()
         setupView()
         getData()
@@ -258,9 +259,8 @@ class DcotorSlotsViewController: BaseViewController {
     }
     
     @objc func agreegationCliked() {
-        let vc = termsAndConditionVC()
-        vc.typePrivacyPolicy = false
-        self.navigationController?.pushViewController(vc, animated: true)
+        let safariVC = SFSafariViewController(url: URL(string: Constants.APIProvider.Online_Terms)!)
+        self.present(safariVC, animated: true, completion: nil)
     }
     
     @objc func acceptTerms() {
@@ -604,27 +604,32 @@ class DcotorSlotsViewController: BaseViewController {
         }
     
     func checkOnline() {
-        let dateFormatterYYYMMDD = DateFormatter()
-        dateFormatterYYYMMDD.dateFormat = "dd/MM/yyyy"
-        dateFormatterYYYMMDD.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatterYYYMMDD.locale = .current
-        let dayInYYYMMDDDateInCell = dateFormatterYYYMMDD.string(from: Date())
-        let parseUrl = "\(Constants.APIProvider.checkOnlineCons)BRANCH_ID=\(branchID ?? "")&DOC_ID=\(doctor?.id ?? "")&CLINIC_ID=\(doctor?.clinicId  ?? "")&PATIENT_ID=\(Utilities.sharedInstance.getPatientId())&DATE_FROM_FORMATED=\(dayInYYYMMDDDateInCell)"
-        WebserviceMananger.sharedInstance.makeCall(method: .get, url: parseUrl, parameters: nil, vc: self) { (data, error) in
-            if error == nil {
-                if let model = ((data as? [String: AnyObject])?["Root"] as? [String:AnyObject])?["OUT_PARMS"] as? [String: AnyObject] {
-                    let inner = model["OUT_PARMS_ROW"] as? [String: AnyObject]
-                    let follow = inner?["PATIENT_HAS_FOLLOWUP"] as? String
-                    if follow == "1" {
-                        self.pickerConditions.isHidden = false
+        if doctor?.acceptOnlineConsultation() == true {
+            let dateFormatterYYYMMDD = DateFormatter()
+            dateFormatterYYYMMDD.dateFormat = "dd/MM/yyyy"
+            dateFormatterYYYMMDD.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatterYYYMMDD.locale = .current
+            let dayInYYYMMDDDateInCell = selecteDate.isEmpty ?  dateFormatterYYYMMDD.string(from: Date()):selecteDate
+            let parseUrl = "\(Constants.APIProvider.checkOnlineCons)BRANCH_ID=\(branchID ?? "")&DOC_ID=\(doctor?.id ?? "")&CLINIC_ID=\(doctor?.clinicId  ?? "")&PATIENT_ID=\(Utilities.sharedInstance.getPatientId())&DATE_FROM_FORMATED=\(dayInYYYMMDDDateInCell)"
+            WebserviceMananger.sharedInstance.makeCall(method: .get, url: parseUrl, parameters: nil, vc: self) { (data, error) in
+                if error == nil {
+                    if let model = ((data as? [String: AnyObject])?["Root"] as? [String:AnyObject])?["OUT_PARMS"] as? [String: AnyObject] {
+                        let inner = model["OUT_PARMS_ROW"] as? [String: AnyObject]
+                        let follow = inner?["PATIENT_HAS_FOLLOWUP"] as? String
+                        if follow == "1" {
+                            self.pickerConditions.isHidden = false
+                        }else {
+                            self.pickerConditions.isHidden = true
+                        }
                     }else {
                         self.pickerConditions.isHidden = true
                     }
-                }else {
-                    self.pickerConditions.isHidden = true
                 }
             }
+        }else {
+            pickerConditions.isHidden = true
         }
+    
     }
 
 }
